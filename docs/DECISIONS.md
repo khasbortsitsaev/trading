@@ -12,8 +12,8 @@ As of 2026-11-12. Decisions may change with evidence.
 | Long / short | Both may be studied | Agreed |
 | Leverage | No leveraged portfolio exposure desired | Agreed |
 | Trading frequency | Determined by signals and after-cost evidence; avoid uncompetitive HFT | Open |
-| Fees | 0.25% baseline round trip, 0.15% low, 0.50% stress; all-in provisional | Assumption |
-| Execution venue | No final exchange; compare liquidity and fee schedules, especially USDC pairs | Open |
+| Fees | 0.25% baseline round trip, 0.15% low, 0.50% stress; provisional all-in estimates based on Bitvavo | Assumption |
+| Execution venue | No final exchange; Bitvavo is the initial cost reference only. Compare fees, liquidity and available quote pairs | Open |
 | AI role | AI-assisted research and development; trading decisions should be explicit and testable | Agreed |
 | Validation | Chronological walk-forward, untouched holdout, cost and robustness tests | Agreed |
 | Live trading | Only after research, forward paper trading and separate approval | Agreed |
@@ -29,3 +29,5 @@ As of 2026-11-12. Decisions may change with evidence.
 - Broader user objective: relatively passive supplementary income from a side business. Small ongoing VM costs are acceptable in principle; live operation remains subject to separate authorization.
 - BTC dependence is an early research hypothesis, not a validated trading signal.
 - See [Income objective and BTC research notes](OBJECTIVE_AND_BTC.md) for proposed tests, economics and open questions.
+
+- Cost provenance clarified by the user on 2026-11-12: the initial estimates were based on Bitvavo. They must not be described as exchange-independent or replaced by another venue's fees without an explicit comparison. The venue remains undecided.
