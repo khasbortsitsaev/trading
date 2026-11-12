@@ -30,3 +30,15 @@ Build a modular, auditable Python research environment for systematic cryptocurr
 
 ## Communication
 Keep updates concise. Clearly separate confirmed findings, assumptions, open questions, and next actions. Do not claim success before tests run.
+
+## Session continuity
+- Start by reading docs/state.md, then README.md and the remaining docs, including docs/DECISIONS.md.
+- Treat repository documentation as durable project context. Verify it against current code and evidence; do not assume chat history is available.
+- Use docs/DECISIONS.md for agreed choices and reasons, docs/PAPERS.md for sources, docs/STRATEGIES.md for hypotheses, and docs/METHODOLOGY.md for validation rules. Do not create duplicate decision or research logs with different capitalization.
+- Before an experiment, record its hypothesis, specification and validation plan in docs/experiments.md. Log unsuccessful, invalid and inconclusive runs as well as positive ones.
+- At session end, update docs/state.md with completed work, validation actually performed, blockers and one concrete next task. Link commits or result artifacts where available. Update other affected documentation.
+- Keep confirmed findings, provisional assumptions and proposed decisions distinct. Never promote synthetic accounting checks to evidence of trading profitability.
+- Keep responses concise, verify facts, and do not use em dash characters.
+
+## Agent scope
+Use this repository as the workspace for an AI research and development agent. A custom autonomous agent application is not required at this stage. Instructions do not create scheduling, background execution or additional tool access.
