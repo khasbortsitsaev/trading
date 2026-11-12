@@ -8,9 +8,9 @@ Research-first cryptocurrency trading project. The objective is to identify, rep
 - Initial endowment: **0.5 ETH**, not EUR 500. No arbitrary limit on the number of positions or assets.
 - Research/reporting numeraire: **USDC / USD equivalent**, with ETH buy-and-hold and cash benchmarks. Report ETH-equivalent results too.
 - Long and short strategies may be researched, but **no leveraged portfolio exposure** is desired. Gross exposure <= 100% of equity is an initial constraint to validate; derivatives and borrowed shorts still introduce margin/liquidation risks.
-- No commitment to any specific exchange or execution venue yet.
+- No commitment to any specific exchange or execution venue yet. **Bitvavo is the reference behind the initial cost estimate**, not a selected execution venue.
 - Focus on returns **after** commissions, spread, slippage, and where applicable borrowing/funding/conversion costs.
-- Baseline assumed **0.25% all-in per round trip**; stress test 0.15% and 0.50%. These are placeholders, **not measured execution costs**. Do not double-count fees/spread.
+- Baseline assumed **0.25% all-in per round trip**; stress test 0.15% and 0.50%. These are provisional Bitvavo-based estimates, **not measured execution costs or verified current exchange commissions**. See [cost provenance and verification](docs/METHODOLOGY.md#cost-provenance-and-exchange-selection). Do not double-count fees/spread.
 - Prefer reproducible, interpretable signals over complex ML for its own sake.
 - Academic papers are candidate specifications, **not proof** of profitability for our account.
 - No real orders, API-key permissions, or autonomous trading until explicit authorization and a separate safety review.
