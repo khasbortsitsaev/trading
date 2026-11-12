@@ -24,3 +24,8 @@ As of 2026-11-12. Decisions may change with evidence.
 - The user does not want research to focus narrowly on one paper or pairs trading.
 - Published best-performing pairs can be candidates, but selecting them based on their published out-of-sample performance creates selection bias for our own evaluation.
 - We need not replicate every paper exactly; papers are starting points for well-defined, testable hypotheses. When modifying a published strategy, preserve a clear distinction between original and modified variants.
+
+## Additional context (2026-11-12)
+- Broader user objective: relatively passive supplementary income from a side business. Small ongoing VM costs are acceptable in principle; live operation remains subject to separate authorization.
+- BTC dependence is an early research hypothesis, not a validated trading signal.
+- See [Income objective and BTC research notes](OBJECTIVE_AND_BTC.md) for proposed tests, economics and open questions.
