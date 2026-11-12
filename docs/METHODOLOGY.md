@@ -4,12 +4,28 @@
 Start each simulation with a **0.5 ETH** endowment valued at the observed ETH/USDC price at the simulation start. USDC is a reporting numeraire, not a risk-free asset. Report final USDC P&L and total return, ETH-equivalent wealth and relative return against holding 0.5 ETH. Also compare with a no-trade USDC benchmark. Model conversion explicitly if a strategy requires it.
 
 ## Transaction costs
-Temporary *round-trip all-in* assumptions:
+Temporary *round-trip all-in* assumptions, initially based on Bitvavo:
 - Low: 0.15%
 - Baseline: 0.25%
 - Stress: 0.50%
 
 These include provisional commissions + spread + slippage, not measured execution costs. For asymmetric or partial trades allocate costs to the executed legs consistently. Never charge both an all-in assumption and its components. Shorts additionally require explicit borrow/funding and collateral modeling. Compare real exchange/pair-specific costs before go/no-go.
+
+### Cost provenance and exchange selection
+The user confirmed on 2026-11-12 that Bitvavo was the basis for the initial cost estimate. **Bitvavo has not been selected as the execution venue.** This records the estimate's origin, not an independent verification of a current fee schedule.
+
+The 0.15%, 0.25% and 0.50% scenarios are all-in round-trip assumptions. They are not quoted Bitvavo commission rates, not per-side fees, and not measured fills. The exact original maker/taker mix, volume tier and spread/slippage breakdown have not yet been documented or independently verified.
+
+Before interpreting a backtest as economically feasible:
+- Verify each candidate venue's official fee schedule, applicable account/volume tier, maker/taker rates and actual pair availability. Record source URLs and verification dates.
+- Calculate commissions for both entry and exit. Add pair- and order-size-specific spread/slippage estimates using consistent execution accounting; do not add a spread charge again if it is already represented in bid/ask fills.
+- Include conversion and deposit/withdrawal or network charges only when the workflow incurs them. Centralized spot order-book trades do not each require an on-chain transaction.
+- Model borrow/funding separately if shorting or derivatives are used. Do not charge those costs to ordinary fully funded spot purchases.
+- Check whether USDC execution pairs exist and are sufficiently liquid; the USDC reporting numeraire does not require every trade to execute against USDC.
+- Keep the original scenarios for sensitivity analysis, but revise or expand them if verified costs are outside their range. Another exchange's fees cannot establish Bitvavo's costs.
+- Keep transaction costs, recurring infrastructure/data expenses and personal taxes separate. Net trading P&L is not automatically after-tax disposable income.
+
+The earlier Kraken example in conversation illustrated venue differences only. It is not the basis for this project's cost model.
 
 ## Validation
 - Use only information known at each decision timestamp.
