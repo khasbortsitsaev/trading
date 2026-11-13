@@ -10,7 +10,7 @@ import subprocess
 import sys
 ROOT=Path(__file__).resolve().parents[1]
 sys.path.insert(0,str(ROOT/'src'))
-from trading_research.data import load_panel
+from trading_research.data import load_admitted_dataset
 from trading_research.engine import run,Settings
 from trading_research.core import Rules
 from trading_research import synthetic
@@ -48,14 +48,10 @@ def main():
             p.error('Development dataset is not yet admitted by the policy')
         if args.output.resolve()==ROOT or ROOT in args.output.resolve().parents:
             p.error('Keep the full source-derived ledger outside the public checkout')
-        manifest=json.loads((args.data_dir/'manifest.json').read_text())
-        if not manifest['complete'] or not args.proxy_usd:
-            p.error('Complete admitted data and explicit --proxy-usd acknowledgement are required')
+        if not args.proxy_usd:
+            p.error('Explicit --proxy-usd acknowledgement is required')
+        data,manifest=load_admitted_dataset(args.data_dir,policy['dataset_admission'],cutoff)
         dataset_hash=manifest['normalized_sha256']
-        admitted=policy.get('dataset_admission',{})
-        if dataset_hash!=admitted.get('normalized_sha256'):
-            p.error('Dataset is not the frozen admitted version')
-        data=load_panel(args.data_dir/'normalized.json',dataset_hash,cutoff)
         quote=manifest['quote'];provider=manifest['provider']
     execution=json.loads((ROOT/'config/runner.json').read_text())
     rules={a:Rules(quantity_decimals=x['quantity_decimals'],tick=D(x['tick']),

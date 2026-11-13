@@ -102,3 +102,17 @@ def load_panel(path, expected_sha256, holdout_start_ms):
     if not panel:
         raise DataError('Empty panel')
     return panel
+
+
+def load_admitted_dataset(root, admission, holdout_start_ms):
+    """Bind provider/quote/quality metadata as well as normalized price bytes."""
+    root=Path(root)
+    raw=(root/'manifest.json').read_bytes()
+    if hashlib.sha256(raw).hexdigest()!=admission['manifest_sha256']:
+        raise DataError('Source manifest changed after admission')
+    manifest=json.loads(raw)
+    if (not manifest['complete'] or manifest['provider']!=admission['source']
+            or manifest['quote']!=admission['quote']
+            or manifest['normalized_sha256']!=admission['normalized_sha256']):
+        raise DataError('Admitted provider, quote, quality or dataset identity mismatch')
+    return load_panel(root/'normalized.json',admission['normalized_sha256'],holdout_start_ms),manifest

@@ -8,7 +8,7 @@ import unittest
 sys.path.insert(0,str(Path(__file__).resolve().parents[1]/'src'))
 from trading_research.core import Candle,DataError,HoldoutAccessError,Portfolio,Rules
 from trading_research.engine import DAY,Settings,run,signals,target_quantities
-from trading_research.data import bitstamp_rows,load_panel,collect_bitstamp
+from trading_research.data import bitstamp_rows,load_panel,collect_bitstamp,load_admitted_dataset
 from unittest.mock import patch
 import hashlib,json,tempfile
 
@@ -157,6 +157,19 @@ class SourceFixtures(unittest.TestCase):
             p=Path(tmp)/'data.json';p.write_bytes(body)
             with self.assertRaises(DataError):load_panel(p,'incorrect',CUTOFF)
             with self.assertRaises(DataError):load_panel(p,hashlib.sha256(body).hexdigest(),CUTOFF)
+            valid={'ETH':[[BASE,'1','3','.5','2','4']]}
+            normalized=json.dumps(valid).encode();(Path(tmp)/'normalized.json').write_bytes(normalized)
+            digest=hashlib.sha256(normalized).hexdigest()
+            manifest={'provider':'Bitstamp public OHLC API','quote':'USD','complete':True,'normalized_sha256':digest}
+            original=json.dumps(manifest).encode();mp=Path(tmp)/'manifest.json';mp.write_bytes(original)
+            admission={'source':manifest['provider'],'quote':'USD','normalized_sha256':digest,'manifest_sha256':hashlib.sha256(original).hexdigest()}
+            _,actual=load_admitted_dataset(tmp,admission,CUTOFF)
+            self.assertEqual(actual['quote'],'USD')
+            mp.write_text(json.dumps(manifest|{'quote':'USDC'}))
+            with self.assertRaises(DataError):load_admitted_dataset(tmp,admission,CUTOFF)
+            mp.write_bytes(original)
+            with self.assertRaises(DataError):load_admitted_dataset(tmp,admission|{'quote':'USDC'},CUTOFF)
+
 
 
 if __name__=='__main__':unittest.main()
