@@ -21,6 +21,10 @@ Local data, if retained: `/workspace/research-data/bitstamp-usd-development-v1/{
 
 **Holdout remains sealed:** 2025-11-13 inclusive through 2026-11-13 exclusive. Never move these dates with the calendar or access it to improve S1. One trial has been used; existing budget/multiplicity history is preserved.
 
+Reuse review already completed: [framework/strategy review](../research/reports/repository-reuse-review.md). Freqtrade is the leading candidate, CCXT a potential data adapter and bt an allocation reference. Nothing was installed or parity-tested. Reuse this review; a migration or framework spike is optional only if it saves work on a concrete S1 gap.
+
+Feedback-update validation: 41 tests passed and the committed-code synthetic CLI smoke run completed. No historical strategy rerun or holdout access.
+
 ## One next task
 
 Produce a compact S1 research close-out from the existing ledger: show an actual buy, a signal-driven exit and a daily resize, explain turnover/costs and the failed screen, and identify which execution/robustness evidence remains missing. Recover the admitted data only if needed. Do not launch the eleven-variant batch or build a general orchestration framework. S1 completion means an understandable, auditable conclusion, including rejection, not forcing a profitable result or trading live.

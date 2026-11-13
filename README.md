@@ -19,4 +19,4 @@ PYTHONDONTWRITEBYTECODE=1 python3 -m unittest discover -s tests -v
 PYTHONDONTWRITEBYTECODE=1 python3 scripts/run_research.py --synthetic --output /tmp/trading-synthetic.json
 ```
 
-Reuse the current runner, accounting, collector and tests. Assess suitable existing licensed tools before building additional infrastructure. Live execution requires separate authorization.
+Reuse the current runner, accounting, collector and tests. Use the existing [reuse review](research/reports/repository-reuse-review.md), which identifies Freqtrade, CCXT and bt, before building additional infrastructure. Live execution requires separate authorization.
