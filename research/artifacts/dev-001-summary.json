@@ -1,0 +1,79 @@
+{
+  "code_commit": "ce4219ae285fbbd7e142ff6e810fe724155af38a",
+  "dataset_sha256": "5d1d450f98b2ba61c8b956b53a113f8b03f3a1a5fb1cd51b309cd83c611b26f0",
+  "result_sha256": "2821d88fc4c60c9f01b2732126fb42dc53cc41c885c858760bfc03bac5ca99fc",
+  "evidence_type": "historical_source_proxy_not_venue_replication",
+  "variant": {
+    "id": "TREND-20",
+    "family": "trend",
+    "lookback_days": 20,
+    "rule": "Long if close[t]/close[t-L]-1 > 0, otherwise flat; only completed/available bars",
+    "neighbor_ids": [
+      "TREND-40",
+      "TREND-60",
+      "TREND-120",
+      "TREND-240"
+    ]
+  },
+  "source": "Bitstamp public OHLC API",
+  "quote": "USD",
+  "usdc_wealth_claimed": false,
+  "execution_model": "fixed target quantities from prior available closes; future daily open proxy; quote fees; no EUR leg",
+  "initial_eth": "0.5",
+  "initial_quote_equity": "1031.150",
+  "settings": {
+    "fee_per_execution": "0.0005",
+    "noncommission_round_trip_bps": "15",
+    "extra_delay_bars": 0,
+    "publication_minutes": 5,
+    "processing_minutes": 5,
+    "rules": {
+      "BTC": {
+        "quantity_decimals": 8,
+        "tick": "1",
+        "minimum_base": "0.00006985",
+        "minimum_quote": "5"
+      },
+      "ETH": {
+        "quantity_decimals": 8,
+        "tick": "0.01",
+        "minimum_base": "0.00247844",
+        "minimum_quote": "5"
+      }
+    }
+  },
+  "start_ms": 1700784000000,
+  "end_exclusive_ms": 1762992000000,
+  "metrics": {
+    "total_return": 0.623168456454394,
+    "cagr": 0.278544058520045,
+    "maximum_drawdown": 0.4489455948685942,
+    "sharpe_zero_reference_365_days": 0.8575411497804409
+  },
+  "eth_benchmark_metrics": {
+    "total_return": 0.6551859574261745,
+    "cagr": 0.291276223711943,
+    "maximum_drawdown": 0.638042542727161,
+    "sharpe_zero_reference_365_days": 0.7102799251297535
+  },
+  "cash_benchmark_metrics": {
+    "total_return": -0.0012512122387625668,
+    "cagr": -0.0006349253137453047,
+    "maximum_drawdown": 0.0012512122387625668,
+    "sharpe_zero_reference_365_days": -0.7120003121097942
+  },
+  "commission_quote": "62.15003413335165",
+  "modeled_adverse_price_cost": "93.7656828733",
+  "orders_executed": 425,
+  "orders_rejected": 410,
+  "pending_intents_not_filled_at_end": 1,
+  "full_ledger_committed": false,
+  "validation_label": "Historical development out-of-sample relative to the preregistered fixed rule; not a final holdout or prospective assessment.",
+  "working_screen": {
+    "positive_absolute_growth": true,
+    "eth_cagr_margin_at_least_2_percentage_points": false,
+    "research_drawdown_at_most_30_percent": false,
+    "robustness_and_dependence_uncertainty": "not_run",
+    "candidate_promoted": false
+  }
+}

@@ -1,0 +1,71 @@
+{
+  "code_commit": "b84ed9b67ada50c14c35e95bacccb7632f6bd5f3",
+  "dataset_sha256": "113aba628b2cad2ed2e5f3f058a9e02da6b7a43c752a89d9808b98b0a9fdddb5",
+  "result_sha256": "0b98226ef1f2da8e894323940f00f28ec5f824b10cc24d84956e8e55d1bed62d",
+  "evidence_type": "synthetic_software_check",
+  "variant": {
+    "id": "TREND-20",
+    "family": "trend",
+    "lookback_days": 20,
+    "rule": "Long if close[t]/close[t-L]-1 > 0, otherwise flat; only completed/available bars",
+    "neighbor_ids": [
+      "TREND-40",
+      "TREND-60",
+      "TREND-120",
+      "TREND-240"
+    ]
+  },
+  "source": "synthetic",
+  "quote": "USDC",
+  "usdc_wealth_claimed": true,
+  "execution_model": "fixed target quantities from prior available closes; future daily open proxy; quote fees; no EUR leg",
+  "initial_eth": "0.5",
+  "initial_quote_equity": "54.783047760",
+  "settings": {
+    "fee_per_execution": "0.0005",
+    "noncommission_round_trip_bps": "15",
+    "extra_delay_bars": 0,
+    "publication_minutes": 5,
+    "processing_minutes": 5,
+    "rules": {
+      "BTC": {
+        "quantity_decimals": 8,
+        "tick": "1",
+        "minimum_base": "0.00006985",
+        "minimum_quote": "5"
+      },
+      "ETH": {
+        "quantity_decimals": 8,
+        "tick": "0.01",
+        "minimum_base": "0.00247844",
+        "minimum_quote": "5"
+      }
+    }
+  },
+  "start_ms": 1609459200000,
+  "end_exclusive_ms": 1626739200000,
+  "metrics": {
+    "total_return": 0.03745920744877984,
+    "cagr": 0.0694662714362529,
+    "maximum_drawdown": 0.020922718188888134,
+    "sharpe_zero_reference_365_days": 2.908802162328912
+  },
+  "eth_benchmark_metrics": {
+    "total_return": -0.08117331568483743,
+    "cagr": -0.1432475385202714,
+    "maximum_drawdown": 0.09703247791391911,
+    "sharpe_zero_reference_365_days": -3.141463533627706
+  },
+  "cash_benchmark_metrics": {
+    "total_return": -0.0012853932535571433,
+    "cagr": -0.002346202774890739,
+    "maximum_drawdown": 0.0012853932535571433,
+    "sharpe_zero_reference_365_days": -1.3509256086106296
+  },
+  "commission_quote": "0.11013572018175",
+  "modeled_adverse_price_cost": "0.2430742806369545",
+  "orders_executed": 7,
+  "orders_rejected": 141,
+  "pending_intents_not_filled_at_end": 1,
+  "full_ledger_committed": false
+}

@@ -1,0 +1,48 @@
+{
+  "scope": "Ledger and source consistency, not independent economic confirmation",
+  "tests_passed": 40,
+  "tests_failed": 0,
+  "synthetic_result_replay_identical": true,
+  "development_ledger_points_reconciled": 720,
+  "fill_causal_ordering_checked": 425,
+  "no_holdout_access": true,
+  "actual_quote": "USD",
+  "actual_usdc_wealth_claimed": false,
+  "code_commit_for_development_run": "ce4219ae285fbbd7e142ff6e810fe724155af38a",
+  "dataset_sha256": "5d1d450f98b2ba61c8b956b53a113f8b03f3a1a5fb1cd51b309cd83c611b26f0",
+  "result_sha256": "2821d88fc4c60c9f01b2732126fb42dc53cc41c885c858760bfc03bac5ca99fc",
+  "folds_continuous_no_capital_reset": [
+    {
+      "fold": 1,
+      "days": 180,
+      "net_return": 0.3842851764516746,
+      "eth_return": 0.8380449013237645,
+      "drawdown": 0.2145633259432035
+    },
+    {
+      "fold": 2,
+      "days": 180,
+      "net_return": -0.21302617760206444,
+      "eth_return": -0.18851896797340784,
+      "drawdown": 0.3489988687378738
+    },
+    {
+      "fold": 3,
+      "days": 180,
+      "net_return": 0.3496810226984888,
+      "eth_return": -0.17539011703511054,
+      "drawdown": 0.1982413138904744
+    },
+    {
+      "fold": 4,
+      "days": 180,
+      "net_return": 0.10394286817049991,
+      "eth_return": 0.34574807806031926,
+      "drawdown": 0.1910961416314939
+    }
+  ],
+  "outcome": "Fails current working ETH-growth-margin and maximum-drawdown screens; no candidate promotion or retuning.",
+  "latest_unit_test_code_commit": "bfbf9f6",
+  "admitted_manifest_provider_and_quote_verified": true,
+  "no_economic_rerun_after_metadata_hardening": true
+}
