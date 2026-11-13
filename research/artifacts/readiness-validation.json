@@ -1,0 +1,23 @@
+{
+  "observed_at_utc": "2026-11-13T10:50:41.721000+00:00",
+  "executed_code_commit": "d7c933f397b33b0a3141c23258585cd49b80a8fe",
+  "validation_scope": "Offline synthetic/control fixtures and exact replay of existing local quality/cost observations; not a strategy or live result",
+  "unittest": {
+    "command": "PYTHONDONTWRITEBYTECODE=1 python3 -m unittest discover -s tests -v",
+    "executed": 24,
+    "passed": 24,
+    "failed": 0,
+    "skipped": 0
+  },
+  "replays": {
+    "development_history_equal_to_committed_artifact": true,
+    "cost_observations_equal_to_committed_artifact": true,
+    "holdout_retrieved": false
+  },
+  "artifacts_sha256": {
+    "research/artifacts/readiness-history.json": "153014139c23a959f2cf93910229a8c2a7fe29afaa2c3bf41329d5d723dffbb4",
+    "research/artifacts/cost-observations.json": "33ac10ca335992396d82573288dd790af619ef7cff7e69a654ea9ce89a87ae13",
+    "config/research-policy.json": "27008c19899c89e1e51041b44ebd60d8793fc2c0c28ae20b432e171ce297a054"
+  },
+  "open_external_item": "Vendor confirmation of standalone historical/AI-assisted research-use and retention scope; no message sent"
+}

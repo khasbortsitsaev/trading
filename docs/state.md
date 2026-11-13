@@ -22,3 +22,6 @@ Conservative public entry-tier rates resolve simulated fee assumptions. Actual a
 
 ## Next concrete action
 Obtain the source-use clarification recorded in the feasibility report, while completing a deterministic synthetic strategy runner around the tested primitives. Preregister each run; retain failed and inconclusive results. Do not inspect holdout strategy results, accept paid commitments, contact a venue, borrow or trade live without the appropriate distinct authority. No alpha or profitability has been established.
+
+## Final verification
+At source/config commit d7c933f397b33b0a3141c23258585cd49b80a8fe, all 24 tests passed after timestamp/trade-ID hardening and path consolidation. Development-history and cost outputs replayed identically to their stored artifacts. research/artifacts/readiness-validation.json records the checks and remaining external permission boundary. No new strategy results were produced.
