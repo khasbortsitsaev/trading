@@ -1,6 +1,6 @@
 # Decision log
 
-As of 2026-11-12. Decisions may change with evidence.
+As of 2026-11-13. Decisions may change with evidence.
 
 | Topic | Decision | Status |
 |---|---|---|
@@ -12,7 +12,7 @@ As of 2026-11-12. Decisions may change with evidence.
 | Long / short | Both may be studied | Agreed |
 | Leverage | No leveraged portfolio exposure desired | Agreed |
 | Trading frequency | Determined by signals and after-cost evidence; avoid uncompetitive HFT | Open |
-| Fees | 0.25% baseline round trip, 0.15% low, 0.50% stress; provisional all-in estimates based on Bitvavo | Assumption |
+| Fees | Original 0.15%/0.25%/0.50% all-in cases retained as legacy sensitivity cases; use verified venue/pair fees and explicit friction scenarios in COSTS.md | Current public fees verified; account rates and realized friction open |
 | Execution venue | No final exchange; Bitvavo is the initial cost reference only. Compare fees, liquidity and available quote pairs | Open |
 | AI role | AI-assisted research and development; trading decisions should be explicit and testable | Agreed |
 | Validation | Chronological walk-forward, untouched holdout, cost and robustness tests | Agreed |
@@ -40,3 +40,9 @@ As of 2026-11-12. Decisions may change with evidence.
 - Provisional: a broad 20-50% possible live drawdown tolerance was discussed. This is not a chosen risk limit, research acceptance threshold or authorization to lose 50%. Define drawdown from the equity high-water mark and separately define loss from starting capital before live allocation.
 - Open: numerical research acceptance thresholds, finite trial budget and operational stop rules. Strong backtests cannot eliminate live losses.
 - Venue selection remains open; apply privately supplied jurisdiction and venue exclusions during feasibility research. Do not place personal eligibility information in this public repository.
+
+## Cost review and publication workflow (2026-11-13)
+- The user instructed that completed project work must always be committed and pushed to GitHub. This is now a standing rule in AGENTS.md; do not confuse a local file or cloud snapshot with repository publication.
+- Current primary-source evidence supports prioritizing Bitvavo crypto/USDC for a low-cost baseline, subject to unresolved feasibility conditions. This is a research recommendation, not final exchange selection.
+- Published entry-tier taker fees per execution: Bitvavo Category B 0.05%, Category A 0.25%; Kraken regular spot tier 1 0.80%, following the documented July 2026 change. Spread/slippage must be added or represented in bid/ask fills, without double counting.
+- The small deterministic calculator uses a synthetic quote-fee convention; it does not establish actual fee currency, account rates or maker fills. Six checks passed; no strategy profitability result exists.

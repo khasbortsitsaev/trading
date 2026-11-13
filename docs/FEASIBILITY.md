@@ -127,4 +127,4 @@ Remaining conditions before selecting and ingesting an experiment dataset:
 4. Confirm actual Belgian onboarding entity/product/pair availability before any funded account use. Treat public register/catalogue observations as general evidence only.
 5. Keep historical universe reconstruction gated; do not substitute today's surviving coins for a point-in-time universe.
 
-Next concrete deliverable is **point 2: a source-backed venue/pair/order-type cost comparison**, retaining the original provisional scenarios as sensitivity cases. Points 3-6 and the synthetic accounting prototype remain subsequent work. Nothing in this assessment establishes an investment edge or authorizes live trading.
+Update on 13 November 2026: the **point 2 cost comparison** is now recorded in [COSTS.md](COSTS.md), including current commissions, limited book observations and explicitly uncalibrated friction scenarios. Points 3-6 and the synthetic strategy-accounting prototype remain subsequent work. Nothing in this assessment establishes an investment edge or authorizes live trading.

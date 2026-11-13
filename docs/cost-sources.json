@@ -1,0 +1,403 @@
+{
+  "retrieval_date": "2026-11-13",
+  "scope": "Official fee documents and bounded public book probes; no credentials, orders, raw datasets or account fees",
+  "raw_response_policy": "Raw pages/books stay outside git under /tmp/cost-analysis. Hashes identify retrieved content, not future availability.",
+  "observations": [
+    {
+      "id": "bitvavo-BTC-EUR-r1",
+      "url": "https://api.bitvavo.com/v2/BTC-EUR/book?depth=50",
+      "observed_at_utc": "2026-11-13T10:04:55.560431+00:00",
+      "curl_exit": 0,
+      "response": "200 https://api.bitvavo.com/v2/BTC-EUR/book?depth=50",
+      "error": "",
+      "sha256": "941ae9a1927500edcfc3d70e661931cd0e1b08fab30a5c2d2f15c6344de9ac02"
+    },
+    {
+      "id": "bitvavo-BTC-EUR-r2",
+      "url": "https://api.bitvavo.com/v2/BTC-EUR/book?depth=50",
+      "observed_at_utc": "2026-11-13T10:05:46.145932+00:00",
+      "curl_exit": 0,
+      "response": "200 https://api.bitvavo.com/v2/BTC-EUR/book?depth=50",
+      "error": "",
+      "sha256": "b6b33102c313a0d33d79f667bb3f728b0ebb153e3f2b87b0132157f170c0c296"
+    },
+    {
+      "id": "bitvavo-BTC-EUR-r3",
+      "url": "https://api.bitvavo.com/v2/BTC-EUR/book?depth=50",
+      "observed_at_utc": "2026-11-13T10:08:30.266219+00:00",
+      "curl_exit": 0,
+      "response": "200 https://api.bitvavo.com/v2/BTC-EUR/book?depth=50",
+      "error": "",
+      "sha256": "d380b2221a5bba0acda0402fd8218e32d63be2643589fd840414c87f601283a0"
+    },
+    {
+      "id": "bitvavo-BTC-USDC-r1",
+      "url": "https://api.bitvavo.com/v2/BTC-USDC/book?depth=50",
+      "observed_at_utc": "2026-11-13T10:04:55.888541+00:00",
+      "curl_exit": 0,
+      "response": "200 https://api.bitvavo.com/v2/BTC-USDC/book?depth=50",
+      "error": "",
+      "sha256": "986f6d48aefa7a3841f1e182a680bcfa31a70abb33f00cb428671ff1f69a8fa5"
+    },
+    {
+      "id": "bitvavo-BTC-USDC-r2",
+      "url": "https://api.bitvavo.com/v2/BTC-USDC/book?depth=50",
+      "observed_at_utc": "2026-11-13T10:05:46.593452+00:00",
+      "curl_exit": 0,
+      "response": "200 https://api.bitvavo.com/v2/BTC-USDC/book?depth=50",
+      "error": "",
+      "sha256": "5f225c3330ba6ef9df2ee784fed0d39f2476982f0a9d78f3d79bcdd0ed15f7ae"
+    },
+    {
+      "id": "bitvavo-BTC-USDC-r3",
+      "url": "https://api.bitvavo.com/v2/BTC-USDC/book?depth=50",
+      "observed_at_utc": "2026-11-13T10:08:30.475004+00:00",
+      "curl_exit": 0,
+      "response": "200 https://api.bitvavo.com/v2/BTC-USDC/book?depth=50",
+      "error": "",
+      "sha256": "ab6d14e1252997388e1960289d0247c393822af3e9245e087615722ecf720bd9"
+    },
+    {
+      "id": "bitvavo-ETH-EUR-r1",
+      "url": "https://api.bitvavo.com/v2/ETH-EUR/book?depth=50",
+      "observed_at_utc": "2026-11-13T10:04:55.562185+00:00",
+      "curl_exit": 0,
+      "response": "200 https://api.bitvavo.com/v2/ETH-EUR/book?depth=50",
+      "error": "",
+      "sha256": "bd7770506a918335ccc5ba4de16fb7ad17867eaaa2b510be534324adf8295765"
+    },
+    {
+      "id": "bitvavo-ETH-EUR-r2",
+      "url": "https://api.bitvavo.com/v2/ETH-EUR/book?depth=50",
+      "observed_at_utc": "2026-11-13T10:05:46.153294+00:00",
+      "curl_exit": 0,
+      "response": "200 https://api.bitvavo.com/v2/ETH-EUR/book?depth=50",
+      "error": "",
+      "sha256": "350433a4c46fe92505c1b2927b8b40183532e1bfbc1316fed646568555bb00b3"
+    },
+    {
+      "id": "bitvavo-ETH-EUR-r3",
+      "url": "https://api.bitvavo.com/v2/ETH-EUR/book?depth=50",
+      "observed_at_utc": "2026-11-13T10:08:30.273915+00:00",
+      "curl_exit": 0,
+      "response": "200 https://api.bitvavo.com/v2/ETH-EUR/book?depth=50",
+      "error": "",
+      "sha256": "66a3b5852cc0f6bac98782e2ce55097d7d2e3b23c0aadee864de28b7946ceb79"
+    },
+    {
+      "id": "bitvavo-ETH-USDC-r1",
+      "url": "https://api.bitvavo.com/v2/ETH-USDC/book?depth=50",
+      "observed_at_utc": "2026-11-13T10:04:55.699815+00:00",
+      "curl_exit": 0,
+      "response": "200 https://api.bitvavo.com/v2/ETH-USDC/book?depth=50",
+      "error": "",
+      "sha256": "a033dd25fb1a91d9713089899c5206c7458ce77e8277a056a10d074c2ea6dd4e"
+    },
+    {
+      "id": "bitvavo-ETH-USDC-r2",
+      "url": "https://api.bitvavo.com/v2/ETH-USDC/book?depth=50",
+      "observed_at_utc": "2026-11-13T10:05:46.338691+00:00",
+      "curl_exit": 0,
+      "response": "200 https://api.bitvavo.com/v2/ETH-USDC/book?depth=50",
+      "error": "",
+      "sha256": "55cb4e2eaf15b13ae25bd90b0070d37a89de19ffb6d47381668893f3276ad345"
+    },
+    {
+      "id": "bitvavo-ETH-USDC-r3",
+      "url": "https://api.bitvavo.com/v2/ETH-USDC/book?depth=50",
+      "observed_at_utc": "2026-11-13T10:08:30.245736+00:00",
+      "curl_exit": 0,
+      "response": "200 https://api.bitvavo.com/v2/ETH-USDC/book?depth=50",
+      "error": "",
+      "sha256": "b1ac7bb3e3a50ae87c77ff8f7bc600d44a50b90db690f78f2542c50d55cabbed"
+    },
+    {
+      "id": "bitvavo-USDC-EUR-r1",
+      "url": "https://api.bitvavo.com/v2/USDC-EUR/book?depth=50",
+      "observed_at_utc": "2026-11-13T10:04:56.210632+00:00",
+      "curl_exit": 0,
+      "response": "200 https://api.bitvavo.com/v2/USDC-EUR/book?depth=50",
+      "error": "",
+      "sha256": "87f8af42c91e77c9e0159abf89febcb16f8ecca53dc9012fe63b521b0961a67e"
+    },
+    {
+      "id": "bitvavo-USDC-EUR-r2",
+      "url": "https://api.bitvavo.com/v2/USDC-EUR/book?depth=50",
+      "observed_at_utc": "2026-11-13T10:05:46.560519+00:00",
+      "curl_exit": 0,
+      "response": "200 https://api.bitvavo.com/v2/USDC-EUR/book?depth=50",
+      "error": "",
+      "sha256": "053849b8b2d0645442d505eb6c7d72863deb71bfd014961ab217811f5b9ef774"
+    },
+    {
+      "id": "bitvavo-USDC-EUR-r3",
+      "url": "https://api.bitvavo.com/v2/USDC-EUR/book?depth=50",
+      "observed_at_utc": "2026-11-13T10:08:30.582169+00:00",
+      "curl_exit": 0,
+      "response": "200 https://api.bitvavo.com/v2/USDC-EUR/book?depth=50",
+      "error": "",
+      "sha256": "d17a1d41b010eb435648811574070005cb49e8cf411904f262caf2fbfddfb6f9"
+    },
+    {
+      "id": "bitvavo-fee-docs",
+      "url": "https://docs.bitvavo.com/docs/rest-api/get-account-fees/",
+      "observed_at_utc": "2026-11-13T10:03:36.935216+00:00",
+      "curl_exit": 0,
+      "response": "200 https://docs.bitvavo.com/docs/rest-api/get-account-fees/",
+      "error": "",
+      "sha256": "51a1cfc638e285645b1a70e5a62d6388d2c6e8d64de9e9400106de8982566566"
+    },
+    {
+      "id": "bitvavo-fees",
+      "url": "https://bitvavo.com/en/fees",
+      "observed_at_utc": "2026-11-13T10:03:14.185668+00:00",
+      "curl_exit": 0,
+      "response": "200 https://bitvavo.com/en/fees",
+      "error": "",
+      "sha256": "4a094cf1b49c83c810170ebabb69fa43aa51f1811649ac43359aa189505322c0"
+    },
+    {
+      "id": "bitvavo-market-fees-docs",
+      "url": "https://docs.bitvavo.com/docs/rest-api/get-market-fees/",
+      "observed_at_utc": "2026-11-13T10:05:20.929404+00:00",
+      "curl_exit": 0,
+      "response": "200 https://docs.bitvavo.com/docs/rest-api/get-market-fees/",
+      "error": "",
+      "sha256": "685e159fa35f67b12a3db9664ebb5b20e085f2b0a63488019aa7e48beb14a428"
+    },
+    {
+      "id": "bitvavo-markets",
+      "url": "https://api.bitvavo.com/v2/markets",
+      "observed_at_utc": "2026-11-13T10:03:14.251009+00:00",
+      "curl_exit": 0,
+      "response": "200 https://api.bitvavo.com/v2/markets",
+      "error": "",
+      "sha256": "bcc4b6b120d7fc2bc30934dded59898308237009aa8afe07f4be7da1531e0423"
+    },
+    {
+      "id": "bitvavo-orders",
+      "url": "https://docs.bitvavo.com/docs/rest-api/create-order/",
+      "observed_at_utc": "2026-11-13T10:03:13.901640+00:00",
+      "curl_exit": 0,
+      "response": "200 https://docs.bitvavo.com/docs/rest-api/create-order/",
+      "error": "",
+      "sha256": "71bd1064d799f4a5f715a174291ae3a5e2de42f4fe15fc81e9bcfeef0618ad5a"
+    },
+    {
+      "id": "bitvavo-pricing",
+      "url": "https://bitvavo.com/en/pricing-policy",
+      "observed_at_utc": "2026-11-13T10:03:37.090080+00:00",
+      "curl_exit": 0,
+      "response": "200 https://bitvavo.com/en/pricing-policy",
+      "error": "",
+      "sha256": "00c199915e646d78e67687480e4ab4be31372d5dd6b945b329e10474c9e3c97e"
+    },
+    {
+      "id": "kraken-BTC-EUR-r1",
+      "url": "https://api.kraken.com/0/public/Depth?pair=XBTEUR&count=50",
+      "observed_at_utc": "2026-11-13T10:04:55.518170+00:00",
+      "curl_exit": 0,
+      "response": "200 https://api.kraken.com/0/public/Depth?pair=XBTEUR&count=50",
+      "error": "",
+      "sha256": "3678c61128196bde115b7c0dbc1d512e45341fe464ef53c70a5f6651e63e29e6"
+    },
+    {
+      "id": "kraken-BTC-EUR-r2",
+      "url": "https://api.kraken.com/0/public/Depth?pair=XBTEUR&count=50",
+      "observed_at_utc": "2026-11-13T10:05:46.101051+00:00",
+      "curl_exit": 0,
+      "response": "200 https://api.kraken.com/0/public/Depth?pair=XBTEUR&count=50",
+      "error": "",
+      "sha256": "5dc1d0df39163746093211a9405e09ea4323b80d756c3b0768ef6c34e3699f24"
+    },
+    {
+      "id": "kraken-BTC-EUR-r3",
+      "url": "https://api.kraken.com/0/public/Depth?pair=XBTEUR&count=50",
+      "observed_at_utc": "2026-11-13T10:08:30.021603+00:00",
+      "curl_exit": 0,
+      "response": "200 https://api.kraken.com/0/public/Depth?pair=XBTEUR&count=50",
+      "error": "",
+      "sha256": "e58a3aa158bb5c84e1d72ff2f1abe8085282e74eaf0375fa9007eb69c7da3be4"
+    },
+    {
+      "id": "kraken-BTC-USDC-r1",
+      "url": "https://api.kraken.com/0/public/Depth?pair=XBTUSDC&count=50",
+      "observed_at_utc": "2026-11-13T10:04:55.746211+00:00",
+      "curl_exit": 0,
+      "response": "200 https://api.kraken.com/0/public/Depth?pair=XBTUSDC&count=50",
+      "error": "",
+      "sha256": "d891119cb777f9adf9d3dfc40c17d946d561ae3e0ccd7b91e680ecb70eb9bf32"
+    },
+    {
+      "id": "kraken-BTC-USDC-r2",
+      "url": "https://api.kraken.com/0/public/Depth?pair=XBTUSDC&count=50",
+      "observed_at_utc": "2026-11-13T10:05:46.392177+00:00",
+      "curl_exit": 0,
+      "response": "200 https://api.kraken.com/0/public/Depth?pair=XBTUSDC&count=50",
+      "error": "",
+      "sha256": "05ed9145b0c9eb5d2f1fa77bcc6579c7a99d67b18cbfcbf6e809e6d3d0ffb71c"
+    },
+    {
+      "id": "kraken-BTC-USDC-r3",
+      "url": "https://api.kraken.com/0/public/Depth?pair=XBTUSDC&count=50",
+      "observed_at_utc": "2026-11-13T10:08:30.305789+00:00",
+      "curl_exit": 0,
+      "response": "200 https://api.kraken.com/0/public/Depth?pair=XBTUSDC&count=50",
+      "error": "",
+      "sha256": "d1efd7228b6e64c97b044fa1b11f86d3834e87992bf0bca5777451fffd21960b"
+    },
+    {
+      "id": "kraken-ETH-EUR-r1",
+      "url": "https://api.kraken.com/0/public/Depth?pair=ETHEUR&count=50",
+      "observed_at_utc": "2026-11-13T10:04:55.495673+00:00",
+      "curl_exit": 0,
+      "response": "200 https://api.kraken.com/0/public/Depth?pair=ETHEUR&count=50",
+      "error": "",
+      "sha256": "6fc70d600e5f8dbb98acd9002a10196f3cae1eb5d6088bf2e890ad70760fd05b"
+    },
+    {
+      "id": "kraken-ETH-EUR-r2",
+      "url": "https://api.kraken.com/0/public/Depth?pair=ETHEUR&count=50",
+      "observed_at_utc": "2026-11-13T10:05:46.142637+00:00",
+      "curl_exit": 0,
+      "response": "200 https://api.kraken.com/0/public/Depth?pair=ETHEUR&count=50",
+      "error": "",
+      "sha256": "d13ee819ee11d6595aa0756e2bc58e7b69b13a853b4fe60e82e9fe85452d6e0d"
+    },
+    {
+      "id": "kraken-ETH-EUR-r3",
+      "url": "https://api.kraken.com/0/public/Depth?pair=ETHEUR&count=50",
+      "observed_at_utc": "2026-11-13T10:08:30.099970+00:00",
+      "curl_exit": 0,
+      "response": "200 https://api.kraken.com/0/public/Depth?pair=ETHEUR&count=50",
+      "error": "",
+      "sha256": "56200a20fb7014dcbd522ff3a786a75b8162ec9a81c7dbe6c4aeeb3a7adf5376"
+    },
+    {
+      "id": "kraken-ETH-USDC-r1",
+      "url": "https://api.kraken.com/0/public/Depth?pair=ETHUSDC&count=50",
+      "observed_at_utc": "2026-11-13T10:04:55.473547+00:00",
+      "curl_exit": 0,
+      "response": "200 https://api.kraken.com/0/public/Depth?pair=ETHUSDC&count=50",
+      "error": "",
+      "sha256": "d3a90742a31ea451d2400e3360bd40fc9f9a8d3a2c866c1f909cbfadf18e9f46"
+    },
+    {
+      "id": "kraken-ETH-USDC-r2",
+      "url": "https://api.kraken.com/0/public/Depth?pair=ETHUSDC&count=50",
+      "observed_at_utc": "2026-11-13T10:05:46.123832+00:00",
+      "curl_exit": 0,
+      "response": "200 https://api.kraken.com/0/public/Depth?pair=ETHUSDC&count=50",
+      "error": "",
+      "sha256": "805686b1d2e3486c9fe2e0fc6873ada0a44080a7f811227f402fdce74f74455d"
+    },
+    {
+      "id": "kraken-ETH-USDC-r3",
+      "url": "https://api.kraken.com/0/public/Depth?pair=ETHUSDC&count=50",
+      "observed_at_utc": "2026-11-13T10:08:30.082376+00:00",
+      "curl_exit": 0,
+      "response": "200 https://api.kraken.com/0/public/Depth?pair=ETHUSDC&count=50",
+      "error": "",
+      "sha256": "31796ea2abaf9c40758317beea83f0ae20946e5a9b5dcc2c909c6272a613c0de"
+    },
+    {
+      "id": "kraken-USDC-EUR-r1",
+      "url": "https://api.kraken.com/0/public/Depth?pair=USDCEUR&count=50",
+      "observed_at_utc": "2026-11-13T10:04:55.877114+00:00",
+      "curl_exit": 0,
+      "response": "200 https://api.kraken.com/0/public/Depth?pair=USDCEUR&count=50",
+      "error": "",
+      "sha256": "edeef08d9efd9c0038d18be0c4868f7d0f55978eba427294e50b12401cc94fb9"
+    },
+    {
+      "id": "kraken-USDC-EUR-r2",
+      "url": "https://api.kraken.com/0/public/Depth?pair=USDCEUR&count=50",
+      "observed_at_utc": "2026-11-13T10:05:46.368858+00:00",
+      "curl_exit": 0,
+      "response": "200 https://api.kraken.com/0/public/Depth?pair=USDCEUR&count=50",
+      "error": "",
+      "sha256": "3f237d058e7638375ed240d4479577d825fc0a15f31793224b5b5c1fd6b3017d"
+    },
+    {
+      "id": "kraken-USDC-EUR-r3",
+      "url": "https://api.kraken.com/0/public/Depth?pair=USDCEUR&count=50",
+      "observed_at_utc": "2026-11-13T10:08:30.445333+00:00",
+      "curl_exit": 0,
+      "response": "200 https://api.kraken.com/0/public/Depth?pair=USDCEUR&count=50",
+      "error": "",
+      "sha256": "20dbe49ed845121035445e12c1c402576ee1ddf366cf519613f0e64236677c09"
+    },
+    {
+      "id": "kraken-fee-explainer",
+      "url": "https://support.kraken.com/articles/360030303832-overview-of-fees-on-kraken",
+      "observed_at_utc": "2026-11-13T10:03:14.283514+00:00",
+      "curl_exit": 0,
+      "response": "200 https://support.kraken.com/articles/360030303832-overview-of-fees-on-kraken",
+      "error": "",
+      "sha256": "932da8a1b012df5c300eb65dbbb9824048f02ec1d36d8941c9aeb65395fdab8f"
+    },
+    {
+      "id": "kraken-fees",
+      "url": "https://www.kraken.com/features/fee-schedule",
+      "observed_at_utc": "2026-11-13T10:03:13.971069+00:00",
+      "curl_exit": 0,
+      "response": "200 https://www.kraken.com/features/fee-schedule",
+      "error": "",
+      "sha256": "a72888bcd304037d429f6ea1b7a93327058549a4a9ea515fb4c8b89f20c55c90"
+    },
+    {
+      "id": "kraken-maker-taker",
+      "url": "https://support.kraken.com/articles/360000526126-what-are-maker-and-taker-fees-",
+      "observed_at_utc": "2026-11-13T10:03:37.049506+00:00",
+      "curl_exit": 0,
+      "response": "200 https://support.kraken.com/articles/360000526126-what-are-maker-and-taker-fees-",
+      "error": "",
+      "sha256": "81756ca21d6b92c3f23092fac22debeecbb1e83b0e92c3865ad1af2a162ef239"
+    },
+    {
+      "id": "kraken-pairs",
+      "url": "https://api.kraken.com/0/public/AssetPairs?pair=ETHEUR,ETHUSDC,XBTEUR,XBTUSDC,USDCEUR&country_code=BE",
+      "observed_at_utc": "2026-11-13T10:03:13.696171+00:00",
+      "curl_exit": 0,
+      "response": "200 https://api.kraken.com/0/public/AssetPairs?pair=ETHEUR,ETHUSDC,XBTEUR,XBTUSDC,USDCEUR&country_code=BE",
+      "error": "",
+      "sha256": "a24db4e3e6cd3a7fc7a151415ead73f54f773c1e9cfe94cfa311ef9dfacff989"
+    },
+    {
+      "id": "kraken-pro-fees",
+      "url": "https://www.kraken.com/pro/fees",
+      "observed_at_utc": "2026-11-13T10:03:37.549081+00:00",
+      "curl_exit": 0,
+      "response": "200 https://www.kraken.com/pro/fees",
+      "error": "",
+      "sha256": "a5057f6aec009a37c96d853b526c4a65e1a0fc9d9cb0f40ad721579c6f1f543e"
+    },
+    {
+      "id": "kraken-spot-stable",
+      "url": "https://support.kraken.com/articles/360000526126-what-are-maker-and-taker-fees-",
+      "observed_at_utc": "2026-11-13T10:05:20.858413+00:00",
+      "curl_exit": 0,
+      "response": "200 https://support.kraken.com/articles/360000526126-what-are-maker-and-taker-fees-",
+      "error": "",
+      "sha256": "81756ca21d6b92c3f23092fac22debeecbb1e83b0e92c3865ad1af2a162ef239"
+    },
+    {
+      "id": "kraken-stable-fees",
+      "url": "https://support.kraken.com/articles/360032622952-stablecoin-fx-pairs-fee-schedule",
+      "observed_at_utc": "2026-11-13T10:03:14.062184+00:00",
+      "curl_exit": 0,
+      "response": "404 https://support.kraken.com/articles/360032622952-stablecoin-fx-pairs-fee-schedule",
+      "error": "",
+      "sha256": "f236bec3c5f4de61319cbaab8c8e415f0b0a5b3576754e7cec1572315f679f45"
+    },
+    {
+      "id": "kraken-tier-changes",
+      "url": "https://support.kraken.com/articles/cross-platform-fee-tier-changes",
+      "observed_at_utc": "2026-11-13T10:05:21.096301+00:00",
+      "curl_exit": 0,
+      "response": "200 https://support.kraken.com/articles/cross-platform-fee-tier-changes",
+      "error": "",
+      "sha256": "2fe21dab8f190cffd0dfd70ac50549f8e35610da8365a3a8afaedc6585644f18"
+    }
+  ]
+}

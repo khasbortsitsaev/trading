@@ -4,12 +4,12 @@
 Start each simulation with a **0.5 ETH** endowment valued at the observed ETH/USDC price at the simulation start. USDC is a reporting numeraire, not a risk-free asset. Report final USDC P&L and total return, ETH-equivalent wealth and relative return against holding 0.5 ETH. Also compare with a no-trade USDC benchmark. Model conversion explicitly if a strategy requires it.
 
 ## Transaction costs
-Temporary *round-trip all-in* assumptions, initially based on Bitvavo:
-- Low: 0.15%
-- Baseline: 0.25%
-- Stress: 0.50%
+Legacy *round-trip all-in* assumptions, initially based on Bitvavo. Preserve these for comparison; they are not universal low/base/stress execution estimates:
+- Original low scenario: 0.15%
+- Original baseline scenario: 0.25%
+- Original stress scenario: 0.50%
 
-These include provisional commissions + spread + slippage, not measured execution costs. For asymmetric or partial trades allocate costs to the executed legs consistently. Never charge both an all-in assumption and its components. Shorts additionally require explicit borrow/funding and collateral modeling. Compare real exchange/pair-specific costs before go/no-go.
+These include provisional commissions + spread + slippage, not measured execution costs. For asymmetric or partial trades allocate costs to the executed legs consistently. Never charge both an all-in assumption and its components. Shorts additionally require explicit borrow/funding and collateral modeling. Use the [market-specific cost analysis](COSTS.md) and [explicit model](cost-model.json) for current fee assumptions, distinguishing published commissions, sampled books and uncalibrated friction scenarios. Compare real exchange/pair-specific costs before go/no-go.
 
 ### Cost provenance and exchange selection
 The user confirmed on 2026-11-12 that Bitvavo was the basis for the initial cost estimate. **Bitvavo has not been selected as the execution venue.** This records the estimate's origin, not an independent verification of a current fee schedule.
@@ -48,7 +48,7 @@ No same-bar close execution unless the signal is known and executable at that pr
 ## Required pre-experiment feasibility record
 For each shortlisted venue, record official source URL, retrieval date, applicable jurisdiction/product restrictions and whether access is generally documented or account-confirmed. Keep personal/account information out of git. Compare available spot pairs, minimum notional and quantity, precision, liquidity evidence, historical data endpoints, licensing, retention limits, delisted markets and missing periods. Public documentation alone does not establish account eligibility. Separate the signal data venue from the proposed execution venue.
 
-For each candidate market, record maker/taker commissions per execution and volume tier; estimate spread and size-dependent slippage from dated observations, with uncertainty. Include realistic order sizes derived from the 0.5 ETH allocation and conversion path. Maker fees do not imply maker fills. The pasted review's fee figures and paper interpretations remain unverified inputs until primary-source checking. Keep the original cost scenarios as sensitivity cases, not calibrated facts.
+For each candidate market, record maker/taker commissions per execution and volume tier; estimate spread and size-dependent slippage from dated observations, with uncertainty. Include realistic order sizes derived from the 0.5 ETH allocation and conversion path. Maker fees do not imply maker fills. The review's Bitvavo entry-tier fee figures were checked against primary sources in COSTS.md; paper interpretations remain unverified until separately audited. Keep the original cost scenarios as sensitivity cases, not calibrated facts.
 
 Report break-even costs by rerunning frozen rules under increasing execution costs with an explicit unit (for example basis points per traded notional per side). State whether the threshold means zero absolute net P&L or zero excess return over a named benchmark; report both when useful. Handle no-trade and non-monotonic cases explicitly. Keep fixed infrastructure/data costs and EUR conversion assumptions separate from trading friction. Do not optimize strategy parameters against the preferred cost estimate.
 

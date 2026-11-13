@@ -1,29 +1,25 @@
 # Current project state
 
-Updated: 2026-11-12.
+Updated: 2026-11-13.
 
 ## Confirmed status
-Documentation/specifications only. No platform, dataset, independent backtest, validated edge, selected exchange or live authorization exists. No experiments have run. Paper and fee claims from the review remain pending primary-source verification.
+Preliminary venue feasibility and spot-cost comparisons exist, along with a small standard-library cost calculator and six passing deterministic accounting tests. No strategy platform/backtest, validated edge, chosen execution venue or live authorization exists. COST-001 is software/accounting evidence only.
 
-## Completed this session
-Recorded capital-growth objective, 0.5 ETH initial allocation, fully funded spot first, conditional future capital and the division of agent/user decisions in [DECISIONS.md](DECISIONS.md). Preserved borrowed shorts as a separately gated possibility. Recorded provisional drawdown tolerance without treating it as an approved limit. Personal eligibility information is kept outside this public repository.
+## Publication and continuity
+The user requires completed work to be committed and pushed. Prior planning and feasibility work was published to GitHub main in `127c949625d06ec3cee1ff9c2b6e3a1900862b8a`; the standing workflow is recorded in AGENTS.md. Never describe local files or a cloud snapshot as GitHub publication. Personal eligibility/account information and raw exchange datasets remain outside git.
 
-Reordered [ROADMAP.md](ROADMAP.md) around all six original review priorities before real-data strategy development. Expanded [METHODOLOGY.md](METHODOLOGY.md) with feasibility evidence, calibrated and break-even costs, bounded research protocol, holdout handling, data/execution requirements and stopping rules. Updated README, objective notes and experiment template for consistency.
+## Point 1: feasibility
+[FEASIBILITY.md](FEASIBILITY.md) retains the primary-source venue/data comparison. Network access works. General register/catalogue evidence supports examining Bitvavo and Kraken; Coinbase remains a reserve due to current data-use restrictions. Data permissions, selected-history validation, historical universe coverage and actual account/product eligibility remain unresolved. See [feasibility-sources.json](feasibility-sources.json) and [feasibility-audit.json](feasibility-audit.json) for provenance and diagnosed pagination/count limitations.
 
-## Validation and limitations
-Reviewed all existing documentation before editing. Documentation links and diff formatting checked after editing. No software tests, trading experiments, external fee verification or venue eligibility checks were performed in this session. The six review work products are specified, not completed.
+## Point 2: cost analysis completed at preliminary scope
+[COSTS.md](COSTS.md) verifies market-specific public commissions, distinguishes maker/taker and conversion markets, records observed book costs, and defines explicit stress and break-even methods. Current entry-tier taker commissions sum to about 0.10% round trip for Bitvavo crypto/USDC, 0.50% for Bitvavo crypto/EUR and 1.60% for Kraken regular spot. Kraken's rates were independently confirmed in its documented July 2026 tier change. These are not all-in costs or authenticated account rates.
 
-## Point 1 investigation: access restored, preliminary comparison completed
-Updated [FEASIBILITY.md](FEASIBILITY.md) using fresh public requests and official exchange/regulatory sources. ESMA register entries support general Belgium service scope for Bitvavo, Payward Europe Solutions and Coinbase Luxembourg; no individual account access was established. Kraken and Bitvavo remain primary research candidates, Coinbase a reserve because current market-data terms restrict the intended AI-assisted use. The recommendation is narrow scope, not final selection or approval to ingest a production dataset.
+Research recommendation: prioritize Bitvavo USDC for a low-cost baseline while retaining alternatives. No final exchange decision. Original 0.15%/0.25%/0.50% all-in cases remain legacy comparisons rather than universal calibration.
 
-All three previously blocked market-data requests now returned HTTP 200. Runtime status confirmed current/enforced policy. No environment configuration was modified or published during the retry. [feasibility-sources.json](feasibility-sources.json) contains pinned SDK references and 62 HTTP observation records/hashes; raw responses remain outside git. [feasibility-audit.json](feasibility-audit.json) records small candle, pagination and order-book checks. No orders, account activity, large dataset download or strategy experiment occurred.
+## Validation actually performed
+Registered COST-001 before accounting checks. Executed calculator/model/tests from commit `cb5b894542de4826f6aa69f62d9862d8cb977ba3`. Six deterministic tests passed, including hand-calculated fee/sweep arithmetic, reserves/rounding, insufficient depth and invalid/zero-sample rejection. Thirty book snapshots in three rounds produced 90 frozen-book size scenarios; no observed depth insufficiency at those sizes. The first 20-snapshot run was repeated only after new input observations arrived. Forty-four response hashes were verified. Synthetic tests are replayable from git; exact snapshot replay needs temporary response bodies outside git.
 
-Important findings: Bitvavo served 2020 ETH/EUR candles with missing intervals; its two half-day pages matched a complete recent-day request. Kraken served 2020 trades but its old-since OHLC request returned recent data only; the response contained 721 records including the forming candle, differing from the documented 720 maximum. A strict-disjointness trade-page check failed because the cursor boundary repeated one trade ID; the raw outcome is preserved and the deduplication requirement diagnosed. Sample candle invariants passed. Six order-book snapshots were only same-session observations, not durable liquidity or fill evidence.
-
-Unresolved: applicable data-use/publication permissions, full selected-history validation, repeated liquidity sampling, point-in-time universe and actual account/product availability. Official Kraken archives are documented and their checksum-list link is accessible; the large archives were not downloaded or verified. No raw exchange data or personal account information were placed in git.
-
-## Open decisions
-Numerical research acceptance criteria, finite trial budget, final venue/data route and firm live risk/stop rules. Strong research cannot guarantee live profitability. No paid commitments or exchange credentials are authorized or required for the initial desk research.
+No account credentials, private endpoints, orders, strategy searches or large historical downloads were used. Same-session samples do not calibrate future slippage or establish profitability. Funding/conversion, actual fee assets and rounding, dynamic tiers, data-use permissions and full-history audit remain conditions for future work. Documentation links, JSON consistency and diff formatting checked before publication.
 
 ## Next concrete task
-Prepare point 2's source-backed venue/pair/order-type cost sheet for Kraken and Bitvavo, verifying commissions, tier, spread/slippage and conversion assumptions. Carry forward the data-permission and ingestion conditions in FEASIBILITY.md; no real-data strategy search or final dataset approval yet. Apply the privately supplied venue exclusion. Complete the remaining review items before platform expansion.
+Point 3: define predeclared economic acceptance/rejection criteria and a finite initial trial budget. Keep the capital-growth objective, 0.5 ETH allocation, fully funded spot first and provisional live-risk tolerance distinct. Complete shorting constraints, statistical protocol and data/execution specifications (points 4-6) before real-data strategy development. Any strategy experiment must be preregistered; paid commitments and live trading still require a separate decision.

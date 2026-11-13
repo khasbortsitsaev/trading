@@ -1,7 +1,7 @@
 # Experiment registry
 
 ## Status
-No experiments have been run as of 2026-11-12. No profitability findings are available.
+As of 2026-11-13, COST-001 completed a deterministic software/accounting audit and small public-book cost scenarios. No strategy backtest, economic experiment or profitability finding exists.
 
 ## Recording rules
 Create an entry before running an experiment. Preserve failed, negative, invalid and inconclusive outcomes. Separate software/accounting checks on synthetic data from economic evidence on historical or prospective market data. Never silently replace an earlier result after changing parameters or data.
@@ -33,7 +33,7 @@ For the final code-commit field, record the commit containing the code/configura
 
 ## COST-001: deterministic cost-accounting audit
 - Date: 2026-11-13.
-- Status: planned.
+- Status: complete.
 - Evidence type: synthetic software/accounting check plus observed public-book feasibility samples; no strategy experiment or profitability test.
 - Hypothesis: explicit per-side commissions and fee-reserved depth sweeps can quantify costs without inventing fills or double-counting spread.
 - Plan: verify the quote-fee break-even identity against hand arithmetic; use a two-level synthetic book to check sweep cost, insufficient depth, fee reserve and quantity rounding; reject malformed/crossed books; then analyze the small captured public-book samples under the frozen current-tier model.
@@ -41,4 +41,9 @@ For the final code-commit field, record the commit containing the code/configura
 - Budget: one deterministic audit, no parameter search or holdout access. Public rounds are observations, not independent trials.
 - Inputs: docs/cost-model.json; timestamped source metadata and response hashes in the cost source manifest; raw public responses outside git.
 - Costs and scope: fully funded spot only; quote-denominated fee convention is synthetic and explicitly unconfirmed for actual fills; no financing or market orders submitted.
-- Validation/code commit, executed commands and outcomes: to be recorded after the audit.
+- Executed code/model/tests commit: `cb5b894542de4826f6aa69f62d9862d8cb977ba3`.
+- Commands (repository root): `PYTHONDONTWRITEBYTECODE=1 python3 -m unittest discover -s tests -v`; `PYTHONDONTWRITEBYTECODE=1 python3 scripts/analyze_costs.py --responses /tmp/cost-analysis --model docs/cost-model.json --output docs/cost-observations.json`.
+- Outcomes: all six deterministic checks passed. First observed-book run processed 20 snapshots; after a third sampling round, rerun processed 30 snapshots and 90 size scenarios. None lacked displayed depth at the modeled sizes; every response hash matched. These are correlated observations, not independent strategy trials.
+- Results: [COSTS.md](COSTS.md), [cost-observations.json](cost-observations.json), [cost-sources.json](cost-sources.json). Results recorded separately from the frozen executed code commit.
+- Limitations: synthetic quote-fee convention; account rates/fee currency unverified; snapshots within minutes; no realized fills, historical execution calibration or maker-fill evidence. Raw responses remain outside git, so exact market replay requires those bodies. Point 1 permissions/coverage conditions remain open.
+- Decision: reject a venue-independent 0.25% cost baseline; prioritize Bitvavo USDC for further research, then resolve point 3 criteria and remaining review gates. No investment-edge conclusion.
