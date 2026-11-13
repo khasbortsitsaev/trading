@@ -1,0 +1,23 @@
+{
+  "observed_at_utc": "2026-11-13T11:42:29.390453+00:00",
+  "source_docs": {
+    "bitstamp-api.html": {
+      "sha256": "8193c5d501e795c9eb8e40e80a3cb46ab1b625ecefad9351c65d0e0ee25e763b",
+      "bytes": 2101719
+    },
+    "bitstamp-terms.html": {
+      "sha256": "d02032286070b4dd9d8fbd985a7bdca8af8edf52b89ff177db3bfcb2c8a9c43d",
+      "bytes": 212
+    },
+    "bitstamp-probe.json": {
+      "sha256": "33481c6d84d8b203f68d3c1ee00a15358caea572836495162bc4105680ce8260",
+      "bytes": 699
+    }
+  },
+  "limitations": [
+    "Terms page was an interstitial, not verified terms content; no bypass attempted.",
+    "API page distinguishes company commercial-data licensing; no commercial agreement or raw redistribution right is claimed.",
+    "Historical USD-source screening does not verify Bitvavo USDC price basis or fills.",
+    "No final holdout candles downloaded."
+  ]
+}

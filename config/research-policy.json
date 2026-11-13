@@ -1,8 +1,8 @@
 {
-  "version": "0.3",
+  "version": "0.4",
   "date": "2026-11-13",
   "status": "frozen_research_working_defaults",
-  "real_data_search_authorized_by_this_file": false,
+  "real_data_search_authorized_by_this_file": true,
   "agreed_scope": {
     "objective": "capital_growth",
     "initial_eth": "0.5",
@@ -13,8 +13,7 @@
     "live_trading_authorized": false
   },
   "open_prerequisites": [
-    "Select and quality-audit a suitable USD/USDC historical source and use it through supported access methods under its applicable terms; no specific Bitvavo permission request is required to continue project development.",
-    "Implement and audit a complete strategy runner: primitives are tested, not a backtester",
+    "Complete and audit the bounded selection/uncertainty/robustness orchestrator before declaring any candidate; this admission permits only registered development runs, never holdout tuning.",
     "Freeze collector dataset hashes and exact evaluated-code/configuration hashes before each run",
     "Validate holdout coverage only after a champion and access bundle are frozen; do not inspect its strategy results during development",
     "Confirm actual account/product fees and eligibility before funded use; use public conservative fee scenarios for research"
@@ -129,10 +128,21 @@
     "mandatory_additional_delay_bars": 1,
     "maker_fills_assumed": false,
     "assumed_publication_lag_minutes": 5,
-    "processing_lag_minutes": 5
+    "processing_lag_minutes": 5,
+    "target_intent_policy": "Fixed quantities from prior available closes; queued to designated future daily opens; no resting exchange order or cash borrowing; buys resized down for execution-time cash feasibility."
   },
   "research_route": {
-    "signal_data_source": null,
+    "signal_data_source": {
+      "provider": "Bitstamp public OHLC API",
+      "quote": "USD",
+      "markets": [
+        "BTC/USD",
+        "ETH/USD"
+      ],
+      "frequency": "daily",
+      "api_documentation": "https://www.bitstamp.net/api/",
+      "scope": "Development-only private research; no raw redistribution or source-venue fill replication"
+    },
     "signal_data_quotes_allowed": [
       "USD",
       "USDC"
@@ -310,5 +320,18 @@
     "initial_universe_is_small_for_feasibility_only": true,
     "weight_rule": "Each active asset receives 1/N of equity for the preregistered universe size N, with fees reserved; inactive allocations remain cash. For the current two-asset study this is 0.5 each, not a permanent asset/position-count cap."
   },
-  "data_permission_resolution": "Do not treat uncertainty about one exchange as a project-wide blocker. Use another suitable source as needed; do not assume every provider permits unrestricted access or redistribution."
+  "data_permission_resolution": "Do not treat uncertainty about one exchange as a project-wide blocker. Use another suitable source as needed; do not assume every provider permits unrestricted access or redistribution.",
+  "dataset_admission": {
+    "normalized_sha256": "5d1d450f98b2ba61c8b956b53a113f8b03f3a1a5fb1cd51b309cd83c611b26f0",
+    "manifest_sha256": "b8747426a9b97344accfe797ce216b1f74f32426b7687e096376ee803adc29d5",
+    "source": "Bitstamp public OHLC API",
+    "quote": "USD",
+    "rows_per_asset": 2143,
+    "development_start": "2020-01-01",
+    "development_end_exclusive": "2025-11-13",
+    "holdout_included": false,
+    "quality": "No gaps, valid OHLC/nonnegative volume; fixed limited universe only",
+    "use_boundary": "Supported public API, private research, no raw-data redistribution; not an unrestricted commercial-data license",
+    "coverage_binding": "Existing development fold dates fit source history. No strategy performance examined before freezing this admission."
+  }
 }

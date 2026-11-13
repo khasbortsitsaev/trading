@@ -1,0 +1,98 @@
+{
+  "provider": "Bitstamp public OHLC API",
+  "quote": "USD",
+  "source_url": "https://www.bitstamp.net/api/",
+  "start_ms": 1577836800000,
+  "end_exclusive_ms": 1762992000000,
+  "holdout_start_ms": 1762992000000,
+  "raw_redistribution_claimed": false,
+  "use_scope": "Private research via supported public API; no raw dataset redistribution or exchange-fill replication",
+  "markets": {
+    "BTC": {
+      "observations": 2143,
+      "expected": 2143,
+      "identical_overlaps": 0,
+      "missing_count": 0,
+      "missing_timestamps_ms": [],
+      "ohlc_valid": true
+    },
+    "ETH": {
+      "observations": 2143,
+      "expected": 2143,
+      "identical_overlaps": 0,
+      "missing_count": 0,
+      "missing_timestamps_ms": [],
+      "ohlc_valid": true
+    }
+  },
+  "requests": [
+    {
+      "asset": "BTC",
+      "url": "https://www.bitstamp.net/api/v2/ohlc/btcusd/?step=86400&limit=1000&end=1762991999&exclude_current_candle=true",
+      "http_status": 200,
+      "observed_at_utc": "2026-11-13T11:40:38.837676+00:00",
+      "raw_file": "btcusd-1.json",
+      "sha256": "85a6d3ca2236cbaa1160d5c908cc4c788e6ac976ea428bf5af53d43c4558ae9e",
+      "requested_start_ms": 1676592000000,
+      "requested_end_exclusive_ms": 1762992000000,
+      "returned_rows": 1000
+    },
+    {
+      "asset": "BTC",
+      "url": "https://www.bitstamp.net/api/v2/ohlc/btcusd/?step=86400&limit=1000&end=1676591999&exclude_current_candle=true",
+      "http_status": 200,
+      "observed_at_utc": "2026-11-13T11:40:39.890979+00:00",
+      "raw_file": "btcusd-2.json",
+      "sha256": "760085cd91daba3427c4b856f66b51fa4e526812d3971143e8c6e33a6cfc6707",
+      "requested_start_ms": 1590192000000,
+      "requested_end_exclusive_ms": 1676592000000,
+      "returned_rows": 1000
+    },
+    {
+      "asset": "BTC",
+      "url": "https://www.bitstamp.net/api/v2/ohlc/btcusd/?step=86400&limit=143&end=1590191999&exclude_current_candle=true",
+      "http_status": 200,
+      "observed_at_utc": "2026-11-13T11:40:40.222933+00:00",
+      "raw_file": "btcusd-3.json",
+      "sha256": "98dfe773e3c7446f7e2282dcb283e765fc506d4cc09156c255ddf10802d5cd9e",
+      "requested_start_ms": 1577836800000,
+      "requested_end_exclusive_ms": 1590192000000,
+      "returned_rows": 143
+    },
+    {
+      "asset": "ETH",
+      "url": "https://www.bitstamp.net/api/v2/ohlc/ethusd/?step=86400&limit=1000&end=1762991999&exclude_current_candle=true",
+      "http_status": 200,
+      "observed_at_utc": "2026-11-13T11:40:40.683024+00:00",
+      "raw_file": "ethusd-1.json",
+      "sha256": "1cbb6bacf884468530509bea47484ec7d97097734bbaf1124c322043eb3edd16",
+      "requested_start_ms": 1676592000000,
+      "requested_end_exclusive_ms": 1762992000000,
+      "returned_rows": 1000
+    },
+    {
+      "asset": "ETH",
+      "url": "https://www.bitstamp.net/api/v2/ohlc/ethusd/?step=86400&limit=1000&end=1676591999&exclude_current_candle=true",
+      "http_status": 200,
+      "observed_at_utc": "2026-11-13T11:40:41.041927+00:00",
+      "raw_file": "ethusd-2.json",
+      "sha256": "fd9e641c9eea948e46f1bb74d71011b91f1cb793fd4e1c1bbeda06d66c6742f8",
+      "requested_start_ms": 1590192000000,
+      "requested_end_exclusive_ms": 1676592000000,
+      "returned_rows": 1000
+    },
+    {
+      "asset": "ETH",
+      "url": "https://www.bitstamp.net/api/v2/ohlc/ethusd/?step=86400&limit=143&end=1590191999&exclude_current_candle=true",
+      "http_status": 200,
+      "observed_at_utc": "2026-11-13T11:40:41.704417+00:00",
+      "raw_file": "ethusd-3.json",
+      "sha256": "953a3e06931ea1522f74f645a90a8549cb550dd516098b82a51ed8970b14841b",
+      "requested_start_ms": 1577836800000,
+      "requested_end_exclusive_ms": 1590192000000,
+      "returned_rows": 143
+    }
+  ],
+  "normalized_sha256": "5d1d450f98b2ba61c8b956b53a113f8b03f3a1a5fb1cd51b309cd83c611b26f0",
+  "complete": true
+}
