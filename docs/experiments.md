@@ -15,6 +15,11 @@ Create an entry before running an experiment. Preserve failed, negative, invalid
 - Predeclared success/failure criteria and batch stopping decision:
 - Feasibility/cost evidence and unresolved execution limitations:
 - Trial budget, selection procedure and holdout access record:
+- Accepted protocol/policy version and commit, or explicit draft status:
+- Variant IDs, neighboring-variant IDs, actual fits/evaluations and reused outputs:
+- Exact split-manifest hash, information/label horizons, purge/gap policy:
+- Holdout access event time, selected algorithm/configuration hashes and contamination disclosures:
+- Data/execution contract version, availability-time assumptions and unresolved admission gates:
 - Dataset source, version/hash, availability timestamps and quality exclusions:
 - Venue, universe selection rule, symbols, timeframe and dates:
 - Signal, allocation and execution timing:

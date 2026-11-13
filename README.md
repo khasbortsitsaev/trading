@@ -2,7 +2,7 @@
 
 Research-first cryptocurrency trading project. The objective is to identify, reproduce where useful, and independently validate systematic trading strategies with **net economic profitability**, then decide whether a paper-trading and live-trading system is justified.
 
-**Status (2026-11-13):** preliminary venue feasibility and spot-cost comparisons completed, with a small cost-accounting calculator and six passing synthetic checks. No strategy backtest, validated alpha, selected exchange, or live trading system exists.
+**Status (2026-11-13):** all six review topics now have concrete specifications or preliminary assessments. Numerical research gates remain proposed, and real-data admission conditions remain open. A small cost calculator has six previously passing synthetic checks; no strategy backtest, validated alpha, selected exchange or live system exists.
 
 ## Agreed constraints
 - Initial endowment: **0.5 ETH**, not EUR 500. No arbitrary limit on the number of positions or assets.
@@ -35,6 +35,9 @@ First complete the six [review priorities](docs/ROADMAP.md): preliminary venue/d
 - [Development roadmap](docs/ROADMAP.md)
 - [Preliminary venue and data feasibility](docs/FEASIBILITY.md)
 - [Spot cost analysis and reproducible accounting checks](docs/COSTS.md)
+- [Decision criteria and bounded research protocol, points 3 and 5](docs/RESEARCH_PROTOCOL.md)
+- [Spot scope and future shorting gate, point 4](docs/RISK_SCOPE.md)
+- [Data and execution contract, point 6](docs/DATA_EXECUTION.md)
 
 ## Research principle
 The goal is not to find the best historical backtest. It is to find an economically meaningful, implementable edge that survives out-of-sample testing and realistic costs. A negative result is a valid outcome.

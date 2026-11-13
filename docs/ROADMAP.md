@@ -14,6 +14,19 @@ The original project review takes precedence over expanding the software platfor
 
 These are required work products, not completed findings. See [methodology](METHODOLOGY.md) for their specifications. Verify the pasted review's fee and paper claims from primary sources before adopting them. An exclusion from the venue shortlist is a project choice, not independent evidence of a venue's regulatory or operating status. Keep personal eligibility details outside this public repository.
 
+## Review outputs and remaining gates (2026-11-13)
+
+| Point | Concrete artifact | Current status |
+|---|---|---|
+| 1 | [FEASIBILITY.md](FEASIBILITY.md) | Preliminary comparison complete; permissions, selected history and actual account availability open |
+| 2 | [COSTS.md](COSTS.md) | Current public commissions and small book scenarios checked; realized slippage/account rates not calibrated |
+| 3 | [RESEARCH_PROTOCOL.md](RESEARCH_PROTOCOL.md), [research-policy.json](research-policy.json) | Numeric gates and benchmark tradeoff proposed, not yet accepted/frozen |
+| 4 | [RISK_SCOPE.md](RISK_SCOPE.md) | Agreed spot-only initial scope formalized; any borrowed-short route separately gated |
+| 5 | [RESEARCH_PROTOCOL.md](RESEARCH_PROTOCOL.md) | Concrete bounded search/splits/holdout protocol drafted; no experiment has executed it |
+| 6 | [DATA_EXECUTION.md](DATA_EXECUTION.md) | Data/causal-fill contract specified; ingestion/backtester controls not implemented |
+
+The six review items now have work products. This is not a claim that all admission gates have passed. Keep agent-proposed criteria distinct from user decisions and implementation checks distinct from written requirements.
+
 ## Phase 1: feasibility and protocol
 Complete the six outputs above. Maintain the research catalogue and audit sources needed by the first selected hypotheses. Reject infeasible hypotheses or narrow their claims. Record a proceed, narrow-scope or stop decision with evidence and unresolved items. No exchange credentials or paid subscriptions are needed for the initial desk research. Paid commitments require an explicit decision.
 
@@ -33,4 +46,4 @@ Only after a research go/no-go decision: validate signals, operational reliabili
 Requires explicit separate authorization, firm loss/stop rules, capital allocation, monitoring and recovery procedures. Historical and paper profitability do not guarantee future profitability or prevent initial losses. No live authorization exists.
 
 ## Next concrete task
-The preliminary venue/data comparison is in [FEASIBILITY.md](FEASIBILITY.md); the verified commission comparison, sampled books and uncalibrated stress scenarios are in [COSTS.md](COSTS.md). Proceed to point 3: propose and freeze numerical research acceptance/rejection criteria and a finite first trial budget before any strategy search. Carry forward data-permission/history, actual account fees and execution-friction uncertainties. Complete points 4-6 before platform expansion. Do not treat the cost calculator as a completed backtesting platform.
+Confirm or revise the proposed point 3 research thresholds and benchmark tradeoff, then freeze the applicable protocol version before real-data searches. Independently prepare and preregister the synthetic multi-asset portfolio-accounting prototype required by DATA_EXECUTION.md. Implement and verify cash/inventory, fees, minimums, multiple positions, ETH/cash benchmarks and causal signal-to-fill timing. Do not ingest a strategy dataset or open a holdout until the remaining point 1/2/3/5/6 gates pass. No platform expansion into ML, borrowed shorts or exchange execution.

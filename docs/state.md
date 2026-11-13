@@ -3,23 +3,22 @@
 Updated: 2026-11-13.
 
 ## Confirmed status
-Preliminary venue feasibility and spot-cost comparisons exist, along with a small standard-library cost calculator and six passing deterministic accounting tests. No strategy platform/backtest, validated edge, chosen execution venue or live authorization exists. COST-001 is software/accounting evidence only.
+All six original review topics now have preliminary assessments or concrete specifications. This does not mean their admission gates have passed. No strategy backtest, validated edge, final exchange selection or live authorization exists. The existing small cost calculator has six previously passing deterministic checks; it is not a multi-asset research platform.
 
-## Publication and continuity
-The user requires completed work to be committed and pushed. Prior planning and feasibility work was published to GitHub main in `127c949625d06ec3cee1ff9c2b6e3a1900862b8a`; the standing workflow is recorded in AGENTS.md. Never describe local files or a cloud snapshot as GitHub publication. Personal eligibility/account information and raw exchange datasets remain outside git.
+## Published prior work
+Planning/feasibility: `127c949625d06ec3cee1ff9c2b6e3a1900862b8a`. Cost analysis and reports: `d070c7c97913cab4e6271b1a285a2a545eee49ca`. The user requires completed work to be committed and pushed to GitHub main, with the remote checked. Raw restricted data and personal account details stay outside git.
 
-## Point 1: feasibility
-[FEASIBILITY.md](FEASIBILITY.md) retains the primary-source venue/data comparison. Network access works. General register/catalogue evidence supports examining Bitvavo and Kraken; Coinbase remains a reserve due to current data-use restrictions. Data permissions, selected-history validation, historical universe coverage and actual account/product eligibility remain unresolved. See [feasibility-sources.json](feasibility-sources.json) and [feasibility-audit.json](feasibility-audit.json) for provenance and diagnosed pagination/count limitations.
+## Points 1 and 2
+[FEASIBILITY.md](FEASIBILITY.md) retains the venue/data comparison, general regulatory/catalogue evidence and actual probe limitations. [COSTS.md](COSTS.md) verifies public commissions, small frozen-book cost scenarios and explicit uncalibrated friction assumptions. Bitvavo crypto/USDC is the recommended initial cost candidate, not a selected execution venue. Data-use permissions, complete selected history, point-in-time universe, actual account availability and realized execution costs remain open.
 
-## Point 2: cost analysis completed at preliminary scope
-[COSTS.md](COSTS.md) verifies market-specific public commissions, distinguishes maker/taker and conversion markets, records observed book costs, and defines explicit stress and break-even methods. Current entry-tier taker commissions sum to about 0.10% round trip for Bitvavo crypto/USDC, 0.50% for Bitvavo crypto/EUR and 1.60% for Kraken regular spot. Kraken's rates were independently confirmed in its documented July 2026 tier change. These are not all-in costs or authenticated account rates.
+## Points 3-6 specified this session
+- [RESEARCH_PROTOCOL.md](RESEARCH_PROTOCOL.md): point 3 proposes economic/robustness gates; point 5 specifies a bounded first batch, chronological splits, uncertainty, one champion, failure handling and one holdout access bundle. Numerical values remain proposals pending confirmation; the growth-versus-defensive benchmark preference was requested, not presumed. No real-data search may treat the draft as accepted.
+- [research-policy.json](research-policy.json): machine-readable proposed defaults with explicit unfrozen state and open prerequisites. Proposed cap is 18 selection variants, four outer folds and five additional champion scenario evaluations; four neighbor checks reuse original variants. Maximum outer fold/scenario evaluations is 92, not a claim of 92 independent trials.
+- [RISK_SCOPE.md](RISK_SCOPE.md): point 4 formalizes fully funded long/flat spot, inventory/cash constraints and a separate future borrowed-short feasibility/user decision gate. The provisional live drawdown discussion is not an authorization or firm stop limit.
+- [DATA_EXECUTION.md](DATA_EXECUTION.md): point 6 defines provenance/availability/lifecycle schemas, gap/staleness rules, a causally delayed candle scenario, order/portfolio rules and required future acceptance fixtures. These controls are specified, not implemented or verified.
 
-Research recommendation: prioritize Bitvavo USDC for a low-cost baseline while retaining alternatives. No final exchange decision. Original 0.15%/0.25%/0.50% all-in cases remain legacy comparisons rather than universal calibration.
+## Validation this session
+Documentation links, JSON arithmetic/cross-document consistency and diff formatting checked. No code or cost model changed, so prior six passing checks were not unnecessarily rerun; no new software-test result is claimed. No external research claims, new market data, credentials, private endpoints, strategy experiment, holdout access, borrowing or orders were used. COST-001 remains the only completed software/accounting audit in experiments.md.
 
-## Validation actually performed
-Registered COST-001 before accounting checks. Executed calculator/model/tests from commit `cb5b894542de4826f6aa69f62d9862d8cb977ba3`. Six deterministic tests passed, including hand-calculated fee/sweep arithmetic, reserves/rounding, insufficient depth and invalid/zero-sample rejection. Thirty book snapshots in three rounds produced 90 frozen-book size scenarios; no observed depth insufficiency at those sizes. The first 20-snapshot run was repeated only after new input observations arrived. Forty-four response hashes were verified. Synthetic tests are replayable from git; exact snapshot replay needs temporary response bodies outside git.
-
-No account credentials, private endpoints, orders, strategy searches or large historical downloads were used. Same-session samples do not calibrate future slippage or establish profitability. Funding/conversion, actual fee assets and rounding, dynamic tiers, data-use permissions and full-history audit remain conditions for future work. Documentation links, JSON consistency and diff formatting checked before publication.
-
-## Next concrete task
-Point 3: define predeclared economic acceptance/rejection criteria and a finite initial trial budget. Keep the capital-growth objective, 0.5 ETH allocation, fully funded spot first and provisional live-risk tolerance distinct. Complete shorting constraints, statistical protocol and data/execution specifications (points 4-6) before real-data strategy development. Any strategy experiment must be preregistered; paid commitments and live trading still require a separate decision.
+## Remaining decisions and concrete next task
+Confirm/revise the numerical research gates and benchmark tradeoff, then freeze the protocol before any real-data selection. In parallel, the next independent coding task is to preregister and implement the deterministic synthetic multi-asset accounting prototype from DATA_EXECUTION.md, including ETH/cash benchmarks and causal signal-to-fill timing. Real-data research remains gated by permissions, selected-history quality, exact variants/splits and executed accounting/execution controls. Paid commitments, shorting products and live trading still need separate decisions.

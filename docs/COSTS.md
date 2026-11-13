@@ -150,4 +150,4 @@ The preliminary cost comparison is complete enough to **reject a venue-independe
 
 Carry forward the data-use/account/coverage conditions in [FEASIBILITY.md](FEASIBILITY.md). Before interpreting backtest economics, collect permitted multi-session observations across volatility regimes and the actual universe, confirm applicable account/market fees and model initial/final conversions and minimum orders. Do not expand into ML to compensate for weak net returns.
 
-Next review item: **point 3, predeclared research acceptance/rejection criteria and a finite trial budget**, with unresolved live loss limits kept separate. Points 4-6 must also be completed before real-data strategy development.
+Review continuation: [RESEARCH_PROTOCOL.md](RESEARCH_PROTOCOL.md) specifies proposed point 3 criteria and point 5 trial/holdout controls; [RISK_SCOPE.md](RISK_SCOPE.md) formalizes point 4; [DATA_EXECUTION.md](DATA_EXECUTION.md) specifies point 6. Numerical policy confirmation and implemented data/execution checks remain required before real-data strategy evaluation. Live limits remain separate.

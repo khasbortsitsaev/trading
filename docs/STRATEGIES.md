@@ -28,3 +28,6 @@ Combinations are explicitly in scope: signal ensembles, ML filters for other sig
 - Reproducibility of rules/code/data
 - Out-of-sample design and multiple-testing corrections
 - Performance under current, common, constrained assumptions
+
+## Initial bounded batch and scope
+The proposed first batch in [RESEARCH_PROTOCOL.md](RESEARCH_PROTOCOL.md) samples trend, reversal and cross-sectional momentum only, with the latter conditional on a defensible historical universe. This is a finite initial comparison, not removal of other families from the catalogue. Exact variants remain unspecified and must be preregistered before real-data returns are inspected. Apply [spot-only constraints](RISK_SCOPE.md) and the [data/execution contract](DATA_EXECUTION.md); a long/flat modification of a short-dependent paper is a new hypothesis, not an exact replication. ML, regime selection and sophisticated allocation require later separately budgeted incremental evidence.
