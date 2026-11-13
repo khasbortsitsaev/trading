@@ -25,10 +25,16 @@ Reuse review already completed: [framework/strategy review](../research/reports/
 
 Feedback-update validation: 41 tests passed and the committed-code synthetic CLI smoke run completed. No historical strategy rerun or holdout access.
 
+## S1 close-out completed
+
+The missing source data were recovered into `/workspace/work/s1-closeout/recovered-data`; normalized prices match the original admitted hash exactly. The recaptured manifest hash was explicitly reviewed/versioned in policy, retaining its predecessor. Replay `/workspace/work/s1-closeout/replay.json` at `412d8fd` matches the original result hash exactly; it adds no independent evidence or trial. Original public result unchanged.
+
+All 41 tests passed after close-out; all 720 decisions' signals and 425 fills' causal timing checked. 247 active-state resizing fills generated only $4.16 of $155.92 direct modeled costs; signal entry/exit flips dominated costs. Concrete buy/sell/resize examples and concise interpretation are in [STRATEGIES](STRATEGIES.md); aggregate checks under [S1 evidence](../research/artifacts/S1/dev-001-closeout.json). The baseline is closed without promotion. Missing execution/robustness evidence is stated; no further checks or holdout access are needed to reject it.
+
 ## One next task
 
-Produce a compact S1 research close-out from the existing ledger: show an actual buy, a signal-driven exit and a daily resize, explain turnover/costs and the failed screen, and identify which execution/robustness evidence remains missing. Recover the admitted data only if needed. Do not launch the eleven-variant batch or build a general orchestration framework. S1 completion means an understandable, auditable conclusion, including rejection, not forcing a profitable result or trading live.
+Define one S2 volume/technical rule with explicit entry, exit and sizing, using the existing repository reuse review. Commit the specification and validation plan before any historical run. Reuse the current pipeline and keep S2 outputs separate. Do not start the eleven-variant batch or tune S1 after this failure. A slower S1 variant would be a separately recorded scope choice.
 
-**User input needed now:** none. Before changing S1's exit/rebalance behavior, explain the tradeoff and register it as a new hypothesis; never overwrite DEV-001. Future live risk/venue choices remain separate.
+**User input needed now:** none for drafting S2. User can choose to discuss a slower S1 approach instead. Future live risk/venue decisions remain separate.
 
 Completed work is committed and pushed to GitHub `main`, then checked against the remote. Detailed historical commands/results remain in [experiments](experiments.md), not duplicated here.

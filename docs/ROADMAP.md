@@ -1,6 +1,6 @@
 # POC plan
 
-1. **S1 end to end:** reuse the existing offline pipeline and DEV-001 evidence. Explain buys, sells, sizing, costs and results; close remaining evidence gaps only where needed for the conclusion. A failed strategy is a valid outcome.
+1. **S1 baseline closed:** exact replay, buy/sell/resize explanations and cost attribution complete. TREND-20 failed promotion; no holdout evaluation.
 2. **S2, then S3:** define one complete rule per family, including exits, before testing. Keep their outputs and conclusions separate while sharing data/accounting infrastructure.
 3. Consider other strategies, equities or paper operation later, based on evidence. No automatic expansion or live execution.
 

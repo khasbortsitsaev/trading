@@ -1,0 +1,48 @@
+{
+  "original_result_sha256": "2821d88fc4c60c9f01b2732126fb42dc53cc41c885c858760bfc03bac5ca99fc",
+  "replay_code_commit": "412d8fd016837690d772077da2397a7b118381df",
+  "all_720_decisions_signal_formulas_checked": true,
+  "all_425_fill_timings_checked": true,
+  "classification_note": "By generating decision relative to prior decision signal, not the signal on fill day. Not round-trip trade counts. Active resize includes continuing target adjustments, not solely weight drift.",
+  "groups": {
+    "initial_allocation": {
+      "fills": 2,
+      "notional": "1041.4939153203",
+      "commission": "0.52074695766015",
+      "adverse_cost": "0.7925272297"
+    },
+    "active_resize": {
+      "fills": 247,
+      "notional": "3317.3523089229",
+      "commission": "1.65867615446145",
+      "adverse_cost": "2.5013930139"
+    },
+    "signal_exit": {
+      "fills": 89,
+      "notional": "60630.0683045365",
+      "commission": "30.31503415226825",
+      "adverse_cost": "45.7828155949"
+    },
+    "signal_entry": {
+      "fills": 87,
+      "notional": "59311.1537379236",
+      "commission": "29.65557686896180",
+      "adverse_cost": "44.6889470348"
+    }
+  },
+  "signal_transitions": {
+    "signal_exit": 89,
+    "signal_entry": 87
+  },
+  "traded_notional_usd": "124300.0682667033",
+  "two_way_notional_divided_by_initial_equity": "120.5450887520761285942879310",
+  "direct_modeled_cost_usd": "155.91571700665165",
+  "direct_modeled_cost_fraction_of_initial_equity": "0.1512056606765762983077146875",
+  "daily_active_resize_share_of_fills": "0.5811764705882352941176470588",
+  "extra_trials": 0,
+  "no_holdout_access": true,
+  "diagnostic_script_sha256": "aa7de4122acc6b0751ea22b566b9c4b11f68f231359c6eaeef39e22f32da0736",
+  "evidence_type": "Exact replay and descriptive diagnostics of existing historical development proxy, not new independent evidence",
+  "decision": "Reject promotion of TREND-20 under existing growth/drawdown screens; close this baseline without holdout or further search.",
+  "recovery_manifest_sha256": "668aa3bdb7c563ff06f0b014ecfc46b437426f893bc2d68b3efddc62cd1332c2"
+}
