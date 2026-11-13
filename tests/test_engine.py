@@ -8,7 +8,8 @@ import unittest
 sys.path.insert(0,str(Path(__file__).resolve().parents[1]/'src'))
 from trading_research.core import Candle,DataError,HoldoutAccessError,Portfolio,Rules
 from trading_research.engine import DAY,Settings,run,signals,target_quantities
-from trading_research.data import bitstamp_rows,load_panel
+from trading_research.data import bitstamp_rows,load_panel,collect_bitstamp
+from unittest.mock import patch
 import hashlib,json,tempfile
 
 BASE=int(datetime(2020,1,1,tzinfo=timezone.utc).timestamp()*1000)
@@ -134,6 +135,20 @@ class SourceFixtures(unittest.TestCase):
         self.assertEqual(bitstamp_rows(payload,'btcusd')[0],[BASE,'1','3','.5','2','4'])
         with self.assertRaises(DataError):bitstamp_rows(payload,'ethusd')
         with self.assertRaises(DataError):bitstamp_rows({'error':'bad request'},'btcusd')
+
+    def test_collector_rejects_holdout_before_any_network_request(self):
+        with tempfile.TemporaryDirectory() as tmp, patch('trading_research.data.urlopen') as network:
+            with self.assertRaises(HoldoutAccessError):
+                collect_bitstamp(Path(tmp)/'raw',BASE,CUTOFF+DAY,CUTOFF)
+            network.assert_not_called()
+
+    def test_collector_keeps_raw_data_outside_public_checkout(self):
+        root=Path(__file__).resolve().parents[1]
+        with patch('trading_research.data.urlopen') as network:
+            with self.assertRaises(ValueError):
+                collect_bitstamp(root/'not-created-market-data',BASE,BASE+DAY,CUTOFF)
+            network.assert_not_called()
+        self.assertFalse((root/'not-created-market-data').exists())
 
     def test_hash_and_gap_validation_on_saved_inputs(self):
         data={'ETH':[[BASE,'1','3','.5','2','4'],[BASE+2*DAY,'1','3','.5','2','4']]}
