@@ -1,0 +1,12 @@
+{
+  "model": "daily candle screening proxy, not observed execution",
+  "fee_per_execution": "0.0005",
+  "default_noncommission_round_trip_bps": "15",
+  "publication_lag_minutes": 5,
+  "processing_lag_minutes": 5,
+  "rules_scope": "Static candidate Bitvavo USDC rules observed 2026-11-12; prospective-cost proxy, not historical rule reconstruction or authenticated account settings. Applied to USD-source experiments only as an explicitly hypothetical execution scenario.",
+  "markets": {
+    "BTC": {"quantity_decimals": 8, "tick": "1", "minimum_base": "0.00006985", "minimum_quote": "5"},
+    "ETH": {"quantity_decimals": 8, "tick": "0.01", "minimum_base": "0.00247844", "minimum_quote": "5"}
+  }
+}
