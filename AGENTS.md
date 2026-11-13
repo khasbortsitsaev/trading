@@ -39,6 +39,7 @@ Keep updates concise. Clearly separate confirmed findings, assumptions, open que
 - At session end, update docs/state.md with completed work, validation actually performed, blockers and one concrete next task. Link commits or result artifacts where available. Update other affected documentation.
 - Keep confirmed findings, provisional assumptions and proposed decisions distinct. Never promote synthetic accounting checks to evidence of trading profitability.
 - Keep responses concise, verify facts, and do not use em dash characters.
+- Commit and push completed project work to the repository so it is visible on GitHub. The user has authorized this as the standing workflow. Verify the remote branch contains the commit before claiming publication. Preserve unrelated work, never force-push, and keep secrets and raw restricted datasets out of git.
 
 ## Agent scope
 Use this repository as the workspace for an AI research and development agent. A custom autonomous agent application is not required at this stage. Instructions do not create scheduling, background execution or additional tool access.

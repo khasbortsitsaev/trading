@@ -1,0 +1,665 @@
+{
+  "sources": [
+    {
+      "venue": "Bitvavo",
+      "retrieved_at_utc": "2026-11-12T15:56:17.426465+00:00",
+      "repository": "bitvavo/python-bitvavo-api",
+      "commit": "27c0640e8e178c2e421d10fcde2aeb9af4707684",
+      "file": "README.md",
+      "url": "https://github.com/bitvavo/python-bitvavo-api/blob/27c0640e8e178c2e421d10fcde2aeb9af4707684/README.md",
+      "sha256": "484e3313778e15ab8e995ab02cea2597c633d00f1937e479a7008c01c709c58d",
+      "scope": "Official SDK source only; no live API, legal eligibility, data rights or historical completeness verification"
+    },
+    {
+      "venue": "Bitvavo",
+      "retrieved_at_utc": "2026-11-12T15:56:17.426594+00:00",
+      "repository": "bitvavo/python-bitvavo-api",
+      "commit": "27c0640e8e178c2e421d10fcde2aeb9af4707684",
+      "file": "python_bitvavo_api/bitvavo.py",
+      "url": "https://github.com/bitvavo/python-bitvavo-api/blob/27c0640e8e178c2e421d10fcde2aeb9af4707684/python_bitvavo_api/bitvavo.py",
+      "sha256": "3cafa6b884794d10b526e48bbed5d89b0abc68254d20814aa55bcdeedb655f99",
+      "scope": "Official SDK source only; no live API, legal eligibility, data rights or historical completeness verification"
+    },
+    {
+      "venue": "Bitvavo",
+      "retrieved_at_utc": "2026-11-12T15:56:17.426667+00:00",
+      "repository": "bitvavo/python-bitvavo-api",
+      "commit": "27c0640e8e178c2e421d10fcde2aeb9af4707684",
+      "file": "LICENSE.txt",
+      "url": "https://github.com/bitvavo/python-bitvavo-api/blob/27c0640e8e178c2e421d10fcde2aeb9af4707684/LICENSE.txt",
+      "sha256": "a440c8d2fad77730b0c88d62757467d6eec7dbfe0f1ef52aa9e52406ece8c149",
+      "scope": "Official SDK source only; no live API, legal eligibility, data rights or historical completeness verification"
+    },
+    {
+      "venue": "Kraken",
+      "retrieved_at_utc": "2026-11-12T15:56:17.429535+00:00",
+      "repository": "krakenfx/api-go",
+      "commit": "a8484bc5ec985fd5ce5bcc0580f659727d8f7603",
+      "file": "pkg/spot/rest.go",
+      "url": "https://github.com/krakenfx/api-go/blob/a8484bc5ec985fd5ce5bcc0580f659727d8f7603/pkg/spot/rest.go",
+      "sha256": "313f64f42b830fd65ae7eaeb9d555cf383796a107c881bccb0f6b891ecb1ff77",
+      "scope": "Official SDK source only; no live API, legal eligibility, data rights or historical completeness verification"
+    },
+    {
+      "venue": "Kraken",
+      "retrieved_at_utc": "2026-11-12T15:56:17.429616+00:00",
+      "repository": "krakenfx/api-go",
+      "commit": "a8484bc5ec985fd5ce5bcc0580f659727d8f7603",
+      "file": "pkg/spot/entities.go",
+      "url": "https://github.com/krakenfx/api-go/blob/a8484bc5ec985fd5ce5bcc0580f659727d8f7603/pkg/spot/entities.go",
+      "sha256": "a8c3f0db7618443b66cde9b5b6377bc0a17c6e9563b0659d5d79d3b5fad41e11",
+      "scope": "Official SDK source only; no live API, legal eligibility, data rights or historical completeness verification"
+    },
+    {
+      "venue": "Kraken",
+      "retrieved_at_utc": "2026-11-12T15:56:17.429893+00:00",
+      "repository": "krakenfx/api-go",
+      "commit": "a8484bc5ec985fd5ce5bcc0580f659727d8f7603",
+      "file": "LICENSE",
+      "url": "https://github.com/krakenfx/api-go/blob/a8484bc5ec985fd5ce5bcc0580f659727d8f7603/LICENSE",
+      "sha256": "13a49734890152d19fddf450276358d4a4a214e97775e7bd1e1970679ecd41b9",
+      "scope": "Official SDK source only; no live API, legal eligibility, data rights or historical completeness verification"
+    },
+    {
+      "venue": "Coinbase Advanced",
+      "retrieved_at_utc": "2026-11-12T15:56:17.432551+00:00",
+      "repository": "coinbase/coinbase-advanced-py",
+      "commit": "338a4e34f497ff51bd6c61ae440061235dbf8fa9",
+      "file": "README.md",
+      "url": "https://github.com/coinbase/coinbase-advanced-py/blob/338a4e34f497ff51bd6c61ae440061235dbf8fa9/README.md",
+      "sha256": "cd4591a9fe5ee10180775d5fa350056043c468b31294da94058ab6d3d88b8b46",
+      "scope": "Official SDK source only; no live API, legal eligibility, data rights or historical completeness verification"
+    },
+    {
+      "venue": "Coinbase Advanced",
+      "retrieved_at_utc": "2026-11-12T15:56:17.432617+00:00",
+      "repository": "coinbase/coinbase-advanced-py",
+      "commit": "338a4e34f497ff51bd6c61ae440061235dbf8fa9",
+      "file": "coinbase/rest/public.py",
+      "url": "https://github.com/coinbase/coinbase-advanced-py/blob/338a4e34f497ff51bd6c61ae440061235dbf8fa9/coinbase/rest/public.py",
+      "sha256": "9dc48922861c0a81f2c89110d72c52dccee5c3eff830a435e152bab0c1db6e21",
+      "scope": "Official SDK source only; no live API, legal eligibility, data rights or historical completeness verification"
+    },
+    {
+      "venue": "Coinbase Advanced",
+      "retrieved_at_utc": "2026-11-12T15:56:17.432646+00:00",
+      "repository": "coinbase/coinbase-advanced-py",
+      "commit": "338a4e34f497ff51bd6c61ae440061235dbf8fa9",
+      "file": "coinbase/rest/types/product_types.py",
+      "url": "https://github.com/coinbase/coinbase-advanced-py/blob/338a4e34f497ff51bd6c61ae440061235dbf8fa9/coinbase/rest/types/product_types.py",
+      "sha256": "2569b790f1bec2d6d994a7b762f3645a50b042a44922e95601948b77637a7699",
+      "scope": "Official SDK source only; no live API, legal eligibility, data rights or historical completeness verification"
+    },
+    {
+      "venue": "Coinbase Advanced",
+      "retrieved_at_utc": "2026-11-12T15:56:17.432677+00:00",
+      "repository": "coinbase/coinbase-advanced-py",
+      "commit": "338a4e34f497ff51bd6c61ae440061235dbf8fa9",
+      "file": "LICENSE.md",
+      "url": "https://github.com/coinbase/coinbase-advanced-py/blob/338a4e34f497ff51bd6c61ae440061235dbf8fa9/LICENSE.md",
+      "sha256": "86baa3923337de698d3c754d14a14391374cebe283a10b3cb09cdf3601c890dd",
+      "scope": "Official SDK source only; no live API, legal eligibility, data rights or historical completeness verification"
+    }
+  ],
+  "http_observations": [
+    {
+      "id": "bitvavo-about",
+      "url": "https://bitvavo.com/en/about-us",
+      "observed_at_utc": "2026-11-12T16:08:42.688181+00:00",
+      "curl_exit": 0,
+      "response": "404 https://bitvavo.com/en/about-us",
+      "error": "",
+      "sha256": "db384cb8d12259d8c99f1726d18aa8de1578dbc82184869e831e9e1ed680fd9c"
+    },
+    {
+      "id": "bitvavo-be-developer",
+      "url": "https://bitvavo.be/en/developer-agreement",
+      "observed_at_utc": "2026-11-12T16:09:58.000173+00:00",
+      "curl_exit": 0,
+      "response": "404 https://bitvavo.com/nl/en/developer-agreement",
+      "error": "",
+      "sha256": "db384cb8d12259d8c99f1726d18aa8de1578dbc82184869e831e9e1ed680fd9c"
+    },
+    {
+      "id": "bitvavo-be-root-terms",
+      "url": "https://bitvavo.be/terms",
+      "observed_at_utc": "2026-11-12T16:10:48.445490+00:00",
+      "curl_exit": 0,
+      "response": "200 https://bitvavo.com/nl/terms",
+      "error": "",
+      "sha256": "8f785607d7fdac9dabb0861d0834766f22de30c65b191403ffca820cc61fcca5"
+    },
+    {
+      "id": "bitvavo-be-root",
+      "url": "https://bitvavo.be/",
+      "observed_at_utc": "2026-11-12T16:10:48.532457+00:00",
+      "curl_exit": 0,
+      "response": "200 https://bitvavo.com/nl",
+      "error": "",
+      "sha256": "321d400e5a2f9241750d7685a6a8eb92bcb5b71029f3916739297467fdfc46bd"
+    },
+    {
+      "id": "bitvavo-be-terms",
+      "url": "https://bitvavo.be/en/terms",
+      "observed_at_utc": "2026-11-12T16:09:58.080495+00:00",
+      "curl_exit": 0,
+      "response": "404 https://bitvavo.com/nl/en/terms",
+      "error": "",
+      "sha256": "db384cb8d12259d8c99f1726d18aa8de1578dbc82184869e831e9e1ed680fd9c"
+    },
+    {
+      "id": "bitvavo-be",
+      "url": "https://bitvavo.be/en",
+      "observed_at_utc": "2026-11-12T16:09:57.941878+00:00",
+      "curl_exit": 0,
+      "response": "404 https://bitvavo.com/nl/en",
+      "error": "",
+      "sha256": "db384cb8d12259d8c99f1726d18aa8de1578dbc82184869e831e9e1ed680fd9c"
+    },
+    {
+      "id": "bitvavo-book-eth-eur",
+      "url": "https://api.bitvavo.com/v2/ETH-EUR/book?depth=20",
+      "observed_at_utc": "2026-11-12T16:09:11.373765+00:00",
+      "curl_exit": 0,
+      "response": "200 https://api.bitvavo.com/v2/ETH-EUR/book?depth=20",
+      "error": "",
+      "sha256": "f84093249d0f05285aed95fe8c2cf0bbcedb3e03d7b819f06ca2f29359f833c1"
+    },
+    {
+      "id": "bitvavo-book-eth-usdc",
+      "url": "https://api.bitvavo.com/v2/ETH-USDC/book?depth=20",
+      "observed_at_utc": "2026-11-12T16:09:11.809799+00:00",
+      "curl_exit": 0,
+      "response": "200 https://api.bitvavo.com/v2/ETH-USDC/book?depth=20",
+      "error": "",
+      "sha256": "ee49c610cc0b42b0dae7ba1a605e4c28ece3d83882d3458b026f58026b7cb087"
+    },
+    {
+      "id": "bitvavo-book-eur-second",
+      "url": "https://api.bitvavo.com/v2/ETH-EUR/book?depth=20",
+      "observed_at_utc": "2026-11-12T16:09:58.298328+00:00",
+      "curl_exit": 0,
+      "response": "200 https://api.bitvavo.com/v2/ETH-EUR/book?depth=20",
+      "error": "",
+      "sha256": "f429be73176eda95877e0a2a1782bd5682fc2fdceaa35b07e659a45a6b2890c9"
+    },
+    {
+      "id": "bitvavo-candles-old",
+      "url": "https://api.bitvavo.com/v2/ETH-EUR/candles?interval=1h&start=1577836800000&end=1577923200000&limit=24",
+      "observed_at_utc": "2026-11-12T16:08:42.991943+00:00",
+      "curl_exit": 0,
+      "response": "200 https://api.bitvavo.com/v2/ETH-EUR/candles?interval=1h&start=1577836800000&end=1577923200000&limit=24",
+      "error": "",
+      "sha256": "12970bf91d57a8b0f7fc8f7a4d0ded4df6267b0243c3b84b8a784fda434c7d99"
+    },
+    {
+      "id": "bitvavo-candles-recent",
+      "url": "https://api.bitvavo.com/v2/ETH-EUR/candles?interval=1h&start=1794355200000&end=1794441600000&limit=24",
+      "observed_at_utc": "2026-11-12T16:08:43.085114+00:00",
+      "curl_exit": 0,
+      "response": "200 https://api.bitvavo.com/v2/ETH-EUR/candles?interval=1h&start=1794355200000&end=1794441600000&limit=24",
+      "error": "",
+      "sha256": "d348e5331520fb6d9af25933324cfefdf748587da72aa8faf401f5de3f30260d"
+    },
+    {
+      "id": "bitvavo-countries",
+      "url": "https://support.bitvavo.com/hc/en-us/articles/4405231672593-In-which-countries-is-Bitvavo-available",
+      "observed_at_utc": "2026-11-12T16:07:18.147609+00:00",
+      "curl_exit": 0,
+      "response": "404 https://support.bitvavo.com/hc/en-us/articles/4405231672593-In-which-countries-is-Bitvavo-available",
+      "error": "",
+      "sha256": "b5d8f12eb4de97343dc7261bf900b1edea9645b532eccf8b0198d515207af897"
+    },
+    {
+      "id": "bitvavo-country-page",
+      "url": "https://bitvavo.com/en/countries",
+      "observed_at_utc": "2026-11-12T16:09:11.423189+00:00",
+      "curl_exit": 0,
+      "response": "200 https://bitvavo.com/en/countries",
+      "error": "",
+      "sha256": "db891ba509e99b3b7882993030405bc619f24470f763770769cd1c15919f7dce"
+    },
+    {
+      "id": "bitvavo-developer",
+      "url": "https://bitvavo.com/en/developer-agreement",
+      "observed_at_utc": "2026-11-12T16:08:07.420182+00:00",
+      "curl_exit": 0,
+      "response": "200 https://bitvavo.com/en/developer-agreement",
+      "error": "",
+      "sha256": "3d7f0c3a212a2696df51d056a1160f4c8412a15a4b6a3afb833f400989843900"
+    },
+    {
+      "id": "bitvavo-docs-fixed",
+      "url": "https://docs.bitvavo.com/docs/rest-api/get-candlestick-data/",
+      "observed_at_utc": "2026-11-12T16:08:06.983138+00:00",
+      "curl_exit": 0,
+      "response": "200 https://docs.bitvavo.com/docs/rest-api/get-candlestick-data/",
+      "error": "",
+      "sha256": "bb2118f5018a588b34132faaff2be4c4708b6da0502ed9c1ff7b285d9b6e8592"
+    },
+    {
+      "id": "bitvavo-docs",
+      "url": "https://docs.bitvavo.com/docs/rest-api/get-candlestick-data",
+      "observed_at_utc": "2026-11-12T16:07:18.719979+00:00",
+      "curl_exit": 0,
+      "response": "503 https://docs.bitvavo.com:8080/docs/rest-api/get-candlestick-data/",
+      "error": "",
+      "sha256": "33fbc61ad080ef68dd7a6479f8c53f1bf864dba2930567dbbc4ceb47490a1909"
+    },
+    {
+      "id": "bitvavo-early",
+      "url": "https://api.bitvavo.com/v2/ETH-EUR/candles?interval=1d&start=1514764800000&end=1514851200000&limit=1",
+      "observed_at_utc": "2026-11-12T16:09:57.446158+00:00",
+      "curl_exit": 0,
+      "response": "200 https://api.bitvavo.com/v2/ETH-EUR/candles?interval=1d&start=1514764800000&end=1514851200000&limit=1",
+      "error": "",
+      "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    {
+      "id": "bitvavo-fees",
+      "url": "https://bitvavo.com/en/fees",
+      "observed_at_utc": "2026-11-12T16:08:08.356408+00:00",
+      "curl_exit": 0,
+      "response": "200 https://bitvavo.com/en/fees",
+      "error": "",
+      "sha256": "4a094cf1b49c83c810170ebabb69fa43aa51f1811649ac43359aa189505322c0"
+    },
+    {
+      "id": "bitvavo-markets-docs",
+      "url": "https://docs.bitvavo.com/docs/rest-api/get-markets/",
+      "observed_at_utc": "2026-11-12T16:10:47.787734+00:00",
+      "curl_exit": 0,
+      "response": "200 https://docs.bitvavo.com/docs/rest-api/get-markets/",
+      "error": "",
+      "sha256": "b3f7166f857ae9c20fb23bacbbc1ebe34f76aff4a0331150449250f3a9b608cc"
+    },
+    {
+      "id": "bitvavo-markets",
+      "url": "https://api.bitvavo.com/v2/markets",
+      "observed_at_utc": "2026-11-12T16:07:17.968668+00:00",
+      "curl_exit": 0,
+      "response": "200 https://api.bitvavo.com/v2/markets",
+      "error": "",
+      "sha256": "b8a3f875406a4a1f7a37c88ffe51094d3c43bf1bbb98a50ec86cc3ebb22dc7b9"
+    },
+    {
+      "id": "bitvavo-page1",
+      "url": "https://api.bitvavo.com/v2/ETH-EUR/candles?interval=1h&start=1794355200000&end=1794398400000&limit=12",
+      "observed_at_utc": "2026-11-12T16:09:12.082838+00:00",
+      "curl_exit": 0,
+      "response": "200 https://api.bitvavo.com/v2/ETH-EUR/candles?interval=1h&start=1794355200000&end=1794398400000&limit=12",
+      "error": "",
+      "sha256": "c4810e41e8d870f0b49aa4105339c89026d0b88ea8f25d8cc2f27bed89fd9e29"
+    },
+    {
+      "id": "bitvavo-page2",
+      "url": "https://api.bitvavo.com/v2/ETH-EUR/candles?interval=1h&start=1794398400000&end=1794441600000&limit=12",
+      "observed_at_utc": "2026-11-12T16:09:12.364734+00:00",
+      "curl_exit": 0,
+      "response": "200 https://api.bitvavo.com/v2/ETH-EUR/candles?interval=1h&start=1794398400000&end=1794441600000&limit=12",
+      "error": "",
+      "sha256": "276e88c29bf29352ba6840a7b7b158dfd92f9672ae12801040e8aee9c2f33779"
+    },
+    {
+      "id": "bitvavo-search",
+      "url": "https://support.bitvavo.com/api/v2/help_center/en-us/articles/search.json?query=countries&per_page=10",
+      "observed_at_utc": "2026-11-12T16:08:07.415752+00:00",
+      "curl_exit": 0,
+      "response": "404 https://support.bitvavo.com/api/v2/help_center/en-us/articles/search.json?query=countries&per_page=10",
+      "error": "",
+      "sha256": "72b9ac0b73902dbbb246769c47a99e5bcf8610b1c3992a1adfc44bd8f8aa9ee5"
+    },
+    {
+      "id": "bitvavo-support-search",
+      "url": "https://support.bitvavo.com/hc/en-us/search?query=supported%20countries",
+      "observed_at_utc": "2026-11-12T16:08:42.893004+00:00",
+      "curl_exit": 0,
+      "response": "200 https://support.bitvavo.com/hc/en-us/search?query=supported%20countries",
+      "error": "",
+      "sha256": "5f3ff7209dd961d61be6bdde2f4f781d9d4b3112ae3881a99e5dc439bdc95031"
+    },
+    {
+      "id": "bitvavo-terms",
+      "url": "https://bitvavo.com/en/terms",
+      "observed_at_utc": "2026-11-12T16:07:19.029677+00:00",
+      "curl_exit": 0,
+      "response": "200 https://bitvavo.com/en/terms",
+      "error": "",
+      "sha256": "6c2f7432a8a746c07cdd88bc71c1fea7b8a3a0cd7a470dbe7bbf56dda7b7942f"
+    },
+    {
+      "id": "coinbase-candles-docs",
+      "url": "https://docs.cdp.coinbase.com/api-reference/advanced-trade-api/rest-api/public/get-public-product-candles",
+      "observed_at_utc": "2026-11-12T16:07:18.333080+00:00",
+      "curl_exit": 0,
+      "response": "200 https://docs.cdp.coinbase.com/api-reference/advanced-trade-api/rest-api/public/get-public-product-candles",
+      "error": "",
+      "sha256": "3cf09d2325b1fc4b084cd8705c9f01f1caf066c9df61f32bc72f4846bb25b9ec"
+    },
+    {
+      "id": "coinbase-countries",
+      "url": "https://help.coinbase.com/en/coinbase/getting-started/crypto-education/where-is-coinbase-available",
+      "observed_at_utc": "2026-11-12T16:07:17.881814+00:00",
+      "curl_exit": 0,
+      "response": "404 https://help.coinbase.com/en/coinbase/getting-started/crypto-education/where-is-coinbase-available",
+      "error": "",
+      "sha256": "4b7e948d043322974e0943b15a2a447d48d62bf4fe5496094d55a44023f36c7c"
+    },
+    {
+      "id": "coinbase-eea",
+      "url": "https://help.coinbase.com/en/coinbase/getting-started/getting-started-with-coinbase/mica",
+      "observed_at_utc": "2026-11-12T16:08:07.073050+00:00",
+      "curl_exit": 0,
+      "response": "404 https://help.coinbase.com/en/coinbase/getting-started/getting-started-with-coinbase/mica",
+      "error": "",
+      "sha256": "03bebe2ab00c175f048359a2a6cf3dc6df98707de907670cebd61e663cbcc25a"
+    },
+    {
+      "id": "coinbase-licenses",
+      "url": "https://www.coinbase.com/legal/licenses",
+      "observed_at_utc": "2026-11-12T16:08:42.691699+00:00",
+      "curl_exit": 0,
+      "response": "200 https://www.coinbase.com/de/legal/licenses",
+      "error": "",
+      "sha256": "290c2f6a410fe2fb4377852eb3954ee3c1d61460a1c24b44271698ea202347dc"
+    },
+    {
+      "id": "coinbase-lux-terms",
+      "url": "https://www.coinbase.com/legal/user_agreement/luxembourg",
+      "observed_at_utc": "2026-11-12T16:08:07.424518+00:00",
+      "curl_exit": 0,
+      "response": "404 https://www.coinbase.com/de/legal/user_agreement/luxembourg",
+      "error": "",
+      "sha256": "26716f3e4cd4eed3193e5b2afa8b474ec33cc041b8aac01bf5daad754344e5da"
+    },
+    {
+      "id": "coinbase-lux",
+      "url": "https://www.coinbase.com/legal/user_agreement/eea",
+      "observed_at_utc": "2026-11-12T16:09:11.623247+00:00",
+      "curl_exit": 0,
+      "response": "404 https://www.coinbase.com/de/legal/user_agreement/eea",
+      "error": "",
+      "sha256": "8602245f445d1c5ae8127346794e151a7d2e08c5558be9e6a8e2da919a577afd"
+    },
+    {
+      "id": "coinbase-market-terms",
+      "url": "https://www.coinbase.com/legal/market_data",
+      "observed_at_utc": "2026-11-12T16:07:19.205628+00:00",
+      "curl_exit": 0,
+      "response": "200 https://www.coinbase.com/de/legal/market_data",
+      "error": "",
+      "sha256": "70cc0268c46dcd6b2950ce041c71c93a0d89966a3d890c761a9abc279c731e15"
+    },
+    {
+      "id": "coinbase-mica-search",
+      "url": "https://help.coinbase.com/en/coinbase/getting-started/getting-started-with-coinbase/coinbase-luxembourg",
+      "observed_at_utc": "2026-11-12T16:09:11.434270+00:00",
+      "curl_exit": 0,
+      "response": "404 https://help.coinbase.com/en/coinbase/getting-started/getting-started-with-coinbase/coinbase-luxembourg",
+      "error": "",
+      "sha256": "2c87cc9a720563e0b79d8c302392032760cd935c3576e881c443891ca0949106"
+    },
+    {
+      "id": "coinbase-mica",
+      "url": "https://help.coinbase.com/en/coinbase/privacy-and-security/other/is-coinbase-regulated-in-europe",
+      "observed_at_utc": "2026-11-12T16:08:42.409857+00:00",
+      "curl_exit": 0,
+      "response": "404 https://help.coinbase.com/en/coinbase/privacy-and-security/other/is-coinbase-regulated-in-europe",
+      "error": "",
+      "sha256": "f146d83f4bab028b3f8e96a05a54d97bf9e59d09b8e76c21a68d02f2382b16a4"
+    },
+    {
+      "id": "coinbase-products",
+      "url": "https://api.coinbase.com/api/v3/brokerage/market/products?product_type=SPOT&user_country_code=BE&limit=1000",
+      "observed_at_utc": "2026-11-12T16:07:17.882039+00:00",
+      "curl_exit": 0,
+      "response": "200 https://api.coinbase.com/api/v3/brokerage/market/products?product_type=SPOT&user_country_code=BE&limit=1000",
+      "error": "",
+      "sha256": "20fe462eba42f1f26d97494165d6ebf5ed13279b60083d1510e6303ebc3c3e08"
+    },
+    {
+      "id": "esma-casps",
+      "url": "https://www.esma.europa.eu/sites/default/files/2024-12/CASPS.csv",
+      "observed_at_utc": "2026-11-12T16:09:11.535763+00:00",
+      "curl_exit": 0,
+      "response": "200 https://www.esma.europa.eu/sites/default/files/2024-12/CASPS.csv",
+      "error": "",
+      "sha256": "e0a73cab442a1bedf84a9fbfe756f7a2779bf48050c4d147c4971788d4279be3"
+    },
+    {
+      "id": "esma-mica",
+      "url": "https://www.esma.europa.eu/esmas-activities/digital-finance-and-innovation/markets-crypto-assets-regulation-mica",
+      "observed_at_utc": "2026-11-12T16:08:42.650478+00:00",
+      "curl_exit": 0,
+      "response": "200 https://www.esma.europa.eu/esmas-activities/digital-finance-and-innovation/markets-crypto-assets-regulation-mica",
+      "error": "",
+      "sha256": "28021d5d09c846458a30a4ec79738f3044decb1a2bab9b61fccdac3b7b86b17a"
+    },
+    {
+      "id": "esma",
+      "url": "https://www.esma.europa.eu/publications-and-data/databases-and-registers/interim-micar-register",
+      "observed_at_utc": "2026-11-12T16:08:07.797881+00:00",
+      "curl_exit": 0,
+      "response": "404 https://www.esma.europa.eu/publications-and-data/databases-and-registers/interim-micar-register",
+      "error": "",
+      "sha256": "1495f5b4249f00aa3223a190779544bc078a3848cedd5b887f0e317ed44ef8d0"
+    },
+    {
+      "id": "fsma-search",
+      "url": "https://www.fsma.be/en/search?search_api_fulltext=crypto-asset%20service%20providers",
+      "observed_at_utc": "2026-11-12T16:08:45.930728+00:00",
+      "curl_exit": 0,
+      "response": "200 https://www.fsma.be/en/search?search_api_fulltext=crypto-asset%20service%20providers",
+      "error": "",
+      "sha256": "055f1cbea38a47be49c01e70c39648d5fea6ea46fafe511f03259ed17b331f37"
+    },
+    {
+      "id": "fsma",
+      "url": "https://www.fsma.be/en/crypto-asset-service-providers-casps",
+      "observed_at_utc": "2026-11-12T16:08:09.275664+00:00",
+      "curl_exit": 0,
+      "response": "404 https://www.fsma.be/en/crypto-asset-service-providers-casps",
+      "error": "",
+      "sha256": "dbe3a5e2206494ad066a4d0ce2d2506bda9a634d9bbdec8d3f06e744128cfb6e"
+    },
+    {
+      "id": "kraken-api-guide",
+      "url": "https://docs.kraken.com/api/docs/guides/global-intro/",
+      "observed_at_utc": "2026-11-12T16:10:48.695349+00:00",
+      "curl_exit": 0,
+      "response": "200 https://docs.kraken.com/exchange/guides/overview",
+      "error": "",
+      "sha256": "a6e3a2de34f7c879bc352d7aa5166fa86b69e022a5cc1d8f3fbcf5c8dbf9cf6f"
+    },
+    {
+      "id": "kraken-api-overview",
+      "url": "https://docs.kraken.com/api/docs/guides/spot-introduction/",
+      "observed_at_utc": "2026-11-12T16:09:59.156862+00:00",
+      "curl_exit": 0,
+      "response": "404 https://docs.kraken.com/api/docs/guides/spot-introduction",
+      "error": "",
+      "sha256": "289ba026430d9c3adac1f0bfe67af4cdf3fe58c5c1a4cfce909f57cc8f62485f"
+    },
+    {
+      "id": "kraken-api-terms",
+      "url": "https://www.kraken.com/legal/api-terms",
+      "observed_at_utc": "2026-11-12T16:09:11.327173+00:00",
+      "curl_exit": 0,
+      "response": "404 https://www.kraken.com/legal/api-terms",
+      "error": "",
+      "sha256": "f236bec3c5f4de61319cbaab8c8e415f0b0a5b3576754e7cec1572315f679f45"
+    },
+    {
+      "id": "kraken-api-use",
+      "url": "https://support.kraken.com/articles/360000919966-how-to-create-an-api-key",
+      "observed_at_utc": "2026-11-12T16:09:57.816747+00:00",
+      "curl_exit": 0,
+      "response": "200 https://support.kraken.com/articles/how-to-create-an-api-key-on-kraken-pro",
+      "error": "",
+      "sha256": "553ee3d9cddfd9f03c4bc3a23fee04bf29a289ea625e92973882e5a2bd3b4ed0"
+    },
+    {
+      "id": "kraken-book-eth-eur",
+      "url": "https://api.kraken.com/0/public/Depth?pair=ETHEUR&count=20",
+      "observed_at_utc": "2026-11-12T16:09:11.793760+00:00",
+      "curl_exit": 0,
+      "response": "200 https://api.kraken.com/0/public/Depth?pair=ETHEUR&count=20",
+      "error": "",
+      "sha256": "828861b54b3910aec776ce9198b78b61ba81c47a1477091f70a7090675409293"
+    },
+    {
+      "id": "kraken-book-eth-usdc",
+      "url": "https://api.kraken.com/0/public/Depth?pair=ETHUSDC&count=20",
+      "observed_at_utc": "2026-11-12T16:09:11.753427+00:00",
+      "curl_exit": 0,
+      "response": "200 https://api.kraken.com/0/public/Depth?pair=ETHUSDC&count=20",
+      "error": "",
+      "sha256": "e4c9ad898bee05e63bfe9e16971fd30fd51a3cf353e93e2e59fe720c0377f317"
+    },
+    {
+      "id": "kraken-book-eur-second",
+      "url": "https://api.kraken.com/0/public/Depth?pair=ETHEUR&count=20",
+      "observed_at_utc": "2026-11-12T16:09:58.188307+00:00",
+      "curl_exit": 0,
+      "response": "200 https://api.kraken.com/0/public/Depth?pair=ETHEUR&count=20",
+      "error": "",
+      "sha256": "84af250e3d9a6737b0dbf417a2806b6f85c2c36f45feb6847b0ca2d295a21545"
+    },
+    {
+      "id": "kraken-candles-old",
+      "url": "https://api.kraken.com/0/public/OHLC?pair=ETHEUR&interval=60&since=1577836800",
+      "observed_at_utc": "2026-11-12T16:08:43.068891+00:00",
+      "curl_exit": 0,
+      "response": "200 https://api.kraken.com/0/public/OHLC?pair=ETHEUR&interval=60&since=1577836800",
+      "error": "",
+      "sha256": "d991b47598698055b9b39630c33494d13044eb1e78dfeab390d3014aecfae27e"
+    },
+    {
+      "id": "kraken-countries",
+      "url": "https://support.kraken.com/articles/360001368823-where-can-i-use-kraken-",
+      "observed_at_utc": "2026-11-12T16:07:18.452975+00:00",
+      "curl_exit": 0,
+      "response": "200 https://support.kraken.com/articles/where-is-kraken-licensed-or-regulated",
+      "error": "",
+      "sha256": "dae05bc41cfed973094b2262f181b0630371c04ae22687435ef593a9e4e3dee4"
+    },
+    {
+      "id": "kraken-data-terms",
+      "url": "https://www.kraken.com/legal/market-data-terms",
+      "observed_at_utc": "2026-11-12T16:08:42.942212+00:00",
+      "curl_exit": 0,
+      "response": "404 https://www.kraken.com/legal/market-data-terms",
+      "error": "",
+      "sha256": "f236bec3c5f4de61319cbaab8c8e415f0b0a5b3576754e7cec1572315f679f45"
+    },
+    {
+      "id": "kraken-delist",
+      "url": "https://support.kraken.com/articles/support-for-monero-xmr-in-europe",
+      "observed_at_utc": "2026-11-12T16:09:57.081345+00:00",
+      "curl_exit": 0,
+      "response": "200 https://support.kraken.com/articles/support-for-monero-xmr-in-europe",
+      "error": "",
+      "sha256": "75ba7da14c8ca883bdbae5d8f4bfaed0ca3c12c71aa1747494d664a733750baf"
+    },
+    {
+      "id": "kraken-eea-terms",
+      "url": "https://www.kraken.com/legal/eea-terms",
+      "observed_at_utc": "2026-11-12T16:08:07.699670+00:00",
+      "curl_exit": 0,
+      "response": "200 https://www.kraken.com/legal/eea-terms",
+      "error": "",
+      "sha256": "7fd080b3d5272a48fec6406f2e1265a4eef664e9437d9c15fec94c085e44c2fc"
+    },
+    {
+      "id": "kraken-history-checksums",
+      "url": "https://assets.kraken.com/marketing/institutions/Trades_Full_PARTS_SHA256SUMS.txt",
+      "observed_at_utc": "2026-11-12T16:10:47.954475+00:00",
+      "curl_exit": 0,
+      "response": "200 https://assets.kraken.com/marketing/institutions/Trades_Full_PARTS_SHA256SUMS.txt",
+      "error": "",
+      "sha256": "e66cc63515653da7417bbc098fa13ad29fdd1cb6e42c1cd9aafe2dc5dac1bcd9"
+    },
+    {
+      "id": "kraken-history",
+      "url": "https://support.kraken.com/articles/360047543791-downloadable-historical-market-data-time-and-sales-",
+      "observed_at_utc": "2026-11-12T16:07:18.719390+00:00",
+      "curl_exit": 0,
+      "response": "200 https://support.kraken.com/articles/360047543791-downloadable-historical-market-data-time-and-sales-",
+      "error": "",
+      "sha256": "df8ec5173c4342ad113bd4e26bea5f65867b9532f7464adc52bc75b96438d654"
+    },
+    {
+      "id": "kraken-ohlc-archive",
+      "url": "https://support.kraken.com/articles/360047124832-downloadable-historical-ohlcvt-open-high-low-close-volume-trades-data-",
+      "observed_at_utc": "2026-11-12T16:08:08.025162+00:00",
+      "curl_exit": 0,
+      "response": "200 https://support.kraken.com/articles/360047124832-downloadable-historical-ohlcvt-open-high-low-close-volume-trades-data",
+      "error": "",
+      "sha256": "a7e8de7cfe6f1735c3a36ba5f8a876bc2ea43cdc4f8dab2916b26964246d9ed5"
+    },
+    {
+      "id": "kraken-ohlc-docs",
+      "url": "https://docs.kraken.com/api/docs/rest-api/get-ohlc-data/",
+      "observed_at_utc": "2026-11-12T16:07:18.857327+00:00",
+      "curl_exit": 0,
+      "response": "200 https://docs.kraken.com/api-reference/market-data/get-ohlc-data",
+      "error": "",
+      "sha256": "20112537a15a6ac20a84ecb444824b27c4ffc026a48a5395df4c3969a87365ad"
+    },
+    {
+      "id": "kraken-pairs",
+      "url": "https://api.kraken.com/0/public/AssetPairs?pair=ETHEUR,ETHUSDC,XBTEUR,XBTUSDC&country_code=BE",
+      "observed_at_utc": "2026-11-12T16:07:17.787462+00:00",
+      "curl_exit": 0,
+      "response": "200 https://api.kraken.com/0/public/AssetPairs?pair=ETHEUR,ETHUSDC,XBTEUR,XBTUSDC&country_code=BE",
+      "error": "",
+      "sha256": "2cf3068f9c17e3b07dcc28e8d69c3b7bb6a66e8d52d30d259b122a32bb88bbaa"
+    },
+    {
+      "id": "kraken-recent",
+      "url": "https://api.kraken.com/0/public/OHLC?pair=ETHEUR&interval=60&since=1794355200",
+      "observed_at_utc": "2026-11-12T16:09:57.735467+00:00",
+      "curl_exit": 0,
+      "response": "200 https://api.kraken.com/0/public/OHLC?pair=ETHEUR&interval=60&since=1794355200",
+      "error": "",
+      "sha256": "d3a08bb7efd78d92e2150ac7cfa5788b4624845fbda8d07983648b61b2367197"
+    },
+    {
+      "id": "kraken-terms",
+      "url": "https://www.kraken.com/legal",
+      "observed_at_utc": "2026-11-12T16:07:19.254507+00:00",
+      "curl_exit": 0,
+      "response": "200 https://www.kraken.com/legal",
+      "error": "",
+      "sha256": "dd98af29216a1a9f21590bd84e1ece3d6b8c7d4c5af458dc3aa4fc995ceab033"
+    },
+    {
+      "id": "kraken-trades-docs",
+      "url": "https://docs.kraken.com/api-reference/market-data/get-recent-trades",
+      "observed_at_utc": "2026-11-12T16:10:47.670092+00:00",
+      "curl_exit": 0,
+      "response": "200 https://docs.kraken.com/api-reference/market-data/get-recent-trades",
+      "error": "",
+      "sha256": "ecdd2edd7113820c448627a6aee3403eeac36a4c24635e4b8ffda4c19c1b7fd4"
+    },
+    {
+      "id": "kraken-trades-old",
+      "url": "https://api.kraken.com/0/public/Trades?pair=ETHEUR&since=1577836800000000000&count=3",
+      "observed_at_utc": "2026-11-12T16:09:58.038830+00:00",
+      "curl_exit": 0,
+      "response": "200 https://api.kraken.com/0/public/Trades?pair=ETHEUR&since=1577836800000000000&count=3",
+      "error": "",
+      "sha256": "4c68ba57dfc720d312a3d7bfabf86642a3f686258323128511993df31363ee6e"
+    },
+    {
+      "id": "kraken-trades-page2",
+      "url": "https://api.kraken.com/0/public/Trades?pair=ETHEUR&count=3&since=1577836831207522326",
+      "observed_at_utc": "2026-11-12T16:11:41.638107+00:00",
+      "curl_exit": 0,
+      "response": "200 https://api.kraken.com/0/public/Trades?pair=ETHEUR&count=3&since=1577836831207522326",
+      "error": "",
+      "sha256": "b14c29d9340b6bf51dd7f60bca21e0687bc4358a0f10a40e889b743f3d64d67a"
+    }
+  ],
+  "raw_response_policy": "Response bodies are temporary local research material under /tmp/feasibility-retry, not included in git. Hashes identify inspected content but do not guarantee future availability. No market-data redistribution license is claimed."
+}

@@ -26,8 +26,17 @@ As of 2026-11-12. Decisions may change with evidence.
 - We need not replicate every paper exactly; papers are starting points for well-defined, testable hypotheses. When modifying a published strategy, preserve a clear distinction between original and modified variants.
 
 ## Additional context (2026-11-12)
-- Broader user objective: relatively passive supplementary income from a side business. Small ongoing VM costs are acceptable in principle; live operation remains subject to separate authorization.
+- Current objective: capital growth, with no planned withdrawals. Potential future passive operation remains unproven; live operation requires separate authorization.
 - BTC dependence is an early research hypothesis, not a validated trading signal.
 - See [Income objective and BTC research notes](OBJECTIVE_AND_BTC.md) for proposed tests, economics and open questions.
 
 - Cost provenance clarified by the user on 2026-11-12: the initial estimates were based on Bitvavo. They must not be described as exchange-independent or replaced by another venue's fees without an explicit comparison. The venue remains undecided.
+
+## Review priorities and clarified scope (2026-11-12)
+- Agreed: tackle the six original review items in ROADMAP.md first, before real-data strategy development.
+- Agreed: initial research allocation remains 0.5 ETH; additional capital may be discussed if evidence supports it. No automatic increase is authorized.
+- Agreed: fully funded spot first, with no leverage. Borrowed shorts are acceptable in principle for investigation, but financing, collateral and liquidation risks need a separate feasibility assessment and decision. Gross exposure alone does not eliminate those risks.
+- Agreed: the agent performs research/development; the user makes consequential decisions. No personal time budget currently blocks progress. Paid commitments require a decision; use public/free resources initially.
+- Provisional: a broad 20-50% possible live drawdown tolerance was discussed. This is not a chosen risk limit, research acceptance threshold or authorization to lose 50%. Define drawdown from the equity high-water mark and separately define loss from starting capital before live allocation.
+- Open: numerical research acceptance thresholds, finite trial budget and operational stop rules. Strong backtests cannot eliminate live losses.
+- Venue selection remains open; apply privately supplied jurisdiction and venue exclusions during feasibility research. Do not place personal eligibility information in this public repository.

@@ -5,7 +5,7 @@ Recorded 2026-11-12. These notes distinguish user goals from untested research p
 ## User objective
 The broader purpose is a side business producing relatively passive supplementary income. The user is open to a small recurring infrastructure cost and envisages eventual operation on a VM available 24/7. This is a possible future deployment, not authorization to deploy or trade live. Initial research capital remains 0.5 ETH.
 
-Income target, future capital contributions, acceptable drawdown and maintenance time budget remain unspecified.
+Updated objective: capital growth with no planned withdrawals. Initial capital remains 0.5 ETH; additional capital may be considered if evidence supports it. A possible 20-50% live drawdown tolerance is provisional, not an agreed limit. No personal time budget blocks current research; use finite experiment budgets to prevent endless searching. The earlier supplementary-income framing below is longer-term context, not a current withdrawal target.
 
 ## BTC dependence: hypothesis to test
 The user's observation is that other cryptocurrencies often move with Bitcoin. Treat BTC as a candidate market-context variable and risk benchmark, without assuming that every asset follows BTC or that BTC causes all common movement.

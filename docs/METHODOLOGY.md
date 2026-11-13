@@ -44,3 +44,30 @@ Net compounded return; terminal wealth; return relative to ETH; max drawdown; Sh
 
 ## Technical safeguards
 No same-bar close execution unless the signal is known and executable at that price. Model order size, exchange precision, minimum notional, liquidity and market impact when data allow. A short position is not automatically safe because nominal gross exposure is <= equity. No real trades in research phase.
+
+## Required pre-experiment feasibility record
+For each shortlisted venue, record official source URL, retrieval date, applicable jurisdiction/product restrictions and whether access is generally documented or account-confirmed. Keep personal/account information out of git. Compare available spot pairs, minimum notional and quantity, precision, liquidity evidence, historical data endpoints, licensing, retention limits, delisted markets and missing periods. Public documentation alone does not establish account eligibility. Separate the signal data venue from the proposed execution venue.
+
+For each candidate market, record maker/taker commissions per execution and volume tier; estimate spread and size-dependent slippage from dated observations, with uncertainty. Include realistic order sizes derived from the 0.5 ETH allocation and conversion path. Maker fees do not imply maker fills. The pasted review's fee figures and paper interpretations remain unverified inputs until primary-source checking. Keep the original cost scenarios as sensitivity cases, not calibrated facts.
+
+Report break-even costs by rerunning frozen rules under increasing execution costs with an explicit unit (for example basis points per traded notional per side). State whether the threshold means zero absolute net P&L or zero excess return over a named benchmark; report both when useful. Handle no-trade and non-monotonic cases explicitly. Keep fixed infrastructure/data costs and EUR conversion assumptions separate from trading friction. Do not optimize strategy parameters against the preferred cost estimate.
+
+## Frozen research protocol and stopping rules
+Before the first real-data search, register:
+1. Economic hypothesis, fully specified signal/allocation rules, benchmark objective and permitted parameter ranges.
+2. A finite number of trials per family and total batch, including seeds, assets, timeframes and abandoned variants. Numerical budgets are pending, not implicitly unlimited.
+3. Dataset hashes, point-in-time universe policy, chronological train/validation windows and sealed final holdout boundaries. Fit transformations only on past training data. Specify purging/embargo from label overlap rather than arbitrary defaults.
+4. Selection procedure confined to training/validation; criteria for economic rejection, robustness and minimum usable evidence. Numeric thresholds must be fixed before searches, with consequential choices referred to the user.
+5. Higher-cost, delayed-fill and nearby-parameter checks; profit concentration by coin, month and regime; dependence-aware uncertainty. Raw trade counts are not counts of independent observations.
+6. A holdout access record identifying the frozen code/configuration and selection procedure before opening. If it fails, record the outcome; do not retune and reuse it as an untouched holdout. A fresh evaluation requires genuinely new data or an explicitly revised evidence label.
+7. A batch-ending decision: proceed to prospective validation, reject, or inconclusive due to specified limitations. Additional searches or complexity require a new hypothesis, recorded rationale and budget, not silent continuation.
+
+Numerical live loss tolerance is separate from research acceptance. Evaluate absolute capital growth and performance relative to ETH/cash, with drawdown and risk-adjusted metrics; lower drawdown does not automatically satisfy the capital-growth objective. Historical success never establishes certainty of live profits.
+
+## Data and execution contract
+- Preserve exchange event time, candle interval boundaries, timezone and actual feature availability time. On-chain features require publication delays and revision/version history.
+- Reconstruct historical listings/delistings and universe eligibility using past information. If coverage cannot support that, narrow the universe claim and disclose survivor bias.
+- Specify missing/duplicate/out-of-order data handling. Do not silently forward-fill tradable prices or manufacture executions; flag exclusions and evaluate sensitivity.
+- Execute after information becomes available with declared latency and price assumptions. Candles cannot establish limit queue position, fills or intrabar stop/target order. Use conservative ambiguity rules, finer data where available, or reject unsupported execution claims.
+- Document partial fills, unfilled orders, minimum sizes, residual cash, precision and data/venue mismatches. Use order-book/trade data when the strategy's execution claim requires it.
+- Initial executable scope is fully funded spot. Any borrowed short requires independently documented availability, financing, collateral, recall and liquidation treatment plus a separate scope decision; a 1x gross exposure cap is insufficient.

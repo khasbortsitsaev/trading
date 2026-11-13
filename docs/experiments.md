@@ -12,7 +12,9 @@ Create an entry before running an experiment. Preserve failed, negative, invalid
 - Evidence type: synthetic software check / historical replication / out-of-sample / paper traded / live
 - Hypothesis and economic mechanism:
 - Primary-source references and deviations from published rules:
-- Predeclared success/failure criteria:
+- Predeclared success/failure criteria and batch stopping decision:
+- Feasibility/cost evidence and unresolved execution limitations:
+- Trial budget, selection procedure and holdout access record:
 - Dataset source, version/hash, availability timestamps and quality exclusions:
 - Venue, universe selection rule, symbols, timeframe and dates:
 - Signal, allocation and execution timing:
