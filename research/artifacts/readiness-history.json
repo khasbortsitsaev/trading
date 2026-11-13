@@ -1,0 +1,292 @@
+{
+  "scope": "Development-only quality audit. No returns, signals or holdout evaluated.",
+  "raw_window_start": "2020-01-01",
+  "accounting_start": "2021-01-01",
+  "development_end_exclusive": "2025-11-13",
+  "holdout_retrieved": false,
+  "markets": {
+    "ETH-EUR": {
+      "observations": 2143,
+      "expected": 2143,
+      "identical_overlaps": 23,
+      "missing_count": 0,
+      "missing_timestamps_ms": [],
+      "ohlc_valid": true,
+      "first_returned_date": "2020-01-01",
+      "last_returned_date": "2025-11-12",
+      "accounting_period_missing_days": 0,
+      "accounting_period_expected_days": 1777,
+      "sources": [
+        {
+          "id": "history-ETH-EUR-2020-2023",
+          "url": "https://api.bitvavo.com/v2/ETH-EUR/candles?interval=1d&start=1577836800000&end=1704067199999&limit=1440",
+          "observed_at_utc": "2026-11-13T10:36:12.684046+00:00",
+          "curl_exit": 0,
+          "response": "200 https://api.bitvavo.com/v2/ETH-EUR/candles?interval=1d&start=1577836800000&end=1704067199999&limit=1440",
+          "error": "",
+          "sha256": "ced8da5021391436dba568fb36f38e023f1266901ba0fd5098c89fa479146c30"
+        },
+        {
+          "id": "history-ETH-EUR-2024-2025",
+          "url": "https://api.bitvavo.com/v2/ETH-EUR/candles?interval=1d&start=1704067200000&end=1762991999999&limit=1440",
+          "observed_at_utc": "2026-11-13T10:36:12.600580+00:00",
+          "curl_exit": 0,
+          "response": "200 https://api.bitvavo.com/v2/ETH-EUR/candles?interval=1d&start=1704067200000&end=1762991999999&limit=1440",
+          "error": "",
+          "sha256": "9cab7ad117f153761282f909cce51e03bc16eab88f1947713b2dd4816d75d404"
+        },
+        {
+          "id": "history-ETH-EUR-end-boundary",
+          "url": "https://api.bitvavo.com/v2/ETH-EUR/candles?interval=1d&start=1762819200000&end=1762992000000&limit=1440",
+          "observed_at_utc": "2026-11-13T10:37:15.479951+00:00",
+          "curl_exit": 0,
+          "response": "200 https://api.bitvavo.com/v2/ETH-EUR/candles?interval=1d&start=1762819200000&end=1762992000000&limit=1440",
+          "error": "",
+          "sha256": "0513789b45347777fa4596024a85e51633784b2cba9de7dd2612d6f5dc2e73f6"
+        },
+        {
+          "id": "history-ETH-EUR-prefix-exact",
+          "url": "https://api.bitvavo.com/v2/ETH-EUR/candles?interval=1d&start=1577836800000&end=1579651200000&limit=1440",
+          "observed_at_utc": "2026-11-13T10:37:15.429776+00:00",
+          "curl_exit": 0,
+          "response": "200 https://api.bitvavo.com/v2/ETH-EUR/candles?interval=1d&start=1577836800000&end=1579651200000&limit=1440",
+          "error": "",
+          "sha256": "d0909c1a97844893572e81404e96901ec2d7efce5fe8e4d7b7f8f586afacef6b"
+        },
+        {
+          "id": "history-ETH-EUR-prefix",
+          "url": "https://api.bitvavo.com/v2/ETH-EUR/candles?interval=1d&start=1577836800000&end=1579564799999&limit=1440",
+          "observed_at_utc": "2026-11-13T10:36:28.891517+00:00",
+          "curl_exit": 0,
+          "response": "200 https://api.bitvavo.com/v2/ETH-EUR/candles?interval=1d&start=1577836800000&end=1579564799999&limit=1440",
+          "error": "",
+          "sha256": "75fd7e5cdb2b012d74f30cf7c97bf71f7c97de7e10f907ffea2e9f9db7e2992d"
+        },
+        {
+          "id": "history-ETH-EUR-year-boundary",
+          "url": "https://api.bitvavo.com/v2/ETH-EUR/candles?interval=1d&start=1703894400000&end=1704153600000&limit=1440",
+          "observed_at_utc": "2026-11-13T10:37:15.488027+00:00",
+          "curl_exit": 0,
+          "response": "200 https://api.bitvavo.com/v2/ETH-EUR/candles?interval=1d&start=1703894400000&end=1704153600000&limit=1440",
+          "error": "",
+          "sha256": "9aafb1996f493c7fc16768e85b966b8c6e0d82acd573288c425fb97d6f1fe9bc"
+        }
+      ]
+    },
+    "BTC-EUR": {
+      "observations": 2143,
+      "expected": 2143,
+      "identical_overlaps": 23,
+      "missing_count": 0,
+      "missing_timestamps_ms": [],
+      "ohlc_valid": true,
+      "first_returned_date": "2020-01-01",
+      "last_returned_date": "2025-11-12",
+      "accounting_period_missing_days": 0,
+      "accounting_period_expected_days": 1777,
+      "sources": [
+        {
+          "id": "history-BTC-EUR-2020-2023",
+          "url": "https://api.bitvavo.com/v2/BTC-EUR/candles?interval=1d&start=1577836800000&end=1704067199999&limit=1440",
+          "observed_at_utc": "2026-11-13T10:36:12.577999+00:00",
+          "curl_exit": 0,
+          "response": "200 https://api.bitvavo.com/v2/BTC-EUR/candles?interval=1d&start=1577836800000&end=1704067199999&limit=1440",
+          "error": "",
+          "sha256": "130593a3f41e6f679eda5edf67e3ab55ee3dc1ab14baca19a9f14e4d73e43307"
+        },
+        {
+          "id": "history-BTC-EUR-2024-2025",
+          "url": "https://api.bitvavo.com/v2/BTC-EUR/candles?interval=1d&start=1704067200000&end=1762991999999&limit=1440",
+          "observed_at_utc": "2026-11-13T10:36:12.813911+00:00",
+          "curl_exit": 0,
+          "response": "200 https://api.bitvavo.com/v2/BTC-EUR/candles?interval=1d&start=1704067200000&end=1762991999999&limit=1440",
+          "error": "",
+          "sha256": "6b45d46fab0c34b1e2e1975f256b43ed057bb91bfe0fd847bd62762ea2189dbd"
+        },
+        {
+          "id": "history-BTC-EUR-end-boundary",
+          "url": "https://api.bitvavo.com/v2/BTC-EUR/candles?interval=1d&start=1762819200000&end=1762992000000&limit=1440",
+          "observed_at_utc": "2026-11-13T10:37:15.435258+00:00",
+          "curl_exit": 0,
+          "response": "200 https://api.bitvavo.com/v2/BTC-EUR/candles?interval=1d&start=1762819200000&end=1762992000000&limit=1440",
+          "error": "",
+          "sha256": "a54e9052a457516f2b79cdd968e96f159c4dfdad616ed7848d93cd4f897ffdc3"
+        },
+        {
+          "id": "history-BTC-EUR-prefix-exact",
+          "url": "https://api.bitvavo.com/v2/BTC-EUR/candles?interval=1d&start=1577836800000&end=1579651200000&limit=1440",
+          "observed_at_utc": "2026-11-13T10:37:15.476034+00:00",
+          "curl_exit": 0,
+          "response": "200 https://api.bitvavo.com/v2/BTC-EUR/candles?interval=1d&start=1577836800000&end=1579651200000&limit=1440",
+          "error": "",
+          "sha256": "029b0acfa4173e549564cc49d6f677434c38774ddfc928d7e360b5147179f7f0"
+        },
+        {
+          "id": "history-BTC-EUR-prefix",
+          "url": "https://api.bitvavo.com/v2/BTC-EUR/candles?interval=1d&start=1577836800000&end=1579564799999&limit=1440",
+          "observed_at_utc": "2026-11-13T10:36:28.940947+00:00",
+          "curl_exit": 0,
+          "response": "200 https://api.bitvavo.com/v2/BTC-EUR/candles?interval=1d&start=1577836800000&end=1579564799999&limit=1440",
+          "error": "",
+          "sha256": "6df3fba9abb9b6171210e02e59d6980d1162ad422e4bcbc74f803c650c2e4a2b"
+        },
+        {
+          "id": "history-BTC-EUR-year-boundary",
+          "url": "https://api.bitvavo.com/v2/BTC-EUR/candles?interval=1d&start=1703894400000&end=1704153600000&limit=1440",
+          "observed_at_utc": "2026-11-13T10:37:15.496575+00:00",
+          "curl_exit": 0,
+          "response": "200 https://api.bitvavo.com/v2/BTC-EUR/candles?interval=1d&start=1703894400000&end=1704153600000&limit=1440",
+          "error": "",
+          "sha256": "74dcf0f1935a9c6f66c3560a88e8e0518823ed9725053f24e96b5ccfedb6a75c"
+        }
+      ]
+    },
+    "ETH-USDC": {
+      "observations": 495,
+      "expected": 2143,
+      "identical_overlaps": 1,
+      "missing_count": 1648,
+      "missing_timestamps_ms": [
+        1577836800000,
+        1577923200000,
+        1578009600000,
+        1578096000000,
+        1578182400000,
+        1578268800000,
+        1578355200000,
+        1578441600000,
+        1578528000000,
+        1578614400000
+      ],
+      "ohlc_valid": true,
+      "first_returned_date": "2024-07-04",
+      "last_returned_date": "2025-11-12",
+      "accounting_period_missing_days": 1282,
+      "accounting_period_expected_days": 1777,
+      "sources": [
+        {
+          "id": "history-ETH-USDC-2020-2023",
+          "url": "https://api.bitvavo.com/v2/ETH-USDC/candles?interval=1d&start=1577836800000&end=1704067199999&limit=1440",
+          "observed_at_utc": "2026-11-13T10:36:12.762264+00:00",
+          "curl_exit": 0,
+          "response": "200 https://api.bitvavo.com/v2/ETH-USDC/candles?interval=1d&start=1577836800000&end=1704067199999&limit=1440",
+          "error": "",
+          "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        {
+          "id": "history-ETH-USDC-2024-2025",
+          "url": "https://api.bitvavo.com/v2/ETH-USDC/candles?interval=1d&start=1704067200000&end=1762991999999&limit=1440",
+          "observed_at_utc": "2026-11-13T10:36:13.064548+00:00",
+          "curl_exit": 0,
+          "response": "200 https://api.bitvavo.com/v2/ETH-USDC/candles?interval=1d&start=1704067200000&end=1762991999999&limit=1440",
+          "error": "",
+          "sha256": "39a2f1deadf48c6ee03c5b124fadc9e052e218b3f07dc6013810224dfa57a979"
+        },
+        {
+          "id": "history-ETH-USDC-end-boundary",
+          "url": "https://api.bitvavo.com/v2/ETH-USDC/candles?interval=1d&start=1762819200000&end=1762992000000&limit=1440",
+          "observed_at_utc": "2026-11-13T10:37:15.721299+00:00",
+          "curl_exit": 0,
+          "response": "200 https://api.bitvavo.com/v2/ETH-USDC/candles?interval=1d&start=1762819200000&end=1762992000000&limit=1440",
+          "error": "",
+          "sha256": "a14c18e9516f3d387bc8138858d0d3549aae40a82fa42c901169657b8134b887"
+        }
+      ]
+    },
+    "BTC-USDC": {
+      "observations": 498,
+      "expected": 2143,
+      "identical_overlaps": 1,
+      "missing_count": 1645,
+      "missing_timestamps_ms": [
+        1577836800000,
+        1577923200000,
+        1578009600000,
+        1578096000000,
+        1578182400000,
+        1578268800000,
+        1578355200000,
+        1578441600000,
+        1578528000000,
+        1578614400000
+      ],
+      "ohlc_valid": true,
+      "first_returned_date": "2024-07-01",
+      "last_returned_date": "2025-11-12",
+      "accounting_period_missing_days": 1279,
+      "accounting_period_expected_days": 1777,
+      "sources": [
+        {
+          "id": "history-BTC-USDC-2020-2023",
+          "url": "https://api.bitvavo.com/v2/BTC-USDC/candles?interval=1d&start=1577836800000&end=1704067199999&limit=1440",
+          "observed_at_utc": "2026-11-13T10:36:12.915232+00:00",
+          "curl_exit": 0,
+          "response": "200 https://api.bitvavo.com/v2/BTC-USDC/candles?interval=1d&start=1577836800000&end=1704067199999&limit=1440",
+          "error": "",
+          "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        {
+          "id": "history-BTC-USDC-2024-2025",
+          "url": "https://api.bitvavo.com/v2/BTC-USDC/candles?interval=1d&start=1704067200000&end=1762991999999&limit=1440",
+          "observed_at_utc": "2026-11-13T10:36:12.909912+00:00",
+          "curl_exit": 0,
+          "response": "200 https://api.bitvavo.com/v2/BTC-USDC/candles?interval=1d&start=1704067200000&end=1762991999999&limit=1440",
+          "error": "",
+          "sha256": "c6d98665b87db2d780439ea0125d39cafdc9e09ade7710a404baacaddac8fd9e"
+        },
+        {
+          "id": "history-BTC-USDC-end-boundary",
+          "url": "https://api.bitvavo.com/v2/BTC-USDC/candles?interval=1d&start=1762819200000&end=1762992000000&limit=1440",
+          "observed_at_utc": "2026-11-13T10:37:15.970089+00:00",
+          "curl_exit": 0,
+          "response": "200 https://api.bitvavo.com/v2/BTC-USDC/candles?interval=1d&start=1762819200000&end=1762992000000&limit=1440",
+          "error": "",
+          "sha256": "c8561fc447201f6e7d814ba764fc2901f2a078e460c5370148b2cea9b5d0477e"
+        }
+      ]
+    },
+    "USDC-EUR": {
+      "observations": 1799,
+      "expected": 2143,
+      "identical_overlaps": 0,
+      "missing_count": 344,
+      "missing_timestamps_ms": [
+        1577836800000,
+        1577923200000,
+        1578009600000,
+        1578096000000,
+        1578182400000,
+        1578268800000,
+        1578355200000,
+        1578441600000,
+        1578528000000,
+        1578614400000
+      ],
+      "ohlc_valid": true,
+      "first_returned_date": "2020-12-10",
+      "last_returned_date": "2025-11-12",
+      "accounting_period_missing_days": 0,
+      "accounting_period_expected_days": 1777,
+      "sources": [
+        {
+          "id": "history-USDC-EUR-new",
+          "url": "https://api.bitvavo.com/v2/USDC-EUR/candles?interval=1d&start=1704067200000&end=1762992000000&limit=1440",
+          "observed_at_utc": "2026-11-13T10:38:34.382037+00:00",
+          "curl_exit": 0,
+          "response": "200 https://api.bitvavo.com/v2/USDC-EUR/candles?interval=1d&start=1704067200000&end=1762992000000&limit=1440",
+          "error": "",
+          "sha256": "a97e3691a7513c0635a1801aa16575af3c792e7cf0b8b6f26dc19c34b4d0f28d"
+        },
+        {
+          "id": "history-USDC-EUR-old",
+          "url": "https://api.bitvavo.com/v2/USDC-EUR/candles?interval=1d&start=1577836800000&end=1704067200000&limit=1440",
+          "observed_at_utc": "2026-11-13T10:38:34.386992+00:00",
+          "curl_exit": 0,
+          "response": "200 https://api.bitvavo.com/v2/USDC-EUR/candles?interval=1d&start=1577836800000&end=1704067200000&limit=1440",
+          "error": "",
+          "sha256": "231494d9e605f807a9b123658aee126a1ba9342f7a3028f6894adcfc5aa09ad3"
+        }
+      ]
+    }
+  }
+}

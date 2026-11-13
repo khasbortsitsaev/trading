@@ -128,7 +128,7 @@ class CausalDataFixtures(unittest.TestCase):
 
     def test_conflicting_duplicate_and_invalid_bar_fail(self):
         a = [0,'1','3','.5','2','4']
-        for bad in [[0,'1','3','.5','2.5','4'], [0,'1','.2','.5','2','4'], [0,'NaN','3','.5','2','4']]:
+        for bad in [[0.5,'1','3','.5','2','4'], [0,'1','3','.5','2.5','4'], [0,'1','.2','.5','2','4'], [0,'NaN','3','.5','2','4']]:
             with self.assertRaises(ValueError):
                 audit_candles([[a,bad]],0,86400000)
 
@@ -142,6 +142,8 @@ class CausalDataFixtures(unittest.TestCase):
         a = {'trade_id': 1,'timestamp': 100,'price': '2'}
         b = {'trade_id': 2,'timestamp': 100,'price': '2'}
         self.assertEqual(len(deduplicate_trades([a,a,b])),2)
+        with self.assertRaises(DataError):
+            deduplicate_trades([{'timestamp': 100,'price':'2'}])
         with self.assertRaises(DataError):
             deduplicate_trades([a,a|{'price':'3'}])
 

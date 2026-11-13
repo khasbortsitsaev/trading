@@ -2,7 +2,7 @@
 """Audit local public-book snapshots under explicit synthetic cost assumptions.
 
 No networking, order placement, credentials, backtesting or third-party packages.
-Raw input responses stay outside git. See docs/COSTS.md for interpretation.
+Raw input responses stay outside git. See research/reports/costs.md for interpretation.
 """
 import argparse
 from decimal import Decimal, ROUND_DOWN
@@ -138,7 +138,7 @@ def analyze(response_dir, config):
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--responses', type=Path, required=True)
-    parser.add_argument('--model', type=Path, default=Path('docs/cost-model.json'))
+    parser.add_argument('--model', type=Path, default=Path('config/cost-model.json'))
     parser.add_argument('--output', type=Path, required=True)
     args = parser.parse_args()
     result = analyze(args.responses, json.loads(args.model.read_text()))

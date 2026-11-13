@@ -1,0 +1,304 @@
+{
+  "version": "0.2",
+  "date": "2026-11-13",
+  "status": "frozen_research_working_defaults",
+  "real_data_search_authorized_by_this_file": false,
+  "agreed_scope": {
+    "objective": "capital_growth",
+    "initial_eth": "0.5",
+    "fully_funded_spot_first": true,
+    "borrowing_in_batch_1": false,
+    "leverage": false,
+    "fixed_position_count_cap": null,
+    "live_trading_authorized": false
+  },
+  "open_prerequisites": [
+    "Resolve scope of vendor permission for own-account research/retention and AI-assisted use before persistent strategy-data ingestion; no raw redistribution",
+    "Implement and audit a complete strategy runner: primitives are tested, not a backtester",
+    "Freeze collector dataset hashes and exact evaluated-code/configuration hashes before each run",
+    "Validate holdout coverage only after a champion and access bundle are frozen; do not inspect its strategy results during development",
+    "Confirm actual account/product fees and eligibility before funded use; use public conservative fee scenarios for research"
+  ],
+  "authority": "Agent-selected research screening defaults under the user instruction to resolve the remaining review items; not user-approved live preferences.",
+  "benchmark_resolution": {
+    "primary": "positive absolute growth and at least 2 percentage points annual growth above ETH after costs",
+    "defensive": "report separately without automatic promotion or changing the capital-growth objective",
+    "live_selection": "user decision later; no inference of live risk tolerance"
+  },
+  "growth_gates": {
+    "net_cagr_strictly_positive": true,
+    "eth_excess_cagr_percentage_points_min": "2",
+    "maximum_research_drawdown_fraction": "0.30",
+    "positive_development_folds_min": 3,
+    "parameter_neighbors_passing_min": 3,
+    "parameter_neighbors_total": 4,
+    "stress_total_noncommission_round_trip_bps": "30",
+    "live_drawdown_limit": null
+  },
+  "budget": {
+    "selection_variants_total": 18,
+    "families": {
+      "trend": 6,
+      "reversal": 6,
+      "cross_sectional_momentum_if_feasible": 6
+    },
+    "champions": 1,
+    "outer_folds": 4,
+    "maximum_outer_fold_scenario_evaluations": 92,
+    "holdout_selected_algorithm_evaluations": 1,
+    "unused_family_slots_reassigned": false,
+    "champion_robustness_assessments": 9,
+    "reused_neighbor_assessments": 4,
+    "additional_champion_development_scenarios": 5,
+    "holdout_access_bundles": 1,
+    "holdout_predeclared_scenarios": 3,
+    "enabled_selection_variants": 12,
+    "cross_sectional_status": "6 slots disabled: no defensible historical panel; no reassignment"
+  },
+  "split": {
+    "frequency": "daily",
+    "initial_training_observations": 730,
+    "outer_test_observations_per_fold": 180,
+    "inner_validation_observations": 180,
+    "holdout_observations": 365,
+    "minimum_total_observations_before_extra_warmup_purge": 1815,
+    "exact_utc_boundaries": {
+      "raw_warmup_start": "2020-01-01",
+      "accounting_start": "2021-01-01",
+      "development_folds": [
+        {
+          "fold": 1,
+          "train_start_inclusive": "2021-01-01",
+          "train_end_exclusive": "2023-11-24",
+          "test_start_inclusive": "2023-11-24",
+          "test_end_exclusive": "2024-05-22"
+        },
+        {
+          "fold": 2,
+          "train_start_inclusive": "2021-01-01",
+          "train_end_exclusive": "2024-05-22",
+          "test_start_inclusive": "2024-05-22",
+          "test_end_exclusive": "2024-11-18"
+        },
+        {
+          "fold": 3,
+          "train_start_inclusive": "2021-01-01",
+          "train_end_exclusive": "2024-11-18",
+          "test_start_inclusive": "2024-11-18",
+          "test_end_exclusive": "2025-05-17"
+        },
+        {
+          "fold": 4,
+          "train_start_inclusive": "2021-01-01",
+          "train_end_exclusive": "2025-05-17",
+          "test_start_inclusive": "2025-05-17",
+          "test_end_exclusive": "2025-11-13"
+        }
+      ],
+      "holdout_start_inclusive": "2025-11-13",
+      "holdout_end_exclusive": "2026-11-13",
+      "boundary_units": "UTC daily realization intervals; event-time filtering remains required",
+      "holdout_data_retrieved_for_this_audit": false
+    }
+  },
+  "uncertainty": {
+    "method": "paired_circular_moving_block_bootstrap",
+    "block_lengths_days": [
+      7,
+      30,
+      90
+    ],
+    "initial_replicates": 2000,
+    "champion_precision_replicates": 20000,
+    "seed": 20261113,
+    "family_error_level": "0.05",
+    "multiplicity_divisor": 18,
+    "finite_sample_error_control_claimed": false
+  },
+  "execution": {
+    "decision_frequency": "daily",
+    "minimum_assumed_information_delay_minutes": 5,
+    "fill_reference": "first_future_daily_candle_with_start_strictly_after_order_ready_at",
+    "pending_fill_expires": "end_of_designated_fill_interval",
+    "baseline_total_noncommission_round_trip_bps": "15",
+    "stress_total_noncommission_round_trip_bps": [
+      "30",
+      "50"
+    ],
+    "mandatory_additional_delay_bars": 1,
+    "maker_fills_assumed": false,
+    "assumed_publication_lag_minutes": 5,
+    "processing_lag_minutes": 5
+  },
+  "research_route": {
+    "venue": "Bitvavo",
+    "execution_quote": "EUR",
+    "initial_markets": [
+      "BTC-EUR",
+      "ETH-EUR"
+    ],
+    "reporting_numeraire": "USDC",
+    "fx_market": "USDC-EUR",
+    "selection_reason": "Long audited development history; USDC crypto market history too short for the required evaluation",
+    "universe_claim": "fixed limited/survivor-selected universe, not broad crypto or point-in-time panel",
+    "account_fee_model": "Public Category A entry-tier taker, no discounts; not authenticated fees",
+    "simulated_funding": "Start with 0.5 ETH owned inventory; charge only necessary conversions"
+  },
+  "variants": [
+    {
+      "id": "TREND-20",
+      "family": "trend",
+      "lookback_days": 20,
+      "rule": "Long if close[t]/close[t-L]-1 > 0, otherwise flat; only completed/available bars",
+      "neighbor_ids": [
+        "TREND-40",
+        "TREND-60",
+        "TREND-120",
+        "TREND-240"
+      ]
+    },
+    {
+      "id": "TREND-40",
+      "family": "trend",
+      "lookback_days": 40,
+      "rule": "Long if close[t]/close[t-L]-1 > 0, otherwise flat; only completed/available bars",
+      "neighbor_ids": [
+        "TREND-60",
+        "TREND-20",
+        "TREND-120",
+        "TREND-240"
+      ]
+    },
+    {
+      "id": "TREND-60",
+      "family": "trend",
+      "lookback_days": 60,
+      "rule": "Long if close[t]/close[t-L]-1 > 0, otherwise flat; only completed/available bars",
+      "neighbor_ids": [
+        "TREND-40",
+        "TREND-120",
+        "TREND-20",
+        "TREND-240"
+      ]
+    },
+    {
+      "id": "TREND-120",
+      "family": "trend",
+      "lookback_days": 120,
+      "rule": "Long if close[t]/close[t-L]-1 > 0, otherwise flat; only completed/available bars",
+      "neighbor_ids": [
+        "TREND-240",
+        "TREND-60",
+        "TREND-40",
+        "TREND-365"
+      ]
+    },
+    {
+      "id": "TREND-240",
+      "family": "trend",
+      "lookback_days": 240,
+      "rule": "Long if close[t]/close[t-L]-1 > 0, otherwise flat; only completed/available bars",
+      "neighbor_ids": [
+        "TREND-365",
+        "TREND-120",
+        "TREND-60",
+        "TREND-40"
+      ]
+    },
+    {
+      "id": "TREND-365",
+      "family": "trend",
+      "lookback_days": 365,
+      "rule": "Long if close[t]/close[t-L]-1 > 0, otherwise flat; only completed/available bars",
+      "neighbor_ids": [
+        "TREND-240",
+        "TREND-120",
+        "TREND-60",
+        "TREND-40"
+      ]
+    },
+    {
+      "id": "REVERSAL-5-1",
+      "family": "reversal",
+      "lookback_days": 5,
+      "entry_z": 1,
+      "rule": "z=(log close - trailing log-price mean)/sample std over L completed closes including t; enter if z <= -entry_z, exit if z >= 0; zero std means flat; otherwise preserve state",
+      "neighbor_ids": [
+        "REVERSAL-10-1",
+        "REVERSAL-5-2",
+        "REVERSAL-10-2",
+        "REVERSAL-20-1"
+      ]
+    },
+    {
+      "id": "REVERSAL-5-2",
+      "family": "reversal",
+      "lookback_days": 5,
+      "entry_z": 2,
+      "rule": "z=(log close - trailing log-price mean)/sample std over L completed closes including t; enter if z <= -entry_z, exit if z >= 0; zero std means flat; otherwise preserve state",
+      "neighbor_ids": [
+        "REVERSAL-10-2",
+        "REVERSAL-5-1",
+        "REVERSAL-10-1",
+        "REVERSAL-20-2"
+      ]
+    },
+    {
+      "id": "REVERSAL-10-1",
+      "family": "reversal",
+      "lookback_days": 10,
+      "entry_z": 1,
+      "rule": "z=(log close - trailing log-price mean)/sample std over L completed closes including t; enter if z <= -entry_z, exit if z >= 0; zero std means flat; otherwise preserve state",
+      "neighbor_ids": [
+        "REVERSAL-20-1",
+        "REVERSAL-5-1",
+        "REVERSAL-10-2",
+        "REVERSAL-20-2"
+      ]
+    },
+    {
+      "id": "REVERSAL-10-2",
+      "family": "reversal",
+      "lookback_days": 10,
+      "entry_z": 2,
+      "rule": "z=(log close - trailing log-price mean)/sample std over L completed closes including t; enter if z <= -entry_z, exit if z >= 0; zero std means flat; otherwise preserve state",
+      "neighbor_ids": [
+        "REVERSAL-20-2",
+        "REVERSAL-5-2",
+        "REVERSAL-10-1",
+        "REVERSAL-20-1"
+      ]
+    },
+    {
+      "id": "REVERSAL-20-1",
+      "family": "reversal",
+      "lookback_days": 20,
+      "entry_z": 1,
+      "rule": "z=(log close - trailing log-price mean)/sample std over L completed closes including t; enter if z <= -entry_z, exit if z >= 0; zero std means flat; otherwise preserve state",
+      "neighbor_ids": [
+        "REVERSAL-10-1",
+        "REVERSAL-20-2",
+        "REVERSAL-10-2",
+        "REVERSAL-5-1"
+      ]
+    },
+    {
+      "id": "REVERSAL-20-2",
+      "family": "reversal",
+      "lookback_days": 20,
+      "entry_z": 2,
+      "rule": "z=(log close - trailing log-price mean)/sample std over L completed closes including t; enter if z <= -entry_z, exit if z >= 0; zero std means flat; otherwise preserve state",
+      "neighbor_ids": [
+        "REVERSAL-10-2",
+        "REVERSAL-20-1",
+        "REVERSAL-10-1",
+        "REVERSAL-5-2"
+      ]
+    }
+  ],
+  "allocation": {
+    "rebalance": "Sell target reductions before buys; reserve cash and fees; no borrowing, leverage, forced investment or fixed position-count cap",
+    "initial_universe_is_small_for_feasibility_only": true,
+    "weight_rule": "Each active asset receives 1/N of equity for the preregistered universe size N, with fees reserved; inactive allocations remain cash. For the current two-asset study this is 0.5 each, not a permanent asset/position-count cap."
+  }
+}

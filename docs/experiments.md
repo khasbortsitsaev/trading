@@ -49,14 +49,18 @@ For the final code-commit field, record the commit containing the code/configura
 - Executed code/model/tests commit: `cb5b894542de4826f6aa69f62d9862d8cb977ba3`.
 - Commands (repository root): `PYTHONDONTWRITEBYTECODE=1 python3 -m unittest discover -s tests -v`; `PYTHONDONTWRITEBYTECODE=1 python3 scripts/analyze_costs.py --responses /tmp/cost-analysis --model docs/cost-model.json --output docs/cost-observations.json`.
 - Outcomes: all six deterministic checks passed. First observed-book run processed 20 snapshots; after a third sampling round, rerun processed 30 snapshots and 90 size scenarios. None lacked displayed depth at the modeled sizes; every response hash matched. These are correlated observations, not independent strategy trials.
-- Results: [COSTS.md](COSTS.md), [cost-observations.json](cost-observations.json), [cost-sources.json](cost-sources.json). Results recorded separately from the frozen executed code commit.
+- Results: [COSTS.md](../research/reports/costs.md), [cost-observations.json](../research/artifacts/cost-observations.json), [cost-sources.json](../research/artifacts/cost-sources.json). Results recorded separately from the frozen executed code commit.
 - Limitations: synthetic quote-fee convention; account rates/fee currency unverified; snapshots within minutes; no realized fills, historical execution calibration or maker-fill evidence. Raw responses remain outside git, so exact market replay requires those bodies. Point 1 permissions/coverage conditions remain open.
 - Decision: reject a venue-independent 0.25% cost baseline; prioritize Bitvavo USDC for further research, then resolve point 3 criteria and remaining review gates. No investment-edge conclusion.
 
 ## READY-001: resolve readiness with executed acceptance checks
-- Date: 2026-11-13. Status: planned.
+- Date: 2026-11-13. Status: complete at the stated synthetic/control and development-audit scope.
 - Evidence: synthetic accounting/control checks and a development-history quality audit; no real-data strategy or profitability experiment.
 - Plan: test owned-spot inventory and cash, quote/base fees, atomic rejection, multiple positions/rotation, minimums/precision, causal delayed references, missing/delisted prices, stale marks, holdout rejection and page overlaps. Audit fetched EUR and USDC daily coverage and FX without returns, signals or holdout retrieval.
 - Preflight metadata already observed: crypto/USDC begins July 2024 and contains two missing early days; EUR history is longer. Download page-size and timestamp-boundary truncations were diagnosed and additional boundary pages fetched. Full quality/invariant checks follow the code freeze.
 - Success: exact fixture arithmetic; no negative balances/unauthorized fills; invalid/stale/holdout inputs rejected; raw hashes verified; full missing-day counts exposed rather than filled. Gaps are reported failures of coverage, not suppressed.
-- Code commit, commands and results: to be filled after execution. No paper/live activity or economic performance claim.
+- Executed source/tests/auditor commit: `c181e5cc1d97df35e93a80369b3f46b4d7168b91` (results recorded afterward).
+- Commands from repository root: `PYTHONDONTWRITEBYTECODE=1 python3 -m unittest discover -s tests -v`; `PYTHONDONTWRITEBYTECODE=1 python3 scripts/audit_history.py --responses /tmp/readiness-resolution --output research/artifacts/readiness-history.json`.
+- Outcomes: all 24 tests passed (18 new offline-control fixtures, six existing cost fixtures). Full EUR development audit found 2,143 rows each with zero missing days; USDC/EUR has zero missing days in the 2021-onward accounting period. Crypto/USDC failed the long-history requirement and has two early gap days; it was not padded or substituted.
+- Artifacts: [readiness history](../research/artifacts/readiness-history.json), [source records](../research/artifacts/readiness-sources.json). No raw records in git; exact replay needs temporary captured bodies. No returns, strategy signals or final holdout candles were evaluated.
+- Decision: candidate historical route is BTC/ETH EUR with EUR fees and actual FX marks. Synthetic/control implementation passes its current fixtures; a full runner is not built. Vendor confirmation of research-use scope remains an external prerequisite, not a passed test. No paper/live activity or profitability claim.

@@ -51,7 +51,10 @@ def audit_candles(pages, start_ms, end_ms, interval_ms=86400000, holdout_start_m
         for row in page:
             if len(row) != 6:
                 raise DataError('Expected six candle fields')
-            t = int(row[0])
+            raw_timestamp = D(str(row[0]))
+            if not raw_timestamp.is_finite() or raw_timestamp != raw_timestamp.to_integral_value():
+                raise DataError('Timestamp must be a finite integer in milliseconds')
+            t = int(raw_timestamp)
             if holdout_start_ms is not None and t >= holdout_start_ms:
                 raise HoldoutAccessError('Response contains a holdout candle')
             if t % interval_ms or not start_ms <= t < end_ms:
@@ -77,7 +80,9 @@ def deduplicate_trades(rows):
     """Caller partitions by venue/instrument; timestamp is deliberately not a key."""
     result = {}
     for row in rows:
-        key = row['trade_id']
+        key = row.get('trade_id')
+        if key is None:
+            raise DataError('Missing trade ID; cannot safely deduplicate')
         if key in result and result[key] != row:
             raise DataError('Conflicting trade ID')
         result[key] = row

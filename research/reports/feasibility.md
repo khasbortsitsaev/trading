@@ -1,8 +1,8 @@
 # Venue and data feasibility: preliminary assessment
 
-Research date: 2026-11-12. Scope: fully funded spot, initial 0.5 ETH. Evidence is **observed public API behavior**, **official documentation**, or **research judgment**, as identified below. No strategy backtest, account action, exchange selection or live authorization occurred.
+Research date: 2026-11-12; follow-up development-history audit: 2026-11-13. Scope: fully funded spot, initial 0.5 ETH. Evidence is **observed public API behavior**, **official documentation**, or **research judgment**, as identified below. No strategy backtest, account action, exchange selection or live authorization occurred.
 
-## Recommendation and decision
+## Original preliminary recommendation (superseded for the first historical route)
 
 **Proceed with a narrow research scope; retain Kraken and Bitvavo as primary candidates. Keep Coinbase Advanced as a reserve because its current data terms conflict with the intended AI-assisted workflow.** This is a research recommendation, not a final venue decision.
 
@@ -16,7 +16,7 @@ The preliminary comparison establishes plausible technical and jurisdictional ro
 
 After publication, the new runtime reported current observations and an enforced network policy. Fresh requests to all three previously blocked APIs returned HTTP 200. The earlier CONNECT 403 blocker is resolved. No environment draft or publication changes were made during this retry.
 
-[feasibility-sources.json](feasibility-sources.json) retains the earlier pinned SDK sources and 62 timestamped HTTP observations, including response hashes, redirects, failures and successful replacements. [feasibility-audit.json](feasibility-audit.json) records the small data checks and their limitations. Raw responses remain temporary local material under `/tmp/feasibility-retry`, outside git; no redistribution rights are asserted. Hashes identify inspected versions but do not guarantee that a URL will return identical content later.
+[feasibility-sources.json](../artifacts/feasibility-sources.json) retains the earlier pinned SDK sources and 62 timestamped HTTP observations, including response hashes, redirects, failures and successful replacements. [feasibility-audit.json](../artifacts/feasibility-audit.json) records the small data checks and their limitations. Raw responses remain temporary local material under `/tmp/feasibility-retry`, outside git; no redistribution rights are asserted. Hashes identify inspected versions but do not guarantee that a URL will return identical content later.
 
 ## 1. Jurisdiction and products
 
@@ -127,4 +127,38 @@ Remaining conditions before selecting and ingesting an experiment dataset:
 4. Confirm actual Belgian onboarding entity/product/pair availability before any funded account use. Treat public register/catalogue observations as general evidence only.
 5. Keep historical universe reconstruction gated; do not substitute today's surviving coins for a point-in-time universe.
 
-Update on 13 November 2026: the **point 2 cost comparison** is now recorded in [COSTS.md](COSTS.md), including current commissions, limited book observations and explicitly uncalibrated friction scenarios. Points 3-6 now have concrete specifications in [RESEARCH_PROTOCOL.md](RESEARCH_PROTOCOL.md), [RISK_SCOPE.md](RISK_SCOPE.md) and [DATA_EXECUTION.md](DATA_EXECUTION.md); numerical criteria and implemented data/execution admission checks remain open. The synthetic strategy-accounting prototype remains subsequent work. Nothing in this assessment establishes an investment edge or authorizes live trading.
+Update on 13 November 2026: the **point 2 cost comparison** is now recorded in [COSTS.md](costs.md), including current commissions, limited book observations and explicitly uncalibrated friction scenarios. Points 3-6 now have concrete specifications in [RESEARCH_PROTOCOL.md](../../docs/METHODOLOGY.md), [RISK_SCOPE.md](../../docs/METHODOLOGY.md) and [DATA_EXECUTION.md](../../docs/METHODOLOGY.md); numerical criteria and implemented data/execution admission checks remain open. The synthetic strategy-accounting prototype remains subsequent work. Nothing in this assessment establishes an investment edge or authorizes live trading.
+
+## Resolution from the fuller development-history audit, 13 November 2026
+
+This follow-up supersedes the original assumption that cheap USDC books were automatically the best historical research route. The source checks and resulting coverage are in [readiness-history.json](../artifacts/readiness-history.json) and [readiness-sources.json](../artifacts/readiness-sources.json). No returns, strategy signals or final holdout prices were evaluated.
+
+| Bitvavo market | Audited returned development observations | Coverage/decision |
+|---|---:|---|
+| BTC/EUR | 2,143 daily candles | Complete from 2020-01-01 through 2025-11-12; candidate first research route |
+| ETH/EUR | 2,143 | Same complete window |
+| USDC/EUR | 1,799 | Returned from 2020-12-10 through 2025-11-12; no missing days during accounting from 2021-01-01 |
+| BTC/USDC | 498 | First returned 2024-07-01; two missing July days and too short for the planned evaluation |
+| ETH/USDC | 495 | First returned 2024-07-04; same two missing early days and insufficient history |
+
+Earliest returned observations are not independently confirmed listing dates. The audit corrected an initial 1,440-row page truncation and misaligned end-boundary requests with explicit prefix/boundary requests. Identical overlap rows were reconciled; conflicting rows, invalid OHLC, future/holdout bars and unexpected gaps would be rejected or reported. No gap was turned into a trade.
+
+Choose BTC/ETH **EUR execution with EUR fees**, and use USDC/EUR only for valuation/conversions where required. Preserve the 2020 feature warmup; accounting begins in 2021. Do not use USDC fees to make the EUR history look cheaper. The holdout remains 2025-11-13 through 2026-11-12 and was not retrieved by this audit. Its eventual quality must be checked after a champion is frozen; missing coverage must not be repaired by selecting favorable new dates.
+
+### Source-use resolution and its actual boundary
+
+The practical intended scope is private own-account strategy research, official APIs, no redistribution of raw records, no customer data service and no training of a general-purpose AI model on vendor data. The [Bitvavo developer agreement](https://bitvavo.com/en/developer-agreement), sections 2-3, licenses use tied to its own/users' service use and limits storage to that authorized use. The website's service-benchmarking restrictions should not be silently equated with evidence that comparing a portfolio with ETH is explicitly permitted or prohibited.
+
+**No explicit vendor confirmation was found covering standalone historical/AI-assisted research and retention.** That specific external permission remains unconfirmed; an agent cannot grant it. Bounded feasibility checks and synthetic code do not establish a reusable research-data license. Coinbase's explicit AI restrictions do not become permission by switching endpoints. Coin Metrics' own GitHub data license was checked as an alternative and is **CC BY-NC 4.0**, not CC BY or CC0; it was not adopted as an unrestricted substitute for a capital-growth project. Its data were not downloaded.
+
+The exact clarification needed from Bitvavo is ready to send, but **has not been sent** because no external message was authorized:
+
+> We are developing a private, own-account, fully funded spot research tool for possible use on Bitvavo. May we retrieve and retain historical public BTC/EUR, ETH/EUR and USDC/EUR API candles to simulate our own strategies, with AI-assisted software development/analysis? We will not redistribute raw market records, offer a customer data product, or train a general-purpose model on the data. Does this use fall within sections 2-3 of the Developer Agreement? If additional permission or terms are required, please identify them, including whether limited derived results may be published.
+
+A support answer needs to cover the actual use; no request for an API key or funded account is implied. No vendor has been contacted and no paid license accepted. Until this is clarified, the retained project outputs are code, synthetic fixtures, source references and diagnostic counts/hashes, not a strategy dataset or profitability assessment.
+
+### Fees and execution readiness
+
+Authenticated account fees cannot be confirmed without an account, and no account credentials were supplied or requested. Research uses the higher public entry tier with no discount rather than guessing an entitlement. This resolves the simulation assumption; actual funding/product eligibility remains a later funded-use prerequisite. Realized slippage cannot be measured without executions, so the initial screen uses explicit adverse friction/delay scenarios and does not call them calibrated fills.
+
+Offline accounting and data controls are now implemented in `src/trading_research/core.py`, with 18 new synthetic tests alongside the six prior cost checks. They cover cash/inventory feasibility, multiple holdings, fee assets, precision/minimums, causal designated references, missing/stale/delisted observations, overlap handling and holdout rejection. This resolves the absence of executed low-level checks; it does not claim a complete strategy runner or venue reconciliation.

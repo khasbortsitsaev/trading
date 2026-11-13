@@ -48,7 +48,7 @@ A future backtest must track rolling qualifying notional, FX conversion for tier
 
 ## 2. Spread and size-dependent depth observations
 
-Thirty public order-book snapshots were collected: three rounds for five markets at two venues, about **11:04:55, 11:05:46 and 11:08:30 Brussels time** on 13 November (10:04-10:08 UTC). Requests were not simultaneous; these cannot establish an executable cross-venue arbitrage. The prior day's small ETH samples remain in [FEASIBILITY.md](FEASIBILITY.md) and were not pooled with these different-depth observations.
+Thirty public order-book snapshots were collected: three rounds for five markets at two venues, about **11:04:55, 11:05:46 and 11:08:30 Brussels time** on 13 November (10:04-10:08 UTC). Requests were not simultaneous; these cannot establish an executable cross-venue arbitrage. The prior day's small ETH samples remain in [FEASIBILITY.md](feasibility.md) and were not pooled with these different-depth observations.
 
 The calculator treats 0.5 ETH marked at each venue's same-round ETH/quote midpoint as a hypothetical quote budget, then sizes at 10%, 50% and 100% of that budget. It reserves the taker fee, consumes displayed asks and rounds base quantity down before evaluating the corresponding sale against displayed bids. This is **90 frozen-book scenarios**, not 90 executed trades or independent observations. The initial liquidation of the actual ETH endowment is not included; see section 4.
 
@@ -65,7 +65,7 @@ The calculator treats 0.5 ETH marked at each venue's same-round ETH/quote midpoi
 | kraken ETH-USDC | 0.05-2.16 | 0.000 | 1.5878-1.6086% | 1.6134-1.6349% |
 | kraken USDC-EUR | 1.11-1.11 | 0.000 | 0.4102-0.4102% | 0.4119-0.4119% |
 
-All 90 scenarios fit within the returned 50 levels. This verifies depth in those responses, not reliable capacity, historical liquidity or fills. Quantity and market minimums are documented in [FEASIBILITY.md](FEASIBILITY.md); the calculator enforces base precision and budgets, but does not implement every venue-specific minimum, partial-fill fee rounding or actual fee-asset rule. Do not submit its quantities as orders.
+All 90 scenarios fit within the returned 50 levels. This verifies depth in those responses, not reliable capacity, historical liquidity or fills. Quantity and market minimums are documented in [FEASIBILITY.md](feasibility.md); the calculator enforces base precision and budgets, but does not implement every venue-specific minimum, partial-fill fee rounding or actual fee-asset rule. Do not submit its quantities as orders.
 
 Definitions:
 
@@ -78,7 +78,7 @@ Definitions:
 
 ## 3. Fee accounting, makers and stress scenarios
 
-The executable [model](cost-model.json) uses a clearly labeled **synthetic quote-currency fee convention**. For quantity `q`, buy VWAP `A`, sell VWAP `B`, and per-side rates `f_buy`, `f_sell`:
+The executable [model](../../config/cost-model.json) uses a clearly labeled **synthetic quote-currency fee convention**. For quantity `q`, buy VWAP `A`, sell VWAP `B`, and per-side rates `f_buy`, `f_sell`:
 
 ```
 buy cash outlay = q * A * (1 + f_buy)
@@ -139,15 +139,18 @@ From the repository root:
 
 ```sh
 PYTHONDONTWRITEBYTECODE=1 python3 -m unittest discover -s tests -v
-PYTHONDONTWRITEBYTECODE=1 python3 scripts/analyze_costs.py --responses /tmp/cost-analysis --model docs/cost-model.json --output docs/cost-observations.json
+PYTHONDONTWRITEBYTECODE=1 python3 scripts/analyze_costs.py --responses /tmp/cost-analysis --model config/cost-model.json --output research/artifacts/cost-observations.json
 ```
 
-The second command needs the temporary raw responses used in this session. A fresh checkout alone can run the synthetic tests, but cannot replay the exact market observations without those response bodies. This is an explicit limitation, not a claim of a fully archived dataset. [cost-sources.json](cost-sources.json) stores 44 HTTP observation records and hashes, including a failed obsolete support URL; [cost-observations.json](cost-observations.json) stores limited derived scenario results, not raw books. All response hashes used by the calculator matched; 30 snapshots and 90 size scenarios were processed, none insufficient at the sampled sizes. No software dependency installation, credential, real order, paper trade or strategy performance trial occurred.
+The second command needs the temporary raw responses used in this session. A fresh checkout alone can run the synthetic tests, but cannot replay the exact market observations without those response bodies. This is an explicit limitation, not a claim of a fully archived dataset. [cost-sources.json](../artifacts/cost-sources.json) stores 44 HTTP observation records and hashes, including a failed obsolete support URL; [cost-observations.json](../artifacts/cost-observations.json) stores limited derived scenario results, not raw books. All response hashes used by the calculator matched; 30 snapshots and 90 size scenarios were processed, none insufficient at the sampled sizes. No software dependency installation, credential, real order, paper trade or strategy performance trial occurred.
 
 ## Decision and remaining uncertainty
 
 The preliminary cost comparison is complete enough to **reject a venue-independent 0.25% baseline** and prioritize Bitvavo USDC for research. Current public commissions are verified and pair-specific; maker fills, actual account fee currency, dynamic tiers and realized execution costs are not verified. No final exchange or live allocation decision is made.
 
-Carry forward the data-use/account/coverage conditions in [FEASIBILITY.md](FEASIBILITY.md). Before interpreting backtest economics, collect permitted multi-session observations across volatility regimes and the actual universe, confirm applicable account/market fees and model initial/final conversions and minimum orders. Do not expand into ML to compensate for weak net returns.
+Carry forward the data-use/account/coverage conditions in [FEASIBILITY.md](feasibility.md). Before interpreting backtest economics, collect permitted multi-session observations across volatility regimes and the actual universe, confirm applicable account/market fees and model initial/final conversions and minimum orders. Do not expand into ML to compensate for weak net returns.
 
-Review continuation: [RESEARCH_PROTOCOL.md](RESEARCH_PROTOCOL.md) specifies proposed point 3 criteria and point 5 trial/holdout controls; [RISK_SCOPE.md](RISK_SCOPE.md) formalizes point 4; [DATA_EXECUTION.md](DATA_EXECUTION.md) specifies point 6. Numerical policy confirmation and implemented data/execution checks remain required before real-data strategy evaluation. Live limits remain separate.
+Review continuation: [RESEARCH_PROTOCOL.md](../../docs/METHODOLOGY.md) specifies proposed point 3 criteria and point 5 trial/holdout controls; [RISK_SCOPE.md](../../docs/METHODOLOGY.md) formalizes point 4; [DATA_EXECUTION.md](../../docs/METHODOLOGY.md) specifies point 6. Numerical policy confirmation and implemented data/execution checks remain required before real-data strategy evaluation. Live limits remain separate.
+
+## Subsequent route correction
+The fuller development-history audit found crypto/USDC history too short for the frozen evaluation. The initial historical route is now BTC/ETH EUR with the appropriate higher EUR fees, while USDC remains the reporting numeraire through actual USDC/EUR marks. The cheaper USDC recommendation remains relevant to later properly scoped or prospective research; it must not be transplanted as the fee model for EUR historical fills. See the follow-up in [feasibility.md](feasibility.md).

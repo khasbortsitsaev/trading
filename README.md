@@ -1,46 +1,31 @@
 # Crypto Quant Research
 
-Research-first cryptocurrency trading project. The objective is to identify, reproduce where useful, and independently validate systematic trading strategies with **net economic profitability**, then decide whether a paper-trading and live-trading system is justified.
+A research project to test whether systematic crypto strategies can grow an initial **0.5 ETH** after realistic costs. No profitable strategy or live system has been established.
 
-**Status (2026-11-13):** all six review topics now have concrete specifications or preliminary assessments. Numerical research gates remain proposed, and real-data admission conditions remain open. A small cost calculator has six previously passing synthetic checks; no strategy backtest, validated alpha, selected exchange or live system exists.
+## The plan
 
-## Agreed constraints
-- Initial endowment: **0.5 ETH**, not EUR 500. No arbitrary limit on the number of positions or assets.
-- Research/reporting numeraire: **USDC / USD equivalent**, with ETH buy-and-hold and cash benchmarks. Report ETH-equivalent results too.
-- Long and short strategies may be researched, but **no leveraged portfolio exposure** is desired. Gross exposure <= 100% of equity is an initial constraint to validate; derivatives and borrowed shorts still introduce margin/liquidation risks.
-- No commitment to any specific exchange or execution venue yet. **Bitvavo is the reference behind the initial cost estimate**, not a selected execution venue.
-- Focus on returns **after** commissions, spread, slippage, and where applicable borrowing/funding/conversion costs.
-- Preserve the original **0.15%, 0.25%, 0.50% all-in round-trip scenarios** as legacy comparisons. Use [verified market-specific fees and explicit friction scenarios](docs/COSTS.md) for new research: entry-tier taker commissions sum to approximately 0.10% for Bitvavo crypto/USDC, 0.50% for Bitvavo crypto/EUR, and 1.60% for current Kraken regular spot. These exclude spread/slippage and do not establish account rates. Do not double-count costs.
-- Prefer reproducible, interpretable signals over complex ML for its own sake.
-- Academic papers are candidate specifications, **not proof** of profitability for our account.
-- No real orders, API-key permissions, or autonomous trading until explicit authorization and a separate safety review.
+Start with fully funded spot, no leverage, and simple trend/reversal baselines. Use auditable accounting, chronological validation and one protected final holdout. Record failures as carefully as successes. Report USDC, EUR and ETH-equivalent wealth against ETH holding and cash. No arbitrary position-count cap.
 
-## Workflow
-First complete the six [review priorities](docs/ROADMAP.md): preliminary venue/data feasibility, calibrated costs, decision criteria, shorting constraints, a frozen research protocol, and a data/execution specification. These precede real-data strategy development. Initial scope is fully funded spot; the objective is capital growth with no planned withdrawals.
+The six original review items are summarized in [the project plan](docs/ROADMAP.md). The [methodology](docs/METHODOLOGY.md) is the single source of research rules; [decisions](docs/DECISIONS.md) distinguishes agreed objectives from agent-selected working defaults. See [current state](docs/state.md) for actual results and the next task.
 
-1. Maintain a broad, evidence-graded literature catalogue; distinguish peer-reviewed research from working papers.
-2. Build a reusable Python data and backtesting research platform, not an exchange-connected bot.
-3. Implement standalone strategies, then test combinations and alternative portfolio construction.
-4. Use chronological nested walk-forward validation; purging/embargo when labels overlap; an untouched final holdout. Track the number of hypotheses tested.
-5. Evaluate net compounded return, ETH-relative return, Sharpe/Sortino, drawdown, turnover, capital utilization, and stability across regimes and cost assumptions.
-6. Recheck preliminary venue/data feasibility against experiment findings and current access conditions.
-7. Only after a research go/no-go decision: prospective paper trading, then optionally a tightly controlled live experiment.
+## What is actually verified
 
-## Documentation
-- [Agent working rules](AGENTS.md)
-- [Project decisions](docs/DECISIONS.md)
-- [Strategy universe](docs/STRATEGIES.md)
-- [Research bibliography](docs/PAPERS.md)
-- [Validation and costs](docs/METHODOLOGY.md)
-- [Development roadmap](docs/ROADMAP.md)
-- [Preliminary venue and data feasibility](docs/FEASIBILITY.md)
-- [Spot cost analysis and reproducible accounting checks](docs/COSTS.md)
-- [Decision criteria and bounded research protocol, points 3 and 5](docs/RESEARCH_PROTOCOL.md)
-- [Spot scope and future shorting gate, point 4](docs/RISK_SCOPE.md)
-- [Data and execution contract, point 6](docs/DATA_EXECUTION.md)
+- Public venue/pair fee schedules and small-book cost scenarios, not realized trading costs.
+- Development-only Bitvavo daily coverage: 2,143 BTC/EUR and ETH/EUR candles each, without missing days; USDC/EUR conversion data covers the chosen accounting period. Crypto/USDC history is shorter and is not substituted into a five-year test.
+- Offline accounting, temporal/data guards and synthetic acceptance fixtures. These do not prove profitability and are not a full backtester.
 
-## Research principle
-The goal is not to find the best historical backtest. It is to find an economically meaningful, implementable edge that survives out-of-sample testing and realistic costs. A negative result is a valid outcome.
+Source evidence lives in [research/reports](research/reports/) and [research/artifacts](research/artifacts/), not in a growing set of working documents. Raw exchange data and credentials are not committed. Research-data permission remains a specific external clarification; account-specific fees/eligibility are confirmed before funded use. No vendor was contacted automatically.
 
-## Validate the cost-accounting helper
-From the repository root, run `PYTHONDONTWRITEBYTECODE=1 python3 -m unittest discover -s tests -v` (standard library only). These are synthetic accounting checks, not trading-profitability evidence. See docs/COSTS.md for the observed-book methodology and its replay limitations.
+## Run checks
+
+Python 3.12; standard library only. From the repository root:
+
+```sh
+PYTHONDONTWRITEBYTECODE=1 python3 -m unittest discover -s tests -v
+```
+
+The [cost helper](scripts/analyze_costs.py) and [history auditor](scripts/audit_history.py) consume local response bodies outside git. Their exact market observations cannot be replayed from hashes alone. All experiment plans/results are in [experiments](docs/experiments.md); source/code commits are recorded there.
+
+## Durable context
+
+[Agent rules](AGENTS.md), [strategy catalogue](docs/STRATEGIES.md), [candidate papers](docs/PAPERS.md) and [BTC/objective context](docs/OBJECTIVE_AND_BTC.md). Papers are hypotheses, not independently reproduced results. Paid commitments, new borrowing risk and all live trading require separate decisions. Completed project work is committed and pushed to GitHub.
