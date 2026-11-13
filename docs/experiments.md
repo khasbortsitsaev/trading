@@ -104,3 +104,11 @@ For the final code-commit field, record the commit containing the code/configura
 - Limitations: fixed survivor-selected two-asset universe; historical USD-source/USDC-cost proxy, not actual USDC wealth or Bitvavo fills; current rule/minimum scenarios, not reconstructed historical venue rules; no full robustness or bootstrap result. Additional planned variants remain untested and must stay inside the existing frozen budget.
 
 - Final data-admission hardening at `bfbf9f6`: the runner now binds source manifest bytes/provider/quote/completeness as well as normalized price bytes, preventing accidental USD-to-USDC relabeling. All 40 tests passed; the actual admitted manifest passed the same checks. No economic rerun, parameter change or additional strategy trial followed this metadata validation.
+
+## DEV-001 S1 close-out: exact replay plan
+
+- Purpose: recover the missing ledger to explain the already completed S1 test, not evaluate a new hypothesis. One historical variant remains used.
+- Recovery: existing collector, unchanged development dates, `/workspace/work/s1-closeout/recovered-data`; all 2,143 rows per asset gap-free, normalized hash matches DEV-001 exactly. Newly captured manifest metadata is explicitly rebound in policy, retaining the previous manifest hash. No holdout retrieval.
+- Before replay: commit the reviewed admission and this plan. Use the existing CLI, original TREND-20 settings and scored dates, no parameter changes. Write full replay privately, preserve the original public summary. Require result SHA-256 `2821d88fc4c60c9f01b2732126fb42dc53cc41c885c858760bfc03bac5ca99fc` before using examples. Stop on mismatch.
+- Diagnostic plan: classify fills by the decision that generated them (signal entry, initial allocation, signal exit, active-state resize or residual cleanup), check signal formulas/timestamps, and summarize commission, adverse modeled cost and traded notional. These are descriptive, not a zero-cost counterfactual or independent replication. Record only aggregate diagnostics publicly; keep full source-derived trades outside Git.
+- Decision rule: baseline already fails growth/drawdown screens; do not spend credits on champion robustness/holdout evaluation for this failed baseline. Report remaining evidence gaps.

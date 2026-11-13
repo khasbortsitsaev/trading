@@ -320,7 +320,7 @@
   "data_permission_resolution": "Do not treat uncertainty about one exchange as a project-wide blocker. Use another suitable source as needed; do not assume every provider permits unrestricted access or redistribution.",
   "dataset_admission": {
     "normalized_sha256": "5d1d450f98b2ba61c8b956b53a113f8b03f3a1a5fb1cd51b309cd83c611b26f0",
-    "manifest_sha256": "b8747426a9b97344accfe797ce216b1f74f32426b7687e096376ee803adc29d5",
+    "manifest_sha256": "668aa3bdb7c563ff06f0b014ecfc46b437426f893bc2d68b3efddc62cd1332c2",
     "source": "Bitstamp public OHLC API",
     "quote": "USD",
     "rows_per_asset": 2143,
@@ -329,7 +329,13 @@
     "holdout_included": false,
     "quality": "No gaps, valid OHLC/nonnegative volume; fixed limited universe only",
     "use_boundary": "Supported public API, private research, no raw-data redistribution; not an unrestricted commercial-data license",
-    "coverage_binding": "Existing development fold dates fit source history. No strategy performance examined before freezing this admission."
+    "coverage_binding": "Existing development fold dates fit source history. No strategy performance examined before freezing this admission.",
+    "recovery": {
+      "date": "2026-11-13",
+      "previous_manifest_sha256": "b8747426a9b97344accfe797ce216b1f74f32426b7687e096376ee803adc29d5",
+      "reason": "Original local data/ledger missing; six bounded collector requests recovered identical normalized development prices. Retrieval metadata recaptured; original results unchanged.",
+      "normalized_prices_identical": true
+    }
   },
   "poc": {
     "families": [
