@@ -52,3 +52,11 @@ For the final code-commit field, record the commit containing the code/configura
 - Results: [COSTS.md](COSTS.md), [cost-observations.json](cost-observations.json), [cost-sources.json](cost-sources.json). Results recorded separately from the frozen executed code commit.
 - Limitations: synthetic quote-fee convention; account rates/fee currency unverified; snapshots within minutes; no realized fills, historical execution calibration or maker-fill evidence. Raw responses remain outside git, so exact market replay requires those bodies. Point 1 permissions/coverage conditions remain open.
 - Decision: reject a venue-independent 0.25% cost baseline; prioritize Bitvavo USDC for further research, then resolve point 3 criteria and remaining review gates. No investment-edge conclusion.
+
+## READY-001: resolve readiness with executed acceptance checks
+- Date: 2026-11-13. Status: planned.
+- Evidence: synthetic accounting/control checks and a development-history quality audit; no real-data strategy or profitability experiment.
+- Plan: test owned-spot inventory and cash, quote/base fees, atomic rejection, multiple positions/rotation, minimums/precision, causal delayed references, missing/delisted prices, stale marks, holdout rejection and page overlaps. Audit fetched EUR and USDC daily coverage and FX without returns, signals or holdout retrieval.
+- Preflight metadata already observed: crypto/USDC begins July 2024 and contains two missing early days; EUR history is longer. Download page-size and timestamp-boundary truncations were diagnosed and additional boundary pages fetched. Full quality/invariant checks follow the code freeze.
+- Success: exact fixture arithmetic; no negative balances/unauthorized fills; invalid/stale/holdout inputs rejected; raw hashes verified; full missing-day counts exposed rather than filled. Gaps are reported failures of coverage, not suppressed.
+- Code commit, commands and results: to be filled after execution. No paper/live activity or economic performance claim.
