@@ -4,7 +4,7 @@ Updated 13 November 2026. This is the single methodology for the six review item
 
 ## Objective and decision criteria
 
-The agreed objective is capital growth from **0.5 ETH**, with no planned withdrawals. Use USDC as the primary trading/research numeraire, with USD-source data where suitable and ETH-equivalent comparisons. EUR reporting is optional for eventual funding/cash-out planning, not a requirement for routine trading. Compare identical dates against holding the original ETH and a no-trade cash benchmark, charging each only its actual necessary conversions. Stablecoins and cash are not assumed risk-free or interest-bearing.
+The agreed objective is capital growth, with no planned withdrawals. Starting inventory is an editable illustration in config/runner.json, not a capital constraint. Use USDC as the primary trading/research numeraire, with USD-source data where suitable and ETH-equivalent comparisons. EUR reporting is optional for eventual funding/cash-out planning, not a requirement for routine trading. Compare identical dates against holding the original ETH and a no-trade cash benchmark, charging each only its actual necessary conversions. Stablecoins and cash are not assumed risk-free or interest-bearing.
 
 To resolve the previously open research settings, the agent has frozen the following **research-only working defaults** under the user's instruction to resolve the review. These are not a statement that the user chose these as personal/live investment preferences:
 
@@ -24,7 +24,7 @@ The user clarified that **EUR is not a trading constraint**. Do not select an ex
 
 - Research long historical series in USD or USDC from a suitable source independently of the eventual execution venue. Select source, coverage and supported access methods before interpreting strategy results. TradingView exports may be evaluated if suitable; their availability or completeness is not assumed.
 - Prioritize low total-cost spot execution. Bitvavo crypto/USDC is the current fee-based candidate, not a final venue commitment. Compare commissions, spread/slippage and necessary conversions together, rather than insisting on one quote currency regardless of cost.
-- No routine EUR conversion is required. Starting with 0.5 ETH does not require EUR funding; cash/rotation legs can remain in USDC. Model EUR only if actual external funding or final cash-out uses it.
+- No routine EUR conversion is required. Starting with owned ETH does not require EUR funding; cash/rotation legs can remain in USDC. Model EUR only if actual external funding or final cash-out uses it.
 - The audited EUR data remain valid QA evidence or a cross-check, not a mandatory route. The shorter Bitvavo crypto/USDC history does not force all signal research onto EUR books or fees; another source can supply longer history.
 - Distinguish signal data, execution assumptions and reporting units. Longer USD-source studies do not reproduce Bitvavo USDC fills. Record source-specific volume for volume/OBV signals, price-basis differences and USD/USDC deviations; never assert USD and USDC are identical prices. Use available venue overlap for execution-basis validation, with explicit limitations elsewhere.
 - A fixed BTC/ETH study retains selection/survivorship limitations and is not a historical all-coin universe. Cross-sectional confirmation still needs past eligibility data.
@@ -44,6 +44,8 @@ Initial scope is **fully funded long/flat spot**: nonnegative cash/inventory and
 Borrowed shorts remain possible future research, not initial scope. A 1x gross portfolio can still have borrowing, recall, collateral and liquidation risk. A later short-product decision requires actual jurisdiction/product access, historical financing or stressed rates, collateral/haircuts, forced-cover and liquidation rules, loss scenarios and explicit user acceptance of the residual risk. Do not substitute derivatives to bypass the no-leverage preference.
 
 ## Finite first batch and protocol
+
+**POC update:** S1 first, then S2 and S3. The multi-variant batch below is retained as a paused preregistration, not the next task. Preserve the one completed trial and all prior settings/results. No generic batch orchestrator is required for S1 close-out. S2 needs a separate specification before evaluation.
 
 The first batch has a cap of 18 selection variants. Twelve are now specified in the policy: six simple positive-return trend lookbacks and six long/flat reversal configurations on the fixed BTC/ETH universe. Six cross-sectional slots remain disabled until feasible. Exact signal definitions, four nearest preregistered neighbors and equal-universe-weight allocation are recorded before evaluating returns. An inactive asset's weight stays in cash; do not renormalize into an always-invested portfolio. No ML, RL or allocation-model search in this batch.
 

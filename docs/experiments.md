@@ -1,7 +1,7 @@
 # Experiment registry
 
 ## Status
-As of 2026-11-13, COST-001 completed a deterministic software/accounting audit and small public-book cost scenarios. No strategy backtest, economic experiment or profitability finding exists.
+As of 2026-11-13, DEV-001 (S1 / TREND-20) is complete and failed the working economic screens. One historical variant evaluated; remaining batch paused for S1 close-out. No validated edge, holdout access or live trading. Historical entries below preserve the settings and decisions at the time.
 
 ## Recording rules
 Create an entry before running an experiment. Preserve failed, negative, invalid and inconclusive outcomes. Separate software/accounting checks on synthetic data from economic evidence on historical or prospective market data. Never silently replace an earlier result after changing parameters or data.
@@ -24,7 +24,7 @@ Create an entry before running an experiment. Preserve failed, negative, invalid
 - Venue, universe selection rule, symbols, timeframe and dates:
 - Signal, allocation and execution timing:
 - Parameters, random seed and number of variants/trials:
-- Initial 0.5 ETH valuation, conversion, numeraire and benchmarks:
+- Configured starting inventory, valuation, conversion, numeraire and benchmarks:
 - Gross exposure, collateral, short/borrow assumptions:
 - Costs: entry/exit commissions, spread, slippage, conversion and borrow/funding where applicable; identify all-in versus component accounting:
 - Chronological splits, purging/embargo if needed, and final holdout policy:

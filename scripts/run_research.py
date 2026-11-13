@@ -29,7 +29,7 @@ def main():
     p.add_argument('--variant',default='TREND-20')
     p.add_argument('--start',default='2021-01-01')
     p.add_argument('--end-exclusive',default='2021-07-20')
-    p.add_argument('--friction-bps',default='15')
+    p.add_argument('--friction-bps',help='Override config/runner.json round-trip friction for a recorded scenario')
     p.add_argument('--extra-delay-bars',type=int,default=0)
     p.add_argument('--output',type=Path,required=True)
     p.add_argument('--summary',type=Path)
@@ -38,6 +38,8 @@ def main():
     variants={x['id']:x for x in policy['variants']}
     if args.variant not in variants:
         p.error('Variant is not in the frozen policy')
+    if not args.synthetic and args.variant != policy['poc']['active_variant']:
+        p.error('POC is focused on TREND-20; preregister a scope change before another historical variant')
     cutoff=stamp(policy['split']['exact_utc_boundaries']['holdout_start_inclusive'])
     if args.synthetic:
         data=synthetic.panel()
@@ -58,10 +60,10 @@ def main():
                    minimum_base=D(x['minimum_base']),minimum_quote=D(x['minimum_quote']))
            for a,x in execution['markets'].items()}
     result=run(data,variants[args.variant],stamp(args.start),stamp(args.end_exclusive),
-               Settings(quote=quote,source=provider,fee=D(execution['fee_per_execution']),
+               Settings(initial_eth=D(execution['initial_eth']),quote=quote,source=provider,fee=D(execution['fee_per_execution']),
                         publication_minutes=execution['publication_lag_minutes'],
                         processing_minutes=execution['processing_lag_minutes'],rules=rules,
-                        friction_round_trip_bps=D(args.friction_bps),extra_delay_bars=args.extra_delay_bars),holdout_start_ms=cutoff)
+                        friction_round_trip_bps=D(args.friction_bps if args.friction_bps is not None else execution['default_noncommission_round_trip_bps']),extra_delay_bars=args.extra_delay_bars),holdout_start_ms=cutoff)
     canonical=json.dumps(result,sort_keys=True,separators=(',',':'),allow_nan=False).encode()
     commit=subprocess.check_output(['git','rev-parse','HEAD'],cwd=ROOT,text=True).strip()
     source_dirty=subprocess.run(['git','diff','--quiet','HEAD','--','src','scripts','tests','config'],cwd=ROOT).returncode!=0

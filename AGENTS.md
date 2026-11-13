@@ -1,6 +1,6 @@
 # Instructions for AI research/development agents
 
-Read README.md and all files in docs/ before proposing architectural or research changes.
+Read docs/state.md, README.md and relevant docs before changes. Historical experiment records are evidence, not an instruction to repeat completed work.
 
 ## Mission
 Build a modular, auditable Python research environment for systematic cryptocurrency strategies. Research is the immediate objective. Do not implement exchange order execution without explicit separate authorization.
@@ -12,7 +12,7 @@ Build a modular, auditable Python research environment for systematic cryptocurr
 4. Maintain a sealed final holdout. Do not repeatedly optimize against it. Document publication-period contamination and data-snooping risks.
 5. Evaluate actual portfolio P&L, not classification accuracy alone. Include fees, spread, slippage, borrow/funding, conversion costs where applicable. Distinguish assumptions from measured costs.
 6. Support multiple concurrent positions and dynamic asset universes; do not invent a maximum position count.
-7. Initial wealth is 0.5 ETH. Use USDC as primary research numeraire, with ETH hold and cash benchmarks; preserve reproducible start-date conversion rates.
+7. Capital is configurable; the expected live starting amount is an illustration, not a constraint. Use USDC/USD-source reporting with ETH hold and cash benchmarks; preserve start-date valuation.
 8. No leveraged gross exposure in constrained experiments. Treat shorting as potentially collateralized/borrowed even at 1x gross; check exchange feasibility before declaring executable.
 9. Keep strategy signal generation, allocation, backtesting, and future execution as separate interfaces. Test each independently.
 10. All experiments must log: dataset version, symbols/universe, exchange, timeframe, splits, fees, strategy parameters, seed, git commit, metrics, and any exclusions.
@@ -29,10 +29,10 @@ Build a modular, auditable Python research environment for systematic cryptocurr
 - Propose focused changes and explain their research implications.
 
 ## Communication
-Keep updates concise. Clearly separate confirmed findings, assumptions, open questions, and next actions. Do not claim success before tests run.
+Lead each completed step with its conclusion, relevant evidence, one next step and any specific user input needed (or "none"). Keep explanations short but include the algorithm and editable settings. Prefer updating existing docs over adding new ones. Phase 1 is S1/S2/S3 only; finish S1 end to end before parallel strategy development. Keep strategy results separate and reuse existing code or suitable licensed tools before building more infrastructure. Do not claim an edge before evidence or success before checks.
 
 ## Session continuity
-- Start by reading docs/state.md, then README.md and the remaining docs, including docs/DECISIONS.md.
+- Start by reading docs/state.md, then README.md, docs/DECISIONS.md and docs relevant to the task.
 - Treat repository documentation as durable project context. Verify it against current code and evidence; do not assume chat history is available.
 - Use docs/DECISIONS.md for agreed choices and reasons, docs/PAPERS.md for sources, docs/STRATEGIES.md for hypotheses, and docs/METHODOLOGY.md for validation rules. Do not create duplicate decision or research logs with different capitalization.
 - Before an experiment, record its hypothesis, specification and validation plan in docs/experiments.md. Log unsuccessful, invalid and inconclusive runs as well as positive ones.
