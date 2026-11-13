@@ -2,26 +2,21 @@
 
 Updated 13 November 2026.
 
-## What changed
-The six review items now have research working decisions, source evidence and executed offline checks, rather than only specifications. The concise plan is ROADMAP.md and the single methodology is METHODOLOGY.md. Detailed reports/artifacts moved to research/, configurations to config/; eight working documents remain in docs/. Completed work is committed and pushed to main, never confused with cloud snapshot publication.
+## Latest user correction
+EUR is not a trading constraint. Research can use long USD/USDC history from a suitable source independently of execution. Choose low total-cost spot execution; Bitvavo crypto/USDC is the current fee-based candidate. EUR conversion is only modeled when actually needed for funding/final cash-out, not inserted into routine trades. Primary reporting remains USDC with ETH benchmarks.
 
-## Verified outcomes
-- Bitvavo BTC/EUR and ETH/EUR each have 2,143 valid daily development candles from 2020-01-01 through 2025-11-12, with no missing days after page/boundary reconciliation.
-- USDC/EUR covers the accounting period from 2021-01-01 without missing days. Raw EUR prices before that are warmup; no missing FX was invented.
-- Crypto/USDC only returned July 2024 onward in the audited windows and has two early gap days. It fails the long-history requirement. The initial historical research route is therefore EUR, with EUR fees, not discounted USDC fees applied to EUR data.
-- Eighteen new offline accounting/data-control tests and the six prior cost tests all passed. They cover fee assets, multiple positions, cash/inventory, rounding/minimums, causal fills, missing/delisted/stale prices, page conflicts and holdout rejection. Source/tests commit: c181e5cc1d97df35e93a80369b3f46b4d7168b91. They are not a full backtester or exchange integration.
-- No strategy returns/signals or final holdout data were evaluated. The development audit ends before 2025-11-13; the final assessment window is 2025-11-13 through 2026-11-12. Prior public spot snapshots remain disclosed in the evidence.
+This supersedes the earlier choice of EUR execution based solely on historical coverage, and the project-wide Bitvavo-permission blocker. No specific Bitvavo permission request or further user input blocks development. Select another suitable source as needed, using supported access methods and its applicable terms. No vendor has been contacted.
 
-## Research choices now fixed
-config/research-policy.json contains agent-selected research-only defaults under the instruction to resolve the open review. Twelve exact long/flat trend/reversal variants, fixed BTC/ETH universe, four chronological folds and one champion; six cross-sectional slots remain unused. Primary growth screens include positive net growth, 2 annual points above ETH and <=30% research drawdown. Defensive outcomes are reported separately, not silently promoted. These are not claims about the user's live preferences or guarantees of loss control. Borrowing/leverage remain outside scope.
+## Verified work retained
+The historical EUR coverage audit, public commission comparison and small-book scenarios remain evidence, not a mandate for future execution. The offline accounting/data primitives passed 24 tests at d7c933f397b33b0a3141c23258585cd49b80a8fe. No strategy backtest, alpha, realized fill calibration or exchange integration is established. Historical artifacts remain under research/, not the working docs folder.
 
-## The actual external boundary
-Bitvavo's official API terms tie retention/use to its own-service authorized-use scope; no explicit vendor confirmation covering standalone historical/AI-assisted research was found. A precise clarification request is prepared in research/reports/feasibility.md but was not sent because external messaging was not authorized. No agent can grant that permission. Coin Metrics was checked as an alternative: its archive license is CC BY-NC, not an unrestricted commercial-use substitute. No raw market data was published.
+## Current policy
+config/research-policy.json version 0.3 separates source quotes, execution candidate, reporting and EUR cash-out. Twelve exact first-batch trend/reversal variants and research-only working criteria remain defined; they do not set the user's live loss tolerance. Source data is not yet selected/admitted. Existing split dates are planned windows that need coverage/contamination validation for the selected source, not permission to inspect holdout results.
 
-Conservative public entry-tier rates resolve simulated fee assumptions. Actual account eligibility/rates/fee currency are later funded-use checks, not a reason to request keys now. Slippage stress is modeled, not a claim of realized execution calibration. Real strategy evaluation remains gated by source-use clarification and a correctly implemented/reviewed runner.
+Long USD-source studies must disclose the source/execution mismatch, including volume provenance and USD/USDC price-basis risks. Do not apply one venue's fees while claiming another venue's observed fills. Shorting/leverage remain outside the initial fully funded spot scope.
 
-## Next concrete action
-Obtain the source-use clarification recorded in the feasibility report, while completing a deterministic synthetic strategy runner around the tested primitives. Preregister each run; retain failed and inconclusive results. Do not inspect holdout strategy results, accept paid commitments, contact a venue, borrow or trade live without the appropriate distinct authority. No alpha or profitability has been established.
+## This correction's validation
+Checked policy values, source/route separation, local document links and diff formatting. No accounting code changed, so the earlier tests were not unnecessarily rerun and no new test/market result is claimed. Changes are committed and pushed under the standing workflow.
 
-## Final verification
-At source/config commit d7c933f397b33b0a3141c23258585cd49b80a8fe, all 24 tests passed after timestamp/trade-ID hardening and path consolidation. Development-history and cost outputs replayed identically to their stored artifacts. research/artifacts/readiness-validation.json records the checks and remaining external permission boundary. No new strategy results were produced.
+## Next concrete task
+Continue the deterministic strategy runner and select a suitable long USD/USDC historical source. Validate coverage, provenance and source-versus-execution limitations before registering a real-data run. No credentials, funded account or additional preference is needed now. Paid commitments, contacting others and all live trading remain separate decisions.

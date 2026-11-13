@@ -62,3 +62,10 @@ The data audit selects a fixed limited BTC/ETH **EUR** historical route because 
 Source-use scope remains a precise external clarification rather than an assumed vendor permission. The complete request is in the feasibility evidence report and was not sent. Public entry-tier fees are deliberately used for simulation; actual account entitlement is checked before funding, not requested prematurely.
 
 Consolidated the working rules into METHODOLOGY.md and the plan into ROADMAP.md. Detailed historical reports/JSON moved to research/ and configurations to config/. Earlier standalone protocol, risk and execution documents were removed after integrating their active rules; prior versions remain in Git history.
+
+## User correction: trading currency and independent data sources (13 November 2026)
+This supersedes the earlier EUR route and project-wide Bitvavo-permission blocker. The user explicitly rejected EUR as a trading requirement: conduct research/trading in USD/USDC or the cheapest suitable route, with EUR needed only if actual funding or eventual cash-out uses it. No routine EUR leg or EUR-denominated execution fee is imposed on USDC trades.
+
+Signal data may come from a different suitable source, including supported TradingView exports if appropriate. Longer EUR history on one venue is not a reason to force higher-fee EUR execution. Preserve provenance, source-specific volume and price/quote differences; an external USD feed does not prove a Bitvavo USDC fill. The current lower-fee execution candidate is Bitvavo crypto/USDC, subject to total-cost comparison; no final venue decision is made.
+
+The assistant previously treated missing Bitvavo confirmation as a project-wide blocker. That was too broad: choose another suitable source if required, without assuming unrestricted access/use for every provider. No account, trading key or further user preference is needed to continue the runner and data-source selection. No vendor message or live action has been authorized.

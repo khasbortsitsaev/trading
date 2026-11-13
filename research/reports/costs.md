@@ -154,3 +154,6 @@ Review continuation: [RESEARCH_PROTOCOL.md](../../docs/METHODOLOGY.md) specifies
 
 ## Subsequent route correction
 The fuller development-history audit found crypto/USDC history too short for the frozen evaluation. The initial historical route is now BTC/ETH EUR with the appropriate higher EUR fees, while USDC remains the reporting numeraire through actual USDC/EUR marks. The cheaper USDC recommendation remains relevant to later properly scoped or prospective research; it must not be transplanted as the fee model for EUR historical fills. See the follow-up in [feasibility.md](feasibility.md).
+
+## User correction: EUR is not a binding trading route
+On 13 November 2026 the user explicitly clarified that research/execution should use USD/USDC or the cheapest suitable route, with EUR only for actual funding/cash-out if needed. The earlier EUR-route selection and specific Bitvavo-permission blocker in this historical report are superseded by docs/METHODOLOGY.md and config/research-policy.json version 0.3. Keep the audited observations as evidence; obtain suitable longer data elsewhere rather than requiring higher-fee EUR trades. External USD-source results still need source/volume/quote-basis disclosure and do not prove Bitvavo USDC fills.

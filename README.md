@@ -4,17 +4,17 @@ A research project to test whether systematic crypto strategies can grow an init
 
 ## The plan
 
-Start with fully funded spot, no leverage, and simple trend/reversal baselines. Use auditable accounting, chronological validation and one protected final holdout. Record failures as carefully as successes. Report USDC, EUR and ETH-equivalent wealth against ETH holding and cash. No arbitrary position-count cap.
+Start with fully funded spot, no leverage, and simple trend/reversal baselines. Use auditable accounting, chronological validation and one protected final holdout. Record failures as carefully as successes. Use USD/USDC data and low-cost execution, with USDC and ETH-equivalent reporting against ETH holding and cash. EUR is optional for funding or final cash-out, not a trading constraint. No arbitrary position-count cap.
 
 The six original review items are summarized in [the project plan](docs/ROADMAP.md). The [methodology](docs/METHODOLOGY.md) is the single source of research rules; [decisions](docs/DECISIONS.md) distinguishes agreed objectives from agent-selected working defaults. See [current state](docs/state.md) for actual results and the next task.
 
 ## What is actually verified
 
 - Public venue/pair fee schedules and small-book cost scenarios, not realized trading costs.
-- Development-only Bitvavo daily coverage: 2,143 BTC/EUR and ETH/EUR candles each, without missing days; USDC/EUR conversion data covers the chosen accounting period. Crypto/USDC history is shorter and is not substituted into a five-year test.
+- Development-only Bitvavo EUR coverage was audited, but it does not mandate EUR trading. Select longer USD/USDC data independently of the eventual execution venue; preserve explicit source/venue limitations.
 - Offline accounting, temporal/data guards and synthetic acceptance fixtures. These do not prove profitability and are not a full backtester.
 
-Source evidence lives in [research/reports](research/reports/) and [research/artifacts](research/artifacts/), not in a growing set of working documents. Raw exchange data and credentials are not committed. Research-data permission remains a specific external clarification; account-specific fees/eligibility are confirmed before funded use. No vendor was contacted automatically.
+Source evidence lives in [research/reports](research/reports/) and [research/artifacts](research/artifacts/), not in a growing set of working documents. Raw exchange data and credentials are not committed. No specific Bitvavo permission request blocks development; select another suitable data source where needed and respect its access/use terms. Account-specific fees/eligibility are confirmed before funded use. No vendor was contacted automatically.
 
 ## Run checks
 

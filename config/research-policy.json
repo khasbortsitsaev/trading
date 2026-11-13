@@ -1,5 +1,5 @@
 {
-  "version": "0.2",
+  "version": "0.3",
   "date": "2026-11-13",
   "status": "frozen_research_working_defaults",
   "real_data_search_authorized_by_this_file": false,
@@ -13,7 +13,7 @@
     "live_trading_authorized": false
   },
   "open_prerequisites": [
-    "Resolve scope of vendor permission for own-account research/retention and AI-assisted use before persistent strategy-data ingestion; no raw redistribution",
+    "Select and quality-audit a suitable USD/USDC historical source and use it through supported access methods under its applicable terms; no specific Bitvavo permission request is required to continue project development.",
     "Implement and audit a complete strategy runner: primitives are tested, not a backtester",
     "Freeze collector dataset hashes and exact evaluated-code/configuration hashes before each run",
     "Validate holdout coverage only after a champion and access bundle are frozen; do not inspect its strategy results during development",
@@ -98,7 +98,8 @@
       "holdout_start_inclusive": "2025-11-13",
       "holdout_end_exclusive": "2026-11-13",
       "boundary_units": "UTC daily realization intervals; event-time filtering remains required",
-      "holdout_data_retrieved_for_this_audit": false
+      "holdout_data_retrieved_for_this_audit": false,
+      "dataset_binding": "Existing dates remain planned evaluation windows, not admission of a newly selected USD/USDC dataset. Verify coverage and information contamination before binding data; no strategy returns inspected."
     }
   },
   "uncertainty": {
@@ -131,18 +132,26 @@
     "processing_lag_minutes": 5
   },
   "research_route": {
-    "venue": "Bitvavo",
-    "execution_quote": "EUR",
-    "initial_markets": [
-      "BTC-EUR",
-      "ETH-EUR"
+    "signal_data_source": null,
+    "signal_data_quotes_allowed": [
+      "USD",
+      "USDC"
     ],
+    "source_selection": "Select suitable long historical data independently of the proposed execution venue; do not prefer EUR merely for its available history.",
+    "execution_venue_candidate": "Bitvavo",
+    "execution_quote": "USDC",
+    "initial_markets": [
+      "BTC-USDC",
+      "ETH-USDC"
+    ],
+    "route_status": "Research candidate; compare total execution/conversion costs before selecting a final venue or route.",
     "reporting_numeraire": "USDC",
-    "fx_market": "USDC-EUR",
-    "selection_reason": "Long audited development history; USDC crypto market history too short for the required evaluation",
-    "universe_claim": "fixed limited/survivor-selected universe, not broad crypto or point-in-time panel",
-    "account_fee_model": "Public Category A entry-tier taker, no discounts; not authenticated fees",
-    "simulated_funding": "Start with 0.5 ETH owned inventory; charge only necessary conversions"
+    "eur_use": "Optional funding or final cash-out conversion; no routine EUR leg in strategy trades.",
+    "eur_reporting": "Optional final purchasing-power/withdrawal report, not the trading numeraire.",
+    "source_execution_mismatch": "Label longer USD-source experiments as signal/proxy research until execution price basis, volume provenance, spread and USD/USDC differences are assessed. Do not claim they reproduce Bitvavo fills.",
+    "audited_eur_history": "Retained historical QA evidence and optional cross-check; not the mandated research or execution route.",
+    "account_fee_model": "Candidate Bitvavo Category B entry-tier 0.05% taker per execution; EUR and conversion fees apply only to actually selected EUR legs.",
+    "simulated_funding": "Start with owned 0.5 ETH; do not sell/rebuy it if already the target holding."
   },
   "variants": [
     {
@@ -300,5 +309,6 @@
     "rebalance": "Sell target reductions before buys; reserve cash and fees; no borrowing, leverage, forced investment or fixed position-count cap",
     "initial_universe_is_small_for_feasibility_only": true,
     "weight_rule": "Each active asset receives 1/N of equity for the preregistered universe size N, with fees reserved; inactive allocations remain cash. For the current two-asset study this is 0.5 each, not a permanent asset/position-count cap."
-  }
+  },
+  "data_permission_resolution": "Do not treat uncertainty about one exchange as a project-wide blocker. Use another suitable source as needed; do not assume every provider permits unrestricted access or redistribution."
 }

@@ -4,7 +4,7 @@ Updated 13 November 2026. This is the single methodology for the six review item
 
 ## Objective and decision criteria
 
-The agreed objective is capital growth from **0.5 ETH**, with no planned withdrawals. Report portfolio wealth in USDC, EUR and ETH-equivalent units. Compare identical dates against holding the original ETH and a no-trade cash benchmark, charging each only its actual necessary conversions. Stablecoins and cash are not assumed risk-free or interest-bearing.
+The agreed objective is capital growth from **0.5 ETH**, with no planned withdrawals. Use USDC as the primary trading/research numeraire, with USD-source data where suitable and ETH-equivalent comparisons. EUR reporting is optional for eventual funding/cash-out planning, not a requirement for routine trading. Compare identical dates against holding the original ETH and a no-trade cash benchmark, charging each only its actual necessary conversions. Stablecoins and cash are not assumed risk-free or interest-bearing.
 
 To resolve the previously open research settings, the agent has frozen the following **research-only working defaults** under the user's instruction to resolve the review. These are not a statement that the user chose these as personal/live investment preferences:
 
@@ -20,16 +20,16 @@ CAGR uses elapsed seconds/365.25 days. Drawdown is loss from an equity high-wate
 
 ## Data and market route
 
-Actual development-data auditing changes the first research route:
+The user clarified that **EUR is not a trading constraint**. Do not select an expensive execution route merely because one exchange has longer EUR history.
 
-- Use **Bitvavo BTC/EUR and ETH/EUR** as a fixed limited-universe research candidate. The fetched 2020-01-01 through 2025-11-12 development samples each have 2,143 daily candles with no missing days after pagination repairs.
-- Use actual USDC/EUR marks for USDC reporting, not an assumed USD peg. Its daily series is complete during the accounting period beginning 2021-01-01. The earlier EUR-only data is indicator warmup, not a period with invented FX marks.
-- BTC/USDC and ETH/USDC only returned history from July 2024 in the audited windows, with two early missing days. Their cheaper fees do not justify shortening evaluation or applying USDC execution fees to EUR prices. Retain them for later appropriately scoped/prospective evaluation.
-- The fixed BTC/ETH selection has survivor/selection limitations. It is not a historical all-coin universe. Cross-sectional confirmation is deferred until dated listing/delisting/jurisdiction events support it; unused variant slots are not reassigned.
+- Research long historical series in USD or USDC from a suitable source independently of the eventual execution venue. Select source, coverage and supported access methods before interpreting strategy results. TradingView exports may be evaluated if suitable; their availability or completeness is not assumed.
+- Prioritize low total-cost spot execution. Bitvavo crypto/USDC is the current fee-based candidate, not a final venue commitment. Compare commissions, spread/slippage and necessary conversions together, rather than insisting on one quote currency regardless of cost.
+- No routine EUR conversion is required. Starting with 0.5 ETH does not require EUR funding; cash/rotation legs can remain in USDC. Model EUR only if actual external funding or final cash-out uses it.
+- The audited EUR data remain valid QA evidence or a cross-check, not a mandatory route. The shorter Bitvavo crypto/USDC history does not force all signal research onto EUR books or fees; another source can supply longer history.
+- Distinguish signal data, execution assumptions and reporting units. Longer USD-source studies do not reproduce Bitvavo USDC fills. Record source-specific volume for volume/OBV signals, price-basis differences and USD/USDC deviations; never assert USD and USDC are identical prices. Use available venue overlap for execution-basis validation, with explicit limitations elsewhere.
+- A fixed BTC/ETH study retains selection/survivorship limitations and is not a historical all-coin universe. Cross-sectional confirmation still needs past eligibility data.
 
-The raw price data remain outside git. Provenance includes URLs/parameters without secrets, retrieval timestamps, SHA-256 hashes, returned coverage, transformations, conflicts, gaps, venue/pair and terms versions. Preserve archive checksums and TLS verification. The [history audit](../research/artifacts/readiness-history.json) contains counts and diagnostic metadata, not a redistributable dataset.
-
-The chosen operational purpose is own-account research, not a data redistribution/customer product. Official Bitvavo API terms tie data retention/use to authorized use of its services. **Standalone historical/AI-assisted research permission was not explicitly confirmed by the vendor.** This cannot be represented as a granted license; the exact remaining clarification is recorded in the feasibility report. A noncommercial third-party license is not silently treated as permission for this capital-growth project. Synthetic development and bounded quality checks are independent of this unresolved strategy-data permission.
+Raw data stay outside git unless their redistribution is permitted. Record source IDs, timestamps, hashes, returned coverage, transformations and terms. Use official/supported access or exports, not invented access rights. Uncertainty about one provider does **not** require a Bitvavo permission request or block building the research system; choose another suitable source. No provider was contacted.
 
 ## Costs and portfolio scope
 
