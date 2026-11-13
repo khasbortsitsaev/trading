@@ -1,6 +1,6 @@
 # Handover: resume here
 
-**Paused on 13 November 2026 to conserve AI credits.** No background work is scheduled. This file is the single entry point for the next session; it contains the stopping point, decisions and next action. Do not restart the project or repeat the completed feasibility work.
+**Research checkpoint, 13 November 2026.** No background work is scheduled. This file is the single entry point for the next session; it contains the stopping point, decisions and next action. Do not restart the project or repeat the completed feasibility work.
 
 ## Goal and user instructions
 
@@ -80,7 +80,13 @@ These are agent-selected **research working defaults**, not the user's agreed li
 - **Final holdout: 2025-11-13 inclusive through 2026-11-13 exclusive. It has not been fetched or evaluated.** Do not advance these dates with the calendar, download it during routine collection, or inspect it while selecting candidates. Earlier public price awareness is disclosed; do not claim the historical period was unknown to the world.
 - Freeze one champion and its evaluation bundle before any holdout access. Failed results stay in the registry. No ML/ensemble expansion to rescue a negative baseline.
 
-## Next concrete task
+## Repository reuse research (13 November 2026)
+
+Completed a quick public-source framework/strategy review at the user's request: [repository reuse review](../research/reports/repository-reuse-review.md). Freqtrade is the closest framework candidate; its strategy collection provides inspectable hypotheses, CCXT provides data adapters, and bt offers allocation components. Other reviewed options: LEAN, NautilusTrader, vectorbt and Backtesting.py. Current vectorbt licensing includes Commons Clause. These are provisional fit assessments, not installed/benchmarked integrations or replicated profitability findings.
+
+Validation performed: reviewed upstream documentation, selected strategy source and license references; checked report links/diff. No dependencies installed, source copied, tests or economic experiments run, and no holdout data accessed. No blocker to offline work. Proposed next task: one synthetic Freqtrade ledger-parity spike before further general infrastructure work; preserve our initial-ETH accounting and frozen research rules. This is a recommendation, not a migration decision. After resolving reuse, resume the existing bounded development batch below. No new strategy variants were registered or evaluated.
+
+## Existing development-batch task
 
 **Implement and audit the bounded development-batch comparison/robustness/uncertainty orchestration, then evaluate only the remaining eleven preregistered variants.**
 
