@@ -30,3 +30,15 @@ Create an entry before running an experiment. Preserve failed, negative, invalid
 - Decision and next step:
 
 For the final code-commit field, record the commit containing the code/configuration actually executed. Commit the resulting report separately so the run remains traceable.
+
+## COST-001: deterministic cost-accounting audit
+- Date: 2026-11-13.
+- Status: planned.
+- Evidence type: synthetic software/accounting check plus observed public-book feasibility samples; no strategy experiment or profitability test.
+- Hypothesis: explicit per-side commissions and fee-reserved depth sweeps can quantify costs without inventing fills or double-counting spread.
+- Plan: verify the quote-fee break-even identity against hand arithmetic; use a two-level synthetic book to check sweep cost, insufficient depth, fee reserve and quantity rounding; reject malformed/crossed books; then analyze the small captured public-book samples under the frozen current-tier model.
+- Success criteria: numeric identities hold within Decimal arithmetic tolerance; insufficient data is reported, not extrapolated; model spends no more than its fee-inclusive quote budget; input hashes match. A zero-sample run must fail.
+- Budget: one deterministic audit, no parameter search or holdout access. Public rounds are observations, not independent trials.
+- Inputs: docs/cost-model.json; timestamped source metadata and response hashes in the cost source manifest; raw public responses outside git.
+- Costs and scope: fully funded spot only; quote-denominated fee convention is synthetic and explicitly unconfirmed for actual fills; no financing or market orders submitted.
+- Validation/code commit, executed commands and outcomes: to be recorded after the audit.

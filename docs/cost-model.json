@@ -1,0 +1,22 @@
+{
+  "as_of": "2026-11-13",
+  "scope": "Prospective fully funded spot costs; public entry-tier rates, not authenticated account fees or historical fee reconstruction",
+  "fee_accounting": "Synthetic quote-currency fees: buy notional*(1+fee), sell proceeds*(1-fee). Actual fee currency and rounding must be confirmed before implementation.",
+  "initial_eth": "0.5",
+  "equity_fractions": ["0.1", "0.5", "1"],
+  "extra_noncommission_round_trip_bps": ["0", "5", "15", "50"],
+  "original_all_in_round_trip_bps": ["15", "25", "50"],
+  "fee_regimes": {
+    "bitvavo_A": {"maker": "0.0015", "taker": "0.0025", "category": "crypto/EUR", "volume_threshold_eur": "0", "source": "https://bitvavo.com/en/fees"},
+    "bitvavo_B": {"maker": "0.0005", "taker": "0.0005", "category": "crypto/USDC", "volume_threshold_eur": "0", "source": "https://bitvavo.com/en/fees"},
+    "bitvavo_C": {"maker": "0.001", "taker": "0.001", "category": "USDC/EUR conversion", "volume_threshold_eur": "0", "source": "https://bitvavo.com/en/fees"},
+    "kraken_spot_tier1": {"maker": "0.004", "taker": "0.008", "category": "regular spot crypto including crypto/USDC", "volume_threshold_usd": "0", "effective_change": "2026-07-09", "source": "https://support.kraken.com/articles/cross-platform-fee-tier-changes"},
+    "kraken_stable_tier1": {"maker": "0.002", "taker": "0.002", "category": "stablecoin-base/FX including USDC/EUR", "volume_threshold_usd": "0", "source": "https://www.kraken.com/pro/fees"}
+  },
+  "markets": {
+    "bitvavo": {"ETH-EUR": "bitvavo_A", "BTC-EUR": "bitvavo_A", "ETH-USDC": "bitvavo_B", "BTC-USDC": "bitvavo_B", "USDC-EUR": "bitvavo_C"},
+    "kraken": {"ETH-EUR": "kraken_spot_tier1", "BTC-EUR": "kraken_spot_tier1", "ETH-USDC": "kraken_spot_tier1", "BTC-USDC": "kraken_spot_tier1", "USDC-EUR": "kraken_stable_tier1"}
+  },
+  "base_quantity_decimals": {"ETH": 8, "BTC": 8, "USDC": 6},
+  "limitations": ["No maker fills or P&L inferred", "No realized slippage, latency or adverse selection measured", "Fees are current public tiers; authenticated rates and currency are unverified", "Frozen book sweeps are scenarios, not executions", "Rate history, dynamic fee tiers, financing and taxes are not modeled"]
+}
