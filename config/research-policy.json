@@ -384,7 +384,7 @@
     }
   },
   "rolling_start_analysis": {
-    "status": "registered_before_evaluation",
+    "status": "completed_141_scenario_evaluations_no_promotion",
     "experiment_ids": [
       "S1-002",
       "S2-002",
@@ -403,6 +403,7 @@
     "state": "Inactive signals at each new start, warmup history only; identical to prior startup convention.",
     "expected_windows_per_strategy": 47,
     "expected_strategy_window_evaluations": 141,
-    "interpretation": "Post-hoc development robustness, overlapping and dependent, no new signal variants, no parameter tuning or independent significance claim; historical trial count remains three but 141 extra scenario evaluations logged."
+    "interpretation": "Post-hoc development robustness, overlapping and dependent, no new signal variants, no parameter tuning or independent significance claim; historical trial count remains three but 141 extra scenario evaluations logged.",
+    "scenario_evaluations_completed": 141
   }
 }

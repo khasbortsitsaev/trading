@@ -14,7 +14,7 @@ ETH holding returned +65.52% over the same development window. None of the three
 
 ## Implementation and evidence
 
-Shared offline signals, allocation, execution proxies, accounting and data loader are implemented. **55 software checks passed**, including S2 entry/hold/exit, boundaries and future-information checks; this does not mean investment success. S1's exact replay matches its original result hash. All three ledgers' daily equity and signal/timing checks reconcile. S3 signals were independently checked using Decimal logs/sample variance. Details: [strategies](STRATEGIES.md), [experiment registry](experiments.md).
+Shared offline signals, allocation, execution proxies, accounting and data loader are implemented. **57 software checks passed**, including S2 entry/hold/exit, boundaries and future-information checks; this does not mean investment success. S1's exact replay matches its original result hash. All three ledgers' daily equity and signal/timing checks reconcile. S3 signals were independently checked using Decimal logs/sample variance. Details: [strategies](STRATEGIES.md), [experiment registry](experiments.md).
 
 Results live only under `research/artifacts/S1/` `S2/` and `S3/`, named with strategy-specific experiment IDs. Shared source/software evidence stays at the artifacts root. S1-001 was originally DEV-001; renaming preserved JSON bytes and result hashes.
 
@@ -24,8 +24,14 @@ Local data, if retained: `/workspace/work/s1-closeout/recovered-data`; S1 replay
 
 POC is S1/S2/S3, one strategy at a time. All three baselines are closed; no historical variant active. Three trials used, cap 18 unchanged. Holdout **2025-11-13 inclusive to 2026-11-13 exclusive** stays sealed; never move dates with the calendar. No retuning or additional variants to rescue failures.
 
-**Next:** review the POC's growth versus drawdown tradeoff, then register one justified next hypothesis if continuing. Do not automatically test more variants. Current goal remains growth above ETH with <=30% historical drawdown; do not change it after failures without a recorded decision. The first POC pass is a research conclusion, not a live-ready system. Use the existing reuse review if a concrete infrastructure gap arises.
+## Rolling-start analysis completed
+
+User challenged single-date dependence. S1-002/S2-002/S3-002 evaluate every month-start 2021-01 through 2024-11 for 12 calendar months: 47 windows per method, 141 additional scenarios, no new signal variants or holdout. Each starts with owned ETH worth USD 1000; fixed dollars, same costs/state reset. Code/config commit c4cdd49. Full ledgers `/workspace/work/rolling/ledgers`; per-strategy public `sN-002-rolling.json`.
+
+Beat ETH: S1 21/47, S2 20/47, S3 24/47. Median paired excess: -15.67/-14.45/+0.50 percentage points. S3 is mixed/start-sensitive, not a generally disproven strategy; S2 more defensive. Worst drawdowns 55.03%/42.45%/58.27%, ETH 79.29%. No promotion. Overlapping adaptive development windows are not independent tests. All 141 hashes, 51,501 daily equities, 19,298 fill timings and terminal returns/fees audited. All 57 software checks pass.
+
+**Next:** discuss the rolling findings and growth/risk objective before registering a further bounded hypothesis. Do not pick the best starting date, retune parameters or inspect holdout. The three first-pilot failures remain specific to their original window; current evidence is broader but still not prospective validation.
 
 Capital/cost/timing assumptions: `config/runner.json`; signals, screens, trial history and protected dates: `config/research-policy.json`. Capital is illustrative, not a constraint. Keep docs concise and conclusions separate from software checks. No live trading, leverage, borrowing, paid commitments or vendor messages authorized. Commit/push completed work and verify the remote.
 
-User input for a next batch: discuss whether beating ETH remains essential or whether lower-growth/lower-drawdown outcomes are useful. No new run is pending. S3 was committed at e7944bf before evaluation; result/checks under S3. Holdout untouched.
+User input for a next batch: discuss whether beating ETH remains essential or lower-growth/lower-drawdown outcomes are useful. No new run pending. Holdout untouched.

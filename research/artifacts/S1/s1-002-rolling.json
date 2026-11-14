@@ -1,0 +1,559 @@
+{
+  "experiment_id": "S1-002",
+  "evidence_type": "post_hoc_development_start_date_sensitivity_not_independent_validation",
+  "code_commit": "c4cdd495ce7f4b9cfb482d8a17322c36ff416e1b",
+  "dataset_sha256": "5d1d450f98b2ba61c8b956b53a113f8b03f3a1a5fb1cd51b309cd83c611b26f0",
+  "settings": {
+    "initial_eth": "0.5",
+    "capital_note": "Illustrative starting inventory, editable, not a capital constraint. Quote equity uses the actual first scored ETH price, not a fixed ETH/USDC conversion.",
+    "model": "daily candle screening proxy, not observed execution",
+    "fee_per_execution": "0.0005",
+    "default_noncommission_round_trip_bps": "15",
+    "publication_lag_minutes": 5,
+    "processing_lag_minutes": 5,
+    "rules_scope": "Static candidate Bitvavo USDC rules observed 2026-11-12; prospective-cost proxy, not historical rule reconstruction or authenticated account settings. Applied to USD-source experiments only as an explicitly hypothetical execution scenario.",
+    "markets": {
+      "BTC": {
+        "quantity_decimals": 8,
+        "tick": "1",
+        "minimum_base": "0.00006985",
+        "minimum_quote": "5"
+      },
+      "ETH": {
+        "quantity_decimals": 8,
+        "tick": "0.01",
+        "minimum_base": "0.00247844",
+        "minimum_quote": "5"
+      }
+    }
+  },
+  "registered_design": {
+    "status": "registered_before_evaluation",
+    "experiment_ids": [
+      "S1-002",
+      "S2-002",
+      "S3-002"
+    ],
+    "variants": {
+      "S1": "TREND-20",
+      "S2": "S2-TREND-VOL-20-1.5",
+      "S3": "REVERSAL-20-1"
+    },
+    "first_start": "2021-01-01",
+    "start_spacing": "calendar_month_first_day",
+    "holding_period": "12 calendar months, end exclusive; all complete windows ending on/before holdout start",
+    "initial_quote_equity": "1000",
+    "funding": "Each fresh portfolio starts with owned ETH worth USD 1000 at that start open, not a funded purchase; ETH benchmark same inventory. This holds dollar size constant so order-minimum effects do not vary with ETH starting price. No final liquidation.",
+    "state": "Inactive signals at each new start, warmup history only; identical to prior startup convention.",
+    "expected_windows_per_strategy": 47,
+    "expected_strategy_window_evaluations": 141,
+    "interpretation": "Post-hoc development robustness, overlapping and dependent, no new signal variants, no parameter tuning or independent significance claim; historical trial count remains three but 141 extra scenario evaluations logged."
+  },
+  "variant": {
+    "id": "TREND-20",
+    "family": "trend",
+    "lookback_days": 20,
+    "rule": "Long if close[t]/close[t-L]-1 > 0, otherwise flat; only completed/available bars",
+    "neighbor_ids": [
+      "TREND-40",
+      "TREND-60",
+      "TREND-120",
+      "TREND-240"
+    ]
+  },
+  "summary": {
+    "windows": 47,
+    "beat_eth_count": 21,
+    "beat_eth_fraction": 0.44680851063829785,
+    "loss_count": 21,
+    "median_return": 0.0665545081713792,
+    "worst_return": -0.509229907643632,
+    "best_return": 1.5962174171494783,
+    "median_eth_return": 0.25797952423968695,
+    "median_paired_excess_return": -0.15667185335956968,
+    "median_drawdown": 0.3837573311407442,
+    "worst_drawdown": 0.5503407150760637,
+    "median_eth_drawdown": 0.5725438871435851,
+    "worst_eth_drawdown": 0.7929416263646737
+  },
+  "windows": [
+    {
+      "start": "2021-01-01",
+      "end_exclusive": "2022-01-01",
+      "strategy_return": 1.5962174171494783,
+      "eth_return": 3.985762711864407,
+      "strategy_drawdown": 0.25234288565584884,
+      "eth_drawdown": 0.5725438871435852,
+      "result_sha256": "3efe8af7b997d1a5cdab84f8958cde0136e31fa19aca52f05c4c943a0daffa61",
+      "fills": 347
+    },
+    {
+      "start": "2021-02-01",
+      "end_exclusive": "2022-02-01",
+      "strategy_return": 0.8909450185325405,
+      "eth_return": 1.0476168718921102,
+      "strategy_drawdown": 0.25234288181237885,
+      "eth_drawdown": 0.5725438871435852,
+      "result_sha256": "d2c7433f9775504f07e5269b7369503b79b4c915384d5fd78eadbc032970b9bd",
+      "fills": 278
+    },
+    {
+      "start": "2021-03-01",
+      "end_exclusive": "2022-03-01",
+      "strategy_return": 0.3399567288814762,
+      "eth_return": 1.0540198976332067,
+      "strategy_drawdown": 0.3544320582568202,
+      "eth_drawdown": 0.5725438871435851,
+      "result_sha256": "3703eed73c89e88f7307ae4ce52faffc75d8ead9f89910fb6740997b603b7ffe",
+      "fills": 241
+    },
+    {
+      "start": "2021-04-01",
+      "end_exclusive": "2022-04-01",
+      "strategy_return": 0.22421102382637015,
+      "eth_return": 0.7067165925579217,
+      "strategy_drawdown": 0.3862049595617174,
+      "eth_drawdown": 0.5725438871435853,
+      "result_sha256": "e40afe922b9b08b2b8d1582de6161e933f908a8b33df4e367822007397177cb9",
+      "fills": 226
+    },
+    {
+      "start": "2021-05-01",
+      "end_exclusive": "2022-05-01",
+      "strategy_return": 0.015156088265411594,
+      "eth_return": -0.017283488109046674,
+      "strategy_drawdown": 0.3893382475566094,
+      "eth_drawdown": 0.5725438871435852,
+      "result_sha256": "80e2a65daf70832a35451fc3356c21ca2f50689261b33c7b730e1b8f6a83fdca",
+      "fills": 194
+    },
+    {
+      "start": "2021-06-01",
+      "end_exclusive": "2022-06-01",
+      "strategy_return": -0.03530699344376442,
+      "eth_return": -0.2827971852224177,
+      "strategy_drawdown": 0.3894228057960034,
+      "eth_drawdown": 0.6419270968640304,
+      "result_sha256": "db1c335e3005253dda7dcb12d6d6f38b0ce69de2ef8ae01b218bbc49354661e3",
+      "fills": 171
+    },
+    {
+      "start": "2021-07-01",
+      "end_exclusive": "2022-07-01",
+      "strategy_return": -0.1459675400372502,
+      "eth_return": -0.5296574073260909,
+      "strategy_drawdown": 0.4107923371422296,
+      "eth_drawdown": 0.7929416263646737,
+      "result_sha256": "2c40fe80a48d867e3be59fa93e137ffd21e5437c17b31da06614c4448fd0e383",
+      "fills": 159
+    },
+    {
+      "start": "2021-08-01",
+      "end_exclusive": "2022-08-01",
+      "strategy_return": -0.09012042067160908,
+      "eth_return": -0.3369810144315576,
+      "strategy_drawdown": 0.49079173945894916,
+      "eth_drawdown": 0.7929416263646736,
+      "result_sha256": "6fc424aa084b1009329d287fc196f1f5f5c24a20b9b6e138038d984b3eabdf54",
+      "fills": 167
+    },
+    {
+      "start": "2021-09-01",
+      "end_exclusive": "2022-09-01",
+      "strategy_return": -0.3168990446004635,
+      "eth_return": -0.5470640177887095,
+      "strategy_drawdown": 0.49088917059055204,
+      "eth_drawdown": 0.7929416263646737,
+      "result_sha256": "30adb8ae468c0659813938b51b3ca7b79603c3ee9e3165ca4321e7241e812b02",
+      "fills": 143
+    },
+    {
+      "start": "2021-10-01",
+      "end_exclusive": "2022-10-01",
+      "strategy_return": -0.1782544711223769,
+      "eth_return": -0.5572484487366618,
+      "strategy_drawdown": 0.49079172374285285,
+      "eth_drawdown": 0.7929416263646736,
+      "result_sha256": "d985dcc71213058a9b332e7534d4711252c9cf44c09bc1511b9c5815340c81f6",
+      "fills": 158
+    },
+    {
+      "start": "2021-11-01",
+      "end_exclusive": "2022-11-01",
+      "strategy_return": -0.4135240802999791,
+      "eth_return": -0.6334758989554505,
+      "strategy_drawdown": 0.4960110141082048,
+      "eth_drawdown": 0.7929416263646736,
+      "result_sha256": "eb0802b042b5f451db7294f1f2cc327a749d2d66ad02ae1919c01e7cc5b49a29",
+      "fills": 137
+    },
+    {
+      "start": "2021-12-01",
+      "end_exclusive": "2022-12-01",
+      "strategy_return": -0.509229907643632,
+      "eth_return": -0.7199826164793182,
+      "strategy_drawdown": 0.5503407150760637,
+      "eth_drawdown": 0.7845913683468575,
+      "result_sha256": "efda937355b9a008e3b3909c33d8dedacb3388436fddd02e85001a53a6879ad6",
+      "fills": 132
+    },
+    {
+      "start": "2022-01-01",
+      "end_exclusive": "2023-01-01",
+      "strategy_return": -0.46532385264163534,
+      "eth_return": -0.675102422527247,
+      "strategy_drawdown": 0.5123580173887652,
+      "eth_drawdown": 0.7399317121049169,
+      "result_sha256": "6d7ee2290595c59ef9b0ba3e30c8e9540b4288b847a190894e9db92a88830d96",
+      "fills": 141
+    },
+    {
+      "start": "2022-02-01",
+      "end_exclusive": "2023-02-01",
+      "strategy_return": -0.28830254591362836,
+      "eth_return": -0.4105442417166463,
+      "strategy_drawdown": 0.510966118703243,
+      "eth_drawdown": 0.7171314514800997,
+      "result_sha256": "35ea29e48613da5f46721c724b2d3654949eadc7066787c6df762a9fb5836668",
+      "fills": 145
+    },
+    {
+      "start": "2022-03-01",
+      "end_exclusive": "2023-03-01",
+      "strategy_return": -0.22575269929256025,
+      "eth_return": -0.4511621864626387,
+      "strategy_drawdown": 0.4607257589277022,
+      "eth_drawdown": 0.7171314514800997,
+      "result_sha256": "18f10f57dfc286368ebcd0cbbc40a38e16895600c6d03c1c3962fae5815d4a07",
+      "fills": 157
+    },
+    {
+      "start": "2022-04-01",
+      "end_exclusive": "2023-04-01",
+      "strategy_return": -0.23449433002119047,
+      "eth_return": -0.4451954694921446,
+      "strategy_drawdown": 0.460750534424163,
+      "eth_drawdown": 0.7171314514800997,
+      "result_sha256": "ef563de1018993b92fc5b2d4a504e27ce234c3868428464bce335915572b97d3",
+      "fills": 148
+    },
+    {
+      "start": "2022-05-01",
+      "end_exclusive": "2023-05-01",
+      "strategy_return": -0.17062539932009613,
+      "eth_return": -0.3149761004076127,
+      "strategy_drawdown": 0.42027564821228836,
+      "eth_drawdown": 0.6611096560005171,
+      "result_sha256": "8413a46220e82e892111b9dd5dd75037bc724b3dcb1245b4a260af4f3079a010",
+      "fills": 160
+    },
+    {
+      "start": "2022-06-01",
+      "end_exclusive": "2023-06-01",
+      "strategy_return": -0.26325355753494717,
+      "eth_return": -0.03447352015291805,
+      "strategy_drawdown": 0.42035965838762424,
+      "eth_drawdown": 0.4866943856232385,
+      "result_sha256": "f387f8e6b3ccb4f204027400ad2d18e0f98af09815043483740ba0e5e8103dbe",
+      "fills": 166
+    },
+    {
+      "start": "2022-07-01",
+      "end_exclusive": "2023-07-01",
+      "strategy_return": -0.20919636331810532,
+      "eth_return": 0.8066535837772171,
+      "strategy_drawdown": 0.4202756869814135,
+      "eth_drawdown": 0.44579952628130837,
+      "result_sha256": "9a2523e4955e8fa5bb800ffeba013d0580cd9ba4bfbc8c753cf3836c9b27ce85",
+      "fills": 174
+    },
+    {
+      "start": "2022-08-01",
+      "end_exclusive": "2023-08-01",
+      "strategy_return": -0.25911711653532943,
+      "eth_return": 0.10528885660184129,
+      "strategy_drawdown": 0.4202756837477053,
+      "eth_drawdown": 0.44579952628130826,
+      "result_sha256": "336dea7781855c9ee84f6440dfe4d5864f0f927d30ae31cea899b881665513da",
+      "fills": 162
+    },
+    {
+      "start": "2022-09-01",
+      "end_exclusive": "2023-09-01",
+      "strategy_return": -0.18348293189494647,
+      "eth_return": 0.05833172551289478,
+      "strategy_drawdown": 0.3124758475248931,
+      "eth_drawdown": 0.3805902895122226,
+      "result_sha256": "7bcde211f6202dc487f02a72f0546631382ed66822e13e43f744bf417d222bb5",
+      "fills": 165
+    },
+    {
+      "start": "2022-10-01",
+      "end_exclusive": "2023-10-01",
+      "strategy_return": -0.15896027085511077,
+      "eth_return": 0.25797952423968695,
+      "strategy_drawdown": 0.2909278761859292,
+      "eth_drawdown": 0.3315706297106734,
+      "result_sha256": "3c8c02dfbc92533193789b4f1451ab4afd2e69c62b225180225c4cd8accdacb9",
+      "fills": 156
+    },
+    {
+      "start": "2022-11-01",
+      "end_exclusive": "2023-11-01",
+      "strategy_return": -0.03582529737434459,
+      "eth_return": 0.1542079837274346,
+      "strategy_drawdown": 0.2908000428387816,
+      "eth_drawdown": 0.3315706297106735,
+      "result_sha256": "e3d5bfef29b9be98935c4bf71152d83b37ba3ef74a6944b5fce174bb8787111d",
+      "fills": 146
+    },
+    {
+      "start": "2022-12-01",
+      "end_exclusive": "2023-12-01",
+      "strategy_return": 0.3330575155501512,
+      "eth_return": 0.5863134316830154,
+      "strategy_drawdown": 0.22028086375570222,
+      "eth_drawdown": 0.27391058290888515,
+      "result_sha256": "cadfbe351893aacd14c922565ffbacc145f0595da66b9b49e02a7b2b14f8f4f0",
+      "fills": 180
+    },
+    {
+      "start": "2023-01-01",
+      "end_exclusive": "2024-01-01",
+      "strategy_return": 0.43360271397947936,
+      "eth_return": 0.908383534136546,
+      "strategy_drawdown": 0.220281118820166,
+      "eth_drawdown": 0.27391058290888515,
+      "result_sha256": "1437699dfad52edd581e8e38043210051feb8152227c4ac1cba6ba8c8a0f2c14",
+      "fills": 199
+    },
+    {
+      "start": "2023-02-01",
+      "end_exclusive": "2024-02-01",
+      "strategy_return": 0.0665545081713792,
+      "eth_return": 0.4392582313611706,
+      "strategy_drawdown": 0.22022678667574191,
+      "eth_drawdown": 0.27391058290888515,
+      "result_sha256": "6479603c28f72000b879cd97ba1c77708376237f9bf13e4ab46b89002cf25b54",
+      "fills": 177
+    },
+    {
+      "start": "2023-03-01",
+      "end_exclusive": "2024-03-01",
+      "strategy_return": 0.6043151446938406,
+      "eth_return": 1.0810188068252584,
+      "strategy_drawdown": 0.2201391507127083,
+      "eth_drawdown": 0.27391058290888515,
+      "result_sha256": "74743df02092e3a36d3048160072ab162d578367b5fa23b1a1bb4e3cea03486b",
+      "fills": 193
+    },
+    {
+      "start": "2023-04-01",
+      "end_exclusive": "2024-04-01",
+      "strategy_return": 0.6267761912865291,
+      "eth_return": 1.0006585446163978,
+      "strategy_drawdown": 0.22022678144734864,
+      "eth_drawdown": 0.27391058290888515,
+      "result_sha256": "2c1f4146f48fb6ec0fa82f50a5f371d23531bf9a4ea5dac204c7ef4c7fda5e1a",
+      "fills": 197
+    },
+    {
+      "start": "2023-05-01",
+      "end_exclusive": "2024-05-01",
+      "strategy_return": 0.4923892094049125,
+      "eth_return": 0.6094484822573749,
+      "strategy_drawdown": 0.20208413861858066,
+      "eth_drawdown": 0.26585515799827864,
+      "result_sha256": "a9969ff0956fff9fe221d50b123c0750458ecc44168a5227286bb09f06b1b3b4",
+      "fills": 190
+    },
+    {
+      "start": "2023-06-01",
+      "end_exclusive": "2024-06-01",
+      "strategy_return": 0.5843528578971113,
+      "eth_return": 1.0051213656975193,
+      "strategy_drawdown": 0.21426041154239805,
+      "eth_drawdown": 0.29160211484077225,
+      "result_sha256": "4defef55f10f27c4b98a717cf535384fc056b7c87e7a810c313efb3049aaa980",
+      "fills": 212
+    },
+    {
+      "start": "2023-07-01",
+      "end_exclusive": "2024-07-01",
+      "strategy_return": 0.5601681644129992,
+      "eth_return": 0.7744053774560495,
+      "strategy_drawdown": 0.2142603901805501,
+      "eth_drawdown": 0.29160211484077225,
+      "result_sha256": "316a5308df1ff22bdac1233987f017449643f1905f4e08de78fe19ad5e156168",
+      "fills": 207
+    },
+    {
+      "start": "2023-08-01",
+      "end_exclusive": "2024-08-01",
+      "strategy_return": 0.5710812767729356,
+      "eth_return": 0.7406928506007218,
+      "strategy_drawdown": 0.24540443119279398,
+      "eth_drawdown": 0.29160211484077214,
+      "result_sha256": "ca0ffd98f8c3dd4d0b38af5a35c701f10b965c33a121fa2916f63d82b865c9a6",
+      "fills": 228
+    },
+    {
+      "start": "2023-09-01",
+      "end_exclusive": "2024-09-01",
+      "strategy_return": 0.2933883456426536,
+      "eth_return": 0.5272594663587187,
+      "strategy_drawdown": 0.3837573311407442,
+      "eth_drawdown": 0.4237796631009467,
+      "result_sha256": "a5df4f0a00a7c3c1ab2ba7718df014103b5b3f4b5956b06e8239a6cda334c341",
+      "fills": 232
+    },
+    {
+      "start": "2023-10-01",
+      "end_exclusive": "2024-10-01",
+      "strategy_return": 0.286611806836095,
+      "eth_return": 0.5566991801807193,
+      "strategy_drawdown": 0.38375732818728525,
+      "eth_drawdown": 0.45321529570884045,
+      "result_sha256": "181eb788e8ea80fdebeb58785c7ba24173e3d9121b8d898a0d1957ac2dbba905",
+      "fills": 236
+    },
+    {
+      "start": "2023-11-01",
+      "end_exclusive": "2024-11-01",
+      "strategy_return": 0.05428304942228812,
+      "eth_return": 0.38522965084260385,
+      "strategy_drawdown": 0.4491608736486852,
+      "eth_drawdown": 0.45321529570884045,
+      "result_sha256": "067c49ffce342758a85fe1759686fc5be7102753c1495d745679d5dca96b92ac",
+      "fills": 214
+    },
+    {
+      "start": "2023-12-01",
+      "end_exclusive": "2024-12-01",
+      "strategy_return": 0.2419746871621402,
+      "eth_return": 0.80522137255857,
+      "strategy_drawdown": 0.44864879995260554,
+      "eth_drawdown": 0.45321529570884045,
+      "result_sha256": "1f22cb3a5021729f081f53c3ac5afaed242af82829f526bdf215d612de9f9df6",
+      "fills": 225
+    },
+    {
+      "start": "2024-01-01",
+      "end_exclusive": "2025-01-01",
+      "strategy_return": 0.15144708054045197,
+      "eth_return": 0.4597519828228387,
+      "strategy_drawdown": 0.4486816219388863,
+      "eth_drawdown": 0.45321529570884045,
+      "result_sha256": "dcacd5297f9428c295a05c1031fdfcc576852245c14b8970215735c2efc686b5",
+      "fills": 208
+    },
+    {
+      "start": "2024-02-01",
+      "end_exclusive": "2025-02-01",
+      "strategy_return": 0.16206078047001493,
+      "eth_return": 0.4464606618452771,
+      "strategy_drawdown": 0.4486877238479636,
+      "eth_drawdown": 0.45321529570884056,
+      "result_sha256": "5f2b546157eaf48386cbfbdde1b33b0df6c39233c74f37dd6fefb043d393500d",
+      "fills": 196
+    },
+    {
+      "start": "2024-03-01",
+      "end_exclusive": "2025-03-01",
+      "strategy_return": -0.20425329064036746,
+      "eth_return": -0.3309793829857267,
+      "strategy_drawdown": 0.448546616701748,
+      "eth_drawdown": 0.45321529570884056,
+      "result_sha256": "f84cf2ac8bfc811b92c823bf1f542f2930301f585b9fe127a3cbb70ca9a1a5d7",
+      "fills": 156
+    },
+    {
+      "start": "2024-04-01",
+      "end_exclusive": "2025-04-01",
+      "strategy_return": -0.30041277514410647,
+      "eth_return": -0.5001783313671156,
+      "strategy_drawdown": 0.408092073690961,
+      "eth_drawdown": 0.5491590557468683,
+      "result_sha256": "0a0d895864b5ff0b12637ea072418afa4ac9ce317b23bac467b56bc10100cfa3",
+      "fills": 122
+    },
+    {
+      "start": "2024-05-01",
+      "end_exclusive": "2025-05-01",
+      "strategy_return": -0.1306079609532942,
+      "eth_return": -0.4043429178564313,
+      "strategy_drawdown": 0.348873636276681,
+      "eth_drawdown": 0.6327044966811399,
+      "result_sha256": "a8411e2fdb00686c9df254c2980bf4a7753e2062941c332351c33367ab00f1f8",
+      "fills": 139
+    },
+    {
+      "start": "2024-06-01",
+      "end_exclusive": "2025-06-01",
+      "strategy_return": 0.09537213316289117,
+      "eth_return": -0.3270366625871335,
+      "strategy_drawdown": 0.34889607394269184,
+      "eth_drawdown": 0.6327044966811399,
+      "result_sha256": "a12cf8095b5a7fe21c071ddd954fa2f16540b1ab3a94963f38ccb2576690dde4",
+      "fills": 134
+    },
+    {
+      "start": "2024-07-01",
+      "end_exclusive": "2025-07-01",
+      "strategy_return": 0.08420367759149539,
+      "eth_return": -0.27591530014854515,
+      "strategy_drawdown": 0.3192436933994506,
+      "eth_drawdown": 0.6327044966811399,
+      "result_sha256": "a9bb9f387edc06e34b86591a1597423cedde99edd6246b2ae33bf159f6f8ec46",
+      "fills": 153
+    },
+    {
+      "start": "2024-08-01",
+      "end_exclusive": "2025-08-01",
+      "strategy_return": 0.395636095098751,
+      "eth_return": 0.14435127022929106,
+      "strategy_drawdown": 0.27758032630433904,
+      "eth_drawdown": 0.6327044966811399,
+      "result_sha256": "13f405e1a98d711749babc410ef48c5cabe1d51d1d381452d3333b95d3f3a0ca",
+      "fills": 161
+    },
+    {
+      "start": "2024-09-01",
+      "end_exclusive": "2025-09-01",
+      "strategy_return": 0.703483148899861,
+      "eth_return": 0.7482887615409106,
+      "strategy_drawdown": 0.1982413316253887,
+      "eth_drawdown": 0.6327044966811399,
+      "result_sha256": "e53496c0f3808f65063cadc5e823ef5949bcbd2734252c1564f4b7bc6ae43c3c",
+      "fills": 209
+    },
+    {
+      "start": "2024-10-01",
+      "end_exclusive": "2025-10-01",
+      "strategy_return": 0.638534186200119,
+      "eth_return": 0.5935455349248453,
+      "strategy_drawdown": 0.19824127248389367,
+      "eth_drawdown": 0.6327044966811399,
+      "result_sha256": "178596c9c5003c9d61e64f65dc58007e4e244efa757817f199706e96aeeb02b6",
+      "fills": 220
+    },
+    {
+      "start": "2024-11-01",
+      "end_exclusive": "2025-11-01",
+      "strategy_return": 0.7001593498505787,
+      "eth_return": 0.53,
+      "strategy_drawdown": 0.19809691225221115,
+      "eth_drawdown": 0.6327044966811399,
+      "result_sha256": "f4a986d9a987d2ff6abb1ab80218828fe45d4a8cf5be6eb6a6fc33957aa49fce",
+      "fills": 224
+    }
+  ],
+  "holdout_access": false,
+  "overlapping_windows_independent": false,
+  "full_ledgers_committed": false,
+  "validation": {
+    "window_hashes_equity_fees_timing_and_terminal_returns_checked": 47,
+    "eligible_windows_excluded": 0,
+    "no_holdout_access": true
+  }
+}

@@ -78,6 +78,27 @@ S3-001 historical development proxy: **+58.39% net growth, 26.27% CAGR, 30.64% m
 
 **POC conclusion:** all three baseline pipelines run end to end, but none meets the current growth/risk criteria. S2 has the lowest drawdown, with lower growth. Review that tradeoff before defining a new bounded experiment; no automatic expansion or holdout access.
 
+## Monthly-start sensitivity: fixed 12-month horizon
+
+The single-start results above are not general verdicts on a strategy family. At the user's request, S1-002/S2-002/S3-002 restart each unchanged strategy on **every month-start January 2021 through November 2024**, holding for 12 calendar months. All 47 eligible windows used; 2020 supplies warmup. This spans more development regimes than the original pilots. Holdout unchanged and untouched.
+
+Each fresh portfolio starts with owned ETH worth **$1,000** at that date's open, shared by strategy/benchmark; constant dollars reduce minimum-order/size confounding. Inactive initial signal state, no artificial initial purchase fee, no final liquidation. Same baseline costs/price source, no retuning.
+
+| Across 47 overlapping windows | S1 | S2 | S3 | ETH hold |
+|---|---:|---:|---:|---:|
+| Beats ETH | 21/47 | 20/47 | 24/47 | Reference |
+| Median 12-month return | +6.66% | +14.22% | +21.86% | +25.80% |
+| Worst 12-month return | -50.92% | -37.19% | -46.27% | -72.00% |
+| Losing windows | 21/47 | 17/47 | 14/47 | 19/47 |
+| Median within-window drawdown | 38.38% | 25.44% | 30.60% | 57.25% |
+| Worst within-window drawdown | 55.03% | 42.45% | 58.27% | 79.29% |
+
+S3's **median paired excess return is +0.50 percentage points**: compare each strategy/ETH pair first, then take the median. That differs from subtracting the separate return medians. S1/S2 paired excess medians are -15.67/-14.45 points.
+
+**Conclusion:** date choice matters. S3 is mixed, not consistently inferior; none has demonstrated a robust growth edge. S2 looks more defensive. Large drawdowns remain, and overlapping windows are dependent, so 47 observations do not provide 47 independent trials. This is post-hoc development sensitivity, not unseen final validation or confidence of beating ETH in future.
+
+Per-window evidence: [S1-002](../research/artifacts/S1/s1-002-rolling.json), [S2-002](../research/artifacts/S2/s2-002-rolling.json), [S3-002](../research/artifacts/S3/s3-002-rolling.json). All 141 ledgers audited; 57 software checks passed. No promotion or parameter change follows automatically.
+
 ## Later ideas
 
 Pairs/cointegration, copulas, event-driven or cost-aware ML, on-chain/cross-sectional factors, regime models and advanced allocation are outside this POC. Candidate sources remain in [PAPERS.md](PAPERS.md). Existing repositories may provide reusable components after license and suitability checks; no new external-code audit was performed for this feedback update. Lower-frequency equity investing is a possible future direction, not current implementation scope.
