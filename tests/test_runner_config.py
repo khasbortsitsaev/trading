@@ -24,7 +24,7 @@ class RunnerConfigTests(unittest.TestCase):
             variant={'id':'FIXTURE-TREND-1','family':'trend','lookback_days':1}
             policy['variants'].append(variant);policy['poc']['active_variant']=variant['id']
             execution=json.loads((ROOT/'config/runner.json').read_text())
-            execution['execution_interval_minutes']=15
+            execution['execution_interval_minutes']=1440
             panel=wide_panel()
             intraday={a:[replace(b,timestamp_ms=b.timestamp_ms+i*15*60000,
                                   open=b.open,close=b.open,high=b.open,low=b.open)
@@ -51,6 +51,7 @@ class RunnerConfigTests(unittest.TestCase):
             with patch.object(cli,'ROOT',root), \
                  patch('sys.argv',['run_research.py','--data-dir',str(daily),'--proxy-usd',
                                    '--execution-data-dir',str(intraday_dir),'--variant',variant['id'],
+                                   '--execution-interval-minutes','15',
                                    '--start','2020-01-03','--end-exclusive','2020-01-11','--output',str(output)]), \
                  patch.object(cli.subprocess,'check_output',return_value='fixture-commit\n'), \
                  patch.object(cli.subprocess,'run',return_value=SimpleNamespace(returncode=0)), \

@@ -18,8 +18,9 @@ if __name__=='__main__':
     p.add_argument('--output-dir',type=Path,required=True)
     p.add_argument('--start',default='2020-01-01')
     p.add_argument('--end-exclusive',default='2025-11-13')
+    p.add_argument('--step-seconds',type=int,choices=[900,86400],default=86400)
     args=p.parse_args()
     policy=json.loads((Path(__file__).resolve().parents[1]/'config/research-policy.json').read_text())
     cutoff=policy['split']['exact_utc_boundaries']['holdout_start_inclusive']
-    result=collect_bitstamp(args.output_dir,stamp(args.start),stamp(args.end_exclusive),stamp(cutoff))
+    result=collect_bitstamp(args.output_dir,stamp(args.start),stamp(args.end_exclusive),stamp(cutoff),args.step_seconds)
     print(json.dumps({'complete':result['complete'],'markets':{a:{k:v for k,v in q.items() if k!='missing_timestamps_ms'} for a,q in result['markets'].items()},'normalized_sha256':result['normalized_sha256']},indent=2))

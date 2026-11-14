@@ -493,5 +493,45 @@
     "valuation": "held suspensions flag run inconclusive; zero-recovery close floor and OHLC lower envelope are valuations, not exits",
     "continuity": "one run preserves inventory/cash/signal state/pending targets throughout; rolling fresh starts cannot be stitched as returns",
     "execution_costs": "optional prior-bar-range-conditioned friction plus joint friction/daily-delay stress; assumptions, not measured venue costs"
+  },
+  "execution_process_spec": {
+    "id": "EXECUTION-15M-001",
+    "status": "frozen_research_process_inactive_until_economic_preregistration",
+    "decision_frequency": "daily",
+    "signal_candle_close_utc": "00:00",
+    "assumed_available_utc": "00:05",
+    "assumed_order_ready_utc": "00:10",
+    "execution_interval_minutes": 15,
+    "baseline_designated_fill_utc": "00:15",
+    "boundary_rule": "first_fixed_UTC_grid_start_strictly_after_ready",
+    "extra_delay_unit": "daily_signal_bars",
+    "fill_model": "same_source_USD_candle_open_proxy_not_observed_venue_fill",
+    "legacy_default_changed": false,
+    "automatic_strategy_evaluation": false,
+    "costs": "existing hypothetical fee/friction scenarios; no historical execution-cost calibration claimed",
+    "unmeasured": [
+      "actual candle publication/receipt time",
+      "venue spread and size-dependent slippage",
+      "execution venue price basis and USD/USDC deviation"
+    ]
+  },
+  "intraday_admission_plan": {
+    "id": "DATA-001",
+    "source": "Bitstamp public OHLC API",
+    "quote": "USD",
+    "markets": [
+      "BTC",
+      "ETH"
+    ],
+    "interval_ms": 900000,
+    "start_ms": 1577836800000,
+    "end_exclusive_ms": 1762992000000,
+    "rows_per_asset": 205728,
+    "daily_normalized_sha256_required": "5d1d450f98b2ba61c8b956b53a113f8b03f3a1a5fb1cd51b309cd83c611b26f0",
+    "ohlc_aggregation_tolerance": "exact Decimal equality",
+    "volume_absolute_tolerance_base": "0.000001",
+    "volume_relative_tolerance": "0.00000001",
+    "missing_bars_accepted": false,
+    "status": "registered_before_collection"
   }
 }

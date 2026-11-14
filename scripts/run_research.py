@@ -26,6 +26,7 @@ def main():
     source.add_argument('--synthetic',action='store_true')
     source.add_argument('--data-dir',type=Path)
     p.add_argument('--execution-data-dir',type=Path,help='Separately admitted intraday source, same provider/quote as signal candles')
+    p.add_argument('--execution-interval-minutes',type=int,choices=[15,1440],help='Explicitly override the legacy default for a registered execution protocol')
     p.add_argument('--proxy-usd',action='store_true',help='Explicitly acknowledge USD source/USDC execution-cost mismatch')
     p.add_argument('--variant',default='TREND-20')
     p.add_argument('--start',default='2021-01-01')
@@ -64,7 +65,7 @@ def main():
         quote=manifest['quote'];provider=manifest['provider']
     execution=json.loads((ROOT/'config/runner.json').read_text())
     execution_panel=None;execution_manifest=None
-    interval=execution.get('execution_interval_minutes',1440)
+    interval=args.execution_interval_minutes if args.execution_interval_minutes is not None else execution.get('execution_interval_minutes',1440)
     if interval < 1440:
         admission=policy.get('execution_dataset_admission')
         if args.synthetic or not args.execution_data_dir or not admission:
