@@ -49,6 +49,20 @@ def signals(histories, variant, old_state):
         prices = [x.close for x in history]
         if variant['family'] == 'trend':
             state[asset] = len(prices)>lookback and prices[-1]>prices[-1-lookback]
+        elif variant['family'] == 'volume_confirmed_trend':
+            volume_days = int(variant['volume_lookback_days'])
+            multiplier = D(variant['volume_multiplier'])
+            if volume_days < 1 or not multiplier.is_finite() or multiplier <= 0:
+                raise ValueError('Invalid volume confirmation parameters')
+            if len(history) < max(lookback, volume_days) + 1:
+                raise DataError('Insufficient volume/trend warmup')
+            volumes = [bar.volume for bar in history[-volume_days-1:]]
+            if any(not v.is_finite() or v < 0 for v in volumes):
+                raise DataError('Invalid volume')
+            trend = prices[-1] > prices[-1-lookback]
+            mean_volume = sum(volumes[:-1], D(0)) / volume_days
+            confirmation = mean_volume > 0 and volumes[-1] > multiplier * mean_volume
+            state[asset] = trend and (bool(old_state.get(asset, False)) or confirmation)
         elif variant['family'] == 'reversal':
             if lookback < 2:
                 raise ValueError('Reversal requires at least two observations')
@@ -164,6 +178,8 @@ def run(panel, variant, start_ms, end_ms, settings, *, holdout_start_ms, market_
     warmup = {a:sorted((b for b in bars if b.timestamp_ms<start_ms),key=lambda b:b.timestamp_ms)
               for a,bars in panel.items()}
     required = int(variant['lookback_days'])+(1 if variant['family']=='trend' else 0)
+    if variant['family'] == 'volume_confirmed_trend':
+        required = max(int(variant['lookback_days']), int(variant['volume_lookback_days'])) + 1
     for bars in warmup.values():
         if len(bars)<required or bars[-1].timestamp_ms!=start_ms-DAY:
             raise DataError('Insufficient or nonadjacent warmup')

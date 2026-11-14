@@ -36,6 +36,8 @@ def main():
     args=p.parse_args()
     policy=json.loads((ROOT/'config/research-policy.json').read_text())
     variants={x['id']:x for x in policy['variants']}
+    s2 = policy['poc']['s2_spec']
+    variants[s2['id']] = dict(s2, lookback_days=s2['trend_lookback_days'])
     if args.variant not in variants:
         p.error('Variant is not in the frozen policy')
     if not args.synthetic and args.variant != policy['poc']['active_variant']:
