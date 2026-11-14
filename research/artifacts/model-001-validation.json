@@ -1,0 +1,153 @@
+{
+  "experiment_id": "MODEL-001",
+  "evidence_type": "synthetic_software_check_not_trading_profitability",
+  "date": "2026-11-14",
+  "code_commit": "62e7d8e995ff1e136ac834fcde59a58a763545e2",
+  "reviewed_predecessor": "d19725bbd4db1e74538eba3cbe73555107da8ce7",
+  "unit_tests": {
+    "command": "PYTHONDONTWRITEBYTECODE=1 python3 -m unittest discover -s tests -q",
+    "passed": 81,
+    "previous_tests": 61
+  },
+  "legacy_economic_comparison": [
+    {
+      "variant": "TREND-20",
+      "friction": "15",
+      "extra_delay": 0,
+      "legacy_economics_match": true
+    },
+    {
+      "variant": "TREND-20",
+      "friction": "30",
+      "extra_delay": 0,
+      "legacy_economics_match": true
+    },
+    {
+      "variant": "TREND-20",
+      "friction": "50",
+      "extra_delay": 0,
+      "legacy_economics_match": true
+    },
+    {
+      "variant": "TREND-20",
+      "friction": "15",
+      "extra_delay": 1,
+      "legacy_economics_match": true
+    },
+    {
+      "variant": "S2-TREND-VOL-20-1.5",
+      "friction": "15",
+      "extra_delay": 0,
+      "legacy_economics_match": true
+    },
+    {
+      "variant": "S2-TREND-VOL-20-1.5",
+      "friction": "30",
+      "extra_delay": 0,
+      "legacy_economics_match": true
+    },
+    {
+      "variant": "S2-TREND-VOL-20-1.5",
+      "friction": "50",
+      "extra_delay": 0,
+      "legacy_economics_match": true
+    },
+    {
+      "variant": "S2-TREND-VOL-20-1.5",
+      "friction": "15",
+      "extra_delay": 1,
+      "legacy_economics_match": true
+    },
+    {
+      "variant": "REVERSAL-20-1",
+      "friction": "15",
+      "extra_delay": 0,
+      "legacy_economics_match": true
+    },
+    {
+      "variant": "REVERSAL-20-1",
+      "friction": "30",
+      "extra_delay": 0,
+      "legacy_economics_match": true
+    },
+    {
+      "variant": "REVERSAL-20-1",
+      "friction": "50",
+      "extra_delay": 0,
+      "legacy_economics_match": true
+    },
+    {
+      "variant": "REVERSAL-20-1",
+      "friction": "15",
+      "extra_delay": 1,
+      "legacy_economics_match": true
+    }
+  ],
+  "legacy_comparison_method": "Imported reviewed predecessor engine from git; compared all its economic metric fields and all prior decision/fill/curve fields on identical 120-day synthetic input for three strategies and four cost/delay cases. Not historical replication.",
+  "cli_smokes": [
+    {
+      "case": "baseline",
+      "command": "PYTHONDONTWRITEBYTECODE=1 python3 scripts/run_research.py --synthetic --output /workspace/work/model-review/baseline.json",
+      "result_sha256": "1f5750a1034271c0a94e659a4e15b636dd7bf419eb894899ee4e453532bdf8fb",
+      "dataset_sha256": "113aba628b2cad2ed2e5f3f058a9e02da6b7a43c752a89d9808b98b0a9fdddb5",
+      "fills": 7,
+      "friction_round_trip_bps": "15",
+      "extra_daily_delay": 0
+    },
+    {
+      "case": "joint-stress",
+      "command": "PYTHONDONTWRITEBYTECODE=1 python3 scripts/run_research.py --synthetic --friction-bps 50 --extra-delay-bars 1 --output /workspace/work/model-review/joint-stress.json",
+      "result_sha256": "f29db76c2fae24e788f7c79005551e99f6ad098aa97a7065519e208fc656ba38",
+      "dataset_sha256": "113aba628b2cad2ed2e5f3f058a9e02da6b7a43c752a89d9808b98b0a9fdddb5",
+      "fills": 7,
+      "friction_round_trip_bps": "50",
+      "extra_daily_delay": 1
+    },
+    {
+      "case": "s2",
+      "command": "PYTHONDONTWRITEBYTECODE=1 python3 scripts/run_research.py --synthetic --variant S2-TREND-VOL-20-1.5 --output /workspace/work/model-review/s2.json",
+      "result_sha256": "54bab5a326d11e4429bc0e1c5abaca003b6e3f67a146c9f59d6a24e0af5b0bab",
+      "dataset_sha256": "113aba628b2cad2ed2e5f3f058a9e02da6b7a43c752a89d9808b98b0a9fdddb5",
+      "fills": 1,
+      "friction_round_trip_bps": "15",
+      "extra_daily_delay": 0
+    },
+    {
+      "case": "s3",
+      "command": "PYTHONDONTWRITEBYTECODE=1 python3 scripts/run_research.py --synthetic --variant REVERSAL-20-1 --output /workspace/work/model-review/s3.json",
+      "result_sha256": "b3b26863132b14bf896d9ca664aa63fed085aedc2d7b9af89dad5894d6528d8c",
+      "dataset_sha256": "113aba628b2cad2ed2e5f3f058a9e02da6b7a43c752a89d9808b98b0a9fdddb5",
+      "fills": 8,
+      "friction_round_trip_bps": "15",
+      "extra_daily_delay": 0
+    }
+  ],
+  "cli_envelope_hashes_causal_fills_nonnegative_balances_and_risk_envelopes_checked": true,
+  "regressions": {
+    "unreachable_reversal_rejected": true,
+    "separate_hash_bound_intraday_cli_fixture": true,
+    "ready_0010_fill_0015_seconds": 900,
+    "intraday_50pct_crash_recovery": {
+      "daily_close_drawdown": 0.0,
+      "ohlc_upper_bound": 0.5,
+      "observed_intraday_path": false
+    },
+    "held_suspension_valuation": "inconclusive_zero_recovery_bound_no_fake_fill",
+    "continuous_signal_state_checked": true,
+    "joint_stress_and_prior_bar_cost_causality_checked": true
+  },
+  "original_public_artifacts_checked": 24,
+  "original_public_artifact_bytes_unchanged": true,
+  "historical_strategy_runs": 0,
+  "new_economic_hypotheses": 0,
+  "source_downloads": 0,
+  "holdout_accessed": false,
+  "historical_signal_hypotheses_retained": 3,
+  "additional_historical_evaluations_retained": 846,
+  "limitations": [
+    "No admitted historical intraday data or live-process calibration",
+    "OHLC upper bounds use ambiguous ordering and noncoincident extrema; not realized intraday drawdown",
+    "Source-candle marks do not imply executable liquidation",
+    "No new exposure-matched controls, dependence-aware economic uncertainty or prospective performance"
+  ]
+}
