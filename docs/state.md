@@ -19,7 +19,7 @@ Development data: official Bitstamp BTC/USD and ETH/USD daily candles, 2020-01-0
 
 Local data, if retained: `/workspace/research-data/bitstamp-usd-development-v1/{manifest,normalized}.json`; full ledger `/workspace/research-data/dev-001-ledger.json`. Check for these before downloading. If missing, use the existing collector with unchanged development dates; review changed capture metadata/hashes rather than bypassing admission. Do not redownload to repeat a completed result.
 
-**Holdout remains sealed:** 2025-11-13 inclusive through 2026-11-13 exclusive. Never move these dates with the calendar or access it to improve S1. One trial has been used; existing budget/multiplicity history is preserved.
+**Holdout remains sealed:** 2025-11-13 inclusive through 2026-11-13 exclusive. Never move these dates with the calendar or access it to improve S1. Two historical variants have been used; existing budget/multiplicity history is preserved.
 
 Reuse review already completed: [framework/strategy review](../research/reports/repository-reuse-review.md). Freqtrade is the leading candidate, CCXT a potential data adapter and bt an allocation reference. Nothing was installed or parity-tested. Reuse this review; a migration or framework spike is optional only if it saves work on a concrete S1 gap.
 
@@ -31,16 +31,18 @@ The missing source data were recovered into `/workspace/work/s1-closeout/recover
 
 All 41 tests passed after close-out; all 720 decisions' signals and 425 fills' causal timing checked. 247 active-state resizing fills generated only $4.16 of $155.92 direct modeled costs; signal entry/exit flips dominated costs. Concrete buy/sell/resize examples and concise interpretation are in [STRATEGIES](STRATEGIES.md); aggregate checks under [S1 evidence](../research/artifacts/S1/dev-001-closeout.json). The baseline is closed without promotion. Missing execution/robustness evidence is stated; no further checks or holdout access are needed to reject it.
 
-## S2 specification completed
+## S2 baseline completed
 
-S2-TREND-VOL-20-1.5 is frozen in `poc.s2_spec` in the policy: positive 20-day price trend plus latest volume strictly above 1.5 times the prior 20-day average to enter; hold through low volume, exit at nonpositive price trend. Reuse daily sizing/accounting/execution. No performance claim. Its reserved slot replaces unexecuted TREND-365; cap 18, one used trial, disabled cross-sectional slots and sealed holdout unchanged. Old TREND-365 definition remains provenance, not an enabled run.
+S2's implemented volume-gated entry / stateful trend exit passed 49 tests. At code commit `60a6ead`, its one registered development pilot returned +46.99% versus ETH +65.52%, with 27.02% drawdown. Three of four continuous folds profitable; 270 fills, 306 skips, $60.62 direct modeled costs. Fails the ETH-relative growth screen; closed without promotion. Lower drawdown is a defensive result, not a validated growth edge.
 
-The CLI blocks historical runs while no executable pilot is active. S2 is specification only; do not interpret configuration as implemented capability. Plan/acceptance checks in [experiments](experiments.md#s2-001-volume-confirmed-trend-plan). No new sources, market-data reads or historical tests in this step. All 41 existing tests pass; the CLI guard was checked to reject a historical request before data loading/output.
+[Result](../research/artifacts/S2/dev-001-summary.json) and [validation/folds](../research/artifacts/S2/validation.json). All 720 decisions' signal formulas and daily equities, fees/adverse costs and 270 fills' timing checked. Private ledger `/workspace/work/s2-pilot/ledger.json`; input remains `/workspace/work/s1-closeout/recovered-data`. Full executed command in experiments.md. Synthetic fixtures cover buys/holds/exits; default random-volume CLI smoke only exercised initial liquidation.
+
+Policy now records two used historical trials and no active historical variant; cap 18 and sealed holdout unchanged. The old S1 and S2 results/settings remain preserved. No robustness/holdout escalation for these failed baselines; no retuning, new datasets or source requests.
 
 ## One next task
 
-Implement S2's stateful signal and synthetic fixtures, then commit passing checks before enabling its one historical pilot. Reuse existing pipeline, keep outputs under S2, and preserve S1 results. Do not start other variants or inspect holdout. No framework migration needed.
+Specify one S3 mean-reversion pilot using the existing reversal code and reserved candidates. Choose one transparent parameter set before inspecting its returns, state its entry/exit/sizing and validation plan, then commit before enabling a historical run. Keep S3 artifacts separate. No framework migration or variant batch needed.
 
-**User input needed now:** none. The 1.5 volume threshold is an agent-selected, editable assumption; discuss alternatives before evaluation rather than fitting after seeing its result.
+**User input needed now:** none. The user may discuss whether S2's lower-risk/lower-growth behavior is useful; do not silently change the growth objective to accept it.
 
-Completed work is committed and pushed to GitHub `main`, then checked against the remote. Detailed historical commands/results remain in [experiments](experiments.md), not duplicated here.
+Completed work is committed and pushed to GitHub `main`, then checked against the remote. Detailed commands/results remain in experiments.md.

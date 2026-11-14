@@ -18,4 +18,4 @@ Updated 13 November 2026. This summary supersedes older planning prose; historic
 | Later scope | Other strategies and lower-frequency equities can be considered after the POC |
 | Authorization | Commit/push completed work; no live orders, borrowing, paid commitments or vendor messages without separate authority |
 
-S1 baseline close-out is complete: reject promotion of TREND-20, retain its evidence and sealed holdout. S2 now has one frozen volume-confirmed entry / trend-exit specification. Next is implementation and synthetic checks; no user input needed. Live risk limits, venue and operations require later decisions. The prior failed pilot does not justify retuning the same evidence until it appears successful.
+S1 baseline close-out is complete: reject promotion of TREND-20, retain its evidence and sealed holdout. S2 is implemented and tested: lower drawdown but insufficient ETH-relative growth, closed without promotion. Next specify one S3 rule; no user input needed. Live risk limits, venue and operations require later decisions. The prior failed pilot does not justify retuning the same evidence until it appears successful.

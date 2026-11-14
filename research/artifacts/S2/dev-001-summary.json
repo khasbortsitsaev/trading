@@ -1,0 +1,80 @@
+{
+  "code_commit": "60a6ead4c9f10a4e9f92de95b9edcd9e1df7f53f",
+  "dataset_sha256": "5d1d450f98b2ba61c8b956b53a113f8b03f3a1a5fb1cd51b309cd83c611b26f0",
+  "result_sha256": "d6132e775b198a0ae6d7cfc9cfacb6eede6e7c267223055426512186389f0179",
+  "evidence_type": "historical_source_proxy_not_venue_replication",
+  "variant": {
+    "id": "S2-TREND-VOL-20-1.5",
+    "status": "implemented_synthetic_verified_pilot_registered",
+    "family": "volume_confirmed_trend",
+    "trend_lookback_days": 20,
+    "volume_lookback_days": 20,
+    "volume_multiplier": "1.5",
+    "entry": "When previously inactive: close[t] > close[t-20] AND volume[t] > 1.5 * mean(volume[t-20:t]); latest completed day t excluded from volume mean. Equality does not enter.",
+    "hold_exit": "When previously active: remain active while close[t] > close[t-20], irrespective of current volume. Exit when close[t] <= close[t-20]. No profit target, stop-loss or time exit.",
+    "zero_volume_mean": "Zero prior mean blocks entry; zero latest volume blocks entry. Neither forces exit of an active trend. Missing/negative/nonfinite volume fails data validation, not an invented zero.",
+    "initial_state": "Both signal states inactive at first scored decision, independent of starting owned inventory; no pre-scored signal state reconstruction.",
+    "warmup_observations_min": 21,
+    "allocation": "Reuse daily equal-universe 1/N fee-reserved targets, inactive weight stays cash; daily resizing remains possible.",
+    "data": "Existing admitted Bitstamp BTC/USD and ETH/USD daily OHLCV; volume is venue-specific base volume, normalized separately within each asset.",
+    "timing": "Only completed available bars, existing publication/processing lags and future daily-open proxies.",
+    "parameters_authority": "Agent-selected simple working hypothesis after seeing S1, not optimized or a paper replication. No S2 historical signals or returns examined before specification.",
+    "budget_slot": "Replaces unexecuted TREND-365 reservation, whose old definition remains for provenance; selection cap and multiplicity divisor remain 18.",
+    "implementation_reuse": "Existing signal interface, data loader, allocator, execution, ledger and reports; no framework migration or third-party code copy.",
+    "evaluation_scope": "One development pilot only, then reject/inconclusive or register missing robustness before any promotion. Holdout access not authorized.",
+    "lookback_days": 20
+  },
+  "source": "Bitstamp public OHLC API",
+  "quote": "USD",
+  "usdc_wealth_claimed": false,
+  "execution_model": "fixed target quantities from prior available closes; future daily open proxy; quote fees; no EUR leg",
+  "initial_eth": "0.5",
+  "initial_quote_equity": "1031.150",
+  "settings": {
+    "fee_per_execution": "0.0005",
+    "noncommission_round_trip_bps": "15",
+    "extra_delay_bars": 0,
+    "publication_minutes": 5,
+    "processing_minutes": 5,
+    "rules": {
+      "BTC": {
+        "quantity_decimals": 8,
+        "tick": "1",
+        "minimum_base": "0.00006985",
+        "minimum_quote": "5"
+      },
+      "ETH": {
+        "quantity_decimals": 8,
+        "tick": "0.01",
+        "minimum_base": "0.00247844",
+        "minimum_quote": "5"
+      }
+    }
+  },
+  "start_ms": 1700784000000,
+  "end_exclusive_ms": 1762992000000,
+  "metrics": {
+    "total_return": 0.46993342278916406,
+    "cagr": 0.21581839883379225,
+    "maximum_drawdown": 0.2701827620597207,
+    "sharpe_zero_reference_365_days": 0.8059367433057991
+  },
+  "eth_benchmark_metrics": {
+    "total_return": 0.6551859574261745,
+    "cagr": 0.291276223711943,
+    "maximum_drawdown": 0.638042542727161,
+    "sharpe_zero_reference_365_days": 0.7102799251297535
+  },
+  "cash_benchmark_metrics": {
+    "total_return": -0.0012512122387625668,
+    "cagr": -0.0006349253137453047,
+    "maximum_drawdown": 0.0012512122387625668,
+    "sharpe_zero_reference_365_days": -0.7120003121097942
+  },
+  "commission_quote": "24.15055975115330",
+  "modeled_adverse_price_cost": "36.4673680578",
+  "orders_executed": 270,
+  "orders_rejected": 306,
+  "pending_intents_not_filled_at_end": 1,
+  "full_ledger_committed": false
+}

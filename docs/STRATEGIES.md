@@ -3,7 +3,7 @@
 | Strategy | Buy / hold | Sell | Status |
 |---|---|---|---|
 | **S1 trend** | Completed close above the close L days earlier; current pilot L=20 | Target zero when return over L days is zero or negative | Baseline closed: failed promotion; see below |
-| **S2 volume/technical** | Positive 20-day trend plus unusually high volume | Nonpositive 20-day trend; volume alone does not exit | Specification frozen; not implemented or historically tested |
+| **S2 volume/technical** | Positive 20-day trend plus unusually high volume | Nonpositive 20-day trend; volume alone does not exit | Implemented and tested; fails growth screen, lower drawdown |
 | **S3 mean reversion** | Implemented candidate buys when trailing log-price z-score <= negative entry threshold | Exit when z >= 0; zero variance means flat; otherwise retain state | Code exists, historical evaluation paused |
 
 ## S1 mechanics and exits
@@ -34,7 +34,7 @@ Total traded notional was $124,300; commissions $62.15 and modeled adverse price
 
 **Evidence gaps:** unmeasured USD/USDC and source/execution differences, fixed BTC/ETH selection, candle-based rather than actual fills, and no completed parameter/cost/delay robustness, uncertainty analysis or prospective paper test. These prevent a positive edge claim. The failed baseline needs no champion/holdout evaluation. Holdout stays sealed; one variant remains evaluated. [Aggregate checks](../research/artifacts/S1/dev-001-closeout.json).
 
-**Next:** implement the S2 specification below. A slower S1 experiment remains a separate future hypothesis.
+S2 implementation and development test are now complete. A slower S1 experiment remains a separate future hypothesis.
 
 ## S2: volume-confirmed trend
 
@@ -52,6 +52,21 @@ Parameters and exact conventions live in `poc.s2_spec` in [research-policy.json]
 Reuse review: the existing short trend formula, portfolio and accounting code are sufficient. Copying a community strategy with different indicators/ROI/stops or migrating frameworks would add unrelated changes. No third-party source is copied. This test evaluates the combined entry gate and stateful holding rule; it cannot isolate volume's incremental contribution from entry timing without a separately registered control.
 
 One S2 pilot will use the same admitted development dates, costs and ETH/cash controls as S1. It reserves the untested TREND-365 budget slot; the total cap stays 18 and one historical variant remains used. S1's result has influenced this hypothesis, so S2 is adaptive development research, not independent validation. Holdout remains sealed. [Validation plan](experiments.md#s2-001-volume-confirmed-trend-plan).
+
+### S2 result: close without promotion
+
+Historical development proxy, same 720-day window as S1; not prospective or independent final validation:
+
+| Metric | S1 | S2 | ETH holding |
+|---|---:|---:|---:|
+| Net growth | +62.32% | +46.99% | +65.52% |
+| Annual growth | 27.85% | 21.58% | 29.13% |
+| Maximum drawdown | 44.89% | 27.02% | 63.80% |
+| Modeled commissions + adverse costs | $155.92 | $60.62 | No trading costs |
+
+S2 had 270 fills and 306 skipped targets; three of four continuous development folds were profitable. It meets the positive-growth/drawdown screens but misses the required ETH-relative growth margin. Costs and drawdown improved descriptively; this does not isolate volume's contribution or prove the change caused an improvement. No promotion, retuning or holdout access. Missing robustness/uncertainty and execution-basis calibration remain limitations.
+
+49 tests pass. Synthetic fixtures exercise actual buys, holds and exits; the default random-volume CLI smoke only sold initial inventory, so its completion alone is not signal coverage. All 720 historical decisions/equity points and 270 fills' timing were audited. [Result](../research/artifacts/S2/dev-001-summary.json), [checks and fold results](../research/artifacts/S2/validation.json). Next: specify one S3 mean-reversion pilot using the already implemented reversal logic.
 
 ## Later ideas
 

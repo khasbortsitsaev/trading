@@ -13,7 +13,7 @@
     "capital_settings": "config/runner.json: initial_eth"
   },
   "open_prerequisites": [
-    "S1 baseline closed without promotion. Implement and verify the frozen S2 specification on synthetic fixtures before enabling its one historical development pilot. No batch expansion.",
+    "S1/S2 baselines closed without promotion. Specify one S3 pilot before enabling another historical evaluation. No batch expansion or holdout access.",
     "Freeze collector dataset hashes and exact evaluated-code/configuration hashes before each run",
     "Validate holdout coverage only after a champion and access bundle are frozen; do not inspect its strategy results during development",
     "Confirm actual account/product fees and eligibility before funded use; use public conservative fee scenarios for research"
@@ -346,13 +346,13 @@
       "S3"
     ],
     "active_family": "S2",
-    "active_variant": "S2-TREND-VOL-20-1.5",
+    "active_variant": null,
     "sequence": "Complete S1 research review before S2 volume/technical signals, then S3 mean reversion. No automatic batch expansion.",
-    "historical_trials_used": 1,
-    "other_registered_variants": "Only the one S2-001 development pilot is active; S1 closed and all other variants paused. No holdout access.",
+    "historical_trials_used": 2,
+    "other_registered_variants": "S1 and S2 baselines closed without promotion. Next specify one S3 pilot; no historical variant active.",
     "s2_spec": {
       "id": "S2-TREND-VOL-20-1.5",
-      "status": "implemented_synthetic_verified_pilot_registered",
+      "status": "closed_failed_growth_screen",
       "family": "volume_confirmed_trend",
       "trend_lookback_days": 20,
       "volume_lookback_days": 20,

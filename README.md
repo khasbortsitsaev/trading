@@ -2,7 +2,7 @@
 
 Find a repeatable investment edge after costs. Phase 1 covers **S1 trend following, S2 volume/technical signals and S3 mean reversion**, one at a time. Finish S1 end to end first. Lower trading frequency is welcome if the evidence supports it.
 
-**Current conclusion:** the offline pipeline works, but the first S1 development test underperformed ETH holding: +62.32% versus +65.52%, with 44.89% drawdown. S1 baseline review is closed without promotion; [buy/sell examples and cost findings](docs/STRATEGIES.md#s1-baseline-conclusion-do-not-promote). S2 entry/exit rules are specified; next is implementation and synthetic checks. No validated edge or live system exists.
+**Current conclusion:** the offline pipeline works, but the first S1 development test underperformed ETH holding: +62.32% versus +65.52%, with 44.89% drawdown. S1 baseline review is closed without promotion; [buy/sell examples and cost findings](docs/STRATEGIES.md#s1-baseline-conclusion-do-not-promote). S2 is tested: +46.99% growth and 27.02% drawdown; it also fails the ETH-relative growth requirement. Next is one S3 specification. No validated edge or live system exists.
 
 - [Current state and next step](docs/state.md)
 - [Strategy logic, including when to sell](docs/STRATEGIES.md)

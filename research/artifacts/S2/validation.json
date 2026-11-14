@@ -1,0 +1,49 @@
+{
+  "evidence_type": "historical_development_proxy_audit_not_independent_validation",
+  "code_commit": "60a6ead4c9f10a4e9f92de95b9edcd9e1df7f53f",
+  "result_sha256": "d6132e775b198a0ae6d7cfc9cfacb6eede6e7c267223055426512186389f0179",
+  "signal_decisions_checked": 720,
+  "equity_points_reconciled": 720,
+  "fill_causal_ordering_checked": 270,
+  "fees_reconciled": true,
+  "folds_continuous_no_capital_reset": [
+    {
+      "fold": 1,
+      "total_return": 0.3418694150404453,
+      "cagr": 0.8161235534268592,
+      "maximum_drawdown": 0.1825866201516898,
+      "sharpe_zero_reference_365_days": 1.8089478067166265
+    },
+    {
+      "fold": 2,
+      "total_return": -0.08201028596431503,
+      "cagr": -0.1593954566823619,
+      "maximum_drawdown": 0.24019485122404483,
+      "sharpe_zero_reference_365_days": -0.5299289883850418
+    },
+    {
+      "fold": 3,
+      "total_return": 0.16682354755178297,
+      "cagr": 0.3676176212357303,
+      "maximum_drawdown": 0.14029545981334235,
+      "sharpe_zero_reference_365_days": 1.251403200798047
+    },
+    {
+      "fold": 4,
+      "total_return": 0.022690944840748628,
+      "cagr": 0.04658145079728614,
+      "maximum_drawdown": 0.1571604595065077,
+      "sharpe_zero_reference_365_days": 0.30326386976649466
+    }
+  ],
+  "positive_folds": 3,
+  "growth_screen": {
+    "positive_cagr": true,
+    "eth_margin_2_percentage_points": false,
+    "drawdown_at_most_30_percent": true
+  },
+  "candidate_promoted": false,
+  "holdout_access": false,
+  "historical_variants_used_total": 2,
+  "limitations": "Adaptive development after S1, fixed BTC/ETH, venue-specific volume, hypothetical USD-source/USDC-like fills; robustness/uncertainty/forward paper not run."
+}
