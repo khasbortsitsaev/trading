@@ -18,7 +18,7 @@ The algorithm, allocation, costs and timing are separate components. Edit lookba
 
 ## S1 baseline conclusion: do not promote
 
-DEV-001, historical development proxy, 2023-11-24 through 2025-11-12: **+62.32% net growth versus ETH +65.52%; drawdown 44.89%**. Annual growth lagged ETH by 1.27 percentage points, against a required +2-point margin; drawdown exceeded the 30% research screen. Lower drawdown than ETH is useful context, not a passing growth result. This rejects TREND-20 under these settings, not all trend following.
+S1-001, historical development proxy, 2023-11-24 through 2025-11-12: **+62.32% net growth versus ETH +65.52%; drawdown 44.89%**. Annual growth lagged ETH by 1.27 percentage points, against a required +2-point margin; drawdown exceeded the 30% research screen. Lower drawdown than ETH is useful context, not a passing growth result. This rejects TREND-20 under these settings, not all trend following.
 
 Concrete examples from the exactly reconstructed ledger (UTC; modeled fills, not real orders):
 
@@ -32,7 +32,7 @@ Concrete examples from the exactly reconstructed ledger (UTC; modeled fills, not
 
 Total traded notional was $124,300; commissions $62.15 and modeled adverse price/tick costs $93.77. The $155.92 cost sum equals 15.12% of initial equity, **not** a measured reduction in terminal return; no zero-cost counterfactual was run. Active-state resizing produced 58.1% of fills but only $4.16 (2.7%) of direct costs. Entry/exit signal flips dominated costs. Reducing daily resizing alone is therefore a limited cost-saving hypothesis, not a demonstrated solution.
 
-**Evidence gaps:** unmeasured USD/USDC and source/execution differences, fixed BTC/ETH selection, candle-based rather than actual fills, and no completed parameter/cost/delay robustness, uncertainty analysis or prospective paper test. These prevent a positive edge claim. The failed baseline needs no champion/holdout evaluation. Holdout stays sealed; one variant remains evaluated. [Aggregate checks](../research/artifacts/S1/dev-001-closeout.json).
+**Evidence gaps:** unmeasured USD/USDC and source/execution differences, fixed BTC/ETH selection, candle-based rather than actual fills, and no completed parameter/cost/delay robustness, uncertainty analysis or prospective paper test. These prevent a positive edge claim. The failed baseline needs no champion/holdout evaluation. Holdout stays sealed; this S1 evaluation counts as one of the two historical variants used. [Aggregate checks](../research/artifacts/S1/s1-001-diagnostics.json).
 
 S2 implementation and development test are now complete. A slower S1 experiment remains a separate future hypothesis.
 
@@ -66,7 +66,7 @@ Historical development proxy, same 720-day window as S1; not prospective or inde
 
 S2 had 270 fills and 306 skipped targets; three of four continuous development folds were profitable. It meets the positive-growth/drawdown screens but misses the required ETH-relative growth margin. Costs and drawdown improved descriptively; this does not isolate volume's contribution or prove the change caused an improvement. No promotion, retuning or holdout access. Missing robustness/uncertainty and execution-basis calibration remain limitations.
 
-49 tests pass. Synthetic fixtures exercise actual buys, holds and exits; the default random-volume CLI smoke only sold initial inventory, so its completion alone is not signal coverage. All 720 historical decisions/equity points and 270 fills' timing were audited. [Result](../research/artifacts/S2/dev-001-summary.json), [checks and fold results](../research/artifacts/S2/validation.json). Next: specify one S3 mean-reversion pilot using the already implemented reversal logic.
+49 software checks pass; this is not an investment-performance conclusion. Synthetic fixtures exercise actual buys, holds and exits; the default random-volume CLI smoke only sold initial inventory, so its completion alone is not signal coverage. All 720 historical decisions/equity points and 270 fills' timing were audited. [Result](../research/artifacts/S2/s2-001-summary.json), [checks and fold results](../research/artifacts/S2/s2-001-validation.json). Next: specify one S3 mean-reversion pilot using the already implemented reversal logic.
 
 ## Later ideas
 

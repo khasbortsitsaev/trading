@@ -34,6 +34,7 @@ Lead each completed step with its conclusion, relevant evidence, one next step a
 ## Session continuity
 - Start by reading docs/state.md, then README.md, docs/DECISIONS.md and docs relevant to the task.
 - Treat repository documentation as durable project context. Verify it against current code and evidence; do not assume chat history is available.
+- Name experiments S1-001, S2-001, S3-001, etc. Keep strategy evidence under research/artifacts/S1/, S2/, S3/ with the ID in each filename; shared source/software evidence stays at the artifacts root. Do not reuse ambiguous DEV IDs.
 - Use docs/DECISIONS.md for agreed choices and reasons, docs/PAPERS.md for sources, docs/STRATEGIES.md for hypotheses, and docs/METHODOLOGY.md for validation rules. Do not create duplicate decision or research logs with different capitalization.
 - Before an experiment, record its hypothesis, specification and validation plan in docs/experiments.md. Log unsuccessful, invalid and inconclusive runs as well as positive ones.
 - At session end, update docs/state.md with completed work, validation actually performed, blockers and one concrete next task. Link commits or result artifacts where available. Update other affected documentation.
