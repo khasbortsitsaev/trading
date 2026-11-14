@@ -40,9 +40,37 @@ def passive(panel, start, end, settings, weights):
     return {'metrics':metrics([D(x['equity']) for x in curve],initial,(end-start)/DAY),'curve':curve,'fills':portfolio.events,'rejections':rejected,'weights':{a:str(w) for a,w in weights.items()}}
 
 
+def fixed_s3(args, policy, panel, manifest, execution, rules, cutoff, commit):
+    cfg=policy['fixed_control_analysis']
+    baseline=json.loads((ROOT/'research/artifacts/S3/s3-002-rolling.json').read_text())
+    opens={b.timestamp_ms:b.open for b in panel['ETH']}
+    rows=[]
+    for row in baseline['windows']:
+        start,end=stamp(row['start']),stamp(row['end_exclusive'])
+        if end>cutoff:raise ValueError('Holdout overlap')
+        raw=(args.baseline_dir/f'S3-{row["start"]}.json').read_bytes()
+        if hashlib.sha256(raw).hexdigest()!=row['result_sha256']:raise ValueError('Baseline hash mismatch')
+        settings=Settings(initial_eth=D(cfg['initial_quote_equity'])/opens[start],quote=manifest['quote'],source=manifest['provider'],fee=D(execution['fee_per_execution']),friction_round_trip_bps=D(execution['default_noncommission_round_trip_bps']),publication_minutes=execution['publication_lag_minutes'],processing_minutes=execution['processing_lag_minutes'],rules=rules)
+        record={'start':row['start'],'end_exclusive':row['end_exclusive'],'s3_return':row['strategy_return'],'s3_drawdown':row['strategy_drawdown'],'controls':{}}
+        for level in cfg['crypto_fractions']:
+            weight=D(level)/2
+            result=passive(panel,start,end,settings,{'BTC':weight,'ETH':weight})
+            body=json.dumps(result,sort_keys=True,separators=(',',':')).encode()
+            (args.output_dir/f'S3-{row["start"]}-fixed-{level}.json').write_bytes(body)
+            record['controls'][level]={**result['metrics'],'result_sha256':hashlib.sha256(body).hexdigest()}
+        rows.append(record)
+    summary={}
+    for level in cfg['crypto_fractions']:
+        summary[level]={'windows':len(rows),'s3_beats_control':sum(x['s3_return']>x['controls'][level]['total_return'] for x in rows),'median_paired_excess':statistics.median(x['s3_return']-x['controls'][level]['total_return'] for x in rows),'median_control_return':statistics.median(x['controls'][level]['total_return'] for x in rows),'worst_control_return':min(x['controls'][level]['total_return'] for x in rows),'profitable_control_windows':sum(x['controls'][level]['total_return']>0 for x in rows),'median_control_drawdown':statistics.median(x['controls'][level]['maximum_drawdown'] for x in rows),'worst_control_drawdown':max(x['controls'][level]['maximum_drawdown'] for x in rows)}
+    report={'experiment_id':'S3-004','evidence_type':'adaptive_development_fixed_weight_control_comparison_not_independent_validation','code_commit':commit,'dataset_sha256':manifest['normalized_sha256'],'design':cfg,'settings':execution,'summary':summary,'windows':rows,'holdout_access':False,'overlapping_windows_independent':False}
+    (ROOT/'research/artifacts/S3/s3-004-fixed-controls.json').write_text(json.dumps(report,indent=2)+'\n')
+    print(json.dumps(summary,indent=2))
+
+
 def main():
     p=argparse.ArgumentParser(description=__doc__)
     p.add_argument('--data-dir',type=Path,required=True);p.add_argument('--baseline-dir',type=Path,required=True);p.add_argument('--output-dir',type=Path,required=True)
+    p.add_argument('--fixed-s3',action='store_true',help='Run registered fixed-weight controls for S3 only')
     args=p.parse_args()
     if args.output_dir.resolve()==ROOT or ROOT in args.output_dir.resolve().parents:p.error('Private ledgers must be outside checkout')
     if subprocess.run(['git','diff','--quiet','HEAD','--','src','scripts','tests','config'],cwd=ROOT).returncode:raise RuntimeError('Commit code/config first')
@@ -53,6 +81,9 @@ def main():
     opens={b.timestamp_ms:b.open for b in panel['ETH']}
     rules={a:Rules(quantity_decimals=x['quantity_decimals'],tick=D(x['tick']),minimum_base=D(x['minimum_base']),minimum_quote=D(x['minimum_quote'])) for a,x in execution['markets'].items()}
     commit=subprocess.check_output(['git','rev-parse','HEAD'],cwd=ROOT,text=True).strip();args.output_dir.mkdir(parents=True,exist_ok=True)
+    if args.fixed_s3:
+        fixed_s3(args,policy,panel,manifest,execution,rules,cutoff,commit)
+        return
     for family in ['S1','S2','S3']:
         baseline=json.loads((ROOT/f'research/artifacts/{family}/{family.lower()}-002-rolling.json').read_text());rows=[]
         for row in baseline['windows']:

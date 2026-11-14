@@ -23,3 +23,20 @@ class AttributionFixtures(unittest.TestCase):
         self.assertEqual(len(result['fills']),1)
         self.assertEqual(D(result['curve'][-1]['equity']),D('49.5'))
         with self.assertRaises(ValueError):passive(fixture(),BASE+2*DAY,BASE+10*DAY,Settings(),{'ETH':D('1.1'),'BTC':D(0)})
+
+    def test_fixed_weights_hold_quantities_without_future_information(self):
+        from dataclasses import replace
+        from test_engine import bars
+        prices=list(range(100,112))
+        data={a:bars(prices) for a in ['ETH','BTC']}
+        changed={a:list(bs) for a,bs in data.items()}
+        for bs in changed.values():
+            for i in range(6,len(bs)):
+                b=bs[i];bs[i]=replace(b,open=b.open*2,high=b.high*2,low=b.low*2,close=b.close*2)
+        weights={'ETH':D('.25'),'BTC':D('.25')}
+        first=passive(data,BASE+2*DAY,BASE+10*DAY,Settings(),weights)
+        second=passive(changed,BASE+2*DAY,BASE+10*DAY,Settings(),weights)
+        self.assertEqual(first['fills'],second['fills'])
+        self.assertEqual(first['curve'][:4],second['curve'][:4])
+        self.assertEqual(len({tuple(sorted(p['inventory'].items())) for p in first['curve'][1:]}),1)
+        self.assertEqual(len({f['fill_at'] for f in first['fills']}),1)

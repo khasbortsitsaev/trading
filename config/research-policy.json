@@ -441,5 +441,21 @@
     "count": "141 diagnostic controls + 423 stress scenarios = 564 new evaluations; reuse baseline141 ledgers. Three signal hypotheses unchanged.",
     "protection": "No parameter tuning, winner promotion, holdout, confidence claims or multiple-testing independence assumed.",
     "evaluations_completed": 564
+  },
+  "fixed_control_analysis": {
+    "status": "registered_before_evaluation",
+    "experiment_id": "S3-004",
+    "crypto_fractions": [
+      "0.25",
+      "0.50",
+      "1.00"
+    ],
+    "allocation": "Equal BTC and ETH initial target shares within crypto fraction, rest cash. Preselected globally, no future-window information or selection among results.",
+    "initial_quote_equity": "1000",
+    "windows": "All same 47 monthly starts / 12 calendar months; unchanged S3 baseline reused with hash checks.",
+    "execution": "Inherited ETH initial inventory; one rebalance at next daily open using prior close quantities, original fees/friction/minimums; then hold quantities. Target shares approximate due costs/gaps/precision; weights drift. No end liquidation.",
+    "interpretation": "Ex-ante weight rule on adaptively reused development data, not unseen evidence. Fixed exposure levels are not exact realized exposure or risk matching. Report all three, never select best control.",
+    "evaluation_count": 141,
+    "protection": "No S3 rerun, threshold tuning, new signal hypotheses, holdout or promotion."
   }
 }
