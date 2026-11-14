@@ -71,12 +71,17 @@ def compare_intervals(daily: dict, intraday: dict, absolute_tolerance: D, relati
         grouped=defaultdict(list)
         for bar in intraday[asset]:
             grouped[bar.timestamp_ms//DAY*DAY].append(bar)
-        ohlc_mismatches=volume_mismatches=bounds_violations=0;max_volume_difference=D(0)
+        raw_ohlc_mismatches=ohlc_mismatches=volume_mismatches=bounds_violations=0;max_volume_difference=D(0)
         for day in days:
             bars=sorted(grouped.pop(day.timestamp_ms,[]),key=lambda b:b.timestamp_ms)
             if [b.timestamp_ms for b in bars]!=list(range(day.timestamp_ms,day.timestamp_ms+DAY,900000)):
                 raise DataError('Missing or duplicate intraday bar in daily aggregation')
             aggregate=(bars[0].open,max(b.high for b in bars),min(b.low for b in bars),bars[-1].close)
+            raw_ohlc_mismatches+=aggregate!=(day.open,day.high,day.low,day.close)
+            traded=[b for b in bars if b.volume>0]
+            if not traded:
+                raise DataError('Daily trade OHLC cannot be reconstructed without positive-volume bars')
+            aggregate=(traded[0].open,max(b.high for b in traded),min(b.low for b in traded),traded[-1].close)
             ohlc_mismatches+=aggregate!=(day.open,day.high,day.low,day.close)
             bounds_violations+=sum(not day.low<=b.low<=b.high<=day.high for b in bars)
             difference=abs(sum((b.volume for b in bars),D(0))-day.volume)
@@ -87,6 +92,7 @@ def compare_intervals(daily: dict, intraday: dict, absolute_tolerance: D, relati
         report[asset]={'days_compared':len(days),'intraday_rows':len(intraday[asset]),
                        'zero_volume_bars':sum(b.volume==0 for b in intraday[asset]),
                        'zero_volume_designated_0015_bars':sum(b.volume==0 and b.timestamp_ms%DAY==900000 for b in intraday[asset]),
+                       'raw_all_bar_daily_ohlc_mismatch_count':raw_ohlc_mismatches,
                        'daily_ohlc_mismatch_count':ohlc_mismatches,'intraday_bound_violations':bounds_violations,
                        'volume_tolerance_failures':volume_mismatches,'maximum_volume_sum_difference_base':str(max_volume_difference)}
     return report

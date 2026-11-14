@@ -1,0 +1,87 @@
+{
+  "experiment_id": "DATA-001",
+  "evidence_type": "source_data_quality_audit_not_strategy_performance",
+  "code_commit": "7d125f9f69890f89d119d1cdfb26e936ef70b58b",
+  "registered_plan": {
+    "id": "DATA-001",
+    "source": "Bitstamp public OHLC API",
+    "quote": "USD",
+    "markets": [
+      "BTC",
+      "ETH"
+    ],
+    "interval_ms": 900000,
+    "start_ms": 1577836800000,
+    "end_exclusive_ms": 1762992000000,
+    "rows_per_asset": 205728,
+    "daily_normalized_sha256_required": "5d1d450f98b2ba61c8b956b53a113f8b03f3a1a5fb1cd51b309cd83c611b26f0",
+    "ohlc_aggregation_tolerance": "exact Decimal equality",
+    "volume_absolute_tolerance_base": "0.000001",
+    "volume_relative_tolerance": "0.00000001",
+    "missing_bars_accepted": false,
+    "status": "registered_before_collection"
+  },
+  "admission_recommended": false,
+  "comparisons": {
+    "BTC": {
+      "days_compared": 2143,
+      "intraday_rows": 205728,
+      "zero_volume_bars": 107,
+      "zero_volume_designated_0015_bars": 1,
+      "daily_ohlc_mismatch_count": 1,
+      "intraday_bound_violations": 0,
+      "volume_tolerance_failures": 0,
+      "maximum_volume_sum_difference_base": "0"
+    },
+    "ETH": {
+      "days_compared": 2143,
+      "intraday_rows": 205728,
+      "zero_volume_bars": 226,
+      "zero_volume_designated_0015_bars": 3,
+      "daily_ohlc_mismatch_count": 1,
+      "intraday_bound_violations": 0,
+      "volume_tolerance_failures": 0,
+      "maximum_volume_sum_difference_base": "0"
+    }
+  },
+  "daily_recovery_admission": {
+    "source": "Bitstamp public OHLC API",
+    "quote": "USD",
+    "normalized_sha256": "5d1d450f98b2ba61c8b956b53a113f8b03f3a1a5fb1cd51b309cd83c611b26f0",
+    "manifest_sha256": "01354577e33f86dbdf7e723853368b7339c6ed3e7b616ed2c43523fcbd11b0fc",
+    "start_ms": 1577836800000,
+    "end_exclusive_ms": 1762992000000,
+    "interval_ms": 86400000,
+    "markets": [
+      "BTC",
+      "ETH"
+    ]
+  },
+  "execution_admission_candidate": {
+    "source": "Bitstamp public OHLC API",
+    "quote": "USD",
+    "normalized_sha256": "72f73a914f46600d00b6a90d46b88466bdf20fd9ca6634f654290975c51e5215",
+    "manifest_sha256": "24fd80a1b5ef4b7de1799dde3871a92daa7d205c97fd488aa093c48e9bbfea7c",
+    "start_ms": 1577836800000,
+    "end_exclusive_ms": 1762992000000,
+    "interval_ms": 900000,
+    "markets": [
+      "BTC",
+      "ETH"
+    ]
+  },
+  "raw_pages_verified": {
+    "daily": 6,
+    "intraday": 412
+  },
+  "raw_pages_exactly_reconstruct_normalized": true,
+  "original_daily_prices_identical": true,
+  "holdout_accessed": false,
+  "strategy_runs": 0,
+  "costs_calibrated": false,
+  "limitations": [
+    "OHLC opens are not executable quotes or first-trade timestamp measurements",
+    "Historical publication/receipt latencies are assumed, not measured",
+    "Bitstamp USD candles do not reconstruct Bitvavo USDC execution or spreads"
+  ]
+}

@@ -102,6 +102,20 @@ class IntradayCollector(unittest.TestCase):
 
 
 class SourceAdmission(unittest.TestCase):
+    def test_leading_zero_volume_carry_is_retained_but_not_a_trade_open(self):
+        day=replace(bars([101])[0],high=D(110),low=D(90),volume=D(95))
+        records=[replace(day,timestamp_ms=BASE+i*INTERVAL,volume=D(1)) for i in range(96)]
+        records[0]=replace(records[0],open=D(100),high=D(100),low=D(100),close=D(100),volume=D(0))
+        result=audit.compare_intervals({'ETH':[day]},{'ETH':records},D('.000001'),D('.00000001'))['ETH']
+        self.assertEqual(result['raw_all_bar_daily_ohlc_mismatch_count'],1)
+        self.assertEqual(result['daily_ohlc_mismatch_count'],0)
+        self.assertEqual(result['intraday_rows'],96)
+        self.assertEqual(result['zero_volume_bars'],1)
+        self.assertEqual(result['intraday_bound_violations'],0)
+        self.assertEqual(result['volume_tolerance_failures'],0)
+        with self.assertRaisesRegex(DataError,'positive-volume'):
+            audit.compare_intervals({'ETH':[day]},{'ETH':[replace(b,volume=D(0)) for b in records]},D('.000001'),D('.00000001'))
+
     def test_raw_reconstruction_and_exact_decimal_aggregation(self):
         with tempfile.TemporaryDirectory() as tmp:
             root=Path(tmp);capture(root/'daily',86400,1);capture(root/'intraday')

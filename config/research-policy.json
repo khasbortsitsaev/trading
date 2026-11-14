@@ -532,6 +532,15 @@
     "volume_absolute_tolerance_base": "0.000001",
     "volume_relative_tolerance": "0.00000001",
     "missing_bars_accepted": false,
-    "status": "registered_before_collection"
+    "status": "registered_before_collection",
+    "aggregation_rule": "Exact trade OHLC from positive-volume candles; preserve/check the entire grid including non-fillable zero-volume source rows",
+    "qa_amendment": {
+      "date": "2026-11-14",
+      "after_data_observation": true,
+      "initial_failure_retained": "research/artifacts/data-001-initial-audit.json",
+      "reason": "On 2020-04-26 both daily opens differ from leading zero-volume candles carrying prior daily closes; first positive-volume candle at00:45 matches the daily open exactly. Align OHLC aggregation with modeled trade-reference eligibility; no price correction, tolerance relaxation or date exclusion.",
+      "original_raw_all_bar_comparison_still_reported": true,
+      "economic_results_inspected": false
+    }
   }
 }
