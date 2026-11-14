@@ -270,10 +270,12 @@ def run(panel, variant, start_ms, end_ms, settings, *, holdout_start_ms, market_
             prices = {}
             for asset in indexed:
                 bar = execution_index[asset].get(at)
-                if bar is None:
+                no_trade_reference=(bar is not None and settings.execution_interval_minutes<1440 and bar.volume==0)
+                if bar is None or no_trade_reference:
                     difference=due['quantities'][asset]-portfolio.inventory.get(asset,D(0))
                     if difference:
-                        rejected.append({'asset':asset,'at_ms':at,'reason':'missing_designated_execution_bar',
+                        reason='zero_volume_execution_bar' if no_trade_reference else 'missing_designated_execution_bar'
+                        rejected.append({'asset':asset,'at_ms':at,'reason':reason,
                                          'requested':str(abs(difference))})
                 else:
                     prices[asset] = bar.open

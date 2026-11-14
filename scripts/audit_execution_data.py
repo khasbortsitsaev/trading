@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Audit registered development data without importing strategy or P&L code."""
+"""Audit registered development data without strategy or P&L calculations."""
 import argparse
 from collections import defaultdict
 from datetime import datetime, timezone
@@ -85,6 +85,8 @@ def compare_intervals(daily: dict, intraday: dict, absolute_tolerance: D, relati
         if grouped:
             raise DataError('Intraday data extend beyond daily coverage')
         report[asset]={'days_compared':len(days),'intraday_rows':len(intraday[asset]),
+                       'zero_volume_bars':sum(b.volume==0 for b in intraday[asset]),
+                       'zero_volume_designated_0015_bars':sum(b.volume==0 and b.timestamp_ms%DAY==900000 for b in intraday[asset]),
                        'daily_ohlc_mismatch_count':ohlc_mismatches,'intraday_bound_violations':bounds_violations,
                        'volume_tolerance_failures':volume_mismatches,'maximum_volume_sum_difference_base':str(max_volume_difference)}
     return report

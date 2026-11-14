@@ -61,6 +61,13 @@ class ParameterValidity(unittest.TestCase):
 
 
 class ExecutionContract(unittest.TestCase):
+    def test_zero_volume_reference_cannot_manufacture_an_intraday_trade(self):
+        p=wide_panel();e={a:[replace(b,volume=D(0)) for b in bs] for a,bs in execution_bars(p).items()}
+        r=intraday(p,e)
+        self.assertEqual(r['fills'],[])
+        self.assertTrue(any(x['reason']=='zero_volume_execution_bar' for x in r['rejections']))
+        self.assertEqual(D(r['curve'][-1]['inventory']['ETH']),D('.5'))
+
     def test_ten_minute_readiness_uses_actual_fifteen_minute_reference(self):
         r=intraday(wide_panel(),fee=D(0),friction_round_trip_bps=D(0))
         first=r['fills'][0]
