@@ -2,9 +2,9 @@
 
 Find a repeatable investment edge after costs. Phase 1 covers **S1 trend following, S2 volume/technical signals and S3 mean reversion**, one at a time. Finish S1 end to end first. Lower trading frequency is welcome if the evidence supports it.
 
-**Current conclusion:** the offline pipeline works, but the first S1 development test underperformed ETH holding: +62.32% versus +65.52%, with 44.89% drawdown. S1 baseline review is closed without promotion; [buy/sell examples and cost findings](docs/STRATEGIES.md#s1-baseline-conclusion-do-not-promote). S2 is tested: +46.99% growth and 27.02% drawdown; it also fails the ETH-relative growth requirement. Next is one S3 specification. No validated edge or live system exists.
+**Current conclusion:** the offline pipeline works, but the first S1 development test underperformed ETH holding: +62.32% versus +65.52%, with 44.89% drawdown. S1 baseline review is closed without promotion; [buy/sell examples and cost findings](docs/STRATEGIES.md#s1-baseline-conclusion-do-not-promote). S2 is tested: +46.99% growth and 27.02% drawdown; it also fails the ETH-relative growth requirement. S3 returned +58.39% with 30.64% drawdown, also failing the criteria. The first POC pass is complete; none of the three baselines is promoted. No validated edge or live system exists.
 
-- Results: [S1-001](research/artifacts/S1/s1-001-summary.json) · [S2-001](research/artifacts/S2/s2-001-summary.json)
+- Results: [S1-001](research/artifacts/S1/s1-001-summary.json) · [S2-001](research/artifacts/S2/s2-001-summary.json) · [S3-001](research/artifacts/S3/s3-001-summary.json)
 - [Current state and next step](docs/state.md)
 - [Strategy logic, including when to sell](docs/STRATEGIES.md)
 - **Editable assumptions:** [config/runner.json](config/runner.json) for starting inventory, per-side fee, round-trip friction, timing and market minimums. Decimal rates: `0.0005` = 0.05%, while `0.005` = 0.5%. `15` bps = 0.15% round-trip friction, added separately to commissions.

@@ -4,7 +4,7 @@
 |---|---|---|---|
 | **S1 trend** | Completed close above the close L days earlier; current pilot L=20 | Target zero when return over L days is zero or negative | Baseline closed: failed promotion; see below |
 | **S2 volume/technical** | Positive 20-day trend plus unusually high volume | Nonpositive 20-day trend; volume alone does not exit | Implemented and tested; fails growth screen, lower drawdown |
-| **S3 mean reversion** | Implemented candidate buys when trailing log-price z-score <= negative entry threshold | Exit when z >= 0; zero variance means flat; otherwise retain state | Code exists, historical evaluation paused |
+| **S3 mean reversion** | Implemented candidate buys when trailing log-price z-score <= negative entry threshold | Exit when z >= 0; zero variance means flat; otherwise retain state | First baseline tested; failed growth/drawdown screens |
 
 ## S1 mechanics and exits
 
@@ -66,7 +66,17 @@ Historical development proxy, same 720-day window as S1; not prospective or inde
 
 S2 had 270 fills and 306 skipped targets; three of four continuous development folds were profitable. It meets the positive-growth/drawdown screens but misses the required ETH-relative growth margin. Costs and drawdown improved descriptively; this does not isolate volume's contribution or prove the change caused an improvement. No promotion, retuning or holdout access. Missing robustness/uncertainty and execution-basis calibration remain limitations.
 
-49 software checks pass; this is not an investment-performance conclusion. Synthetic fixtures exercise actual buys, holds and exits; the default random-volume CLI smoke only sold initial inventory, so its completion alone is not signal coverage. All 720 historical decisions/equity points and 270 fills' timing were audited. [Result](../research/artifacts/S2/s2-001-summary.json), [checks and fold results](../research/artifacts/S2/s2-001-validation.json). Next: specify one S3 mean-reversion pilot using the already implemented reversal logic.
+49 software checks pass; this is not an investment-performance conclusion. Synthetic fixtures exercise actual buys, holds and exits; the default random-volume CLI smoke only sold initial inventory, so its completion alone is not signal coverage. All 720 historical decisions/equity points and 270 fills' timing were audited. [Result](../research/artifacts/S2/s2-001-summary.json), [checks and fold results](../research/artifacts/S2/s2-001-validation.json). S3 is now completed below.
+
+## S3: mean-reversion baseline closed
+
+REVERSAL-20-1 buys when the latest completed log price is at least one sample standard deviation below the latest 20-day log-price average (including that close). Sell when it reaches/exceeds the moving average; retain signal state between thresholds. Zero variance means flat. Start inactive, with at least 20 warmup closes. No fixed profit target, stop-loss or time exit. Parameters remain in the policy's existing variant definition; sizing/timing/costs reuse S1/S2.
+
+S3-001 historical development proxy: **+58.39% net growth, 26.27% CAGR, 30.64% maximum drawdown**; ETH +65.52%, 29.13% CAGR. Three of four continuous folds profitable. 250 fills, 329 skipped targets; $34.75 commissions and $52.42 adverse modeled costs. Fails the ETH growth margin and 30% drawdown screens; no promotion or retuning. A dip can keep falling, and the moving average can fall toward price; a mean-crossing exit need not realize a profit.
+
+55 software checks pass, including S3 state/warmup/startup/future-price and full synthetic ledger checks. Historical decisions were independently recomputed with Decimal logs/sample variance, daily equity/costs reconciled and fill timing checked. [S3-001 result](../research/artifacts/S3/s3-001-summary.json), [validation/folds](../research/artifacts/S3/s3-001-validation.json). Adaptive development after S1/S2, fixed assets and execution proxies prevent independent or live edge claims; robustness/uncertainty/paper evidence is absent.
+
+**POC conclusion:** all three baseline pipelines run end to end, but none meets the current growth/risk criteria. S2 has the lowest drawdown, with lower growth. Review that tradeoff before defining a new bounded experiment; no automatic expansion or holdout access.
 
 ## Later ideas
 

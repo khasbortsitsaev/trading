@@ -13,7 +13,7 @@
     "capital_settings": "config/runner.json: initial_eth"
   },
   "open_prerequisites": [
-    "Verify S3 fixtures and commit before its single registered development pilot; no batch or holdout access.",
+    "First POC pass complete with no passing baseline. Review the three results and record a bounded next hypothesis before more experiments. No holdout access.",
     "Freeze collector dataset hashes and exact evaluated-code/configuration hashes before each run",
     "Validate holdout coverage only after a champion and access bundle are frozen; do not inspect its strategy results during development",
     "Confirm actual account/product fees and eligibility before funded use; use public conservative fee scenarios for research"
@@ -346,10 +346,10 @@
       "S3"
     ],
     "active_family": "S3",
-    "active_variant": "REVERSAL-20-1",
+    "active_variant": null,
     "sequence": "Complete S1 research review before S2 volume/technical signals, then S3 mean reversion. No automatic batch expansion.",
-    "historical_trials_used": 2,
-    "other_registered_variants": "Only S3-001 active; S1/S2 closed, other candidates paused.",
+    "historical_trials_used": 3,
+    "other_registered_variants": "First POC pass complete: S1/S2/S3 baselines closed without promotion. No other historical variants active; review findings before any new research batch.",
     "s2_spec": {
       "id": "S2-TREND-VOL-20-1.5",
       "status": "closed_failed_growth_screen",
@@ -373,7 +373,7 @@
     "s3_spec": {
       "experiment_id": "S3-001",
       "variant_id": "REVERSAL-20-1",
-      "status": "registered_single_development_pilot",
+      "status": "closed_failed_growth_and_drawdown_screens",
       "reason": "Use the already reserved 20-day, one-sample-standard-deviation candidate as a simple baseline; no S3 returns inspected or thresholds searched.",
       "initial_state": "Inactive at first scored decision; warmup prices only, not inherited signal state.",
       "warmup_observations_min": 20,

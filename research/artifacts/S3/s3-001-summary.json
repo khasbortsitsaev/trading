@@ -1,0 +1,72 @@
+{
+  "code_commit": "e7944bf03cf743cf62e22842c8ce96e1dd64ee87",
+  "dataset_sha256": "5d1d450f98b2ba61c8b956b53a113f8b03f3a1a5fb1cd51b309cd83c611b26f0",
+  "result_sha256": "30690b26667de5ffdf4168c1ddb4dee536998a07f87113158ee6996b516aace8",
+  "evidence_type": "historical_source_proxy_not_venue_replication",
+  "variant": {
+    "id": "REVERSAL-20-1",
+    "family": "reversal",
+    "lookback_days": 20,
+    "entry_z": 1,
+    "rule": "z=(log close - trailing log-price mean)/sample std over L completed closes including t; enter if z <= -entry_z, exit if z >= 0; zero std means flat; otherwise preserve state",
+    "neighbor_ids": [
+      "REVERSAL-10-1",
+      "REVERSAL-20-2",
+      "REVERSAL-10-2",
+      "REVERSAL-5-1"
+    ]
+  },
+  "source": "Bitstamp public OHLC API",
+  "quote": "USD",
+  "usdc_wealth_claimed": false,
+  "execution_model": "fixed target quantities from prior available closes; future daily open proxy; quote fees; no EUR leg",
+  "initial_eth": "0.5",
+  "initial_quote_equity": "1031.150",
+  "settings": {
+    "fee_per_execution": "0.0005",
+    "noncommission_round_trip_bps": "15",
+    "extra_delay_bars": 0,
+    "publication_minutes": 5,
+    "processing_minutes": 5,
+    "rules": {
+      "BTC": {
+        "quantity_decimals": 8,
+        "tick": "1",
+        "minimum_base": "0.00006985",
+        "minimum_quote": "5"
+      },
+      "ETH": {
+        "quantity_decimals": 8,
+        "tick": "0.01",
+        "minimum_base": "0.00247844",
+        "minimum_quote": "5"
+      }
+    }
+  },
+  "start_ms": 1700784000000,
+  "end_exclusive_ms": 1762992000000,
+  "metrics": {
+    "total_return": 0.5838704608567518,
+    "cagr": 0.262746341236984,
+    "maximum_drawdown": 0.3064408505489119,
+    "sharpe_zero_reference_365_days": 0.8516896327096284
+  },
+  "eth_benchmark_metrics": {
+    "total_return": 0.6551859574261745,
+    "cagr": 0.291276223711943,
+    "maximum_drawdown": 0.638042542727161,
+    "sharpe_zero_reference_365_days": 0.7102799251297535
+  },
+  "cash_benchmark_metrics": {
+    "total_return": -0.0012512122387625668,
+    "cagr": -0.0006349253137453047,
+    "maximum_drawdown": 0.0012512122387625668,
+    "sharpe_zero_reference_365_days": -0.7120003121097942
+  },
+  "commission_quote": "34.74836106396030",
+  "modeled_adverse_price_cost": "52.4234118593",
+  "orders_executed": 250,
+  "orders_rejected": 329,
+  "pending_intents_not_filled_at_end": 1,
+  "full_ledger_committed": false
+}
