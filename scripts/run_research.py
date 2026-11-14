@@ -39,7 +39,7 @@ def main():
     if args.variant not in variants:
         p.error('Variant is not in the frozen policy')
     if not args.synthetic and args.variant != policy['poc']['active_variant']:
-        p.error('POC is focused on TREND-20; preregister a scope change before another historical variant')
+        p.error('Historical variant is not active in the POC policy; implement and freeze the next pilot before enabling it')
     cutoff=stamp(policy['split']['exact_utc_boundaries']['holdout_start_inclusive'])
     if args.synthetic:
         data=synthetic.panel()

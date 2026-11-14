@@ -3,7 +3,7 @@
 | Strategy | Buy / hold | Sell | Status |
 |---|---|---|---|
 | **S1 trend** | Completed close above the close L days earlier; current pilot L=20 | Target zero when return over L days is zero or negative | Baseline closed: failed promotion; see below |
-| **S2 volume/technical** | Price/volume confirmation, exact rule to specify | Must be specified with entry, before testing | Deferred until S1 close-out; no implemented S2 rule |
+| **S2 volume/technical** | Positive 20-day trend plus unusually high volume | Nonpositive 20-day trend; volume alone does not exit | Specification frozen; not implemented or historically tested |
 | **S3 mean reversion** | Implemented candidate buys when trailing log-price z-score <= negative entry threshold | Exit when z >= 0; zero variance means flat; otherwise retain state | Code exists, historical evaluation paused |
 
 ## S1 mechanics and exits
@@ -34,7 +34,24 @@ Total traded notional was $124,300; commissions $62.15 and modeled adverse price
 
 **Evidence gaps:** unmeasured USD/USDC and source/execution differences, fixed BTC/ETH selection, candle-based rather than actual fills, and no completed parameter/cost/delay robustness, uncertainty analysis or prospective paper test. These prevent a positive edge claim. The failed baseline needs no champion/holdout evaluation. Holdout stays sealed; one variant remains evaluated. [Aggregate checks](../research/artifacts/S1/dev-001-closeout.json).
 
-**Next:** define one S2 rule, including entry, exit and sizing, using the existing reuse review. Keep its evidence separate. A slower S1 signal/exit experiment remains an alternative future hypothesis, not a change to this result.
+**Next:** implement the S2 specification below. A slower S1 experiment remains a separate future hypothesis.
+
+## S2: volume-confirmed trend
+
+**Hypothesis:** requiring strong participation before entry may improve after-cost trend results. This is an agent-selected hypothesis after reviewing S1, not a reproduced paper or proven improvement.
+
+- **Buy:** while inactive, latest completed close exceeds the close 20 days earlier **and** latest completed daily volume exceeds 1.5 times the mean of the preceding 20 days, excluding the latest day. Exact equality does not enter.
+- **Hold / sell:** while active, hold while the 20-day price return stays positive; target zero at zero or negative return. Low volume alone does not sell. No fixed profit target, stop-loss or time limit.
+- **Size / execute:** reuse S1 daily fee-reserved equal-universe allocation and delayed execution. This can still resize a holding daily; the volume condition gates entry, not every partial buy/resize. Inactive allocations stay cash.
+- **Initialize:** inactive signals at the first scored decision, even though starting inventory may contain ETH. Need 21 completed warmup bars; no trades before scoring. A zero prior-volume mean blocks entry; missing/invalid volume fails validation.
+
+Example: preceding average volume 100 units means entry requires strictly more than 150 units alongside a positive trend. A held position can remain active at volume 80 if its price trend stays positive.
+
+Parameters and exact conventions live in `poc.s2_spec` in [research-policy.json](../config/research-policy.json). The 20-day window reuses S1 and 1.5 is a simple untested assumption; no threshold search. Source volume is Bitstamp-specific, not total crypto-market or eventual execution-venue volume.
+
+Reuse review: the existing short trend formula, portfolio and accounting code are sufficient. Copying a community strategy with different indicators/ROI/stops or migrating frameworks would add unrelated changes. No third-party source is copied. This test evaluates the combined entry gate and stateful holding rule; it cannot isolate volume's incremental contribution from entry timing without a separately registered control.
+
+One S2 pilot will use the same admitted development dates, costs and ETH/cash controls as S1. It reserves the untested TREND-365 budget slot; the total cap stays 18 and one historical variant remains used. S1's result has influenced this hypothesis, so S2 is adaptive development research, not independent validation. Holdout remains sealed. [Validation plan](experiments.md#s2-001-volume-confirmed-trend-plan).
 
 ## Later ideas
 

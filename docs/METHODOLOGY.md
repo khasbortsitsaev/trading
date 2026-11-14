@@ -45,7 +45,7 @@ Borrowed shorts remain possible future research, not initial scope. A 1x gross p
 
 ## Finite first batch and protocol
 
-**POC update:** S1 first, then S2 and S3. The multi-variant batch below is retained as a paused preregistration, not the next task. Preserve the one completed trial and all prior settings/results. No generic batch orchestrator is required for S1 close-out. S2 needs a separate specification before evaluation.
+**POC update:** S1 first, then S2 and S3. The multi-variant batch below is retained as a paused preregistration, not the next task. Preserve the one completed trial and all prior settings/results. No generic batch orchestrator is required for S1 close-out. S2 specification is now frozen in policy; one reserved S2 slot replaces unexecuted TREND-365 within the unchanged 18-slot ceiling. The old family counts below describe the original paused batch.
 
 The first batch has a cap of 18 selection variants. Twelve are now specified in the policy: six simple positive-return trend lookbacks and six long/flat reversal configurations on the fixed BTC/ETH universe. Six cross-sectional slots remain disabled until feasible. Exact signal definitions, four nearest preregistered neighbors and equal-universe-weight allocation are recorded before evaluating returns. An inactive asset's weight stays in cash; do not renormalize into an always-invested portfolio. No ML, RL or allocation-model search in this batch.
 

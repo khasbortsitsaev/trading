@@ -1,6 +1,6 @@
 {
-  "version": "0.5",
-  "date": "2026-11-13",
+  "version": "0.6",
+  "date": "2026-11-14",
   "status": "frozen_research_working_defaults",
   "real_data_search_authorized_by_this_file": true,
   "agreed_scope": {
@@ -13,7 +13,7 @@
     "capital_settings": "config/runner.json: initial_eth"
   },
   "open_prerequisites": [
-    "Complete S1 end-to-end research close-out first. Any later promotion requires bounded robustness/uncertainty evidence; no generic multi-family orchestrator is required now. Registered variants remain paused except the active POC rule.",
+    "S1 baseline closed without promotion. Implement and verify the frozen S2 specification on synthetic fixtures before enabling its one historical development pilot. No batch expansion.",
     "Freeze collector dataset hashes and exact evaluated-code/configuration hashes before each run",
     "Validate holdout coverage only after a champion and access bundle are frozen; do not inspect its strategy results during development",
     "Confirm actual account/product fees and eligibility before funded use; use public conservative fee scenarios for research"
@@ -37,9 +37,10 @@
   "budget": {
     "selection_variants_total": 18,
     "families": {
-      "trend": 6,
+      "trend": 5,
       "reversal": 6,
-      "cross_sectional_momentum_if_feasible": 6
+      "cross_sectional_momentum_if_feasible": 6,
+      "volume_confirmed_trend": 1
     },
     "champions": 1,
     "outer_folds": 4,
@@ -52,7 +53,8 @@
     "holdout_access_bundles": 1,
     "holdout_predeclared_scenarios": 3,
     "enabled_selection_variants": 12,
-    "cross_sectional_status": "6 slots disabled: no defensible historical panel; no reassignment"
+    "cross_sectional_status": "6 slots disabled: no defensible historical panel; no reassignment",
+    "poc_reservation_change": "2026-11-14: unexecuted TREND-365 slot reserved for S2-TREND-VOL-20-1.5. No used trial erased, no disabled cross-sectional slot reassigned, total ceiling 18 unchanged."
   },
   "split": {
     "frequency": "daily",
@@ -343,10 +345,30 @@
       "S2",
       "S3"
     ],
-    "active_family": "S1",
-    "active_variant": "TREND-20",
+    "active_family": "S2",
+    "active_variant": null,
     "sequence": "Complete S1 research review before S2 volume/technical signals, then S3 mean reversion. No automatic batch expansion.",
     "historical_trials_used": 1,
-    "other_registered_variants": "Retained as preregistered candidates, paused. Existing 18-slot ceiling and multiplicity allowance are not reset. S2 specification is not implemented or registered."
+    "other_registered_variants": "S1 closed; other old candidates paused. S2 specification frozen but not implemented or enabled. No historical execution until implementation and checks are committed.",
+    "s2_spec": {
+      "id": "S2-TREND-VOL-20-1.5",
+      "status": "specification_frozen_not_implemented",
+      "family": "volume_confirmed_trend",
+      "trend_lookback_days": 20,
+      "volume_lookback_days": 20,
+      "volume_multiplier": "1.5",
+      "entry": "When previously inactive: close[t] > close[t-20] AND volume[t] > 1.5 * mean(volume[t-20:t]); latest completed day t excluded from volume mean. Equality does not enter.",
+      "hold_exit": "When previously active: remain active while close[t] > close[t-20], irrespective of current volume. Exit when close[t] <= close[t-20]. No profit target, stop-loss or time exit.",
+      "zero_volume_mean": "Zero prior mean blocks entry; zero latest volume blocks entry. Neither forces exit of an active trend. Missing/negative/nonfinite volume fails data validation, not an invented zero.",
+      "initial_state": "Both signal states inactive at first scored decision, independent of starting owned inventory; no pre-scored signal state reconstruction.",
+      "warmup_observations_min": 21,
+      "allocation": "Reuse daily equal-universe 1/N fee-reserved targets, inactive weight stays cash; daily resizing remains possible.",
+      "data": "Existing admitted Bitstamp BTC/USD and ETH/USD daily OHLCV; volume is venue-specific base volume, normalized separately within each asset.",
+      "timing": "Only completed available bars, existing publication/processing lags and future daily-open proxies.",
+      "parameters_authority": "Agent-selected simple working hypothesis after seeing S1, not optimized or a paper replication. No S2 historical signals or returns examined before specification.",
+      "budget_slot": "Replaces unexecuted TREND-365 reservation, whose old definition remains for provenance; selection cap and multiplicity divisor remain 18.",
+      "implementation_reuse": "Existing signal interface, data loader, allocator, execution, ledger and reports; no framework migration or third-party code copy.",
+      "evaluation_scope": "One development pilot only, then reject/inconclusive or register missing robustness before any promotion. Holdout access not authorized."
+    }
   }
 }

@@ -1,6 +1,6 @@
 # Resume here
 
-Updated 13 November 2026. No background work is scheduled.
+Updated 14 November 2026. No background work is scheduled.
 
 **Conclusion:** the offline S1 pipeline is implemented; the first historical development test did not establish an edge. DEV-001 returned +62.32% versus +65.52% for ETH holding, with 44.89% drawdown. It failed the working growth/drawdown screens. [Evidence](../research/artifacts/dev-001-summary.json).
 
@@ -31,10 +31,16 @@ The missing source data were recovered into `/workspace/work/s1-closeout/recover
 
 All 41 tests passed after close-out; all 720 decisions' signals and 425 fills' causal timing checked. 247 active-state resizing fills generated only $4.16 of $155.92 direct modeled costs; signal entry/exit flips dominated costs. Concrete buy/sell/resize examples and concise interpretation are in [STRATEGIES](STRATEGIES.md); aggregate checks under [S1 evidence](../research/artifacts/S1/dev-001-closeout.json). The baseline is closed without promotion. Missing execution/robustness evidence is stated; no further checks or holdout access are needed to reject it.
 
+## S2 specification completed
+
+S2-TREND-VOL-20-1.5 is frozen in `poc.s2_spec` in the policy: positive 20-day price trend plus latest volume strictly above 1.5 times the prior 20-day average to enter; hold through low volume, exit at nonpositive price trend. Reuse daily sizing/accounting/execution. No performance claim. Its reserved slot replaces unexecuted TREND-365; cap 18, one used trial, disabled cross-sectional slots and sealed holdout unchanged. Old TREND-365 definition remains provenance, not an enabled run.
+
+The CLI blocks historical runs while no executable pilot is active. S2 is specification only; do not interpret configuration as implemented capability. Plan/acceptance checks in [experiments](experiments.md#s2-001-volume-confirmed-trend-plan). No new sources, market-data reads or historical tests in this step. All 41 existing tests pass; the CLI guard was checked to reject a historical request before data loading/output.
+
 ## One next task
 
-Define one S2 volume/technical rule with explicit entry, exit and sizing, using the existing repository reuse review. Commit the specification and validation plan before any historical run. Reuse the current pipeline and keep S2 outputs separate. Do not start the eleven-variant batch or tune S1 after this failure. A slower S1 variant would be a separately recorded scope choice.
+Implement S2's stateful signal and synthetic fixtures, then commit passing checks before enabling its one historical pilot. Reuse existing pipeline, keep outputs under S2, and preserve S1 results. Do not start other variants or inspect holdout. No framework migration needed.
 
-**User input needed now:** none for drafting S2. User can choose to discuss a slower S1 approach instead. Future live risk/venue decisions remain separate.
+**User input needed now:** none. The 1.5 volume threshold is an agent-selected, editable assumption; discuss alternatives before evaluation rather than fitting after seeing its result.
 
 Completed work is committed and pushed to GitHub `main`, then checked against the remote. Detailed historical commands/results remain in [experiments](experiments.md), not duplicated here.
