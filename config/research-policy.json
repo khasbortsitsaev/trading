@@ -13,7 +13,7 @@
     "capital_settings": "config/runner.json: initial_eth"
   },
   "open_prerequisites": [
-    "S1/S2 baselines closed without promotion. Specify one S3 pilot before enabling another historical evaluation. No batch expansion or holdout access.",
+    "Verify S3 fixtures and commit before its single registered development pilot; no batch or holdout access.",
     "Freeze collector dataset hashes and exact evaluated-code/configuration hashes before each run",
     "Validate holdout coverage only after a champion and access bundle are frozen; do not inspect its strategy results during development",
     "Confirm actual account/product fees and eligibility before funded use; use public conservative fee scenarios for research"
@@ -345,11 +345,11 @@
       "S2",
       "S3"
     ],
-    "active_family": "S2",
-    "active_variant": null,
+    "active_family": "S3",
+    "active_variant": "REVERSAL-20-1",
     "sequence": "Complete S1 research review before S2 volume/technical signals, then S3 mean reversion. No automatic batch expansion.",
     "historical_trials_used": 2,
-    "other_registered_variants": "S1 and S2 baselines closed without promotion. Next specify one S3 pilot; no historical variant active.",
+    "other_registered_variants": "Only S3-001 active; S1/S2 closed, other candidates paused.",
     "s2_spec": {
       "id": "S2-TREND-VOL-20-1.5",
       "status": "closed_failed_growth_screen",
@@ -369,6 +369,18 @@
       "budget_slot": "Replaces unexecuted TREND-365 reservation, whose old definition remains for provenance; selection cap and multiplicity divisor remain 18.",
       "implementation_reuse": "Existing signal interface, data loader, allocator, execution, ledger and reports; no framework migration or third-party code copy.",
       "evaluation_scope": "One development pilot only, then reject/inconclusive or register missing robustness before any promotion. Holdout access not authorized."
+    },
+    "s3_spec": {
+      "experiment_id": "S3-001",
+      "variant_id": "REVERSAL-20-1",
+      "status": "registered_single_development_pilot",
+      "reason": "Use the already reserved 20-day, one-sample-standard-deviation candidate as a simple baseline; no S3 returns inspected or thresholds searched.",
+      "initial_state": "Inactive at first scored decision; warmup prices only, not inherited signal state.",
+      "warmup_observations_min": 20,
+      "entry": "z <= -1, where z is latest log close minus mean of latest 20 log closes including current, divided by sample standard deviation (n-1).",
+      "exit": "z >= 0; otherwise retain state; zero sample deviation flattens. No stop, profit target or time exit.",
+      "sizing_execution": "Existing daily equal-universe fee-reserved targets and delayed proxy fills; inactive weights stay cash.",
+      "validation": "Same one continuous 720-day development portfolio, fixed data and costs; no holdout or parameter sweep."
     }
   }
 }
