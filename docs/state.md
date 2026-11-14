@@ -14,7 +14,7 @@ All three POC pipelines run end to end. Across 47 overlapping monthly-start 12-m
 
 [Strategy rules and full comparisons](STRATEGIES.md); [experiment commands/history](experiments.md). Results under research/artifacts/S1/, S2/, S3/, named sN-001 (original), -002 (rolling), -003 (hindsight composition/stress); S3-004 fixed-control results. Prior report bytes/decisions retained. Software correctness is separate from investment performance.
 
-Latest executed commit f0f93a4; 61 software checks passed. S3-004 audit: 141 hashes, 51,501 daily equities, 282 fill cash/fee/timing checks; quantities fixed after initial rebalance. Total additional evaluations 846, original signal hypotheses three. Overlapping adaptive windows are dependent and not unseen final evidence.
+Latest published evidence checkpoint: `13d25fc` (S3-004 report). Latest executed code/configuration commit: `f0f93a4`; 61 software checks passed. S3-004 audit: 141 hashes, 51,501 daily equities, 282 fill cash/fee/timing checks; quantities fixed after initial rebalance. Total additional evaluations 846, original signal hypotheses three. Overlapping adaptive windows are dependent and not unseen final evidence.
 
 Local data if retained: /workspace/work/s1-closeout/recovered-data; rolling baseline ledgers /workspace/work/rolling/ledgers; stresses /workspace/work/attribution/ledgers; fixed controls /workspace/work/fixed-controls/ledgers. Check before downloading, verify policy admission hashes. No raw/full source-derived ledgers in Git. Existing audits/collectors should be reused.
 
@@ -24,4 +24,4 @@ Prepare a concise POC go/no-go recommendation, identifying what evidence is usef
 
 Numerical risk screens remain provisional agent research assumptions, not user live limits. No active historical variant; three used hypotheses, cap18 unchanged. Holdout **2025-11-13 inclusive to 2026-11-13 exclusive** remains sealed, never move with calendar. No paper/live orders, leverage, borrowing, paid commitments or vendor messages authorized.
 
-Capital/cost/timing: config/runner.json; signals/validation/scenario counts: config/research-policy.json. Keep docs concise, separate strategies, reuse implementation. Commit/push completed work and verify remote. User input needed now: none to prepare recommendation.
+Capital/cost/timing: config/runner.json; signals/validation/scenario counts: config/research-policy.json. Keep docs concise, separate strategies, reuse implementation. Commit/push completed work and verify remote. User input needed now: none to prepare recommendation. Latest documentation sync checked result links, completed experiment statuses and scenario counts; no new simulations or evidence changes.

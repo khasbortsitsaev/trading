@@ -15,6 +15,6 @@
 | Working style | Concise conclusions and editable assumptions; reuse code/tools, separate software correctness from economic evidence |
 | Authority | Commit/push completed work; live orders, paid commitments, vendor messages and borrowing require separate authorization |
 
-Objective corrected following the user's clarification: the mandatory two-point ETH CAGR margin is removed. Signals, dates, costs and old results are unchanged. No new simulation is needed to acknowledge this correction. Next register a bounded control/robustness analysis to determine whether decisions add value beyond carrying crypto exposure. Do not infer a reliable edge from positive returns or monthly-window win rates.
+Objective corrected following the user's clarification: the mandatory two-point ETH CAGR margin is removed. Signals, dates, costs and old results are unchanged. No new simulation is needed to acknowledge this correction. The bounded control/robustness analyses are complete; results remain insufficient to establish an edge. Do not infer a reliable edge from positive returns or monthly-window win rates.
 
 S3-004 fixed ex-ante passive controls completed: similar median return but higher drawdown than the 50% crypto/cash reference, only 17/47 paired wins. No clear incremental value established. Stop further evaluation of unchanged S3; prepare the POC recommendation before any new mechanism-driven hypothesis. This is an evidence assessment, not a reinstatement of a mandatory buy-and-hold hurdle.

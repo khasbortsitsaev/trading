@@ -1,7 +1,14 @@
 # Experiment registry
 
 ## Status
-As of 2026-11-14, S1-001 and S2-001 are complete, both without promotion. Two historical variants evaluated; holdout untouched. S1-001 was originally called DEV-001. Literal historical commands retain their original output paths; links point to the current strategy folders.
+Latest checkpoint: **S3-004 complete**. Three signal hypotheses evaluated; 846 additional rolling/stress/control evaluations (141 rolling + 564 composition/stress + 141 fixed controls), not independent trials. No strategy promoted, no active experiment, holdout untouched.
+
+- S1/S2/S3-001: original development pilots.
+- S1/S2/S3-002: all 47 monthly starts, fixed 12-month horizon.
+- S1/S2/S3-003: hindsight composition diagnostics and cost/delay stresses.
+- [S3-004](../research/artifacts/S3/s3-004-fixed-controls.json): all three predetermined passive references; no clear incremental S3 value over the 50% crypto/cash control.
+
+Current objective is after-cost edge with acceptable risk, not mandatory ETH outperformance. Older entries below preserve their original plans, screens and next steps; they are historical records, not current instructions. S1-001 was originally DEV-001. Literal historical commands retain original output paths; navigational links use current folders. Current next action: POC recommendation, not another run.
 
 ## Recording rules
 Create an entry before running an experiment. Preserve failed, negative, invalid and inconclusive outcomes. Separate software/accounting checks on synthetic data from economic evidence on historical or prospective market data. Never silently replace an earlier result after changing parameters or data.

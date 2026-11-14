@@ -458,5 +458,20 @@
     "evaluation_count": 141,
     "protection": "No S3 rerun, threshold tuning, new signal hypotheses, holdout or promotion.",
     "evaluations_completed": 141
+  },
+  "evidence_status": {
+    "latest_experiment": "S3-004",
+    "latest_report_checkpoint": "13d25fc",
+    "signal_hypotheses_evaluated": 3,
+    "additional_scenario_control_evaluations": 846,
+    "breakdown": {
+      "rolling": 141,
+      "composition_and_stress": 564,
+      "fixed_passive_controls": 141
+    },
+    "promoted_candidates": 0,
+    "active_experiment": null,
+    "holdout_accessed": false,
+    "next_task": "Concise POC go/no-go recommendation before any mechanism-driven next hypothesis; no further unchanged-S3 evaluation."
   }
 }
