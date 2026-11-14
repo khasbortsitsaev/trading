@@ -1,0 +1,1452 @@
+{
+  "experiment_id": "S3-004",
+  "evidence_type": "adaptive_development_fixed_weight_control_comparison_not_independent_validation",
+  "code_commit": "f0f93a4a297af65a70f5254f174d9d7bea082673",
+  "dataset_sha256": "5d1d450f98b2ba61c8b956b53a113f8b03f3a1a5fb1cd51b309cd83c611b26f0",
+  "design": {
+    "status": "registered_before_evaluation",
+    "experiment_id": "S3-004",
+    "crypto_fractions": [
+      "0.25",
+      "0.50",
+      "1.00"
+    ],
+    "allocation": "Equal BTC and ETH initial target shares within crypto fraction, rest cash. Preselected globally, no future-window information or selection among results.",
+    "initial_quote_equity": "1000",
+    "windows": "All same 47 monthly starts / 12 calendar months; unchanged S3 baseline reused with hash checks.",
+    "execution": "Inherited ETH initial inventory; one rebalance at next daily open using prior close quantities, original fees/friction/minimums; then hold quantities. Target shares approximate due costs/gaps/precision; weights drift. No end liquidation.",
+    "interpretation": "Ex-ante weight rule on adaptively reused development data, not unseen evidence. Fixed exposure levels are not exact realized exposure or risk matching. Report all three, never select best control.",
+    "evaluation_count": 141,
+    "protection": "No S3 rerun, threshold tuning, new signal hypotheses, holdout or promotion."
+  },
+  "settings": {
+    "initial_eth": "0.5",
+    "capital_note": "Illustrative starting inventory, editable, not a capital constraint. Quote equity uses the actual first scored ETH price, not a fixed ETH/USDC conversion.",
+    "model": "daily candle screening proxy, not observed execution",
+    "fee_per_execution": "0.0005",
+    "default_noncommission_round_trip_bps": "15",
+    "publication_lag_minutes": 5,
+    "processing_lag_minutes": 5,
+    "rules_scope": "Static candidate Bitvavo USDC rules observed 2026-11-12; prospective-cost proxy, not historical rule reconstruction or authenticated account settings. Applied to USD-source experiments only as an explicitly hypothetical execution scenario.",
+    "markets": {
+      "BTC": {
+        "quantity_decimals": 8,
+        "tick": "1",
+        "minimum_base": "0.00006985",
+        "minimum_quote": "5"
+      },
+      "ETH": {
+        "quantity_decimals": 8,
+        "tick": "0.01",
+        "minimum_base": "0.00247844",
+        "minimum_quote": "5"
+      }
+    }
+  },
+  "summary": {
+    "0.25": {
+      "windows": 47,
+      "s3_beats_control": 26,
+      "median_paired_excess": 0.04350473172696856,
+      "median_control_return": 0.10587936938299114,
+      "worst_control_return": -0.18609431833940893,
+      "profitable_control_windows": 33,
+      "median_control_drawdown": 0.14766015613104866,
+      "worst_control_drawdown": 0.3202993372906864
+    },
+    "0.50": {
+      "windows": 47,
+      "s3_beats_control": 17,
+      "median_paired_excess": -0.07464305248446457,
+      "median_control_return": 0.2132449228604616,
+      "worst_control_return": -0.3628715796808515,
+      "profitable_control_windows": 32,
+      "median_control_drawdown": 0.248868733268775,
+      "worst_control_drawdown": 0.5226114484559933
+    },
+    "1.00": {
+      "windows": 47,
+      "s3_beats_control": 21,
+      "median_paired_excess": -0.07122874244164379,
+      "median_control_return": 0.4234257880133965,
+      "worst_control_return": -0.7115629554084979,
+      "profitable_control_windows": 32,
+      "median_control_drawdown": 0.4236298967081994,
+      "worst_control_drawdown": 0.7584766090092833
+    }
+  },
+  "windows": [
+    {
+      "start": "2021-01-01",
+      "end_exclusive": "2022-01-01",
+      "s3_return": 0.385094680675224,
+      "s3_drawdown": 0.27127771086977737,
+      "controls": {
+        "0.25": {
+          "total_return": 0.5621452904175068,
+          "cagr": 0.5626226308846753,
+          "maximum_drawdown": 0.30792516307082296,
+          "sharpe_zero_reference_365_days": 1.2565400295054605,
+          "result_sha256": "38c1b8b10575b86724de958a26466f61efa9dc97aa9fd6427617d6ec1036a8c3"
+        },
+        "0.50": {
+          "total_return": 1.1330034115267913,
+          "cagr": 1.1341104221785017,
+          "maximum_drawdown": 0.4354314476144383,
+          "sharpe_zero_reference_365_days": 1.4710989348039103,
+          "result_sha256": "ae1920e694429dcca1bb203999ad2d035b2d3fa499a22066770e3cdbb8f5140a"
+        },
+        "1.00": {
+          "total_return": 2.2685877532273393,
+          "cagr": 2.27124032081331,
+          "maximum_drawdown": 0.5479654928458515,
+          "sharpe_zero_reference_365_days": 1.7284111717045285,
+          "result_sha256": "8713b2d3cde24db141043e7dbbf12d5d9987378171ba22a83210035b01e644b0"
+        }
+      }
+    },
+    {
+      "start": "2021-02-01",
+      "end_exclusive": "2022-02-01",
+      "s3_return": 0.06981421601421567,
+      "s3_drawdown": 0.32343967643768834,
+      "controls": {
+        "0.25": {
+          "total_return": 0.1899317378439518,
+          "cagr": 0.1900734752579154,
+          "maximum_drawdown": 0.2350505116824957,
+          "sharpe_zero_reference_365_days": 0.7107204413666905,
+          "result_sha256": "14ecd900916a99c43232d48b06e294eb7729b2c0036f7a42144eac1b5963dfaf"
+        },
+        "0.50": {
+          "total_return": 0.33361524879718174,
+          "cagr": 0.3338782467426244,
+          "maximum_drawdown": 0.3751932575447742,
+          "sharpe_zero_reference_365_days": 0.8051339693844363,
+          "result_sha256": "0fcc7e222136361e8d2a5b3e66995748e165f0a6544ac61e4c9cb330e1265da3"
+        },
+        "1.00": {
+          "total_return": 0.6209822707036414,
+          "cagr": 0.6215186517590064,
+          "maximum_drawdown": 0.5345486071578794,
+          "sharpe_zero_reference_365_days": 0.994913466373382,
+          "result_sha256": "f8dae463914817b771a6f57c41bf9f8521ad50639c2e968213d5ea0c856e679b"
+        }
+      }
+    },
+    {
+      "start": "2021-03-01",
+      "end_exclusive": "2022-03-01",
+      "s3_return": 0.434487227462528,
+      "s3_drawdown": 0.32296241875500276,
+      "controls": {
+        "0.25": {
+          "total_return": 0.20323806715764015,
+          "cagr": 0.2033905553601872,
+          "maximum_drawdown": 0.2103264310524271,
+          "sharpe_zero_reference_365_days": 0.7738271196074059,
+          "result_sha256": "777e809d7d1a3012fb76cdf6664efe2e4b2939ffe4dfc593988a705f24bbab36"
+        },
+        "0.50": {
+          "total_return": 0.3040640392577023,
+          "cagr": 0.3043011910843011,
+          "maximum_drawdown": 0.35535784079509847,
+          "sharpe_zero_reference_365_days": 0.7741135675465686,
+          "result_sha256": "0ec3b07df7e5e062ae6a7c2131b351419c4fb9bd10862edfed19bf3ca7079424"
+        },
+        "1.00": {
+          "total_return": 0.5057159699041718,
+          "cagr": 0.506138112723508,
+          "maximum_drawdown": 0.5423463536629063,
+          "sharpe_zero_reference_365_days": 0.908377299600057,
+          "result_sha256": "0223966469bef4cf99eb125de4a26bee0b352b29c4b4db38d786ec8ff4a7ba16"
+        }
+      }
+    },
+    {
+      "start": "2021-04-01",
+      "end_exclusive": "2022-04-01",
+      "s3_return": 0.1761549827206057,
+      "s3_drawdown": 0.3235127748181814,
+      "controls": {
+        "0.25": {
+          "total_return": 0.0796901643325707,
+          "cagr": 0.07974686738855781,
+          "maximum_drawdown": 0.18321888567943334,
+          "sharpe_zero_reference_365_days": 0.4407576952586314,
+          "result_sha256": "f2200807d2e13e0133cb42e6797b9be0459b09521746e48b50094519edd53c6d"
+        },
+        "0.50": {
+          "total_return": 0.13694136630135567,
+          "cagr": 0.1370413137934479,
+          "maximum_drawdown": 0.3266500150774543,
+          "sharpe_zero_reference_365_days": 0.5106309239948275,
+          "result_sha256": "d9dc752c72d55f1cd9d55c5c7f7f99f6a7dee0ddd3ac81b2ed867dc5f11de543"
+        },
+        "1.00": {
+          "total_return": 0.25144377023892583,
+          "cagr": 0.2516360426865076,
+          "maximum_drawdown": 0.5380456874982975,
+          "sharpe_zero_reference_365_days": 0.6942778397936473,
+          "result_sha256": "c1eb4c759b5ee3d5fcccad4485becfc220d512560d166376912a206507ae4bb0"
+        }
+      }
+    },
+    {
+      "start": "2021-05-01",
+      "end_exclusive": "2022-05-01",
+      "s3_return": 0.06543956758276614,
+      "s3_drawdown": 0.3235128009749354,
+      "controls": {
+        "0.25": {
+          "total_return": 0.007268434648392663,
+          "cagr": 0.007273431089519248,
+          "maximum_drawdown": 0.15278824176384154,
+          "sharpe_zero_reference_365_days": 0.13518771039676905,
+          "result_sha256": "c2148dead91bfcd0654f0de15ee572deeb6650860de054bed92cdc9d6c9240fe"
+        },
+        "0.50": {
+          "total_return": -0.04644041287327039,
+          "cagr": -0.04647147056271143,
+          "maximum_drawdown": 0.28442268206241916,
+          "sharpe_zero_reference_365_days": 0.07106364647524196,
+          "result_sha256": "4ce9c663434f3bc5e5fd6278ecd039f2651dd8b7e3407cd56a34cd61d4c394ce"
+        },
+        "1.00": {
+          "total_return": -0.15385811008916217,
+          "cagr": -0.153954928806459,
+          "maximum_drawdown": 0.5215509644814507,
+          "sharpe_zero_reference_365_days": 0.20284570640874985,
+          "result_sha256": "91e7c0126bdc1c4283ae721a12b36d3da27f5bebc2b9b2f4a427fff0cc52556b"
+        }
+      }
+    },
+    {
+      "start": "2021-06-01",
+      "end_exclusive": "2022-06-01",
+      "s3_return": -0.09780885669994155,
+      "s3_drawdown": 0.3825556850629809,
+      "controls": {
+        "0.25": {
+          "total_return": -0.07593898075031813,
+          "cagr": -0.07598896551170854,
+          "maximum_drawdown": 0.23198236926003668,
+          "sharpe_zero_reference_365_days": -0.2822752636535897,
+          "result_sha256": "c65a5816173b9b4d478875d004ab47c3afeb8aaf2ca9574df3b2b90b43a5e914"
+        },
+        "0.50": {
+          "total_return": -0.1244706743732269,
+          "cagr": -0.12455038387089543,
+          "maximum_drawdown": 0.3954823437686571,
+          "sharpe_zero_reference_365_days": -0.14491702641531012,
+          "result_sha256": "3c38b1c7faa4a875d884a0f2bd955f399b8c2d0ef09f0da902a23fe24681661e"
+        },
+        "1.00": {
+          "total_return": -0.2208972060530594,
+          "cagr": -0.22103039578298428,
+          "maximum_drawdown": 0.6092410224212385,
+          "sharpe_zero_reference_365_days": 0.027186942796979353,
+          "result_sha256": "5899c10f3072f9262793e96ebc91ebcb54e65f14cdc40eaa6e2a93efdd27feb6"
+        }
+      }
+    },
+    {
+      "start": "2021-07-01",
+      "end_exclusive": "2022-07-01",
+      "s3_return": -0.4626745743195786,
+      "s3_drawdown": 0.582377192079601,
+      "controls": {
+        "0.25": {
+          "total_return": -0.18126776913722775,
+          "cagr": -0.1813799155437969,
+          "maximum_drawdown": 0.3202993372906864,
+          "sharpe_zero_reference_365_days": -0.7229304992251718,
+          "result_sha256": "29f3c9ad4bbf69b23de24c26aaf9e782fe57a808bad3e098249110b036a3ce99"
+        },
+        "0.50": {
+          "total_return": -0.2865378078882097,
+          "cagr": -0.2867027773517262,
+          "maximum_drawdown": 0.5226114484559933,
+          "sharpe_zero_reference_365_days": -0.5860635359001342,
+          "result_sha256": "69fa083ff618f02282f2bf6f283acf4b660a089d2b0a6fac631933f30a3e5b49"
+        },
+        "1.00": {
+          "total_return": -0.4906471142382488,
+          "cagr": -0.4908824137728504,
+          "maximum_drawdown": 0.7584766090092833,
+          "sharpe_zero_reference_365_days": -0.5263801482007281,
+          "result_sha256": "e67d8ece4c28783ab424cb864ec402fc6fd7ff5cfcba28d2951e184ec7ea0942"
+        }
+      }
+    },
+    {
+      "start": "2021-08-01",
+      "end_exclusive": "2022-08-01",
+      "s3_return": -0.37507556811233544,
+      "s3_drawdown": 0.5824680393548645,
+      "controls": {
+        "0.25": {
+          "total_return": -0.0853245415639301,
+          "cagr": -0.08538041397734024,
+          "maximum_drawdown": 0.2777362560964106,
+          "sharpe_zero_reference_365_days": -0.37123008581308164,
+          "result_sha256": "8e0592e373ad5513ec6ee4f6f53fbc4be1b4cd6424e384f61e6c582ee53b65ab"
+        },
+        "0.50": {
+          "total_return": -0.17812447864792258,
+          "cagr": -0.1782348988352772,
+          "maximum_drawdown": 0.47820675568080984,
+          "sharpe_zero_reference_365_days": -0.343941575912254,
+          "result_sha256": "fc3ff4550e23df8423d6378020aafbf38ba18b84b69e44b621c998bd16924f78"
+        },
+        "1.00": {
+          "total_return": -0.36372435281590765,
+          "cagr": -0.3639213600570944,
+          "maximum_drawdown": 0.748251270735037,
+          "sharpe_zero_reference_365_days": -0.23775799374171636,
+          "result_sha256": "bc80366c352aa9f2e2c86f240b6cb7dcdce5e218f715d423cee24041ece91060"
+        }
+      }
+    },
+    {
+      "start": "2021-09-01",
+      "end_exclusive": "2022-09-01",
+      "s3_return": -0.33351573893056785,
+      "s3_drawdown": 0.5826973047529681,
+      "controls": {
+        "0.25": {
+          "total_return": -0.045833928088203635,
+          "cagr": -0.04586459001184737,
+          "maximum_drawdown": 0.22322290838212677,
+          "sharpe_zero_reference_365_days": -0.16365029993090655,
+          "result_sha256": "dc621915d34812a76a8c6012f10658bd26a8a3e815a7c15f8e93fd7cf2cce858"
+        },
+        "0.50": {
+          "total_return": -0.20459017832907644,
+          "cagr": -0.20471487236015545,
+          "maximum_drawdown": 0.41669990893602527,
+          "sharpe_zero_reference_365_days": -0.5514872543180473,
+          "result_sha256": "83c4c51a1e661232e91bfc9c248b7f4fc643e764d14eac6c0337f521ca529cdb"
+        },
+        "1.00": {
+          "total_return": -0.5221027014575184,
+          "cagr": -0.5223443252691604,
+          "maximum_drawdown": 0.7354019347074622,
+          "sharpe_zero_reference_365_days": -0.6655582121052099,
+          "result_sha256": "01894b754b1f54ed3e8cc307d5ae63470cf675834ef0645f994c744732593780"
+        }
+      }
+    },
+    {
+      "start": "2021-10-01",
+      "end_exclusive": "2022-10-01",
+      "s3_return": -0.4395174803466616,
+      "s3_drawdown": 0.5827379096853832,
+      "controls": {
+        "0.25": {
+          "total_return": -0.06220580627703898,
+          "cagr": -0.06224705852758586,
+          "maximum_drawdown": 0.24360551399185293,
+          "sharpe_zero_reference_365_days": -0.2690635200238916,
+          "result_sha256": "5b255422f54c842d9c802375cc137d9f1e7bdb12b0ae0ed278b0f4fd1ab956fb"
+        },
+        "0.50": {
+          "total_return": -0.22661380986391977,
+          "cagr": -0.22674992273025601,
+          "maximum_drawdown": 0.44437655596543213,
+          "sharpe_zero_reference_365_days": -0.636965983361711,
+          "result_sha256": "41cc9825b9a30ecb9ac6a5836e1d48b5b04c55c7559a2adfd57e553a99a588a9"
+        },
+        "1.00": {
+          "total_return": -0.555429797249027,
+          "cagr": -0.5556765709490752,
+          "maximum_drawdown": 0.7558475666904946,
+          "sharpe_zero_reference_365_days": -0.730524454893576,
+          "result_sha256": "87d9ea1d96dbcc47b72476989b44f0b72ac104e60f77803f045178a2543dca1a"
+        }
+      }
+    },
+    {
+      "start": "2021-11-01",
+      "end_exclusive": "2022-11-01",
+      "s3_return": -0.4499990631900386,
+      "s3_drawdown": 0.5824856976676624,
+      "controls": {
+        "0.25": {
+          "total_return": -0.15639156414519717,
+          "cagr": -0.1564898254173199,
+          "maximum_drawdown": 0.20296240771091079,
+          "sharpe_zero_reference_365_days": -1.4399020881002542,
+          "result_sha256": "e6059e8d6f0fcdf5db7c61398041815878559b680b798efa564c4bdbd682cfdf"
+        },
+        "0.50": {
+          "total_return": -0.3185812768952281,
+          "cagr": -0.3187602790191992,
+          "maximum_drawdown": 0.3953496956737198,
+          "sharpe_zero_reference_365_days": -1.402569083259428,
+          "result_sha256": "1672fe8b11fa169de732266ab3fd4343664b3e87b4d2b8e891e972448a12741f"
+        },
+        "1.00": {
+          "total_return": -0.6429607023952898,
+          "cagr": -0.6432124753207249,
+          "maximum_drawdown": 0.7515412393581664,
+          "sharpe_zero_reference_365_days": -1.092706153841571,
+          "result_sha256": "f202582c40506a1ee30ad850d8603c2cfc9d8c3244058463a556b17746586b97"
+        }
+      }
+    },
+    {
+      "start": "2021-12-01",
+      "end_exclusive": "2022-12-01",
+      "s3_return": -0.35822866246693386,
+      "s3_drawdown": 0.5777980000589615,
+      "controls": {
+        "0.25": {
+          "total_return": -0.18609431833940893,
+          "cagr": -0.18620909926010276,
+          "maximum_drawdown": 0.1942898279902847,
+          "sharpe_zero_reference_365_days": -1.8727378553219827,
+          "result_sha256": "cb49eeadc007c655e8d8ba50469a8337a75e1cd62a090650205ea5eb3755a3f3"
+        },
+        "0.50": {
+          "total_return": -0.3628715796808515,
+          "cagr": -0.363068266660721,
+          "maximum_drawdown": 0.3792626001567272,
+          "sharpe_zero_reference_365_days": -1.7353116618689086,
+          "result_sha256": "7beee74b5c5d169569a9aeb9d154b57160b85c7ca8a2c732d9618c5efff940d4"
+        },
+        "1.00": {
+          "total_return": -0.7115629554084979,
+          "cagr": -0.7118084724716288,
+          "maximum_drawdown": 0.7441748729593738,
+          "sharpe_zero_reference_365_days": -1.3057772829031173,
+          "result_sha256": "a9137b67691ecb671b5999fd19e9d549d1ede0d953b5d3c00b59798ccd5b26d2"
+        }
+      }
+    },
+    {
+      "start": "2022-01-01",
+      "end_exclusive": "2023-01-01",
+      "s3_return": -0.39030154680008455,
+      "s3_drawdown": 0.5775423209258481,
+      "controls": {
+        "0.25": {
+          "total_return": -0.14811556736048448,
+          "cagr": -0.14820909703810758,
+          "maximum_drawdown": 0.17351972524827652,
+          "sharpe_zero_reference_365_days": -1.303276970388506,
+          "result_sha256": "ebbba0f9c4e09c6c91592cd05e93d5e9b111ed8421838356bd7baa0b13980bda"
+        },
+        "0.50": {
+          "total_return": -0.3198032903880028,
+          "cagr": -0.31998280752521885,
+          "maximum_drawdown": 0.34670106876156115,
+          "sharpe_zero_reference_365_days": -1.3648457526720763,
+          "result_sha256": "a882235e77a908abba2fb5827a8d6ebdeb8ce00b9e1a676bdaacb000fbedd854"
+        },
+        "1.00": {
+          "total_return": -0.6605923676362492,
+          "cagr": -0.6608434720209462,
+          "maximum_drawdown": 0.6894848138609562,
+          "sharpe_zero_reference_365_days": -1.120545422106651,
+          "result_sha256": "c2214e3f8639dc2b7256bacc3a10ee2c28a8d4da3771dffecef9f4551d2b18fc"
+        }
+      }
+    },
+    {
+      "start": "2022-02-01",
+      "end_exclusive": "2023-02-01",
+      "s3_return": -0.2474141839990418,
+      "s3_drawdown": 0.5763622060964947,
+      "controls": {
+        "0.25": {
+          "total_return": -0.06966345861566525,
+          "cagr": -0.06970947019365993,
+          "maximum_drawdown": 0.19350862219768705,
+          "sharpe_zero_reference_365_days": -0.45630373081270903,
+          "result_sha256": "09fef036a6329e25c5cb5d75a43432ae1467a8e30c5cd4ff4e7c317fd12ea000"
+        },
+        "0.50": {
+          "total_return": -0.17642947293690125,
+          "cagr": -0.1765389588469317,
+          "maximum_drawdown": 0.36717412672172667,
+          "sharpe_zero_reference_365_days": -0.5379237896162465,
+          "result_sha256": "bfcdd977a25c767971ee96e9c82f43f460e1066868a83aef1153c8def1d9458c"
+        },
+        "1.00": {
+          "total_return": -0.38996148954022614,
+          "cagr": -0.3901679623172684,
+          "maximum_drawdown": 0.6660489669023378,
+          "sharpe_zero_reference_365_days": -0.34382089855428505,
+          "result_sha256": "25993607bddda514fb38bdf51675e3e3fe47ae5e246ff45722cef9f7b958473f"
+        }
+      }
+    },
+    {
+      "start": "2022-03-01",
+      "end_exclusive": "2023-03-01",
+      "s3_return": -0.3161030654081809,
+      "s3_drawdown": 0.5767101759145442,
+      "controls": {
+        "0.25": {
+          "total_return": -0.10448716321979445,
+          "cagr": -0.1045548508348154,
+          "maximum_drawdown": 0.18398450802564337,
+          "sharpe_zero_reference_365_days": -0.9020151848775666,
+          "result_sha256": "2f0535a98dd18f8d6498a4f1ac20973f57f6c1ef80e458c6feaefe6ec91585dc"
+        },
+        "0.50": {
+          "total_return": -0.22453438397847825,
+          "cagr": -0.2246694368877954,
+          "maximum_drawdown": 0.35783404541528474,
+          "sharpe_zero_reference_365_days": -0.8753020929961536,
+          "result_sha256": "8b63943637e2860961ba0dc6fe2f55e020d76bb8571d76f47846e2aad8acf463"
+        },
+        "1.00": {
+          "total_return": -0.46159553084262583,
+          "cagr": -0.4618238047264169,
+          "maximum_drawdown": 0.6746192064713292,
+          "sharpe_zero_reference_365_days": -0.5323497832743997,
+          "result_sha256": "234121b0e572bca02ef6ed9dbc4fb8e13cb62f7d574a67464d25e512a0e5e03f"
+        }
+      }
+    },
+    {
+      "start": "2022-04-01",
+      "end_exclusive": "2023-04-01",
+      "s3_return": -0.25203904347536066,
+      "s3_drawdown": 0.5768671241986791,
+      "controls": {
+        "0.25": {
+          "total_return": -0.05961428748693032,
+          "cagr": -0.05965387634809384,
+          "maximum_drawdown": 0.16720983432134862,
+          "sharpe_zero_reference_365_days": -0.496634610301895,
+          "result_sha256": "af97bf66d3af9f52fa401a8cd4bac6283c9446d017223d26e93edea7ad63310b"
+        },
+        "0.50": {
+          "total_return": -0.17063920598264704,
+          "cagr": -0.1707454823280837,
+          "maximum_drawdown": 0.3333912982963325,
+          "sharpe_zero_reference_365_days": -0.6957636420908477,
+          "result_sha256": "3c1875f8312edf3865da24f02d96ec5cb129d277a9ee9200338ca3a75a7ecaac"
+        },
+        "1.00": {
+          "total_return": -0.3926888803928955,
+          "cagr": -0.39289629332109743,
+          "maximum_drawdown": 0.6627057333776644,
+          "sharpe_zero_reference_365_days": -0.3986694382344264,
+          "result_sha256": "2a6ba1fc24ff26d7b02ddc3598a2f75ffa813e9729b71cf334cc101625dbdcf7"
+        }
+      }
+    },
+    {
+      "start": "2022-05-01",
+      "end_exclusive": "2023-05-01",
+      "s3_return": -0.17547821857308532,
+      "s3_drawdown": 0.5530518232162778,
+      "controls": {
+        "0.25": {
+          "total_return": -0.03963393671448401,
+          "cagr": -0.03966053766463447,
+          "maximum_drawdown": 0.15638699939432998,
+          "sharpe_zero_reference_365_days": -0.2861209381683053,
+          "result_sha256": "8fea5d8e74c441e80a86be7fa7406013998fbb85f98870783b7ccce1d04a0d24"
+        },
+        "0.50": {
+          "total_return": -0.11415244773541244,
+          "cagr": -0.11422598847824057,
+          "maximum_drawdown": 0.31005511058530844,
+          "sharpe_zero_reference_365_days": -0.3532654648976881,
+          "result_sha256": "464c238e487bdf4e8cc472be7111dc4c949b736acb9530a88cbc32531f0c2f0f"
+        },
+        "1.00": {
+          "total_return": -0.26318937679469945,
+          "cagr": -0.26334349760837017,
+          "maximum_drawdown": 0.6095126029792057,
+          "sharpe_zero_reference_365_days": -0.1017033092389591,
+          "result_sha256": "6e59f48c109b26a9ea30ad78fa2584622caf813f48c1d49d8270f3e96226f5e3"
+        }
+      }
+    },
+    {
+      "start": "2022-06-01",
+      "end_exclusive": "2023-06-01",
+      "s3_return": -0.02115181247997533,
+      "s3_drawdown": 0.43477175652460043,
+      "controls": {
+        "0.25": {
+          "total_return": -0.07189932669806176,
+          "cagr": -0.07194675719480391,
+          "maximum_drawdown": 0.16633239163383207,
+          "sharpe_zero_reference_365_days": -0.42875633605415964,
+          "result_sha256": "8bd4924a7ac46c6d6ea1918eac98e48b4a6432cc97a61afb86df71e86925ebdc"
+        },
+        "0.50": {
+          "total_return": -0.07828436892658608,
+          "cagr": -0.07833583112177375,
+          "maximum_drawdown": 0.2671504979423567,
+          "sharpe_zero_reference_365_days": -0.13406500167464186,
+          "result_sha256": "9003e37288689b253cf68c13403cc8b87e387506444960680597c62afbd4dae2"
+        },
+        "1.00": {
+          "total_return": -0.09096048622023678,
+          "cagr": -0.09101986244083779,
+          "maximum_drawdown": 0.4682805576100073,
+          "sharpe_zero_reference_365_days": 0.18743641184610493,
+          "result_sha256": "8b8e9a16beb92f39f1117f493c03bb267c0367711cbe1f8f24ca2dbcb344f377"
+        }
+      }
+    },
+    {
+      "start": "2022-07-01",
+      "end_exclusive": "2023-07-01",
+      "s3_return": 0.7215288880240567,
+      "s3_drawdown": 0.12692483100869234,
+      "controls": {
+        "0.25": {
+          "total_return": 0.1605286677620399,
+          "cagr": 0.16064701246628316,
+          "maximum_drawdown": 0.1391036926075736,
+          "sharpe_zero_reference_365_days": 0.915746047857892,
+          "result_sha256": "0a43bd9cfdf7d7bf40336ba821505c10c7e2aaaa0e6a611ad744272ce395c996"
+        },
+        "0.50": {
+          "total_return": 0.33283113302374456,
+          "cagr": 0.33309343932280044,
+          "maximum_drawdown": 0.2474037534823984,
+          "sharpe_zero_reference_365_days": 1.020539404275371,
+          "result_sha256": "fcef4ec0817877a43af6d9913ae8552c5796c81a5c98a1584e3b6cdd167c76da"
+        },
+        "1.00": {
+          "total_return": 0.6774359429755537,
+          "cagr": 0.6780303504968859,
+          "maximum_drawdown": 0.4051003947918336,
+          "sharpe_zero_reference_365_days": 1.1581540685690523,
+          "result_sha256": "a25f46f2bb9ddfbd1442731341a3044adb136fa77a27700373b823e033aefdd1"
+        }
+      }
+    },
+    {
+      "start": "2022-08-01",
+      "end_exclusive": "2023-08-01",
+      "s3_return": 0.4375728817122615,
+      "s3_drawdown": 0.12692505718724012,
+      "controls": {
+        "0.25": {
+          "total_return": 0.01886232176925584,
+          "cagr": 0.018875362337158474,
+          "maximum_drawdown": 0.11154517267508202,
+          "sharpe_zero_reference_365_days": 0.20474589560397574,
+          "result_sha256": "3d2f1fdd8a09aeea0071aca18641fc70593771fefcf398164a0401afc6f68013"
+        },
+        "0.50": {
+          "total_return": 0.06735183939459732,
+          "cagr": 0.06739949162403529,
+          "maximum_drawdown": 0.2160996149845189,
+          "sharpe_zero_reference_365_days": 0.37573430225785537,
+          "result_sha256": "44f714879c0dddd64d89a3a375ad9fd3e05cf934ee6e5969738a27397dd92084"
+        },
+        "1.00": {
+          "total_return": 0.16083880631098046,
+          "cagr": 0.16095739511527632,
+          "maximum_drawdown": 0.4022870653964661,
+          "sharpe_zero_reference_365_days": 0.5482427422928371,
+          "result_sha256": "eefd00c8bcf3ca5a7beba1b320990627af23bdb5134e90d5495d73a20cd25110"
+        }
+      }
+    },
+    {
+      "start": "2022-09-01",
+      "end_exclusive": "2023-09-01",
+      "s3_return": 0.5164083790227729,
+      "s3_drawdown": 0.12396837669314875,
+      "controls": {
+        "0.25": {
+          "total_return": 0.05879679969913698,
+          "cagr": 0.05883823367166694,
+          "maximum_drawdown": 0.08709498412126215,
+          "sharpe_zero_reference_365_days": 0.4913449534411365,
+          "result_sha256": "ce81ef1e15da82bce187c67de92e66641652f3e1c14fd3df2e31a9fdd83630a6"
+        },
+        "0.50": {
+          "total_return": 0.09976718319532618,
+          "cagr": 0.09983881992275373,
+          "maximum_drawdown": 0.17007855925584048,
+          "sharpe_zero_reference_365_days": 0.4926934491335962,
+          "result_sha256": "3f378d70ed0c83eb18eb0d445e9e4bc7a7a1d4b3a3ed4724a2f66e34ff75cb98"
+        },
+        "1.00": {
+          "total_return": 0.1817080079169593,
+          "cagr": 0.18184315193237116,
+          "maximum_drawdown": 0.3248235311147133,
+          "sharpe_zero_reference_365_days": 0.5822233613975217,
+          "result_sha256": "99873a021ba274889ea00b44f7acb64fb052fabde0695475912a6c1857abdcb8"
+        }
+      }
+    },
+    {
+      "start": "2022-10-01",
+      "end_exclusive": "2023-10-01",
+      "s3_return": 0.43754495302489005,
+      "s3_drawdown": 0.12372931747105087,
+      "controls": {
+        "0.25": {
+          "total_return": 0.069200593337021,
+          "cagr": 0.06924959552778308,
+          "maximum_drawdown": 0.08290182920858458,
+          "sharpe_zero_reference_365_days": 0.5482575025278561,
+          "result_sha256": "8f2027eaea0584ed4e6eaee433e22c44181716e3815edb6f918d0514564afac0"
+        },
+        "0.50": {
+          "total_return": 0.15221137466503176,
+          "cagr": 0.15232319433665137,
+          "maximum_drawdown": 0.15912416743995295,
+          "sharpe_zero_reference_365_days": 0.6648423185950093,
+          "result_sha256": "049b4c40c8836cc23a11d1370513d123e97b85b873cc30aa5550acf16e045acb"
+        },
+        "1.00": {
+          "total_return": 0.3169237820103834,
+          "cagr": 0.31717212542757256,
+          "maximum_drawdown": 0.2938008202338219,
+          "sharpe_zero_reference_365_days": 0.8038235861812055,
+          "result_sha256": "dd34daf9a2c841639b0eb6466c7c91dfb7d01480410e4658321625cfb1a7e5c4"
+        }
+      }
+    },
+    {
+      "start": "2022-11-01",
+      "end_exclusive": "2023-11-01",
+      "s3_return": 0.42910176401170985,
+      "s3_drawdown": 0.12372931690081468,
+      "controls": {
+        "0.25": {
+          "total_return": 0.10815456105775434,
+          "cagr": 0.10823251114370881,
+          "maximum_drawdown": 0.07471316614459356,
+          "sharpe_zero_reference_365_days": 0.8665634883419742,
+          "result_sha256": "0ea92ee05ad05bc33f7c8e5a5c047df1d44e0fa92672ae7e041b9b0c97e3c1f6"
+        },
+        "0.50": {
+          "total_return": 0.2132449228604616,
+          "cagr": 0.2134055625720201,
+          "maximum_drawdown": 0.14807033792649005,
+          "sharpe_zero_reference_365_days": 0.8959207322674817,
+          "result_sha256": "95c1c6f7911624093ddc203983510af36e695b3b093bc9d0e408e7785ae5f2c4"
+        },
+        "1.00": {
+          "total_return": 0.4234257880133965,
+          "cagr": 0.42377005152188985,
+          "maximum_drawdown": 0.29086179167919346,
+          "sharpe_zero_reference_365_days": 0.964677743672812,
+          "result_sha256": "de80181955091bca9b449da1c6c58496e27b7928776cd919c08028d35b01417e"
+        }
+      }
+    },
+    {
+      "start": "2022-12-01",
+      "end_exclusive": "2023-12-01",
+      "s3_return": 0.27801015844851973,
+      "s3_drawdown": 0.1180500123734789,
+      "controls": {
+        "0.25": {
+          "total_return": 0.21052881408687685,
+          "cagr": 0.21068723566287184,
+          "maximum_drawdown": 0.0795018680934998,
+          "sharpe_zero_reference_365_days": 1.4395774753656152,
+          "result_sha256": "e656b4fb7918302f02de68c3652360d0ec6c2c66404f057b8159cc7a284be86b"
+        },
+        "0.50": {
+          "total_return": 0.43634902241400697,
+          "cagr": 0.4367053052479453,
+          "maximum_drawdown": 0.1378499952757194,
+          "sharpe_zero_reference_365_days": 1.5626713400513255,
+          "result_sha256": "e346966ea40b426d56170f0d37b3d3c292649451135545edd6eadb8d6d84b9c9"
+        },
+        "1.00": {
+          "total_return": 0.8861100063083953,
+          "cagr": 0.8869298885240817,
+          "maximum_drawdown": 0.21763761669618142,
+          "sharpe_zero_reference_365_days": 1.6946969501559903,
+          "result_sha256": "46146fc430034b0f5001e5066356b265016d4f36ba1009f66bfd6bf9a66b9496"
+        }
+      }
+    },
+    {
+      "start": "2023-01-01",
+      "end_exclusive": "2024-01-01",
+      "s3_return": 0.2932109236869356,
+      "s3_drawdown": 0.11805000677776556,
+      "controls": {
+        "0.25": {
+          "total_return": 0.3094783574562956,
+          "cagr": 0.30972021071502226,
+          "maximum_drawdown": 0.08189528071646124,
+          "sharpe_zero_reference_365_days": 1.879672267102689,
+          "result_sha256": "a5090015a7108cf8074519f7bcd35ae33bd0bbb5fcc73790e326281b05ce1d1c"
+        },
+        "0.50": {
+          "total_return": 0.6160366677040836,
+          "cagr": 0.6165680289232286,
+          "maximum_drawdown": 0.14046545349255934,
+          "sharpe_zero_reference_365_days": 1.9504021809718135,
+          "result_sha256": "652877d035099746b72af60a3cb84ba98c182ae04f6ef8d6b1dc3fa370d313c7"
+        },
+        "1.00": {
+          "total_return": 1.2283526105121596,
+          "cagr": 1.2295758883096322,
+          "maximum_drawdown": 0.21861665287645993,
+          "sharpe_zero_reference_365_days": 2.067345996488154,
+          "result_sha256": "e7e4a3a28d3902aabf39e41953e82aafe4d9905a48469bb007b85b95eb4ce83e"
+        }
+      }
+    },
+    {
+      "start": "2023-02-01",
+      "end_exclusive": "2024-02-01",
+      "s3_return": 0.3538796037284364,
+      "s3_drawdown": 0.11805002626764494,
+      "controls": {
+        "0.25": {
+          "total_return": 0.18671302104992882,
+          "cagr": 0.18685217319359634,
+          "maximum_drawdown": 0.0656288442459606,
+          "sharpe_zero_reference_365_days": 1.3736167255297054,
+          "result_sha256": "4e08fc3fdcf424f4a0009af6bcb233de7989c70904ee92a7dda0f1b216423dff"
+        },
+        "0.50": {
+          "total_return": 0.3386467892801517,
+          "cagr": 0.3389142329183322,
+          "maximum_drawdown": 0.12312155915481826,
+          "sharpe_zero_reference_365_days": 1.333076001218882,
+          "result_sha256": "f75831e47a725c664186142401b3952c58ed19a0c126a2e3d57785710377af9e"
+        },
+        "1.00": {
+          "total_return": 0.642514332153205,
+          "cagr": 0.6430726886286235,
+          "maximum_drawdown": 0.21908291153186,
+          "sharpe_zero_reference_365_days": 1.3536846759385786,
+          "result_sha256": "440ce3f9e54cc5d4d69d3ead0120b96325a22f46d0828b7e057df52ac0baf845"
+        }
+      }
+    },
+    {
+      "start": "2023-03-01",
+      "end_exclusive": "2024-03-01",
+      "s3_return": 0.29158976975088957,
+      "s3_drawdown": 0.0997271925541976,
+      "controls": {
+        "0.25": {
+          "total_return": 0.36849504946478207,
+          "cagr": 0.3676155927994516,
+          "maximum_drawdown": 0.06514673229459356,
+          "sharpe_zero_reference_365_days": 2.378448152698559,
+          "result_sha256": "e29bad3e989323b6c3afb12f4481737bc43be53c8a5768688a9d16913d4ad3be"
+        },
+        "0.50": {
+          "total_return": 0.701295728385662,
+          "cagr": 0.6994441715001707,
+          "maximum_drawdown": 0.12238741719278823,
+          "sharpe_zero_reference_365_days": 2.294150202586378,
+          "result_sha256": "fadc559d61fb2e3a9330604dfa2839ab50be00c439f854300b806cf1af86d3ff"
+        },
+        "1.00": {
+          "total_return": 1.3668974612191716,
+          "cagr": 1.362722312867586,
+          "maximum_drawdown": 0.21828440478573563,
+          "sharpe_zero_reference_365_days": 2.208536932856847,
+          "result_sha256": "d0366d8599fd5210198572cc7155fcea51296eebd269fc2cfb26f719cb90d259"
+        }
+      }
+    },
+    {
+      "start": "2023-04-01",
+      "end_exclusive": "2024-04-01",
+      "s3_return": 0.1916878665045758,
+      "s3_drawdown": 0.10016671445061032,
+      "controls": {
+        "0.25": {
+          "total_return": 0.31114458655637844,
+          "cagr": 0.31041694078444093,
+          "maximum_drawdown": 0.07998308670239829,
+          "sharpe_zero_reference_365_days": 1.9632802821615647,
+          "result_sha256": "cbc942c4011547ee0a7bd430c1598c273ac708012241d1185ace4f207f94afad"
+        },
+        "0.50": {
+          "total_return": 0.623815319216189,
+          "cagr": 0.6222030243138231,
+          "maximum_drawdown": 0.12725054691009885,
+          "sharpe_zero_reference_365_days": 2.008979735676206,
+          "result_sha256": "a61e828461ba264b663e1742362570c8bd8b1781ed141d5b6fa6ac602014ee14"
+        },
+        "1.00": {
+          "total_return": 1.249115288173945,
+          "cagr": 1.2453827514712872,
+          "maximum_drawdown": 0.2215721749538876,
+          "sharpe_zero_reference_365_days": 2.0344535414252536,
+          "result_sha256": "75ea69cfa371b91ee67e3d83f67f40d5e00914778a67dabd30438261d9713f14"
+        }
+      }
+    },
+    {
+      "start": "2023-05-01",
+      "end_exclusive": "2024-05-01",
+      "s3_return": 0.24033109417173826,
+      "s3_drawdown": 0.10016442270187198,
+      "controls": {
+        "0.25": {
+          "total_return": 0.19475184221913344,
+          "cagr": 0.19431628156892988,
+          "maximum_drawdown": 0.09108936885044061,
+          "sharpe_zero_reference_365_days": 1.2176350958037117,
+          "result_sha256": "b261c7b8f0f2f41084e5f7577cacc13c4619ede17b850191377cf2ba9857ba83"
+        },
+        "0.50": {
+          "total_return": 0.4123738565412094,
+          "cagr": 0.4113749210963705,
+          "maximum_drawdown": 0.14497221569153962,
+          "sharpe_zero_reference_365_days": 1.398587802191189,
+          "result_sha256": "3200593656846c12f879a916cbc2123cdb24999cdc78b3c2a97f0ffbe50b6e0a"
+        },
+        "1.00": {
+          "total_return": 0.8476178851853611,
+          "cagr": 0.8452950690493934,
+          "maximum_drawdown": 0.2114452930828825,
+          "sharpe_zero_reference_365_days": 1.5656163441382422,
+          "result_sha256": "0e69155a9aefefacf471abe0b41ac228d79550bfdab496d30b77328721283713"
+        }
+      }
+    },
+    {
+      "start": "2023-06-01",
+      "end_exclusive": "2024-06-01",
+      "s3_return": 0.3866979199114984,
+      "s3_drawdown": 0.08149188665376694,
+      "controls": {
+        "0.25": {
+          "total_return": 0.3046863917479363,
+          "cagr": 0.30397552417937435,
+          "maximum_drawdown": 0.10192298581837422,
+          "sharpe_zero_reference_365_days": 1.6495913213644517,
+          "result_sha256": "d152f4973ac0f7585de368a1e10c0e4acb02b1a70d64014ebed54cc89d805a4d"
+        },
+        "0.50": {
+          "total_return": 0.6174443426153919,
+          "cagr": 0.615851390240368,
+          "maximum_drawdown": 0.16130949763303293,
+          "sharpe_zero_reference_365_days": 1.7785828801169639,
+          "result_sha256": "efc38565d840d16cbec488a851626e9b100fbf8d42b302130d06bdf60258c570"
+        },
+        "1.00": {
+          "total_return": 1.2429602633426042,
+          "cagr": 1.2392505158732066,
+          "maximum_drawdown": 0.22762297405905363,
+          "sharpe_zero_reference_365_days": 1.916602119659496,
+          "result_sha256": "97e71c43d9c051b6e4c24a1dcd9f635c1b9d9300493a4401ff26959ede5941bf"
+        }
+      }
+    },
+    {
+      "start": "2023-07-01",
+      "end_exclusive": "2024-07-01",
+      "s3_return": 0.21862424205563835,
+      "s3_drawdown": 0.10791701999663972,
+      "controls": {
+        "0.25": {
+          "total_return": 0.2225092528268775,
+          "cagr": 0.2220060595980566,
+          "maximum_drawdown": 0.09819983153474565,
+          "sharpe_zero_reference_365_days": 1.309594719319228,
+          "result_sha256": "1e3844be582773653f312ff1fffb1a0f16b6d0343b37da1c8f8c659654673548"
+        },
+        "0.50": {
+          "total_return": 0.4512291933725481,
+          "cagr": 0.4501221289732322,
+          "maximum_drawdown": 0.1587702002743815,
+          "sharpe_zero_reference_365_days": 1.4395411716416513,
+          "result_sha256": "1b0bf0ada0d5864c762b97e4b2b684153edf66df1a491fb33036201e1fc3934e"
+        },
+        "1.00": {
+          "total_return": 0.9041811154661497,
+          "cagr": 0.9016696752315799,
+          "maximum_drawdown": 0.22924865132867311,
+          "sharpe_zero_reference_365_days": 1.5918207667357631,
+          "result_sha256": "a87e5f5db3a3a831abb77187013c9dfe4071bd989a14102549660291166b2310"
+        }
+      }
+    },
+    {
+      "start": "2023-08-01",
+      "end_exclusive": "2024-08-01",
+      "s3_return": 0.2778417903612953,
+      "s3_drawdown": 0.19641771539815223,
+      "controls": {
+        "0.25": {
+          "total_return": 0.24848802722321528,
+          "cagr": 0.2479203673910084,
+          "maximum_drawdown": 0.10942973006903689,
+          "sharpe_zero_reference_365_days": 1.3644572456598152,
+          "result_sha256": "c93fa6e09a516344cf98cc93737607f3d5f5a13994b7467cb792566cf7bc128a"
+        },
+        "0.50": {
+          "total_return": 0.4889193802835683,
+          "cagr": 0.48770539745674896,
+          "maximum_drawdown": 0.1756378587398406,
+          "sharpe_zero_reference_365_days": 1.4721824744167893,
+          "result_sha256": "15bd9a06108022e0fcc802a3c217aff99e1aae324dd3783effcba29c3da8e096"
+        },
+        "1.00": {
+          "total_return": 0.9658493264994144,
+          "cagr": 0.9631283312540321,
+          "maximum_drawdown": 0.2515061931177176,
+          "sharpe_zero_reference_365_days": 1.6285202738710651,
+          "result_sha256": "5ae0b5dc7683460f2206cbd06dbef75bc276b41bd8788756c10ae0a1af5d97b4"
+        }
+      }
+    },
+    {
+      "start": "2023-09-01",
+      "end_exclusive": "2024-09-01",
+      "s3_return": 0.18619548488890514,
+      "s3_drawdown": 0.20302043328173336,
+      "controls": {
+        "0.25": {
+          "total_return": 0.21539591115641277,
+          "cagr": 0.21491017396213868,
+          "maximum_drawdown": 0.15241013900002143,
+          "sharpe_zero_reference_365_days": 1.0507527544481412,
+          "result_sha256": "6395a771203efb4c6f6a8521ba2c96dc250117a04f57e3eeae6a80bea0eb4d34"
+        },
+        "0.50": {
+          "total_return": 0.44218442045415296,
+          "cagr": 0.4411027183400316,
+          "maximum_drawdown": 0.23586819193945108,
+          "sharpe_zero_reference_365_days": 1.2384035354843974,
+          "result_sha256": "0ab7826c32eb0fee76778a1b3e9972c299b26df76cfa2bdba731d02250b0c2ca"
+        },
+        "1.00": {
+          "total_return": 0.8923546947872436,
+          "cagr": 0.8898829798622594,
+          "maximum_drawdown": 0.32469202897211813,
+          "sharpe_zero_reference_365_days": 1.4796205140034993,
+          "result_sha256": "5774045c2a4ac70f773482faa11e7dc0da7a0d972a8bad373356e4e230b9a6d0"
+        }
+      }
+    },
+    {
+      "start": "2023-10-01",
+      "end_exclusive": "2024-10-01",
+      "s3_return": 0.24310033544621756,
+      "s3_drawdown": 0.22043535168620532,
+      "controls": {
+        "0.25": {
+          "total_return": 0.2643898168616494,
+          "cagr": 0.26378214989513266,
+          "maximum_drawdown": 0.15692743593297986,
+          "sharpe_zero_reference_365_days": 1.2502341880426777,
+          "result_sha256": "6cc589aa07fee9dced2d3c93384af5d5c4f10932c781e3db5f40448bc823c8ed"
+        },
+        "0.50": {
+          "total_return": 0.4926817000339343,
+          "cagr": 0.49145693652867545,
+          "maximum_drawdown": 0.2475711799564405,
+          "sharpe_zero_reference_365_days": 1.3371323879906811,
+          "result_sha256": "8eaf8bf5b109dbc9ad364bf60279926372ce9f424139afc27eec7929b3694bc4"
+        },
+        "1.00": {
+          "total_return": 0.9487825841082627,
+          "cagr": 0.9461199841852462,
+          "maximum_drawdown": 0.34808856954393275,
+          "sharpe_zero_reference_365_days": 1.514499364970256,
+          "result_sha256": "95ec203df4f79c7fd4417e4ac8e2483746f7c690abdbf4dae853a419bb3e0b2d"
+        }
+      }
+    },
+    {
+      "start": "2023-11-01",
+      "end_exclusive": "2024-11-01",
+      "s3_return": 0.28427829109832126,
+      "s3_drawdown": 0.22086908152408125,
+      "controls": {
+        "0.25": {
+          "total_return": 0.1877451663029106,
+          "cagr": 0.18732647064350447,
+          "maximum_drawdown": 0.14766015613104866,
+          "sharpe_zero_reference_365_days": 1.0085592062345448,
+          "result_sha256": "79a0572d6b8826d0879932e9590e09901e3347964c474e37544897a50654d119"
+        },
+        "0.50": {
+          "total_return": 0.3589213435827858,
+          "cagr": 0.3580675764565631,
+          "maximum_drawdown": 0.24231598922642839,
+          "sharpe_zero_reference_365_days": 1.0920619527595488,
+          "result_sha256": "0b63a2d5c507dbe93fdc25a1bf8794681f579817a30b0dd5f85989c7d64a4a28"
+        },
+        "1.00": {
+          "total_return": 0.6989974702241208,
+          "cagr": 0.697153115830047,
+          "maximum_drawdown": 0.3564640553123961,
+          "sharpe_zero_reference_365_days": 1.2499092562515783,
+          "result_sha256": "7528f57eae2bedb58d05949acad4b0864b019cff0c875a748ec78f64e4e4af2b"
+        }
+      }
+    },
+    {
+      "start": "2023-12-01",
+      "end_exclusive": "2024-12-01",
+      "s3_return": 0.398654953424153,
+      "s3_drawdown": 0.22086906101740533,
+      "controls": {
+        "0.25": {
+          "total_return": 0.30553669630569247,
+          "cagr": 0.304823623398504,
+          "maximum_drawdown": 0.13810587994513857,
+          "sharpe_zero_reference_365_days": 1.530741980268213,
+          "result_sha256": "f7690ff8eb53cad2321c821fda0ff825feafb8ba2606e9d2b2b0ddb398d566c2"
+        },
+        "0.50": {
+          "total_return": 0.5950560109297451,
+          "cagr": 0.5935306223933696,
+          "maximum_drawdown": 0.23305683838582714,
+          "sharpe_zero_reference_365_days": 1.5744060805252529,
+          "result_sha256": "26e0e7afa2e526aa84de160088446a496f50837b2054d6b086cc786bf33c6a04"
+        },
+        "1.00": {
+          "total_return": 1.1671869055557256,
+          "cagr": 1.1637548569339786,
+          "maximum_drawdown": 0.35474958807424806,
+          "sharpe_zero_reference_365_days": 1.6755681683603667,
+          "result_sha256": "a6f19efc49366676e8d11fcabf17371f530509c5bfd83aae042bb2f6a068b1f6"
+        }
+      }
+    },
+    {
+      "start": "2024-01-01",
+      "end_exclusive": "2025-01-01",
+      "s3_return": 0.3857250689812708,
+      "s3_drawdown": 0.22077347206802367,
+      "controls": {
+        "0.25": {
+          "total_return": 0.22801313158061465,
+          "cagr": 0.22749637383163296,
+          "maximum_drawdown": 0.12812976523665243,
+          "sharpe_zero_reference_365_days": 1.2357896823861212,
+          "result_sha256": "ebc0cd6a147e2d1b19cad39ea7b6eb3aa3cf71685c1d06521396347baa5647ec"
+        },
+        "0.50": {
+          "total_return": 0.42686230531249447,
+          "cagr": 0.4258233027742149,
+          "maximum_drawdown": 0.22356545167070607,
+          "sharpe_zero_reference_365_days": 1.2569562149338418,
+          "result_sha256": "5c51aebc1ed06350529cf669a5743a7530cfb40853089a9e941d8b93b1a3ae58"
+        },
+        "1.00": {
+          "total_return": 0.8164145734549437,
+          "cagr": 0.81419430558509,
+          "maximum_drawdown": 0.3554440023467381,
+          "sharpe_zero_reference_365_days": 1.3475378485984504,
+          "result_sha256": "4c333afa1781f07620f5207eade4aa4c9560c6a463ed634d54d3156e199361e1"
+        }
+      }
+    },
+    {
+      "start": "2024-02-01",
+      "end_exclusive": "2025-02-01",
+      "s3_return": 0.4793430593063386,
+      "s3_drawdown": 0.2207239054703498,
+      "controls": {
+        "0.25": {
+          "total_return": 0.23730604781792586,
+          "cagr": 0.23676627299373965,
+          "maximum_drawdown": 0.1294873806191995,
+          "sharpe_zero_reference_365_days": 1.2588012227673704,
+          "result_sha256": "4e8b1aef715798c6f94f0fb1f919073a52eb3ea29410e0da99a0ba2384113ba9"
+        },
+        "0.50": {
+          "total_return": 0.46588216309619424,
+          "cagr": 0.46473376641079034,
+          "maximum_drawdown": 0.22469010553454127,
+          "sharpe_zero_reference_365_days": 1.328997574067959,
+          "result_sha256": "654162e81791af05079a361771376bb14a49478d9b194d98795cd23d6c462c99"
+        },
+        "1.00": {
+          "total_return": 0.9214479854109583,
+          "cagr": 0.9188782760933483,
+          "maximum_drawdown": 0.35518374051517365,
+          "sharpe_zero_reference_365_days": 1.4562042695398616,
+          "result_sha256": "7b4e8a950d34fe9ad77f17158233d44e1f17ac734bdf34a1eb4b2d080060ae7a"
+        }
+      }
+    },
+    {
+      "start": "2024-03-01",
+      "end_exclusive": "2025-03-01",
+      "s3_return": 0.2644050990090199,
+      "s3_drawdown": 0.22086907965675162,
+      "controls": {
+        "0.25": {
+          "total_return": 0.026633964329779714,
+          "cagr": 0.02665244774325508,
+          "maximum_drawdown": 0.09898172936538507,
+          "sharpe_zero_reference_365_days": 0.2548563449331966,
+          "result_sha256": "49dbb8f1673b306eac7c7d9d8e75edb59410490bfa580737a7671d138c0ad5ef"
+        },
+        "0.50": {
+          "total_return": 0.026485734558749252,
+          "cagr": 0.02650411378177756,
+          "maximum_drawdown": 0.1902589971585691,
+          "sharpe_zero_reference_365_days": 0.23233963449666703,
+          "result_sha256": "882dd5fbccd1d6bb68754fcb0b16055150e59af74c5d50d3b60c8bb7196db1d8"
+        },
+        "1.00": {
+          "total_return": 0.02618927501668855,
+          "cagr": 0.026207445902838904,
+          "maximum_drawdown": 0.35303849062895043,
+          "sharpe_zero_reference_365_days": 0.3195493140209187,
+          "result_sha256": "6b75e44be6a33a823de10b7b3493725429a52f0da927b9f1f9dedce5e4403460"
+        }
+      }
+    },
+    {
+      "start": "2024-04-01",
+      "end_exclusive": "2025-04-01",
+      "s3_return": 0.11375801009694131,
+      "s3_drawdown": 0.2649701673732884,
+      "controls": {
+        "0.25": {
+          "total_return": -0.07455023705254449,
+          "cagr": -0.07459934507682449,
+          "maximum_drawdown": 0.11620690712506576,
+          "sharpe_zero_reference_365_days": -0.4827744416670877,
+          "result_sha256": "71f209063c35893e6aff75d03aaa8f7490099006d682645ca5b2caa56e26c78a"
+        },
+        "0.50": {
+          "total_return": -0.1097354486227925,
+          "cagr": -0.10980632342812059,
+          "maximum_drawdown": 0.2157753736489273,
+          "sharpe_zero_reference_365_days": -0.2873994656476379,
+          "result_sha256": "0e58905a6ef42129ade96214751d9d92e164c274a50fa45c2fa97c38a0f0bbe8"
+        },
+        "1.00": {
+          "total_return": -0.18157229926954443,
+          "cagr": -0.18168461247778492,
+          "maximum_drawdown": 0.37625751750183034,
+          "sharpe_zero_reference_365_days": -0.0852440138378967,
+          "result_sha256": "0fed60e114ddceda7907b5766243da3a7477f24cd836b0da126c3760bdaf3e72"
+        }
+      }
+    },
+    {
+      "start": "2024-05-01",
+      "end_exclusive": "2025-05-01",
+      "s3_return": 0.031473896265264756,
+      "s3_drawdown": 0.30608582381696126,
+      "controls": {
+        "0.25": {
+          "total_return": 0.009525619847783773,
+          "cagr": 0.009532175242486503,
+          "maximum_drawdown": 0.1473299552192242,
+          "sharpe_zero_reference_365_days": 0.13792041282466566,
+          "result_sha256": "86560f5b57dbc132076168746aefe8e675952a84a4fbc65dec90217b61540d95"
+        },
+        "0.50": {
+          "total_return": 0.03479398854032034,
+          "cagr": 0.03481823019317515,
+          "maximum_drawdown": 0.26189793835628483,
+          "sharpe_zero_reference_365_days": 0.26206789649895745,
+          "result_sha256": "7068db813cf2048f8cb68c0a9cf0ad4fdddbad8ec4bef726079083d31a899e98"
+        },
+        "1.00": {
+          "total_return": 0.08533036756697365,
+          "cagr": 0.0853912402706494,
+          "maximum_drawdown": 0.4285075211749034,
+          "sharpe_zero_reference_365_days": 0.4216957325792156,
+          "result_sha256": "828c75b2c79fe057b42ccb89e3fde5c25b42be62a6aa682ac74ea4b841f82677"
+        }
+      }
+    },
+    {
+      "start": "2024-06-01",
+      "end_exclusive": "2025-06-01",
+      "s3_return": -0.039617761943208984,
+      "s3_drawdown": 0.30603563996512495,
+      "controls": {
+        "0.25": {
+          "total_return": 0.03923352959912796,
+          "cagr": 0.039260922626086735,
+          "maximum_drawdown": 0.1272882909407248,
+          "sharpe_zero_reference_365_days": 0.36130045343723266,
+          "result_sha256": "ec91bf0f1e28bf98d50d53f44af139d84b57842a6f089df60ba3437d26a640c4"
+        },
+        "0.50": {
+          "total_return": 0.06486550584682993,
+          "cagr": 0.06491134601545104,
+          "maximum_drawdown": 0.23783615933268454,
+          "sharpe_zero_reference_365_days": 0.3705433529053271,
+          "result_sha256": "a50f060d9a652dd56fe705b077835673466551150cc1913c1297704bee448e52"
+        },
+        "1.00": {
+          "total_return": 0.11612945834223365,
+          "cagr": 0.11621345166564284,
+          "maximum_drawdown": 0.42038452172435126,
+          "sharpe_zero_reference_365_days": 0.4712839117408786,
+          "result_sha256": "a08bbf57d2244e9cc51dc8f0e54df0a42f587437d02791df717aaed3aecf06d9"
+        }
+      }
+    },
+    {
+      "start": "2024-07-01",
+      "end_exclusive": "2025-07-01",
+      "s3_return": 0.3191588073960241,
+      "s3_drawdown": 0.30642833482814447,
+      "controls": {
+        "0.25": {
+          "total_return": 0.05424418083718141,
+          "cagr": 0.054282325015998965,
+          "maximum_drawdown": 0.136361388598634,
+          "sharpe_zero_reference_365_days": 0.44645895532313695,
+          "result_sha256": "36e9ac5c352580be3936563d1e2a1b213e72faa5c2816f49fe36a815d2acc2be"
+        },
+        "0.50": {
+          "total_return": 0.10787628937736526,
+          "cagr": 0.10795402930256576,
+          "maximum_drawdown": 0.248868733268775,
+          "sharpe_zero_reference_365_days": 0.5073404201067012,
+          "result_sha256": "388e084229ee2a3905abcb83408b736140b95bec73ffd50a7a3752f6629d22f1"
+        },
+        "1.00": {
+          "total_return": 0.21513606920721906,
+          "cagr": 0.2152982558030892,
+          "maximum_drawdown": 0.4236298967081994,
+          "sharpe_zero_reference_365_days": 0.6265893913203135,
+          "result_sha256": "5985780ed7f46040aad225401275a363abd0e02c0448c7e60f639810a48a43d1"
+        }
+      }
+    },
+    {
+      "start": "2024-08-01",
+      "end_exclusive": "2025-08-01",
+      "s3_return": 0.1493841011099597,
+      "s3_drawdown": 0.3060356902903877,
+      "controls": {
+        "0.25": {
+          "total_return": 0.10587936938299114,
+          "cagr": 0.1059556025688192,
+          "maximum_drawdown": 0.1409780377180735,
+          "sharpe_zero_reference_365_days": 0.7748810942217729,
+          "result_sha256": "afc216adccc6c4ac89f972c54f455d7c27aeeb44029d0e7d924fda8b76d4a663"
+        },
+        "0.50": {
+          "total_return": 0.22256085732648212,
+          "cagr": 0.2227291365913972,
+          "maximum_drawdown": 0.25645678303260544,
+          "sharpe_zero_reference_365_days": 0.8555787872602444,
+          "result_sha256": "41b8afae6aa21001b8acaa0bfbd97c6026cc615403f73dae0cc4c1a75d95bc4d"
+        },
+        "1.00": {
+          "total_return": 0.4482733319982337,
+          "cagr": 0.44864077582903983,
+          "maximum_drawdown": 0.43305095010519223,
+          "sharpe_zero_reference_365_days": 0.9476491307506583,
+          "result_sha256": "795dd640c447326e8151bf278015efb90081716043524d173f6fce2cfbda1d87"
+        }
+      }
+    },
+    {
+      "start": "2024-09-01",
+      "end_exclusive": "2025-09-01",
+      "s3_return": 0.24698878363186072,
+      "s3_drawdown": 0.3060920226792284,
+      "controls": {
+        "0.25": {
+          "total_return": 0.16910258977248804,
+          "cagr": 0.16922770360595243,
+          "maximum_drawdown": 0.16445866619558336,
+          "sharpe_zero_reference_365_days": 0.999293747368476,
+          "result_sha256": "53f65d23979f92aa0d542a25be9b28cdbaf7fa0dd58c89fa648a2f0e526649d6"
+        },
+        "0.50": {
+          "total_return": 0.37490960423852826,
+          "cagr": 0.3752094689204129,
+          "maximum_drawdown": 0.2839832335202159,
+          "sharpe_zero_reference_365_days": 1.1839714901488936,
+          "result_sha256": "fbeae297f0d0d1ae3b809a98328e608418f0327832bec7560b6cc3a63c047672"
+        },
+        "1.00": {
+          "total_return": 0.7834791658619036,
+          "cagr": 0.7841860596733294,
+          "maximum_drawdown": 0.4457979075008204,
+          "sharpe_zero_reference_365_days": 1.345070762222562,
+          "result_sha256": "8e20104d0effe29e385223772c058eba2bb01a5d38a34024a15e32cfe1504326"
+        }
+      }
+    },
+    {
+      "start": "2024-10-01",
+      "end_exclusive": "2025-10-01",
+      "s3_return": 0.19293811265543837,
+      "s3_drawdown": 0.3060356766499478,
+      "controls": {
+        "0.25": {
+          "total_return": 0.12590477459598848,
+          "cagr": 0.12599622873509864,
+          "maximum_drawdown": 0.16290487789768293,
+          "sharpe_zero_reference_365_days": 0.7623783566543426,
+          "result_sha256": "bf9dd06941462b27dacedaf4d585f563776de27fc894614cf0f5e747ba5718cf"
+        },
+        "0.50": {
+          "total_return": 0.31257234504982323,
+          "cagr": 0.31281689181532757,
+          "maximum_drawdown": 0.28376041087601955,
+          "sharpe_zero_reference_365_days": 1.031516363833357,
+          "result_sha256": "9c18ae4727e0d1028ee5b1d12b4dd0ae4f5d5d03922f67a635f0180710da9e73"
+        },
+        "1.00": {
+          "total_return": 0.6773866521497327,
+          "cagr": 0.6779810084323163,
+          "maximum_drawdown": 0.45013424639036903,
+          "sharpe_zero_reference_365_days": 1.23411273661469,
+          "result_sha256": "536eaafae6417c51241b7359f8d0fe6120e22427bf9ae1a0e87468177b58f5c2"
+        }
+      }
+    },
+    {
+      "start": "2024-11-01",
+      "end_exclusive": "2025-11-01",
+      "s3_return": 0.31521229237773496,
+      "s3_drawdown": 0.30603568338126896,
+      "controls": {
+        "0.25": {
+          "total_return": 0.13485318751942899,
+          "cagr": 0.13495152237170446,
+          "maximum_drawdown": 0.15676196188038516,
+          "sharpe_zero_reference_365_days": 0.8474835195451045,
+          "result_sha256": "c36cce8b72c4dfe6b9b1637c8dd432bedaf69e614404d5f93f0f94e4763a12b2"
+        },
+        "0.50": {
+          "total_return": 0.27250873393808317,
+          "cagr": 0.2727187939477324,
+          "maximum_drawdown": 0.2794386873758019,
+          "sharpe_zero_reference_365_days": 0.9367574712928634,
+          "result_sha256": "1ac84777a1014ae12d36da085bb352995ecf3856706ed4989adf59118e911621"
+        },
+        "1.00": {
+          "total_return": 0.5478194133983558,
+          "cagr": 0.5482826062786837,
+          "maximum_drawdown": 0.459061604884322,
+          "sharpe_zero_reference_365_days": 1.0670469734707746,
+          "result_sha256": "3dce38a6719dd1aa1aec5847761a61609d6dec068a9a4911cc94e27308d8b24e"
+        }
+      }
+    }
+  ],
+  "holdout_access": false,
+  "overlapping_windows_independent": false,
+  "validation": {
+    "ledger_hashes_checked": 141,
+    "daily_equities_checked": 51501,
+    "fill_cash_fee_and_timing_checks": 282,
+    "constant_quantities_after_initial_rebalance": true,
+    "no_holdout_access": true
+  }
+}

@@ -134,6 +134,23 @@ Friction is total round-trip noncommission cost; 0.05% commission per execution 
 
 [Full S1-003](../research/artifacts/S1/s1-003-attribution.json), [S2-003](../research/artifacts/S2/s2-003-attribution.json), [S3-003](../research/artifacts/S3/s3-003-attribution.json). 60 software checks passed; all 564 new ledgers audited. Holdout untouched, no new market data, three signal hypotheses retained.
 
+## Fixed passive controls: S3-004
+
+Three initial crypto targets chosen before evaluation: 25%, 50%, 100%, equally split BTC/ETH, rest cash. Same fractions for every one of the 47 windows, no future exposure or outcome used. One delayed/costed initial rebalance, then unchanged quantities; weights drift. These are references, not exact exposure- or risk-matched portfolios. Existing S3 outcomes reused unchanged.
+
+| Across the same 47 windows | 25% crypto | 50% crypto | 100% crypto | S3 |
+|---|---:|---:|---:|---:|
+| Median 12-month return | +10.59% | +21.32% | +42.34% | +21.86% |
+| Median drawdown | 14.77% | 24.89% | 42.36% | 30.60% |
+| Worst drawdown | 32.03% | 52.26% | 75.85% | 58.27% |
+| S3 beats this control | 26/47 | 17/47 | 21/47 | — |
+
+**Conclusion:** the 50% control delivers a similar median return with lower observed drawdown; S3 trails it in most matched windows. The median paired S3-minus-control return is -7.46 percentage points, distinct from the small difference between separate medians. This weakens the signal-value case; it is not a rule that S3 must beat every passive portfolio or proof that mean reversion never works.
+
+The allocation rule uses no future information, but evaluation reuses adaptive development data and overlapping windows. No independent final or causal edge evidence. No tuning or promotion. **Next:** stop further evaluation of unchanged S3 and prepare a concise POC go/no-go recommendation before selecting another mechanism-driven hypothesis within S1/S2/S3.
+
+[Complete S3-004 results](../research/artifacts/S3/s3-004-fixed-controls.json). 61 software checks passed; all 141 ledgers audited. No new S3 runs or holdout access.
+
 ## Later ideas
 
 Pairs/cointegration, copulas, event-driven or cost-aware ML, on-chain/cross-sectional factors, regime models and advanced allocation are outside this POC. Candidate sources remain in [PAPERS.md](PAPERS.md). Existing repositories may provide reusable components after license and suitability checks; no new external-code audit was performed for this feedback update. Lower-frequency equity investing is a possible future direction, not current implementation scope.

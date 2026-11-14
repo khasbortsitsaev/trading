@@ -13,7 +13,7 @@
     "capital_settings": "config/runner.json: initial_eth"
   },
   "open_prerequisites": [
-    "S1 cost-fragile; S2/S3 retain positive medians under costs but edge unproven. Register one ex-ante passive-control comparison for unchanged S3 before further runs; hindsight composition diagnostic is not causal evidence.",
+    "S3 fixed controls show no clear improvement over simple passive exposure; stop evaluating unchanged S3. Prepare a concise POC go/no-go recommendation and a mechanism-based hypothesis before any next experiment.",
     "Freeze collector dataset hashes and exact evaluated-code/configuration hashes before each run",
     "Validate holdout coverage only after a champion and access bundle are frozen; do not inspect its strategy results during development",
     "Confirm actual account/product fees and eligibility before funded use; use public conservative fee scenarios for research"
@@ -443,7 +443,7 @@
     "evaluations_completed": 564
   },
   "fixed_control_analysis": {
-    "status": "registered_before_evaluation",
+    "status": "completed_no_clear_s3_edge_no_promotion",
     "experiment_id": "S3-004",
     "crypto_fractions": [
       "0.25",
@@ -456,6 +456,7 @@
     "execution": "Inherited ETH initial inventory; one rebalance at next daily open using prior close quantities, original fees/friction/minimums; then hold quantities. Target shares approximate due costs/gaps/precision; weights drift. No end liquidation.",
     "interpretation": "Ex-ante weight rule on adaptively reused development data, not unseen evidence. Fixed exposure levels are not exact realized exposure or risk matching. Report all three, never select best control.",
     "evaluation_count": 141,
-    "protection": "No S3 rerun, threshold tuning, new signal hypotheses, holdout or promotion."
+    "protection": "No S3 rerun, threshold tuning, new signal hypotheses, holdout or promotion.",
+    "evaluations_completed": 141
   }
 }
