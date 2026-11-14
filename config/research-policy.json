@@ -418,5 +418,27 @@
       "Dependence-aware uncertainty without treating overlapping windows as independent",
       "Prospective paper validation and execution-basis calibration"
     ]
+  },
+  "attribution_analysis": {
+    "status": "registered_before_evaluation",
+    "experiment_ids": [
+      "S1-003",
+      "S2-003",
+      "S3-003"
+    ],
+    "windows": "Same 47 complete rolling windows, USD1000 owned ETH initial equity, unchanged signals and costs.",
+    "control": "For each window, initial passive BTC/ETH/cash weights equal the strategies mean realized end-of-day marked asset weights. Rebalance once at next daily open using prior close quantities and existing cost/minimum rules; then hold quantities. Cash no interest, no final liquidation.",
+    "limitation": "Weights use future window information: ex-post composition diagnostic, not tradable control, exact exposure matching, risk matching or causal proof. Control weights drift; report realized means. Full strategy-control attribution remains unresolved.",
+    "stresses": {
+      "friction_round_trip_bps": [
+        30,
+        50
+      ],
+      "extra_delay_bars": 1,
+      "delay_friction_bps": 15,
+      "commission_per_execution": "0.0005"
+    },
+    "count": "141 diagnostic controls + 423 stress scenarios = 564 new evaluations; reuse baseline141 ledgers. Three signal hypotheses unchanged.",
+    "protection": "No parameter tuning, winner promotion, holdout, confidence claims or multiple-testing independence assumed."
   }
 }
