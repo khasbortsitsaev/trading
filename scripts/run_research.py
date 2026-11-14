@@ -11,7 +11,7 @@ import sys
 ROOT=Path(__file__).resolve().parents[1]
 sys.path.insert(0,str(ROOT/'src'))
 from trading_research.data import load_admitted_dataset
-from trading_research.engine import run,Settings
+from trading_research.engine import run,Settings,validate_variant
 from trading_research.core import Rules
 from trading_research import synthetic
 
@@ -25,6 +25,7 @@ def main():
     source=p.add_mutually_exclusive_group(required=True)
     source.add_argument('--synthetic',action='store_true')
     source.add_argument('--data-dir',type=Path)
+    p.add_argument('--execution-data-dir',type=Path,help='Separately admitted intraday source, same provider/quote as signal candles')
     p.add_argument('--proxy-usd',action='store_true',help='Explicitly acknowledge USD source/USDC execution-cost mismatch')
     p.add_argument('--variant',default='TREND-20')
     p.add_argument('--start',default='2021-01-01')
@@ -40,6 +41,10 @@ def main():
     variants[s2['id']] = dict(s2, lookback_days=s2['trend_lookback_days'])
     if args.variant not in variants:
         p.error('Variant is not in the frozen policy')
+    try:
+        validate_variant(variants[args.variant])
+    except ValueError as error:
+        p.error(str(error))
     if not args.synthetic and args.variant != policy['poc']['active_variant']:
         p.error('Historical variant is not active in the POC policy; implement and freeze the next pilot before enabling it')
     cutoff=stamp(policy['split']['exact_utc_boundaries']['holdout_start_inclusive'])
@@ -58,6 +63,19 @@ def main():
         dataset_hash=manifest['normalized_sha256']
         quote=manifest['quote'];provider=manifest['provider']
     execution=json.loads((ROOT/'config/runner.json').read_text())
+    execution_panel=None;execution_manifest=None
+    interval=execution.get('execution_interval_minutes',1440)
+    if interval < 1440:
+        admission=policy.get('execution_dataset_admission')
+        if args.synthetic or not args.execution_data_dir or not admission:
+            p.error('Intraday mode needs a separately admitted historical execution dataset; no daily-price substitution')
+        execution_panel,execution_manifest=load_admitted_dataset(args.execution_data_dir,admission,cutoff,interval*60000)
+        if execution_manifest['provider']!=provider or execution_manifest['quote']!=quote:
+            p.error('Intraday execution must share signal source/quote for daily risk bounds')
+        execution_panel={a:[b for b in bs if stamp(args.start)<=b.timestamp_ms<stamp(args.end_exclusive)]
+                         for a,bs in execution_panel.items()}
+    elif args.execution_data_dir:
+        p.error('Configure an intraday execution interval before supplying execution data')
     rules={a:Rules(quantity_decimals=x['quantity_decimals'],tick=D(x['tick']),
                    minimum_base=D(x['minimum_base']),minimum_quote=D(x['minimum_quote']))
            for a,x in execution['markets'].items()}
@@ -65,13 +83,19 @@ def main():
                Settings(initial_eth=D(execution['initial_eth']),quote=quote,source=provider,fee=D(execution['fee_per_execution']),
                         publication_minutes=execution['publication_lag_minutes'],
                         processing_minutes=execution['processing_lag_minutes'],rules=rules,
-                        friction_round_trip_bps=D(args.friction_bps if args.friction_bps is not None else execution['default_noncommission_round_trip_bps']),extra_delay_bars=args.extra_delay_bars),holdout_start_ms=cutoff)
+                        execution_interval_minutes=interval,
+                        execution_source=execution_manifest['provider'] if execution_manifest else None,
+                        stress_range_threshold=D(execution['stress_range_threshold']) if execution.get('stress_range_threshold') is not None else None,
+                        stress_friction_multiplier=D(execution.get('stress_friction_multiplier','1')),
+                        friction_round_trip_bps=D(args.friction_bps if args.friction_bps is not None else execution['default_noncommission_round_trip_bps']),extra_delay_bars=args.extra_delay_bars),holdout_start_ms=cutoff,execution_panel=execution_panel)
     canonical=json.dumps(result,sort_keys=True,separators=(',',':'),allow_nan=False).encode()
     commit=subprocess.check_output(['git','rev-parse','HEAD'],cwd=ROOT,text=True).strip()
     source_dirty=subprocess.run(['git','diff','--quiet','HEAD','--','src','scripts','tests','config'],cwd=ROOT).returncode!=0
     if source_dirty:
         raise RuntimeError('Commit source/configuration before recording a research result')
-    envelope={'code_commit':commit,'dataset_sha256':dataset_hash,'result_sha256':hashlib.sha256(canonical).hexdigest(),
+    envelope={'code_commit':commit,'dataset_sha256':dataset_hash,
+              'execution_dataset_sha256':execution_manifest['normalized_sha256'] if execution_manifest else dataset_hash,
+              'result_sha256':hashlib.sha256(canonical).hexdigest(),
               'result':result}
     args.output.parent.mkdir(parents=True,exist_ok=True)
     args.output.write_text(json.dumps(envelope,indent=2,allow_nan=False)+'\n')

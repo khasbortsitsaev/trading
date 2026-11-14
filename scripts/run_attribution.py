@@ -75,6 +75,8 @@ def main():
     if args.output_dir.resolve()==ROOT or ROOT in args.output_dir.resolve().parents:p.error('Private ledgers must be outside checkout')
     if subprocess.run(['git','diff','--quiet','HEAD','--','src','scripts','tests','config'],cwd=ROOT).returncode:raise RuntimeError('Commit code/config first')
     policy=json.loads((ROOT/'config/research-policy.json').read_text());cfg=policy['attribution_analysis'];execution=json.loads((ROOT/'config/runner.json').read_text())
+    if execution.get('execution_interval_minutes',1440)!=1440 or execution.get('stress_range_threshold') is not None:
+        p.error('Completed attribution protocol requires daily execution and constant friction; register a new protocol for changed timing/costs')
     cutoff=stamp(policy['split']['exact_utc_boundaries']['holdout_start_inclusive'])
     panel,manifest=load_admitted_dataset(args.data_dir,policy['dataset_admission'],cutoff)
     prices={a:{b.timestamp_ms:b.close for b in bs} for a,bs in panel.items()}

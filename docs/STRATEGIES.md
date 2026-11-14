@@ -154,3 +154,9 @@ The allocation rule uses no future information, but evaluation reuses adaptive d
 ## Later ideas
 
 Pairs/cointegration, copulas, event-driven or cost-aware ML, on-chain/cross-sectional factors, regime models and advanced allocation are outside this POC. Candidate sources remain in [PAPERS.md](PAPERS.md). Existing repositories may provide reusable components after license and suitability checks; no new external-code audit was performed for this feedback update. Lower-frequency equity investing is a possible future direction, not current implementation scope.
+
+## POC decision after quant review
+
+No-go for live deployment or promotion of S1/S2/S3. S1's costs remain material; S2's defensive result does not identify predictive volume; S3's unchanged baseline has insufficient incremental value. None of this disproves its strategy family. Go for focused execution/measurement work: MODEL-001 fixes impossible parameter admission, adds a separately sourced intraday execution option, risk bounds and suspension-quality reporting. It creates no new profitability evidence.
+
+All historical drawdowns on this page are **daily-close, within-window** measurements, including their worst/median summaries. Monthly-start profitable fractions are descriptive overlapping development counts, not future win probabilities; median returns are not expected annual returns. Fresh-start rolling portfolios are not a continuous multi-year account. Historical artifact bytes and the three used hypotheses/846 additional evaluations remain unchanged. No new strategy is registered. Next admit intraday development data and freeze intended execution before considering a mechanism and falsifying control. [Measurement and validation contract](METHODOLOGY.md#quant-review-repair-contract-model-001).

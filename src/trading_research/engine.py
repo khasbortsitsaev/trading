@@ -6,6 +6,7 @@ import math
 import statistics
 
 from .core import Candle, DataError, HoldoutAccessError, Portfolio, Rules, validate_weights
+from .risk import equity_envelope, drawdown_upper_bound
 
 DAY = 86400000
 UTC = timezone.utc
@@ -26,6 +27,10 @@ class Settings:
     quote: str = 'USDC'
     source: str = 'synthetic'
     rules: dict = field(default_factory=dict)
+    execution_interval_minutes: int = 1440
+    execution_source: str | None = None
+    stress_range_threshold: D | None = None
+    stress_friction_multiplier: D = D(1)
 
     def validate(self):
         if not self.initial_eth.is_finite() or self.initial_eth <= 0:
@@ -36,14 +41,42 @@ class Settings:
             raise ValueError('Invalid adverse friction')
         if self.publication_minutes < 0 or self.processing_minutes <= 0 or self.extra_delay_bars < 0:
             raise ValueError('Invalid latency')
+        if any(type(x) is not int for x in [self.publication_minutes, self.processing_minutes,
+                                            self.extra_delay_bars, self.execution_interval_minutes]):
+            raise ValueError('Timing settings must be integer minutes/bars')
+        if self.publication_minutes + self.processing_minutes >= 1440:
+            raise ValueError('Signal publication/processing must finish within its decision day')
+        if not 1 <= self.execution_interval_minutes <= 1440 or 1440 % self.execution_interval_minutes:
+            raise ValueError('Execution grid must divide a UTC day')
+        if self.execution_interval_minutes < 1440 and not self.execution_source:
+            raise ValueError('Intraday execution requires an explicit source')
+        if (not self.stress_friction_multiplier.is_finite() or self.stress_friction_multiplier < 1
+                or self.friction_round_trip_bps * self.stress_friction_multiplier >= 10000):
+            raise ValueError('Invalid stress friction multiplier')
+        if self.stress_range_threshold is not None and (not self.stress_range_threshold.is_finite()
+                                                       or self.stress_range_threshold <= 0):
+            raise ValueError('Invalid prior-bar range threshold')
         if self.quote not in ['USD','USDC']:
             raise ValueError('This runner requires an explicit USD/USDC quote')
 
 
-def signals(histories, variant, old_state):
+def validate_variant(variant):
     lookback = int(variant['lookback_days'])
-    if lookback < 1:
-        raise ValueError('Lookback must be positive')
+    if lookback < 1 or lookback != variant['lookback_days']:
+        raise ValueError('Lookback must be a positive integer')
+    if variant.get('enabled') is False:
+        raise ValueError('Disabled research variant')
+    if variant['family'] not in ['trend', 'volume_confirmed_trend', 'reversal']:
+        raise ValueError('Unregistered signal family')
+    if variant['family'] == 'reversal':
+        threshold = float(variant['entry_z'])
+        if lookback < 2 or not math.isfinite(threshold) or not 0 < threshold <= (lookback-1)/math.sqrt(lookback):
+            raise ValueError('Unreachable or invalid inclusive-window sample-z entry threshold')
+
+
+def signals(histories, variant, old_state):
+    validate_variant(variant)
+    lookback = int(variant['lookback_days'])
     state = {}
     for asset, history in histories.items():
         prices = [x.close for x in history]
@@ -103,8 +136,9 @@ def target_quantities(portfolio, prices, active, settings):
                             settings.rules.get(a,Rules())) for a in prices}
 
 
-def execute_targets(portfolio, target, prices, at_ms, settings, rejected, tradable=None):
-    slip = settings.friction_round_trip_bps/D(20000)
+def execute_targets(portfolio, target, prices, at_ms, settings, rejected, tradable=None, balance_states=None):
+    friction = D(target.get('friction_round_trip_bps', settings.friction_round_trip_bps))
+    slip = friction/D(20000)
     for side in ['sell','buy']:
         for asset in sorted(prices):
             rule = settings.rules.get(asset,Rules())
@@ -132,7 +166,12 @@ def execute_targets(portfolio, target, prices, at_ms, settings, rejected, tradab
                           'reference_price':str(prices[asset]),'requested_quantity':str(requested),
                           'cash_resized':quantity<requested,
                           'adverse_price_cost':str(quantity*abs(price-prices[asset])),
-                          'fill_model':'future_daily_open_proxy_not_observed_fill'})
+                          'noncommission_round_trip_bps':str(friction),
+                          'signal_close_to_fill_seconds':(at_ms-target['source_close_ms'])/1000,
+                          'fill_model':('future_daily_open_proxy_not_observed_fill' if settings.execution_interval_minutes==1440
+                                        else 'future_intraday_open_proxy_not_observed_fill')})
+            if balance_states is not None:
+                balance_states.append((portfolio.cash, dict(portfolio.inventory)))
 
 
 def metrics(values, initial, elapsed_days):
@@ -151,11 +190,13 @@ def metrics(values, initial, elapsed_days):
     return {'total_return':floats[-1]/floats[0]-1,
             'cagr':cagr,
             'maximum_drawdown':drawdown,
+            'maximum_drawdown_basis':'daily_close_within_run_from_initial_open_equity',
             'sharpe_zero_reference_365_days':statistics.mean(returns)/std*math.sqrt(365) if std else None}
 
 
-def run(panel, variant, start_ms, end_ms, settings, *, holdout_start_ms, market_status=None):
+def run(panel, variant, start_ms, end_ms, settings, *, holdout_start_ms, market_status=None, execution_panel=None):
     settings.validate()
+    validate_variant(variant)
     if not start_ms<end_ms<=holdout_start_ms or start_ms%DAY or end_ms%DAY:
         raise HoldoutAccessError('Invalid/aligned development window or holdout access')
     if 'ETH' not in panel or not panel:
@@ -174,6 +215,31 @@ def run(panel, variant, start_ms, end_ms, settings, *, holdout_start_ms, market_
         if any(t not in index for t in range(start_ms,end_ms,DAY)):
             raise DataError('Missing simulation day; no fill or valuation fabrication')
         indexed[asset]=index
+    execution_index = indexed
+    if settings.execution_interval_minutes < 1440:
+        if execution_panel is None or set(execution_panel) != set(panel):
+            raise DataError('Intraday execution requires separate candles for the same assets')
+        execution_index = {}
+        interval = settings.execution_interval_minutes * 60000
+        for asset, bars in execution_panel.items():
+            index = {}
+            for b in bars:
+                if b.timestamp_ms >= holdout_start_ms:
+                    raise HoldoutAccessError('Execution input includes final holdout data')
+                if b.timestamp_ms in index:
+                    raise DataError('Duplicate execution timestamp')
+                if (b.timestamp_ms % interval or not start_ms <= b.timestamp_ms < end_ms
+                        or any(not p.is_finite() or p <= 0 for p in [b.open,b.high,b.low,b.close])
+                        or not b.volume.is_finite() or b.volume < 0
+                        or not b.low <= min(b.open,b.close) <= max(b.open,b.close) <= b.high):
+                    raise DataError('Invalid execution candle')
+                daily = indexed[asset][b.timestamp_ms//DAY*DAY]
+                if not daily.low <= b.low <= b.high <= daily.high:
+                    raise DataError('Execution candles must share daily source price bounds')
+                index[b.timestamp_ms] = b
+            execution_index[asset] = index
+    elif execution_panel is not None:
+        raise DataError('Separate execution candles require an intraday grid')
     # Warmup is source data, never a funded simulation or a future feature.
     warmup = {a:sorted((b for b in bars if b.timestamp_ms<start_ms),key=lambda b:b.timestamp_ms)
               for a,bars in panel.items()}
@@ -193,14 +259,28 @@ def run(panel, variant, start_ms, end_ms, settings, *, holdout_start_ms, market_
     # The cash benchmark conversion is predetermined, not derived from a future signal.
     cash_price=adverse_price(opening['ETH'],'sell',slip,settings.rules.get('ETH',Rules()))
     cash_hold=settings.initial_eth*cash_price*(1-settings.fee)
-    curve=[]; decisions=[]; rejected=[]; pending={}; old_state={}
+    curve=[]; decisions=[]; rejected=[]; pending={}; old_state={}; valuation_issues=[]
     histories={a:list(bars) for a,bars in warmup.items()}
     for t in range(start_ms,end_ms,DAY):
-        opens={a:index[t].open for a,index in indexed.items()}
-        due=pending.pop(t,None)
-        if due is not None:
-            execute_targets(portfolio,due,opens,t,settings,rejected,
-                            (market_status or {}).get(t))
+        states=[(portfolio.cash, dict(portfolio.inventory))]
+        def execute_due(at):
+            due = pending.pop(at)
+            tradable = dict((market_status or {}).get(t, {}))
+            tradable.update((market_status or {}).get(at, {}))
+            prices = {}
+            for asset in indexed:
+                bar = execution_index[asset].get(at)
+                if bar is None:
+                    difference=due['quantities'][asset]-portfolio.inventory.get(asset,D(0))
+                    if difference:
+                        rejected.append({'asset':asset,'at_ms':at,'reason':'missing_designated_execution_bar',
+                                         'requested':str(abs(difference))})
+                else:
+                    prices[asset] = bar.open
+            execute_targets(portfolio,due,prices,at,settings,rejected,tradable,states)
+        # Midnight due instructions precede today's signal decision.
+        if t in pending:
+            execute_due(t)
         # Only yesterday's completed closes enter the signal, after today's open fills.
         source_close=t
         available=dt(t)+timedelta(minutes=settings.publication_minutes)
@@ -208,23 +288,46 @@ def run(panel, variant, start_ms, end_ms, settings, *, holdout_start_ms, market_
         state=signals(histories,variant,old_state)
         references={a:bars[-1].close for a,bars in histories.items()}
         quantities=target_quantities(portfolio,references,state,settings)
-        fill_day=ready.replace(hour=0,minute=0,second=0,microsecond=0)+timedelta(days=1+settings.extra_delay_bars)
+        interval=settings.execution_interval_minutes*60000
+        ready_ms=int(ready.timestamp()*1000)
+        fill_ms=(ready_ms//interval+1)*interval+settings.extra_delay_bars*DAY
+        # The stress delay remains whole DAILY signal bars in either mode.
+        friction=settings.friction_round_trip_bps
+        if settings.stress_range_threshold is not None and any(
+                (bs[-1].high-bs[-1].low)/bs[-1].close >= settings.stress_range_threshold
+                for bs in histories.values()):
+            friction *= settings.stress_friction_multiplier
         # Intents are timestamped target instructions, not resting venue orders.
         intent={'quantities':quantities,'source_close_ms':source_close,
                 'available_at':available,'decision_at':available,'ready_at':ready,
-                'fill_ms':int(fill_day.timestamp()*1000)}
+                'fill_ms':fill_ms,'friction_round_trip_bps':str(friction)}
         if intent['fill_ms'] in pending:
             raise DataError('Duplicate intent due day')
         pending[intent['fill_ms']]=intent
         decisions.append({'source_close_ms':t,'available_at':available.isoformat(),
                           'ready_at':ready.isoformat(),'fill_ms':intent['fill_ms'],
+                          'signal_close_to_fill_seconds':(fill_ms-t)/1000,
+                          'noncommission_round_trip_bps':str(friction),
                           'active':state,'target_quantities':{a:str(q) for a,q in quantities.items()}})
         old_state=state
+        for at in sorted(at for at in pending if t < at < t+DAY):
+            execute_due(at)
         closes={a:index[t].close for a,index in indexed.items()}
         equity=portfolio.equity(closes)
         if portfolio.cash<0 or any(x<0 for x in portfolio.inventory.values()):
             raise DataError('Negative spot balances')
+        # Any held suspension during this day makes valuation inconclusive.
+        suspended={a for at,status in (market_status or {}).items() if t <= at < t+DAY
+                   for a,tradable in status.items() if not tradable
+                   and any(inventory.get(a,D(0)) > 0 for _,inventory in states)}
+        lower,upper=equity_envelope(states,{a:index[t] for a,index in indexed.items()},suspended)
+        if suspended:
+            valuation_issues.append({'time_ms':t+DAY,'assets':sorted(suspended),
+                                     'reason':'suspended_holding_close_unverified_zero_recovery_lower_bound'})
         curve.append({'time_ms':t+DAY,'equity':str(equity),
+                      'equity_lower_bound':str(lower),'equity_upper_bound':str(upper),
+                      'valuation_quality':'inconclusive_suspended_holding' if suspended else 'source_candle_mark_not_executable_quote',
+                      'zero_recovery_close_equity':str(portfolio.cash+sum((q*closes[a] for a,q in portfolio.inventory.items() if a not in suspended),D(0))),
                       'cash_benchmark':str(cash_hold),'eth_benchmark':str(eth_hold*closes['ETH']),
                       'eth_equivalent':str(equity/closes['ETH']),
                       'cash':str(portfolio.cash),'inventory':{a:str(q) for a,q in sorted(portfolio.inventory.items())}})
@@ -233,12 +336,26 @@ def run(panel, variant, start_ms, end_ms, settings, *, holdout_start_ms, market_
     return {'evidence_type':'synthetic_software_check' if settings.source=='synthetic' else 'historical_source_proxy_not_venue_replication',
             'variant':variant,'source':settings.source,'quote':settings.quote,
             'usdc_wealth_claimed':settings.quote=='USDC',
-            'execution_model':'fixed target quantities from prior available closes; future daily open proxy; quote fees; no EUR leg',
+            'execution_model':'fixed target quantities from prior available closes; designated future candle open proxy; quote fees; no EUR leg',
+            'run_contract':{'portfolio':'continuous_within_run_no_internal_resets','signal_state_at_start':'inactive',
+                            'daily_close_drawdown_scope':'within_run_only_no_intraday_path_observed'},
+            'valuation_status':'inconclusive' if valuation_issues else 'source_candle_marks_only',
+            'promotion_eligible_on_valuation':not bool(valuation_issues),
+            'valuation_issues':valuation_issues,
+            'risk':{'daily_close_maximum_drawdown':metrics([D(x['equity']) for x in curve],initial,elapsed)['maximum_drawdown'],
+                    'ohlc_maximum_drawdown_upper_bound':drawdown_upper_bound(curve,initial),
+                    'bound_method':'all_daily_balance_states_at_daily_asset_low_high; extrema/order_may_not_coincide; zero_recovery_on_suspension',
+                    'intraday_drawdown_observed':False,'future_loss_limit':False},
             'initial_eth':str(settings.initial_eth),'initial_quote_equity':str(initial),
             'settings':{'fee_per_execution':str(settings.fee),'noncommission_round_trip_bps':str(settings.friction_round_trip_bps),
                         'extra_delay_bars':settings.extra_delay_bars,
                         'publication_minutes':settings.publication_minutes,
                         'processing_minutes':settings.processing_minutes,
+                        'execution_interval_minutes':settings.execution_interval_minutes,
+                        'execution_source':settings.execution_source or settings.source,
+                        'extra_delay_unit':'daily_signal_bars',
+                        'stress_range_threshold':str(settings.stress_range_threshold) if settings.stress_range_threshold is not None else None,
+                        'stress_friction_multiplier':str(settings.stress_friction_multiplier),
                         'rules':{a:{'quantity_decimals':r.quantity_decimals,'tick':str(r.tick),
                                     'minimum_base':str(r.minimum_base),'minimum_quote':str(r.minimum_quote)}
                                  for a,r in settings.rules.items()}},

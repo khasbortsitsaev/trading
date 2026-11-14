@@ -52,6 +52,8 @@ def main():
     cutoff=policy['split']['exact_utc_boundaries']['holdout_start_inclusive']
     data,manifest=load_admitted_dataset(args.data_dir,policy['dataset_admission'],stamp(cutoff))
     execution=json.loads((ROOT/'config/runner.json').read_text())
+    if execution.get('execution_interval_minutes',1440)!=1440 or execution.get('stress_range_threshold') is not None:
+        parser.error('Completed rolling protocol requires daily execution and constant friction; register a new protocol for changed timing/costs')
     rules={a:Rules(quantity_decimals=x['quantity_decimals'],tick=D(x['tick']),minimum_base=D(x['minimum_base']),minimum_quote=D(x['minimum_quote'])) for a,x in execution['markets'].items()}
     variants={x['id']:x for x in policy['variants']};s2=policy['poc']['s2_spec'];variants[s2['id']]=dict(s2,lookback_days=s2['trend_lookback_days'])
     commit=subprocess.check_output(['git','rev-parse','HEAD'],cwd=ROOT,text=True).strip()

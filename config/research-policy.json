@@ -1,5 +1,5 @@
 {
-  "version": "0.7",
+  "version": "0.8",
   "date": "2026-11-14",
   "status": "frozen_research_working_defaults",
   "real_data_search_authorized_by_this_file": true,
@@ -13,7 +13,7 @@
     "capital_settings": "config/runner.json: initial_eth"
   },
   "open_prerequisites": [
-    "S3 fixed controls show no clear improvement over simple passive exposure; stop evaluating unchanged S3. Prepare a concise POC go/no-go recommendation and a mechanism-based hypothesis before any next experiment.",
+    "POC recommendation remains no deployment. Specify/admit same-source intraday development data and freeze intended timing/cost process before a distinct mechanism-driven economic experiment; no further unchanged-S3 evaluations.",
     "Freeze collector dataset hashes and exact evaluated-code/configuration hashes before each run",
     "Validate holdout coverage only after a champion and access bundle are frozen; do not inspect its strategy results during development",
     "Confirm actual account/product fees and eligibility before funded use; use public conservative fee scenarios for research"
@@ -54,9 +54,10 @@
     "additional_champion_development_scenarios": 5,
     "holdout_access_bundles": 1,
     "holdout_predeclared_scenarios": 3,
-    "enabled_selection_variants": 12,
+    "enabled_selection_variants": 11,
     "cross_sectional_status": "6 slots disabled: no defensible historical panel; no reassignment",
-    "poc_reservation_change": "2026-11-14: unexecuted TREND-365 slot reserved for S2-TREND-VOL-20-1.5. No used trial erased, no disabled cross-sectional slot reassigned, total ceiling 18 unchanged."
+    "poc_reservation_change": "2026-11-14: unexecuted TREND-365 slot reserved for S2-TREND-VOL-20-1.5. No used trial erased, no disabled cross-sectional slot reassigned, total ceiling 18 unchanged.",
+    "parameter_validity_change": "2026-11-14: one dormant impossible reversal quarantined, no replacement; three used hypotheses and selection cap18/multiplicity18 preserved. Affected four-neighbor plans incomplete."
   },
   "split": {
     "frequency": "daily",
@@ -131,7 +132,8 @@
     "mandatory_additional_delay_bars": 1,
     "maker_fills_assumed": false,
     "target_intent_policy": "Fixed quantities from prior available closes; queued to designated future daily opens; no resting exchange order or cash borrowing; buys resized down for execution-time cash feasibility.",
-    "baseline_settings": "config/runner.json is authoritative for baseline fee, friction and timing"
+    "baseline_settings": "config/runner.json is authoritative for baseline fee, friction and timing",
+    "optional_intraday_reference": "First fixed UTC-grid start strictly AFTER ready_at, with extra_delay_bars counted as additional daily signal bars; separate same-source/quote admitted execution dataset required. No fabricated/fallback intraday prices."
   },
   "research_route": {
     "signal_data_source": {
@@ -246,10 +248,13 @@
       "rule": "z=(log close - trailing log-price mean)/sample std over L completed closes including t; enter if z <= -entry_z, exit if z >= 0; zero std means flat; otherwise preserve state",
       "neighbor_ids": [
         "REVERSAL-10-1",
-        "REVERSAL-5-2",
         "REVERSAL-10-2",
         "REVERSAL-20-1"
-      ]
+      ],
+      "invalidated_neighbor_ids": [
+        "REVERSAL-5-2"
+      ],
+      "neighbor_plan_status": "incomplete_requires_preregistration_before_any_neighbor_evaluation; do not silently substitute"
     },
     {
       "id": "REVERSAL-5-2",
@@ -262,7 +267,9 @@
         "REVERSAL-5-1",
         "REVERSAL-10-1",
         "REVERSAL-20-2"
-      ]
+      ],
+      "enabled": false,
+      "invalid_reason": "Inclusive-window sample z is bounded by (n-1)/sqrt(n); 5 observations cannot reach entry_z=2. Quarantined without replacement or historical run."
     },
     {
       "id": "REVERSAL-10-1",
@@ -285,10 +292,13 @@
       "rule": "z=(log close - trailing log-price mean)/sample std over L completed closes including t; enter if z <= -entry_z, exit if z >= 0; zero std means flat; otherwise preserve state",
       "neighbor_ids": [
         "REVERSAL-20-2",
-        "REVERSAL-5-2",
         "REVERSAL-10-1",
         "REVERSAL-20-1"
-      ]
+      ],
+      "invalidated_neighbor_ids": [
+        "REVERSAL-5-2"
+      ],
+      "neighbor_plan_status": "incomplete_requires_preregistration_before_any_neighbor_evaluation; do not silently substitute"
     },
     {
       "id": "REVERSAL-20-1",
@@ -312,9 +322,12 @@
       "neighbor_ids": [
         "REVERSAL-10-2",
         "REVERSAL-20-1",
-        "REVERSAL-10-1",
+        "REVERSAL-10-1"
+      ],
+      "invalidated_neighbor_ids": [
         "REVERSAL-5-2"
-      ]
+      ],
+      "neighbor_plan_status": "incomplete_requires_preregistration_before_any_neighbor_evaluation; do not silently substitute"
     }
   ],
   "allocation": {
@@ -472,6 +485,13 @@
     "promoted_candidates": 0,
     "active_experiment": null,
     "holdout_accessed": false,
-    "next_task": "Concise POC go/no-go recommendation before any mechanism-driven next hypothesis; no further unchanged-S3 evaluation."
+    "next_task": "Admit same-source/quote intraday development data and freeze intended execution process before registering a distinct mechanism-driven hypothesis; no rerun of unchanged S3."
+  },
+  "execution_dataset_admission": null,
+  "measurement_contract": {
+    "drawdown": "daily-close within-run high-water loss; separate conservative OHLC upper bound is not an observed path or a loss limit",
+    "valuation": "held suspensions flag run inconclusive; zero-recovery close floor and OHLC lower envelope are valuations, not exits",
+    "continuity": "one run preserves inventory/cash/signal state/pending targets throughout; rolling fresh starts cannot be stitched as returns",
+    "execution_costs": "optional prior-bar-range-conditioned friction plus joint friction/daily-delay stress; assumptions, not measured venue costs"
   }
 }

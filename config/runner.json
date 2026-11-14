@@ -20,5 +20,9 @@
       "minimum_base": "0.00247844",
       "minimum_quote": "5"
     }
-  }
+  },
+  "execution_interval_minutes": 1440,
+  "stress_range_threshold": null,
+  "stress_friction_multiplier": "1",
+  "execution_note": "Legacy daily proxy retained. Intraday intervals require separate admitted same-source/quote candles. extra_delay_bars always counts daily signal bars. Prior completed candle (high-low)/close can trigger causal friction stress; disabled by default, not calibrated spread."
 }
