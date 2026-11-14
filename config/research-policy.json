@@ -382,5 +382,27 @@
       "sizing_execution": "Existing daily equal-universe fee-reserved targets and delayed proxy fills; inactive weights stay cash.",
       "validation": "Same one continuous 720-day development portfolio, fixed data and costs; no holdout or parameter sweep."
     }
+  },
+  "rolling_start_analysis": {
+    "status": "registered_before_evaluation",
+    "experiment_ids": [
+      "S1-002",
+      "S2-002",
+      "S3-002"
+    ],
+    "variants": {
+      "S1": "TREND-20",
+      "S2": "S2-TREND-VOL-20-1.5",
+      "S3": "REVERSAL-20-1"
+    },
+    "first_start": "2021-01-01",
+    "start_spacing": "calendar_month_first_day",
+    "holding_period": "12 calendar months, end exclusive; all complete windows ending on/before holdout start",
+    "initial_quote_equity": "1000",
+    "funding": "Each fresh portfolio starts with owned ETH worth USD 1000 at that start open, not a funded purchase; ETH benchmark same inventory. This holds dollar size constant so order-minimum effects do not vary with ETH starting price. No final liquidation.",
+    "state": "Inactive signals at each new start, warmup history only; identical to prior startup convention.",
+    "expected_windows_per_strategy": 47,
+    "expected_strategy_window_evaluations": 141,
+    "interpretation": "Post-hoc development robustness, overlapping and dependent, no new signal variants, no parameter tuning or independent significance claim; historical trial count remains three but 141 extra scenario evaluations logged."
   }
 }
