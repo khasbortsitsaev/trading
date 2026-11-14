@@ -1,23 +1,18 @@
 # Current decisions
 
-Updated 13 November 2026. This summary supersedes older planning prose; historical experiments and their original settings remain unchanged in Git and [experiments.md](experiments.md).
-
 | Topic | Decision |
 |---|---|
-| Objective | Find a repeatable, scalable investment edge after costs; profitability remains unproven |
-| Capital | Expected initial live inventory is illustrative, not a strict research limit; configurable in runner.json |
-| POC scope | S1 trend, S2 volume/technical, S3 mean reversion; finish S1 end to end first |
-| Batch | Pause the eleven untested registered variants; preserve one used trial and existing search ceiling |
-| Trading | Fully funded long/flat spot first, no leverage or fixed position-count cap |
-| Currency | USD/USDC research with ETH/cash benchmarks; EUR only when actual funding/cash-out requires it |
-| Venue | Open; Bitstamp supplies development prices, Bitvavo USDC is a cost candidate, not measured fills |
-| Validation | Chronological development, explicit costs and sealed holdout; numerical screens are agent-selected research defaults, not live loss limits |
-| Exits | Explain and specify sells as clearly as buys; baseline S1 uses signal exits and daily target resizing, no profit target/stop |
-| Working style | Minimal maintained docs; conclusion, evidence, next step and specific user input after each step |
-| Reuse | Reuse current code and suitable licensed tools before expanding infrastructure; keep strategy results separate |
-| Later scope | Other strategies and lower-frequency equities can be considered after the POC |
-| Authorization | Commit/push completed work; no live orders, borrowing, paid commitments or vendor messages without separate authority |
+| Objective | Find a repeatable positive trading edge after costs with acceptable risk; no validated edge yet |
+| Capital | Existing ETH is available capital, not an investment mandate; amount is configurable |
+| Benchmarks | ETH/BTC/cash are diagnostic references, not mandatory outperformance hurdles |
+| POC | S1/S2/S3 first; shared pipeline, separate experiment/results folders |
+| Scope | Fully funded long/flat spot; no leverage, borrowing or fixed position-count cap |
+| Currency/venue | USD/USDC-source research; Bitstamp prices and hypothetical execution costs remain distinct from actual fills; venue undecided |
+| Risk | 30% drawdown and positive-fold rules remain provisional research screens; no user-approved numerical live risk limit |
+| Evidence | Profitability, risk, exposure attribution, costs, robustness and prospective validation; positive backtests alone are insufficient |
+| History | Old ETH-relative verdicts remain in frozen reports; no strategy is currently rejected solely for underperforming ETH or retroactively promoted |
+| Validation | Chronological evaluation, all trials retained, overlapping windows dependent, sealed holdout untouched |
+| Working style | Concise conclusions and editable assumptions; reuse code/tools, separate software correctness from economic evidence |
+| Authority | Commit/push completed work; live orders, paid commitments, vendor messages and borrowing require separate authorization |
 
-S1 baseline close-out is complete: reject promotion of TREND-20, retain its evidence and sealed holdout. S2 is implemented and tested: lower drawdown but insufficient ETH-relative growth, closed without promotion. S3 also failed growth/drawdown screens. First POC pass complete without promotion; review objective/risk tradeoffs before another registered hypothesis. Live risk limits, venue and operations require later decisions. The prior failed pilot does not justify retuning the same evidence until it appears successful.
-
-14 November: user explicitly requested start-date robustness. All eligible monthly starts with fixed 12-calendar-month horizons now supplement the original pilots; no cherry-picking endpoints. 47 overlapping development windows per strategy, USD 1000 starting-equity ETH endowment, same signals/costs. S3 is mixed rather than generally rejected. No objective change, holdout access or promotion; three signal hypotheses and 141 extra scenario evaluations recorded.
+Objective corrected following the user's clarification: the mandatory two-point ETH CAGR margin is removed. Signals, dates, costs and old results are unchanged. No new simulation is needed to acknowledge this correction. Next register a bounded control/robustness analysis to determine whether decisions add value beyond carrying crypto exposure. Do not infer a reliable edge from positive returns or monthly-window win rates.

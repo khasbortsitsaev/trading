@@ -1,9 +1,7 @@
 # POC plan
 
-1. **S1 baseline closed:** exact replay, buy/sell/resize explanations and cost attribution complete. TREND-20 failed promotion; no holdout evaluation.
-2. **S2 and S3 closed:** both failed the current screens. The first POC pass is complete. Review growth/drawdown tradeoffs before registering any next experiment. Keep separate results and reuse the pipeline.
-3. Consider other strategies, equities or paper operation later, based on evidence. No automatic expansion or live execution.
+1. S1/S2/S3 pipelines and initial development/rolling-date evaluations complete. Original results retained; edge status unproven, not rejection for trailing ETH.
+2. Register a bounded exposure/risk-matched passive-control and cost/delay robustness analysis. Determine whether trading decisions contribute beyond market exposure. Reuse current code/data; do not run more signal variants automatically.
+3. Only if sufficient development evidence supports a frozen candidate, consider the sealed holdout and subsequent prospective paper validation. No live authority implied.
 
-The six original review topics remain requirements: suitable data/venue, realistic costs, success criteria, long/short scope, bounded validation, and causal accounting. Apply them to S1 as needed, rather than expanding each into its own project. Existing source audits and cost checks should be reused.
-
-The earlier twelve-variant batch is paused. Keep its trial history and selection ceiling; do not lower evidence standards after seeing failure. Next action: [state](state.md). Rules: [methodology](METHODOLOGY.md).
+ETH/BTC/cash are diagnostic references. Profitability, risk, robustness and attribution define the investigation. Numerical risk screens are working assumptions, not user live preferences. Detailed rules in METHODOLOGY.md; exact next task in state.md.

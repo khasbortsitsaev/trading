@@ -1,18 +1,21 @@
 # Research rules
 
-Updated 13 November 2026. This is the single methodology for the six review items. The executable assumptions and exact first-batch variants are in [research-policy.json](../config/research-policy.json); evidence is under [research/reports](../research/reports). No strategy has been shown profitable.
+Updated 13 November 2026. This is the single methodology for the six review items. The executable assumptions and exact first-batch variants are in [research-policy.json](../config/research-policy.json); evidence is under [research/reports](../research/reports). Positive historical returns have been observed; no repeatable trading edge is established.
 
 ## Objective and decision criteria
 
-The agreed objective is capital growth, with no planned withdrawals. Starting inventory is an editable illustration in config/runner.json, not a capital constraint. Use USDC as the primary trading/research numeraire, with USD-source data where suitable and ETH-equivalent comparisons. EUR reporting is optional for eventual funding/cash-out planning, not a requirement for routine trading. Compare identical dates against holding the original ETH and a no-trade cash benchmark, charging each only its actual necessary conversions. Stablecoins and cash are not assumed risk-free or interest-bearing.
+The user clarified that the objective is **repeatable positive expected trading returns after costs, with acceptable risk**. Existing ETH is available capital, not a preferred investment or a required growth benchmark. Starting inventory remains editable in config/runner.json. Use USD/USDC-source reporting; ETH/BTC/cash comparisons diagnose exposure and opportunity cost, not mandatory outperformance.
 
-To resolve the previously open research settings, the agent has frozen the following **research-only working defaults** under the user's instruction to resolve the review. These are not a statement that the user chose these as personal/live investment preferences:
+Current research evaluation:
 
-- Growth candidate: positive net CAGR, at least 2 percentage points/year above ETH, and maximum historical drawdown no greater than 30%, separately on stitched development OOS and the final holdout.
-- At least three of four development folds profitable; no dependence on the single best month; at least three of four preregistered neighboring variants retain positive growth and ETH-relative wealth.
-- Positive growth and ETH-relative wealth under current commissions plus 30 bps total round-trip noncommission friction, and with one extra daily execution delay. Report the 50-bps friction case even if it fails.
-- A paired, dependence-aware uncertainty check must support excess daily log growth after accounting for the full selection budget. If evidence is weak or the method is not valid for the sample, report inconclusive.
-- A positive-growth/lower-drawdown strategy that does not beat ETH is reported as a **defensive result**, not silently accepted under a changed objective. The user can decide its value later; research need not wait to measure both outcomes.
+- Positive net profitability across dates/regimes, reported together with losing periods and sensitivity, not inferred from one bull-market run. Execution/conversion costs included; business overhead must be separately included or explicitly excluded.
+- Drawdown, loss from initial capital and exposure assessed alongside returns. The existing 30% drawdown and three-positive-fold screens remain provisional agent research heuristics, not user-approved live limits. No new threshold is fitted to observed results.
+- Cost, delay and parameter robustness must support the mechanism; preserve failed tests and total trial counts. No ETH-relative wealth requirement for neighbors or stress cases.
+- Attribute performance to decisions versus simply carrying crypto risk, using predeclared exposure/risk-matched passive controls. Underperforming full ETH in a rally is not failure by itself; outperforming ETH in a crash is not success by itself.
+- Dependence-aware uncertainty and multiple-search accounting remain necessary. Overlapping rolling windows are descriptive, not independent evidence. A positive median return or a positive result in most windows does not establish positive expected profit.
+- No candidate is promoted without sufficient controls/robustness and subsequent prospective paper validation. Before final holdout access, freeze one candidate and exact criteria. Never use the holdout to select the new objective or tune parameters.
+
+The former >=2 percentage points/year above ETH rule is retired following the user's objective clarification, not because a backtest was made to pass. Original reports retain their original decision labels; their numerical results are unchanged. Reassessment means **edge unproven**, not retroactive success. No live risk limit is set.
 
 CAGR uses elapsed seconds/365.25 days. Drawdown is loss from an equity high-water mark; loss from starting capital is reported separately. Net growth includes declared execution/conversion and recurring expenses, with costs separately attributed. Taxes are not invented; label results pre-tax unless a specific tax model has been reviewed. Sharpe, Sortino, turnover, utilization and time under water supplement wealth, rather than replacing it.
 
@@ -87,7 +90,7 @@ The runner consumes only previously completed/available closes, fixes target qua
 
 A run on external USD prices reports a USD ledger and explicitly does not claim actual USDC wealth. Static current Bitvavo USDC-like fee/minimum assumptions are only a prospective-cost proxy, not source-venue history or a USD/USDC parity finding. Full ledgers remain private; aggregate summaries identify code/config/data hashes and evidence type. Future-price perturbation, extra delay, cash resizing, source hash/gap failure and no-network holdout rejection all have executed tests.
 
-S1-001 is the first registered historical development pilot, not a champion or final holdout result. It failed the current ETH-growth and drawdown screens. No parameter/window/fee change or holdout access followed that result. The remaining predeclared variants are still untested; one negative baseline neither proves nor disproves the broader project.
+S1-001 is the first registered historical development pilot, not a champion or final holdout result. It failed the historical ETH-growth/drawdown screens; ETH outperformance is no longer a current gate. No parameter/window/fee change or holdout access followed that result. The remaining predeclared variants are still untested; one negative baseline neither proves nor disproves the broader project.
 
 ## Start-date robustness
 

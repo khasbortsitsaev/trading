@@ -2,7 +2,9 @@
 
 Find a repeatable investment edge after costs. Phase 1 covers **S1 trend following, S2 volume/technical signals and S3 mean reversion**, one at a time. Finish S1 end to end first. Lower trading frequency is welcome if the evidence supports it.
 
-**Current conclusion:** no validated edge yet. The first single-start pilots failed the working screens. Across 47 monthly-start, 12-month development windows, S3 beat ETH 24 times, S1 21 and S2 20. Date sensitivity matters; S3 is mixed and S2 more defensive, while substantial drawdowns remain. [Comparison and assumptions](docs/STRATEGIES.md#monthly-start-sensitivity-fixed-12-month-horizon).
+**Objective:** repeatable trading profits after costs with acceptable risk. Existing ETH is simply available capital. Beating ETH is not required; holding/cash comparisons help explain risk and where returns come from.
+
+**Current conclusion:** all three have positive historical median 12-month returns, but none has established a repeatable edge. S2 has the lowest observed drawdowns; S3 has the highest fraction of profitable windows. Significant losses remain possible. [Results and reassessment](docs/STRATEGIES.md#current-objective-reassessment).
 
 - Results: [S1-001](research/artifacts/S1/s1-001-summary.json) · [S2-001](research/artifacts/S2/s2-001-summary.json) · [S3-001](research/artifacts/S3/s3-001-summary.json)
 - [Current state and next step](docs/state.md)

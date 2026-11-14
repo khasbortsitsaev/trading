@@ -2,9 +2,25 @@
 
 | Strategy | Buy / hold | Sell | Status |
 |---|---|---|---|
-| **S1 trend** | Completed close above the close L days earlier; current pilot L=20 | Target zero when return over L days is zero or negative | Baseline closed: failed promotion; see below |
-| **S2 volume/technical** | Positive 20-day trend plus unusually high volume | Nonpositive 20-day trend; volume alone does not exit | Implemented and tested; fails growth screen, lower drawdown |
-| **S3 mean reversion** | Implemented candidate buys when trailing log-price z-score <= negative entry threshold | Exit when z >= 0; zero variance means flat; otherwise retain state | First baseline tested; failed growth/drawdown screens |
+| **S1 trend** | Completed close above the close L days earlier; current pilot L=20 | Target zero when return over L days is zero or negative | Pilot complete; edge unproven |
+| **S2 volume/technical** | Positive 20-day trend plus unusually high volume | Nonpositive 20-day trend; volume alone does not exit | Pilot complete; lower drawdown, edge unproven |
+| **S3 mean reversion** | Implemented candidate buys when trailing log-price z-score <= negative entry threshold | Exit when z >= 0; zero variance means flat; otherwise retain state | Pilot complete; edge unproven |
+
+## Current objective reassessment
+
+The user clarified that ETH is available capital, not the required investment benchmark. The mandatory ETH-outperformance criterion is removed. Historical verdicts below describe the old screens; they are not current family-wide rejection decisions. Old results/parameters are unchanged; no strategy is automatically promoted.
+
+| Existing 47 overlapping 12-month windows | S1 | S2 | S3 |
+|---|---:|---:|---:|
+| Profitable windows | 26/47 (55%) | 30/47 (64%) | 33/47 (70%) |
+| Median net return | +6.66% | +14.22% | +21.86% |
+| Worst return | -50.92% | -37.19% | -46.27% |
+| Median drawdown | 38.38% | 25.44% | 30.60% |
+| Worst drawdown | 55.03% | 42.45% | 58.27% |
+
+**Interpretation:** S1 has substantial risk and inconsistent profitability; S2 has the most favorable observed drawdown profile; S3 has more profitable windows but substantial downside. None is disqualified just for trailing ETH. None demonstrates a reliable edge: market exposure may explain profits, overlapping windows are dependent, and robustness/uncertainty/prospective evidence is missing. These descriptive figures do not imply a future probability of profit.
+
+Returns are pre-tax and include modeled commissions/friction, not fixed hosting/data costs or withdrawals. The 30% drawdown screen remains provisional; it is not a live loss limit. No monthly revenue forecast is supported. Next: predeclare exposure/risk-matched passive controls and a bounded cost/delay check before evaluating more. Do not fit parameters or pick an objective to make a candidate pass.
 
 ## S1 mechanics and exits
 
@@ -16,7 +32,7 @@ There is **no fixed profit target, stop-loss or maximum holding period** in this
 
 The algorithm, allocation, costs and timing are separate components. Edit lookbacks in [research-policy.json](../config/research-policy.json); baseline funding/cost/timing assumptions in [runner.json](../config/runner.json). Register changes before new historical evaluation. Keep S1, S2 and S3 experiment entries and artifacts separate; reuse the common engine.
 
-## S1 baseline conclusion: do not promote
+## S1 historical pilot under the original screens
 
 S1-001, historical development proxy, 2023-11-24 through 2025-11-12: **+62.32% net growth versus ETH +65.52%; drawdown 44.89%**. Annual growth lagged ETH by 1.27 percentage points, against a required +2-point margin; drawdown exceeded the 30% research screen. Lower drawdown than ETH is useful context, not a passing growth result. This rejects TREND-20 under these settings, not all trend following.
 
@@ -53,7 +69,7 @@ Reuse review: the existing short trend formula, portfolio and accounting code ar
 
 One S2 pilot will use the same admitted development dates, costs and ETH/cash controls as S1. It reserves the untested TREND-365 budget slot; the total cap stays 18 and one historical variant remains used. S1's result has influenced this hypothesis, so S2 is adaptive development research, not independent validation. Holdout remains sealed. [Validation plan](experiments.md#s2-001-volume-confirmed-trend-plan).
 
-### S2 result: close without promotion
+### S2 historical pilot under the original screens
 
 Historical development proxy, same 720-day window as S1; not prospective or independent final validation:
 
@@ -68,7 +84,7 @@ S2 had 270 fills and 306 skipped targets; three of four continuous development f
 
 49 software checks pass; this is not an investment-performance conclusion. Synthetic fixtures exercise actual buys, holds and exits; the default random-volume CLI smoke only sold initial inventory, so its completion alone is not signal coverage. All 720 historical decisions/equity points and 270 fills' timing were audited. [Result](../research/artifacts/S2/s2-001-summary.json), [checks and fold results](../research/artifacts/S2/s2-001-validation.json). S3 is now completed below.
 
-## S3: mean-reversion baseline closed
+## S3 historical pilot under the original screens
 
 REVERSAL-20-1 buys when the latest completed log price is at least one sample standard deviation below the latest 20-day log-price average (including that close). Sell when it reaches/exceeds the moving average; retain signal state between thresholds. Zero variance means flat. Start inactive, with at least 20 warmup closes. No fixed profit target, stop-loss or time exit. Parameters remain in the policy's existing variant definition; sizing/timing/costs reuse S1/S2.
 

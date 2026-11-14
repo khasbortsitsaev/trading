@@ -1,10 +1,10 @@
 {
-  "version": "0.6",
+  "version": "0.7",
   "date": "2026-11-14",
   "status": "frozen_research_working_defaults",
   "real_data_search_authorized_by_this_file": true,
   "agreed_scope": {
-    "objective": "capital_growth",
+    "objective": "repeatable_positive_expected_trading_returns_after_costs_with_acceptable_risk",
     "fully_funded_spot_first": true,
     "borrowing_in_batch_1": false,
     "leverage": false,
@@ -13,26 +13,28 @@
     "capital_settings": "config/runner.json: initial_eth"
   },
   "open_prerequisites": [
-    "First POC pass complete with no passing baseline. Review the three results and record a bounded next hypothesis before more experiments. No holdout access.",
+    "Register a bounded attribution/cost-robustness protocol before new analysis; existing positive returns do not establish an edge. ETH outperformance is not required.",
     "Freeze collector dataset hashes and exact evaluated-code/configuration hashes before each run",
     "Validate holdout coverage only after a champion and access bundle are frozen; do not inspect its strategy results during development",
     "Confirm actual account/product fees and eligibility before funded use; use public conservative fee scenarios for research"
   ],
   "authority": "Agent-selected research screening defaults under the user instruction to resolve the remaining review items; not user-approved live preferences.",
   "benchmark_resolution": {
-    "primary": "positive absolute growth and at least 2 percentage points annual growth above ETH after costs",
-    "defensive": "report separately without automatic promotion or changing the capital-growth objective",
-    "live_selection": "user decision later; no inference of live risk tolerance"
+    "primary": "Evidence of positive net expected returns, tolerable risk and useful signal/allocation decisions beyond passive market exposure.",
+    "buy_and_hold": "ETH/BTC/cash are reference and attribution controls, not mandatory outperformance gates. Starting ETH is available capital, not a preferred asset.",
+    "promotion": "No automatic promotion from historical profitability; require robustness, dependence-aware evidence, exposure attribution and prospective paper validation.",
+    "live_selection": "User decision later; no numerical live loss tolerance chosen."
   },
   "growth_gates": {
     "net_cagr_strictly_positive": true,
-    "eth_excess_cagr_percentage_points_min": "2",
     "maximum_research_drawdown_fraction": "0.30",
     "positive_development_folds_min": 3,
     "parameter_neighbors_passing_min": 3,
     "parameter_neighbors_total": 4,
     "stress_total_noncommission_round_trip_bps": "30",
-    "live_drawdown_limit": null
+    "live_drawdown_limit": null,
+    "buy_and_hold_outperformance_required": false,
+    "maximum_research_drawdown_status": "Agent-selected 30% investigation screen retained provisionally; not user-agreed live risk tolerance or proof of edge."
   },
   "budget": {
     "selection_variants_total": 18,
@@ -115,7 +117,8 @@
     "seed": 20261113,
     "family_error_level": "0.05",
     "multiplicity_divisor": 18,
-    "finite_sample_error_control_claimed": false
+    "finite_sample_error_control_claimed": false,
+    "evidence_target": "Positive net expected growth and usefulness beyond predeclared exposure/risk-matched passive controls; no mandatory ETH excess return. Exact method/control protocol must be registered before evaluation."
   },
   "execution": {
     "decision_frequency": "daily",
@@ -349,10 +352,10 @@
     "active_variant": null,
     "sequence": "Complete S1 research review before S2 volume/technical signals, then S3 mean reversion. No automatic batch expansion.",
     "historical_trials_used": 3,
-    "other_registered_variants": "First POC pass complete: S1/S2/S3 baselines closed without promotion. No other historical variants active; review findings before any new research batch.",
+    "other_registered_variants": "Original experiments complete under historical screens; current edge evidence unresolved for S1/S2/S3. No active new run; no rejection solely for failing to outperform ETH.",
     "s2_spec": {
       "id": "S2-TREND-VOL-20-1.5",
-      "status": "closed_failed_growth_screen",
+      "status": "pilot_complete_edge_unproven_under_revised_objective",
       "family": "volume_confirmed_trend",
       "trend_lookback_days": 20,
       "volume_lookback_days": 20,
@@ -373,7 +376,7 @@
     "s3_spec": {
       "experiment_id": "S3-001",
       "variant_id": "REVERSAL-20-1",
-      "status": "closed_failed_growth_and_drawdown_screens",
+      "status": "pilot_complete_edge_unproven_under_revised_objective",
       "reason": "Use the already reserved 20-day, one-sample-standard-deviation candidate as a simple baseline; no S3 returns inspected or thresholds searched.",
       "initial_state": "Inactive at first scored decision; warmup prices only, not inherited signal state.",
       "warmup_observations_min": 20,
@@ -405,5 +408,15 @@
     "expected_strategy_window_evaluations": 141,
     "interpretation": "Post-hoc development robustness, overlapping and dependent, no new signal variants, no parameter tuning or independent significance claim; historical trial count remains three but 141 extra scenario evaluations logged.",
     "scenario_evaluations_completed": 141
+  },
+  "objective_revision": {
+    "reason": "User clarified existing ETH is available capital, not an ETH-growth investment mandate.",
+    "historical_evidence": "Original reports and old-screen outcomes preserved unchanged; no new backtest or tuning, no promotion implied.",
+    "still_missing": [
+      "Exposure/risk-matched control comparison to assess contribution of decisions",
+      "Cost/delay and parameter robustness",
+      "Dependence-aware uncertainty without treating overlapping windows as independent",
+      "Prospective paper validation and execution-basis calibration"
+    ]
   }
 }

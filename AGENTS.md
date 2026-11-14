@@ -12,7 +12,7 @@ Build a modular, auditable Python research environment for systematic cryptocurr
 4. Maintain a sealed final holdout. Do not repeatedly optimize against it. Document publication-period contamination and data-snooping risks.
 5. Evaluate actual portfolio P&L, not classification accuracy alone. Include fees, spread, slippage, borrow/funding, conversion costs where applicable. Distinguish assumptions from measured costs.
 6. Support multiple concurrent positions and dynamic asset universes; do not invent a maximum position count.
-7. Capital is configurable; the expected live starting amount is an illustration, not a constraint. Use USDC/USD-source reporting with ETH hold and cash benchmarks; preserve start-date valuation.
+7. The objective is a repeatable trading edge after costs with acceptable risk, not beating ETH. ETH/BTC/cash are reference/attribution controls, never mandatory outperformance gates. Existing ETH is just available capital. Capital is configurable; the expected live starting amount is an illustration, not a constraint. Use USDC/USD-source reporting with ETH hold and cash benchmarks; preserve start-date valuation.
 8. No leveraged gross exposure in constrained experiments. Treat shorting as potentially collateralized/borrowed even at 1x gross; check exchange feasibility before declaring executable.
 9. Keep strategy signal generation, allocation, backtesting, and future execution as separate interfaces. Test each independently.
 10. All experiments must log: dataset version, symbols/universe, exchange, timeframe, splits, fees, strategy parameters, seed, git commit, metrics, and any exclusions.
