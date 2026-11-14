@@ -1,0 +1,1848 @@
+{
+  "experiment_id": "S1-003",
+  "evidence_type": "post_hoc_development_diagnostic_not_causal_alpha_or_independent_validation",
+  "code_commit": "f1ff54fb780cd40857301a61acdb3e9f24ba0b97",
+  "dataset_sha256": "5d1d450f98b2ba61c8b956b53a113f8b03f3a1a5fb1cd51b309cd83c611b26f0",
+  "design": {
+    "status": "registered_before_evaluation",
+    "experiment_ids": [
+      "S1-003",
+      "S2-003",
+      "S3-003"
+    ],
+    "windows": "Same 47 complete rolling windows, USD1000 owned ETH initial equity, unchanged signals and costs.",
+    "control": "For each window, initial passive BTC/ETH/cash weights equal the strategies mean realized end-of-day marked asset weights. Rebalance once at next daily open using prior close quantities and existing cost/minimum rules; then hold quantities. Cash no interest, no final liquidation.",
+    "limitation": "Weights use future window information: ex-post composition diagnostic, not tradable control, exact exposure matching, risk matching or causal proof. Control weights drift; report realized means. Full strategy-control attribution remains unresolved.",
+    "stresses": {
+      "friction_round_trip_bps": [
+        30,
+        50
+      ],
+      "extra_delay_bars": 1,
+      "delay_friction_bps": 15,
+      "commission_per_execution": "0.0005"
+    },
+    "count": "141 diagnostic controls + 423 stress scenarios = 564 new evaluations; reuse baseline141 ledgers. Three signal hypotheses unchanged.",
+    "protection": "No parameter tuning, winner promotion, holdout, confidence claims or multiple-testing independence assumed."
+  },
+  "summary": {
+    "windows": 47,
+    "beat_hindsight_control": 16,
+    "median_paired_excess_vs_control": -0.1421722027442135,
+    "median_control_return": 0.22993453896321148,
+    "friction30": {
+      "profitable_windows": 25,
+      "median_return": 0.03196642817550632,
+      "worst_return": -0.5247040591058199,
+      "worst_drawdown": 0.5636633020525255
+    },
+    "friction50": {
+      "profitable_windows": 23,
+      "median_return": -0.01209125431013458,
+      "worst_return": -0.5441735682752569,
+      "worst_drawdown": 0.580442255569932
+    },
+    "extra_day": {
+      "profitable_windows": 26,
+      "median_return": 0.08349808516901724,
+      "worst_return": -0.5759664653794578,
+      "worst_drawdown": 0.6252773961184535
+    }
+  },
+  "windows": [
+    {
+      "start": "2021-01-01",
+      "baseline_return": 1.5962174171494783,
+      "control_return": 1.4355607535074753,
+      "control_drawdown": 0.4718507119289105,
+      "target_weights_hindsight": {
+        "BTC": "0.2754735557196350912438217148",
+        "ETH": "0.3221519993056628032900457132"
+      },
+      "control_realized_mean_weights": {
+        "BTC": "0.2241664668660715631531036756",
+        "ETH": "0.57325462751050589476635428"
+      },
+      "scenarios": {
+        "friction30": {
+          "total_return": 1.5206394660570193,
+          "cagr": 1.5222361105723152,
+          "maximum_drawdown": 0.2544740781348829,
+          "sharpe_zero_reference_365_days": 1.7921000222582688,
+          "result_sha256": "5d7740ec5185405651800b3916c2b21ba95d63bdd7c24bd5cd54280d58b7964f"
+        },
+        "friction50": {
+          "total_return": 1.4213534072882172,
+          "cagr": 1.422820473005665,
+          "maximum_drawdown": 0.25731348117471786,
+          "sharpe_zero_reference_365_days": 1.7286983921353163,
+          "result_sha256": "f9ebf858839a86cd6263664e123eac1eee9e73abe9fa4b13f102f1225c9a6041"
+        },
+        "extra_day": {
+          "total_return": 1.2547660268416219,
+          "cagr": 1.2560220128091915,
+          "maximum_drawdown": 0.3940546561879815,
+          "sharpe_zero_reference_365_days": 1.575701578419357,
+          "result_sha256": "5c4872d01904d4ba744d2459ab80ad2b0b7131edf10a1675fe6de6584bf43be5"
+        }
+      },
+      "control_sha256": "b568ff4ee878c5efe62f8c3720c16f5514d4f9979862d7bab7b6040c52d1eaa1"
+    },
+    {
+      "start": "2021-02-01",
+      "baseline_return": 0.8909450185325405,
+      "control_return": 0.3633097834357739,
+      "control_drawdown": 0.390982337937404,
+      "target_weights_hindsight": {
+        "BTC": "0.2460273980618125373166032679",
+        "ETH": "0.2802842798799515087967612340"
+      },
+      "control_realized_mean_weights": {
+        "BTC": "0.2399066496963907966646432670",
+        "ETH": "0.4136771065582303890346552288"
+      },
+      "scenarios": {
+        "friction30": {
+          "total_return": 0.8343495149777198,
+          "cagr": 0.8351119208931214,
+          "maximum_drawdown": 0.25447407614490536,
+          "sharpe_zero_reference_365_days": 1.414207642274139,
+          "result_sha256": "eec93225662388716d85a3aee93176290a8949984fe8e49668119d3d53a5e096"
+        },
+        "friction50": {
+          "total_return": 0.7619417850343506,
+          "cagr": 0.7626254744121481,
+          "maximum_drawdown": 0.2573134845770304,
+          "sharpe_zero_reference_365_days": 1.3386492560562258,
+          "result_sha256": "2d914c86133a778410e62c47321f2e1b25d0e7543df3ed1139945f5110e4ebc0"
+        },
+        "extra_day": {
+          "total_return": 0.681032824401455,
+          "cagr": 0.6816309736276815,
+          "maximum_drawdown": 0.39330368638019864,
+          "sharpe_zero_reference_365_days": 1.2031484055632082,
+          "result_sha256": "c9631a7e10f995d4107f72760bb28941bd49e21a3f33572eadff8174877515f8"
+        }
+      },
+      "control_sha256": "4399cf3d8aed85ec4941f6dbbfd2817cdcf43dc499f9c0fdb4d117f7fe2e02e7"
+    },
+    {
+      "start": "2021-03-01",
+      "baseline_return": 0.3399567288814762,
+      "control_return": 0.31970361196311337,
+      "control_drawdown": 0.35872091968897435,
+      "target_weights_hindsight": {
+        "BTC": "0.2335069663613263635635330802",
+        "ETH": "0.2639597608288775390479777316"
+      },
+      "control_realized_mean_weights": {
+        "BTC": "0.1793475210066316014052205096",
+        "ETH": "0.4060950387224676459879133274"
+      },
+      "scenarios": {
+        "friction30": {
+          "total_return": 0.299478307763281,
+          "cagr": 0.2997114896978395,
+          "maximum_drawdown": 0.3595106955670002,
+          "sharpe_zero_reference_365_days": 0.7751992268568859,
+          "result_sha256": "cbfd95879e3d0c0f89fb0e15426553aa69b49bde7eb81950234bc4733402406f"
+        },
+        "friction50": {
+          "total_return": 0.24807752920201032,
+          "cagr": 0.24826698156619284,
+          "maximum_drawdown": 0.36623998696296933,
+          "sharpe_zero_reference_365_days": 0.6944916431561263,
+          "result_sha256": "01d6975662066582d6dd81c2ea8cd2e20814bd8fb231167c4f48ee8f8160e51e"
+        },
+        "extra_day": {
+          "total_return": 0.1986484825064767,
+          "cagr": 0.19879725112224053,
+          "maximum_drawdown": 0.39330366738137956,
+          "sharpe_zero_reference_365_days": 0.6078665811129368,
+          "result_sha256": "d5a7c650960ba0cab834c4a39b8c93d64b566a08664ab0fdac365c779dc3c71f"
+        }
+      },
+      "control_sha256": "2020088bf7ff44c146829b5eb04c6a9b9697f0f96f9e54a46dc41407efe4013a"
+    },
+    {
+      "start": "2021-04-01",
+      "baseline_return": 0.22421102382637015,
+      "control_return": 0.15118378284287437,
+      "control_drawdown": 0.32188563282981364,
+      "target_weights_hindsight": {
+        "BTC": "0.2177508766510187385966589036",
+        "ETH": "0.2602031762697793495049335219"
+      },
+      "control_realized_mean_weights": {
+        "BTC": "0.1498994161932689578192551573",
+        "ETH": "0.3693611499556422387153996145"
+      },
+      "scenarios": {
+        "friction30": {
+          "total_return": 0.18538456627133626,
+          "cagr": 0.18552265314510136,
+          "maximum_drawdown": 0.39227293076966296,
+          "sharpe_zero_reference_365_days": 0.5958177640640656,
+          "result_sha256": "1a331af8cfe14823006bfcfe3bff9c4a45fc530e7b033d307357f79c7b630b62"
+        },
+        "friction50": {
+          "total_return": 0.13712742250637078,
+          "cagr": 0.1372275138118908,
+          "maximum_drawdown": 0.40015304729853707,
+          "sharpe_zero_reference_365_days": 0.5090919568105675,
+          "result_sha256": "e12243bead88584ff90a7369ced5182611c0a8c67c5edfdba538f5d6851b30be"
+        },
+        "extra_day": {
+          "total_return": 0.19538417328498858,
+          "cagr": 0.19553030369942517,
+          "maximum_drawdown": 0.3933036961579699,
+          "sharpe_zero_reference_365_days": 0.6061777334508321,
+          "result_sha256": "1547071213cbce64c8920317ee5940cd29b75eeaec196b835d8d054c9ec87a67"
+        }
+      },
+      "control_sha256": "87fadafd35a9c3accbb112ef2c2f5f83675386b745153729bd52fe5a657e6904"
+    },
+    {
+      "start": "2021-05-01",
+      "baseline_return": 0.015156088265411594,
+      "control_return": -0.033695079203538425,
+      "control_drawdown": 0.2629422524259166,
+      "target_weights_hindsight": {
+        "BTC": "0.2165062897297456247911285842",
+        "ETH": "0.2375643046445722975558339865"
+      },
+      "control_realized_mean_weights": {
+        "BTC": "0.1616705743922575057739024839",
+        "ETH": "0.2626433519698901516948821355"
+      },
+      "scenarios": {
+        "friction30": {
+          "total_return": -0.01510823706672082,
+          "cagr": -0.015118506553253485,
+          "maximum_drawdown": 0.39677937192132806,
+          "sharpe_zero_reference_365_days": 0.2022454038016157,
+          "result_sha256": "4d5d80ee6c0aa78c147e70a224a6870dcd19cbde38cddeaa044b6cc105c55334"
+        },
+        "friction50": {
+          "total_return": -0.05384412755125023,
+          "cagr": -0.053879995221523605,
+          "maximum_drawdown": 0.40658370652883147,
+          "sharpe_zero_reference_365_days": 0.11601330718051604,
+          "result_sha256": "7b41050ba0725b1d76f683033da212fdbe141bfc561ccdae60097423c2389cb5"
+        },
+        "extra_day": {
+          "total_return": -0.08412597986393777,
+          "cagr": -0.08418110407029789,
+          "maximum_drawdown": 0.39330367982094017,
+          "sharpe_zero_reference_365_days": 0.06769416722211989,
+          "result_sha256": "ea79efef3d36e91d0e54739598137ddbaed33da4044279d60e526981287833a9"
+        }
+      },
+      "control_sha256": "2d31210e867e52deed36d108cea11127c679521edd0f9b9009f6ed9e7f142f86"
+    },
+    {
+      "start": "2021-06-01",
+      "baseline_return": -0.03530699344376442,
+      "control_return": -0.10971665465198066,
+      "control_drawdown": 0.35126852691973964,
+      "target_weights_hindsight": {
+        "BTC": "0.2126261936842503860308312607",
+        "ETH": "0.2116715704430021182116838090"
+      },
+      "control_realized_mean_weights": {
+        "BTC": "0.2348690320519048007229775984",
+        "ETH": "0.2300733237851272296480930450"
+      },
+      "scenarios": {
+        "friction30": {
+          "total_return": -0.060775861769206796,
+          "cagr": -0.06081619680323999,
+          "maximum_drawdown": 0.39660712855361435,
+          "sharpe_zero_reference_365_days": 0.0514265584789306,
+          "result_sha256": "be426006142ce54a076e1122a47ae21c5319324257768f811aa2afc1ce18ae13"
+        },
+        "friction50": {
+          "total_return": -0.09659166646427608,
+          "cagr": -0.09665451961246468,
+          "maximum_drawdown": 0.4065678848843134,
+          "sharpe_zero_reference_365_days": -0.04422664638234987,
+          "result_sha256": "d0b18ca84710aa96bceea738d2458618da53e3a27010f4a2e56030eba3edb40d"
+        },
+        "extra_day": {
+          "total_return": -0.026308033503507522,
+          "cagr": -0.026325813410996553,
+          "maximum_drawdown": 0.3380345507948779,
+          "sharpe_zero_reference_365_days": 0.1498525750890105,
+          "result_sha256": "69c4c6b76934c47b8dfd085f5354f031e7baa3637680e29d8b6bb394173729b1"
+        }
+      },
+      "control_sha256": "44f168eb2a0657c298f1d6ca734dfe013765d0f81e949997125c4dd2be758cd7"
+    },
+    {
+      "start": "2021-07-01",
+      "baseline_return": -0.1459675400372502,
+      "control_return": -0.25216302961255155,
+      "control_drawdown": 0.46519691363487803,
+      "target_weights_hindsight": {
+        "BTC": "0.2126355620128946230630171324",
+        "ETH": "0.2062175912949350643279941958"
+      },
+      "control_realized_mean_weights": {
+        "BTC": "0.2402999334077772161821143597",
+        "ETH": "0.2539818263250254757390315824"
+      },
+      "scenarios": {
+        "friction30": {
+          "total_return": -0.16845756281022528,
+          "cagr": -0.16856262266742536,
+          "maximum_drawdown": 0.41995686396587184,
+          "sharpe_zero_reference_365_days": -0.24097664859768622,
+          "result_sha256": "2c6928f4642bcec478c70dc20591d29d928e00255c2c78b1f9834608658e038f"
+        },
+        "friction50": {
+          "total_return": -0.19778376003204712,
+          "cagr": -0.19790483998532624,
+          "maximum_drawdown": 0.4322457727737947,
+          "sharpe_zero_reference_365_days": -0.3284229809429499,
+          "result_sha256": "ee865f69377a0c60bc92e883ec3006149f0ad24d1a0c1fd256d6094353ad8e0e"
+        },
+        "extra_day": {
+          "total_return": -0.0008923227901862507,
+          "cagr": -0.0008929336972266961,
+          "maximum_drawdown": 0.36350794365298345,
+          "sharpe_zero_reference_365_days": 0.21032528907733783,
+          "result_sha256": "b5d786ecaffed64a565b9214dd196373d67fbd5202326e9cf3150c5fcbd5dccb"
+        }
+      },
+      "control_sha256": "74e8d1ed16e9f78cf6132da43a2bdc148a4a96d0c854d86aac6d9485f9c197d9"
+    },
+    {
+      "start": "2021-08-01",
+      "baseline_return": -0.09012042067160908,
+      "control_return": -0.15876870288260636,
+      "control_drawdown": 0.44044087518074626,
+      "target_weights_hindsight": {
+        "BTC": "0.2262024792431297229109428390",
+        "ETH": "0.2212946599994158824109627033"
+      },
+      "control_realized_mean_weights": {
+        "BTC": "0.2104977353216905032562249454",
+        "ETH": "0.2405889963021264338994818682"
+      },
+      "scenarios": {
+        "friction30": {
+          "total_return": -0.11240341640357943,
+          "cagr": -0.1124759032966162,
+          "maximum_drawdown": 0.4992541763305518,
+          "sharpe_zero_reference_365_days": -0.040672089013306094,
+          "result_sha256": "f3558bd0c4e66f192a678bc21022f83b8498bd6c9e5a2797b6cbbb41df89d1cf"
+        },
+        "friction50": {
+          "total_return": -0.1426231222723625,
+          "cagr": -0.14271348132975814,
+          "maximum_drawdown": 0.510878766666761,
+          "sharpe_zero_reference_365_days": -0.11847220725993765,
+          "result_sha256": "6278c02a434b9fb159676eba25142233680201dc6610360d005caba15a3da84e"
+        },
+        "extra_day": {
+          "total_return": 0.06649943697238725,
+          "cagr": 0.06654646751609573,
+          "maximum_drawdown": 0.4517782097614491,
+          "sharpe_zero_reference_365_days": 0.3673609935966579,
+          "result_sha256": "6b78c115a9683af751ef8b1e7461ab472ec94e3aab33b2f28829f4d105770b52"
+        }
+      },
+      "control_sha256": "ce331713997f1385cb19ebd0727bc092ff19b826ce27d4b9b35683bdd73cd92f"
+    },
+    {
+      "start": "2021-09-01",
+      "baseline_return": -0.3168990446004635,
+      "control_return": -0.1511208649070156,
+      "control_drawdown": 0.3545072642331346,
+      "target_weights_hindsight": {
+        "BTC": "0.2071949250960897656403361615",
+        "ETH": "0.2085529925030148607238807313"
+      },
+      "control_realized_mean_weights": {
+        "BTC": "0.1679008031431191477172651237",
+        "ETH": "0.1675392190565586429711415662"
+      },
+      "scenarios": {
+        "friction30": {
+          "total_return": -0.33528363833317965,
+          "cagr": -0.33546954845424337,
+          "maximum_drawdown": 0.4996340049613459,
+          "sharpe_zero_reference_365_days": -0.7185821834197283,
+          "result_sha256": "e15ab7ac46c3f4c0c40f7ee936e419fc791f7b780c5683bb7666a0ca5390fa92"
+        },
+        "friction50": {
+          "total_return": -0.35840511002036535,
+          "cagr": -0.35860010685401,
+          "maximum_drawdown": 0.5106404614837978,
+          "sharpe_zero_reference_365_days": -0.8010257615313333,
+          "result_sha256": "fc94ea49af35f473b921f58b1f513c159ffdb23ebe1235d41878c2fb3a184453"
+        },
+        "extra_day": {
+          "total_return": -0.27349451263012536,
+          "cagr": -0.2736534851100398,
+          "maximum_drawdown": 0.46695534639129266,
+          "sharpe_zero_reference_365_days": -0.49444921918627693,
+          "result_sha256": "5534412e270db2ecfafc44ad690d8fe6c64e0f9a7520a1669903c62850b08069"
+        }
+      },
+      "control_sha256": "5b7481bec8206362bbbe49e271c17990a81e1c49b3dbb3db6d6c015cfca0ca11"
+    },
+    {
+      "start": "2021-10-01",
+      "baseline_return": -0.1782544711223769,
+      "control_return": -0.15707242328249382,
+      "control_drawdown": 0.36328174331912255,
+      "target_weights_hindsight": {
+        "BTC": "0.2031991907435151442886170588",
+        "ETH": "0.1910739159958746185774107726"
+      },
+      "control_realized_mean_weights": {
+        "BTC": "0.1664441877417320517699763553",
+        "ETH": "0.1652138388090120269358648714"
+      },
+      "scenarios": {
+        "friction30": {
+          "total_return": -0.20146469130120193,
+          "cagr": -0.2015877306939918,
+          "maximum_drawdown": 0.49947504027325995,
+          "sharpe_zero_reference_365_days": -0.3384426949675166,
+          "result_sha256": "d8d0448ce0fa6708b124fbfb901aa4f5c89acfc99f8d01fa657a6ea1c762ffc2"
+        },
+        "friction50": {
+          "total_return": -0.23064308826765534,
+          "cagr": -0.23078124408589218,
+          "maximum_drawdown": 0.5112677560703986,
+          "sharpe_zero_reference_365_days": -0.4301239672357556,
+          "result_sha256": "869b7e62fd2c03f467093503085fd706ec117236d64355d9144ac2245507382b"
+        },
+        "extra_day": {
+          "total_return": -0.320366512311544,
+          "cagr": -0.3205462663103475,
+          "maximum_drawdown": 0.5577712977436027,
+          "sharpe_zero_reference_365_days": -0.7018285177484694,
+          "result_sha256": "ebd0bca1140175eacd32c378a10f2c8b60e26b6a7710cfa1ae3ca06628caf75c"
+        }
+      },
+      "control_sha256": "310c5097786f3437671cbdefaf0c206108f814383578ee25445095a8d51027e7"
+    },
+    {
+      "start": "2021-11-01",
+      "baseline_return": -0.4135240802999791,
+      "control_return": -0.22157657494709193,
+      "control_drawdown": 0.28051293845685954,
+      "target_weights_hindsight": {
+        "BTC": "0.1837250029758772993962192334",
+        "ETH": "0.1664780602995764307906754512"
+      },
+      "control_realized_mean_weights": {
+        "BTC": "0.1168262728016294341874352962",
+        "ETH": "0.1113757582492397199074639404"
+      },
+      "scenarios": {
+        "friction30": {
+          "total_return": -0.43343197975385983,
+          "cagr": -0.43365241646895136,
+          "maximum_drawdown": 0.5112698253993113,
+          "sharpe_zero_reference_365_days": -1.3503838865871949,
+          "result_sha256": "9b76c59e2de07e33026c9a77fa940f47496d458234f6903292a9d39b8b1a5a1b"
+        },
+        "friction50": {
+          "total_return": -0.4580088612709625,
+          "cagr": -0.45823619209056676,
+          "maximum_drawdown": 0.5305550692068277,
+          "sharpe_zero_reference_365_days": -1.4741727328835674,
+          "result_sha256": "2dcf35bf115ce1061e8e0fef2784f0b276bec3105b5af85739c34702be78270b"
+        },
+        "extra_day": {
+          "total_return": -0.46078049263619036,
+          "cagr": -0.46100855365053695,
+          "maximum_drawdown": 0.5660392784348232,
+          "sharpe_zero_reference_365_days": -1.409197425751066,
+          "result_sha256": "584895ab2ab6863db09bd8eadddea5597f6924f2cd4b4fce7c930dd57725267e"
+        }
+      },
+      "control_sha256": "e9c55edc1e6ed94c4f80b952d04ae5e7374be03a0950adc2725485e6e0f336a2"
+    },
+    {
+      "start": "2021-12-01",
+      "baseline_return": -0.509229907643632,
+      "control_return": -0.2407078714978711,
+      "control_drawdown": 0.251262503088747,
+      "target_weights_hindsight": {
+        "BTC": "0.1744373407730354727377170481",
+        "ETH": "0.1528790177943242733450165787"
+      },
+      "control_realized_mean_weights": {
+        "BTC": "0.1109216612284726133970867968",
+        "ETH": "0.08838480107392392587120593016"
+      },
+      "scenarios": {
+        "friction30": {
+          "total_return": -0.5247040591058199,
+          "cagr": -0.5249461436687554,
+          "maximum_drawdown": 0.5636633020525255,
+          "sharpe_zero_reference_365_days": -1.5793671343087075,
+          "result_sha256": "c8f758e02f24f9451fed357fd8eb9a23c42de39f69dadfc5159380af48e2a598"
+        },
+        "friction50": {
+          "total_return": -0.5441735682752569,
+          "cagr": -0.5444187878564067,
+          "maximum_drawdown": 0.580442255569932,
+          "sharpe_zero_reference_365_days": -1.6836070100679925,
+          "result_sha256": "5083f11f416d05eefbf1d413b7397bad013ea51a1880bb34f9c1b8a0559501b5"
+        },
+        "extra_day": {
+          "total_return": -0.5759664653794578,
+          "cagr": -0.5762155678605962,
+          "maximum_drawdown": 0.6252773961184535,
+          "sharpe_zero_reference_365_days": -1.7411998547955672,
+          "result_sha256": "2b21bcdf7139e8d6af2fcb0c96263099d10e8811c68a2b7c9ce5f93e1422328a"
+        }
+      },
+      "control_sha256": "582990b8f9dbaad2094d9058441040ae412d23cb289b994f0982b61cf15cac11"
+    },
+    {
+      "start": "2022-01-01",
+      "baseline_return": -0.46532385264163534,
+      "control_return": -0.22638352145223262,
+      "control_drawdown": 0.2522024977942847,
+      "target_weights_hindsight": {
+        "BTC": "0.1935258211459680357573443318",
+        "ETH": "0.1708082848320615088867136715"
+      },
+      "control_realized_mean_weights": {
+        "BTC": "0.1334025194234875130011844498",
+        "ETH": "0.1067587085357296694933309061"
+      },
+      "scenarios": {
+        "friction30": {
+          "total_return": -0.4806075991304162,
+          "cagr": -0.48084059595138084,
+          "maximum_drawdown": 0.5240535381737091,
+          "sharpe_zero_reference_365_days": -1.335048679883261,
+          "result_sha256": "be3d676f3de96f30b25d1176566e05fb75df3b6d51c73746bf1dc0f7246dc268"
+        },
+        "friction50": {
+          "total_return": -0.5021949470638283,
+          "cagr": -0.5024327274426293,
+          "maximum_drawdown": 0.5410439531396452,
+          "sharpe_zero_reference_365_days": -1.4387120710236083,
+          "result_sha256": "81fbd858f047d9b2ec15176ea05dd86e9ce58a8c08e60dfcac23791bb880a68a"
+        },
+        "extra_day": {
+          "total_return": -0.5472336137864597,
+          "cagr": -0.5474792749061619,
+          "maximum_drawdown": 0.5910217399322543,
+          "sharpe_zero_reference_365_days": -1.554286540698321,
+          "result_sha256": "7b03681f062bf2f27458fd3a969d9d42298e79e630b9449f44ee10f3d5ae707a"
+        }
+      },
+      "control_sha256": "8a297ae390aa53e297d76798e32a638227916c615fa59095d9aeca4f3b88130f"
+    },
+    {
+      "start": "2022-02-01",
+      "baseline_return": -0.28830254591362836,
+      "control_return": -0.14613034316941487,
+      "control_drawdown": 0.31970013171493117,
+      "target_weights_hindsight": {
+        "BTC": "0.2265150763575045461366755454",
+        "ETH": "0.2036114464635100064619061262"
+      },
+      "control_realized_mean_weights": {
+        "BTC": "0.1684876579138980202913355190",
+        "ETH": "0.1544548805758148611327310001"
+      },
+      "scenarios": {
+        "friction30": {
+          "total_return": -0.30997316140777453,
+          "cagr": -0.3101484932791853,
+          "maximum_drawdown": 0.5227145628027444,
+          "sharpe_zero_reference_365_days": -0.6010015884423706,
+          "result_sha256": "ed328f5b31d702075cdd9964f914a9566563e1defa409ba8ce717b709afe02c6"
+        },
+        "friction50": {
+          "total_return": -0.3366460513129128,
+          "cagr": -0.3368325123309403,
+          "maximum_drawdown": 0.5370791761761433,
+          "sharpe_zero_reference_365_days": -0.6925229175295509,
+          "result_sha256": "19d2cc6914adf7a4ed916b67aaec0494788a68aa6357346a3935d70dc548f173"
+        },
+        "extra_day": {
+          "total_return": -0.3973084338827412,
+          "cagr": -0.39751742003882695,
+          "maximum_drawdown": 0.5819181356407296,
+          "sharpe_zero_reference_365_days": -0.8491400994394461,
+          "result_sha256": "0b35a722c4ffe4dfb1fc4d9dd04c21ccbc4dd1894faacc88a98743960f4111d1"
+        }
+      },
+      "control_sha256": "f9ccfccd2fb182213967b7c20d734c61611dc99fc63e9de548ef0a53d7fc7982"
+    },
+    {
+      "start": "2022-03-01",
+      "baseline_return": -0.22575269929256025,
+      "control_return": -0.19919836038215477,
+      "control_drawdown": 0.3207885980608598,
+      "target_weights_hindsight": {
+        "BTC": "0.2345461852562062210895554966",
+        "ETH": "0.2120325902713833166374110502"
+      },
+      "control_realized_mean_weights": {
+        "BTC": "0.1610120095553592191218354930",
+        "ETH": "0.1529831188860558268049981246"
+      },
+      "scenarios": {
+        "friction30": {
+          "total_return": -0.2503660738853132,
+          "cagr": -0.25051401971303805,
+          "maximum_drawdown": 0.47097001274537775,
+          "sharpe_zero_reference_365_days": -0.4368176294099869,
+          "result_sha256": "7cb7d7ef6dfc5b0ddefba1b501a53d099e7699dfb80927c48d5a192a432b61b2"
+        },
+        "friction50": {
+          "total_return": -0.2810111064026023,
+          "cagr": -0.28117355460408716,
+          "maximum_drawdown": 0.4838553024505309,
+          "sharpe_zero_reference_365_days": -0.5342561531133132,
+          "result_sha256": "8a76b3cd6e9ebfd10f320ff7827e14c0a4618892c8bdf613320c21e0a72f2c57"
+        },
+        "extra_day": {
+          "total_return": -0.36816343328848444,
+          "cagr": -0.36836209496642747,
+          "maximum_drawdown": 0.5444660215544133,
+          "sharpe_zero_reference_365_days": -0.7802282553123163,
+          "result_sha256": "0f7625e5513a32d95eb56879be76f3cb1f5715278bf8d386cca910a08da3d201"
+        }
+      },
+      "control_sha256": "f6caf3e21b2be1ab9611032c495bfe22cd263a3636a200dd9f34b28b00c71c78"
+    },
+    {
+      "start": "2022-04-01",
+      "baseline_return": -0.23449433002119047,
+      "control_return": -0.15400548020088933,
+      "control_drawdown": 0.3094165154348272,
+      "target_weights_hindsight": {
+        "BTC": "0.2404814633662089798774333276",
+        "ETH": "0.2239903047087544475625400534"
+      },
+      "control_realized_mean_weights": {
+        "BTC": "0.1510069498384214320472660703",
+        "ETH": "0.1389190076250922526141062879"
+      },
+      "scenarios": {
+        "friction30": {
+          "total_return": -0.2576752313166999,
+          "cagr": -0.25782671541413466,
+          "maximum_drawdown": 0.4709835499449564,
+          "sharpe_zero_reference_365_days": -0.43387417702911996,
+          "result_sha256": "e63a1949aeed56d9cc4b048875bdc6774c8ee7d6e468cf31ab7d0b25cb56a303"
+        },
+        "friction50": {
+          "total_return": -0.2861805923483637,
+          "cagr": -0.2863453997357544,
+          "maximum_drawdown": 0.4839358448373021,
+          "sharpe_zero_reference_365_days": -0.5222578930643328,
+          "result_sha256": "8d9cf0fc6097b238ed0cadaf4e43c58e9965b038a1b0358cc99d6b3a4a07212c"
+        },
+        "extra_day": {
+          "total_return": -0.37869507847228734,
+          "cagr": -0.37889757950713243,
+          "maximum_drawdown": 0.544336514773897,
+          "sharpe_zero_reference_365_days": -0.7781780224354619,
+          "result_sha256": "763e231ad4a285c6fea7a29ee30f33ccf50461e97a73916aababa8d6b196367a"
+        }
+      },
+      "control_sha256": "bae834865287a673a1e1baabb9bc81f5f0662615c11825c0536ddaf8750845a9"
+    },
+    {
+      "start": "2022-05-01",
+      "baseline_return": -0.17062539932009613,
+      "control_return": -0.11383914500543313,
+      "control_drawdown": 0.3107570570548419,
+      "target_weights_hindsight": {
+        "BTC": "0.2582887076734683006975148668",
+        "ETH": "0.2432509935112056446081461330"
+      },
+      "control_realized_mean_weights": {
+        "BTC": "0.1881542370574348389368037959",
+        "ETH": "0.1711521676793778849417992201"
+      },
+      "scenarios": {
+        "friction30": {
+          "total_return": -0.19668283319435842,
+          "cagr": -0.19680332484939822,
+          "maximum_drawdown": 0.42742291740013894,
+          "sharpe_zero_reference_365_days": -0.26075531474668895,
+          "result_sha256": "4600409f22a322c5a68d60d996b74ac9e9d114df89bca91b94bbf223c6bbe5ee"
+        },
+        "friction50": {
+          "total_return": -0.22946868536089482,
+          "cagr": -0.22960624721528022,
+          "maximum_drawdown": 0.4365504578817423,
+          "sharpe_zero_reference_365_days": -0.3550353226782797,
+          "result_sha256": "4734f863979f5510abf2978a048d0e70d1c0113db89accd198152f3ae343786a"
+        },
+        "extra_day": {
+          "total_return": -0.3196309415191332,
+          "cagr": -0.31981038611159085,
+          "maximum_drawdown": 0.481429293701621,
+          "sharpe_zero_reference_365_days": -0.5863043401080921,
+          "result_sha256": "bba94bec9cf6ffeb58365501d9fdb9fce467a277ad7358eceecf009cf8ec9b65"
+        }
+      },
+      "control_sha256": "084ce3e950e0af048fdccaa8cc7553eea28bad2a85571605c71a6e7355483aff"
+    },
+    {
+      "start": "2022-06-01",
+      "baseline_return": -0.26325355753494717,
+      "control_return": -0.07927988861859558,
+      "control_drawdown": 0.271079414902366,
+      "target_weights_hindsight": {
+        "BTC": "0.2611094182565664702417421669",
+        "ETH": "0.247302292185901491037949154"
+      },
+      "control_realized_mean_weights": {
+        "BTC": "0.2161662623139249091345447115",
+        "ETH": "0.2331799182728465542673423083"
+      },
+      "scenarios": {
+        "friction30": {
+          "total_return": -0.28736863775156074,
+          "cagr": -0.2875339837057642,
+          "maximum_drawdown": 0.4275028783755861,
+          "sharpe_zero_reference_365_days": -0.5207010476758833,
+          "result_sha256": "ec978f29146dd0a54624192c99a14904d438fd93b406a625b28f5512608ac811"
+        },
+        "friction50": {
+          "total_return": -0.31766835638386626,
+          "cagr": -0.31784697278063306,
+          "maximum_drawdown": 0.43650881285920895,
+          "sharpe_zero_reference_365_days": -0.6189944151225203,
+          "result_sha256": "bcd762615aa89c28ad24c433726d575500bd9d035b73f3ec62fd203ac6504d60"
+        },
+        "extra_day": {
+          "total_return": -0.4102890978661087,
+          "cagr": -0.41050237422631347,
+          "maximum_drawdown": 0.5120149174696874,
+          "sharpe_zero_reference_365_days": -0.8782262165902933,
+          "result_sha256": "6f1a7505677087652b6757df2067b20a95f608eacb4ed98766baad5e443885c4"
+        }
+      },
+      "control_sha256": "19a699dce79fdb649c5297312dd22910c2e9f5d6b0be17a6709db6e350220b0c"
+    },
+    {
+      "start": "2022-07-01",
+      "baseline_return": -0.20919636331810532,
+      "control_return": 0.35783240255227056,
+      "control_drawdown": 0.26107873920811386,
+      "target_weights_hindsight": {
+        "BTC": "0.2706988241229158412805795783",
+        "ETH": "0.266379856654264374255259084"
+      },
+      "control_realized_mean_weights": {
+        "BTC": "0.2614023914952884794806568680",
+        "ETH": "0.3357838595416858638089275666"
+      },
+      "scenarios": {
+        "friction30": {
+          "total_return": -0.23698115587926327,
+          "cagr": -0.23712249597380067,
+          "maximum_drawdown": 0.42742292648962343,
+          "sharpe_zero_reference_365_days": -0.36975698411143126,
+          "result_sha256": "c19d51ea3a39c2001287084946147d2006a589151ebfb72d89af44ca4a0728bd"
+        },
+        "friction50": {
+          "total_return": -0.2717687195286088,
+          "cagr": -0.27192688644820046,
+          "maximum_drawdown": 0.43646881082534217,
+          "sharpe_zero_reference_365_days": -0.47495533050883154,
+          "result_sha256": "0aec7559e0679d593b9557091d06682e17145f70703d48db644f8077584990cb"
+        },
+        "extra_day": {
+          "total_return": -0.35689337785011,
+          "cagr": -0.3570877977995502,
+          "maximum_drawdown": 0.47775387442380524,
+          "sharpe_zero_reference_365_days": -0.690207814223511,
+          "result_sha256": "dc8b789a36431d6a5b0edd47dbd946bbd5b1e8e44767a1dca9546dd6a8dda6c1"
+        }
+      },
+      "control_sha256": "a8707651abf6591987c065983a70918bc5f540916a0c6967811c4f8ba6c2248a"
+    },
+    {
+      "start": "2022-08-01",
+      "baseline_return": -0.25911711653532943,
+      "control_return": 0.07343202160499618,
+      "control_drawdown": 0.22966406887824886,
+      "target_weights_hindsight": {
+        "BTC": "0.2638791516767469484928708715",
+        "ETH": "0.2690461864964860082688425561"
+      },
+      "control_realized_mean_weights": {
+        "BTC": "0.2686703404828916343246552495",
+        "ETH": "0.2669766767539114187064664655"
+      },
+      "scenarios": {
+        "friction30": {
+          "total_return": -0.2858607963313302,
+          "cagr": -0.2860254585166907,
+          "maximum_drawdown": 0.4274229224598497,
+          "sharpe_zero_reference_365_days": -0.6237495473526005,
+          "result_sha256": "c2fa2afbe91a98244c17aa4c7162061d95600bef4aff1b0b8ffd30c8bc39b13f"
+        },
+        "friction50": {
+          "total_return": -0.3193660896065311,
+          "cagr": -0.3195454226597181,
+          "maximum_drawdown": 0.4365504702930877,
+          "sharpe_zero_reference_365_days": -0.7443317744997195,
+          "result_sha256": "e992f2e39cb0ccd8eb0bd96fd1264ffbef7fb44549510b0239da334aa7012214"
+        },
+        "extra_day": {
+          "total_return": -0.3439357906501208,
+          "cagr": -0.3441251666300477,
+          "maximum_drawdown": 0.47782112676852273,
+          "sharpe_zero_reference_365_days": -0.7163680406914185,
+          "result_sha256": "b896fdbbea8b9ead196eb36b5c6df367898d5cf849c0929e046321bfbeb450aa"
+        }
+      },
+      "control_sha256": "ca9488da9f1c5c15e2c97b6e54cced696af02933d26a4836c9d79b370e8d6e1b"
+    },
+    {
+      "start": "2022-09-01",
+      "baseline_return": -0.18348293189494647,
+      "control_return": 0.09795087722703832,
+      "control_drawdown": 0.1655155561487862,
+      "target_weights_hindsight": {
+        "BTC": "0.2448570982252146446229615307",
+        "ETH": "0.2416270456139471007240412362"
+      },
+      "control_realized_mean_weights": {
+        "BTC": "0.2677409070675878941090645963",
+        "ETH": "0.2357247760275685924136664703"
+      },
+      "scenarios": {
+        "friction30": {
+          "total_return": -0.21230469221784787,
+          "cagr": -0.2124334342322679,
+          "maximum_drawdown": 0.319495884147038,
+          "sharpe_zero_reference_365_days": -0.43398753908666804,
+          "result_sha256": "ead4658d223562090fbe9c9eff55f213d814d8553d17d52200ec4352a2ef1e35"
+        },
+        "friction50": {
+          "total_return": -0.24962910584989628,
+          "cagr": -0.2497766922025731,
+          "maximum_drawdown": 0.32869383217933335,
+          "sharpe_zero_reference_365_days": -0.5633509500281194,
+          "result_sha256": "649a0a42303f203f776591c32a048948585a260ebf3a4699e88cee6d3ab9a35b"
+        },
+        "extra_day": {
+          "total_return": -0.2573951051122225,
+          "cagr": -0.25754645450988833,
+          "maximum_drawdown": 0.3365671468470812,
+          "sharpe_zero_reference_365_days": -0.5069697846984936,
+          "result_sha256": "ebd06e8e3457f157679682a1e2c6873c7547a45ce380316250f812b20debd208"
+        }
+      },
+      "control_sha256": "cb88665179f59b08f04a89c8b1f59967d671758abac1916c173f712718e49575"
+    },
+    {
+      "start": "2022-10-01",
+      "baseline_return": -0.15896027085511077,
+      "control_return": 0.15038147981131922,
+      "control_drawdown": 0.15536445603333238,
+      "target_weights_hindsight": {
+        "BTC": "0.2558332367084255923423540977",
+        "ETH": "0.2348212746905341424413977961"
+      },
+      "control_realized_mean_weights": {
+        "BTC": "0.2848868055624622833751007737",
+        "ETH": "0.2600600697240868716323964911"
+      },
+      "scenarios": {
+        "friction30": {
+          "total_return": -0.1869616123610598,
+          "cagr": -0.18707686460819178,
+          "maximum_drawdown": 0.2907374538947912,
+          "sharpe_zero_reference_365_days": -0.3758733482701874,
+          "result_sha256": "69344a69240ddf08303004d234395fcaee676a94d91ca20f87e19188c428e0f0"
+        },
+        "friction50": {
+          "total_return": -0.2228951903507096,
+          "cagr": -0.2230294050111465,
+          "maximum_drawdown": 0.29181326635978544,
+          "sharpe_zero_reference_365_days": -0.49996258617138895,
+          "result_sha256": "2c640f8f2d8b9a6a72f0331b7e8f4b8e15ad2e3508b18ae27845d46163bda7f2"
+        },
+        "extra_day": {
+          "total_return": -0.13965322773117372,
+          "cagr": -0.1397418623050676,
+          "maximum_drawdown": 0.2906239752251798,
+          "sharpe_zero_reference_365_days": -0.17622092615300017,
+          "result_sha256": "4a3af0cec59ff56608cf87a16ee4cf75eb3d33cf9ad022481313e7466f4b4f60"
+        }
+      },
+      "control_sha256": "ebc9987266e8f6a9d8f0ebce183fb0011e4bcb97f57865cee52b7647191337fa"
+    },
+    {
+      "start": "2022-11-01",
+      "baseline_return": -0.03582529737434459,
+      "control_return": 0.22993453896321148,
+      "control_drawdown": 0.1525490740256238,
+      "target_weights_hindsight": {
+        "BTC": "0.2754947540929878829107839112",
+        "ETH": "0.2440646948376282226031149982"
+      },
+      "control_realized_mean_weights": {
+        "BTC": "0.3096280520596470568891993907",
+        "ETH": "0.2386929316770938607499458955"
+      },
+      "scenarios": {
+        "friction30": {
+          "total_return": -0.06366918293664203,
+          "cagr": -0.06371137230105799,
+          "maximum_drawdown": 0.29061759346067884,
+          "sharpe_zero_reference_365_days": 0.013322065642642945,
+          "result_sha256": "d22445132980957bff5f0a4f674ab7be6fc429c8ebd89b167b7b5255df0abcdf"
+        },
+        "friction50": {
+          "total_return": -0.0998177354000479,
+          "cagr": -0.09988256962988987,
+          "maximum_drawdown": 0.2903757959572264,
+          "sharpe_zero_reference_365_days": -0.0931372171715335,
+          "result_sha256": "2edb7f7a7587f0dd456fab071bfb0f080ccf1577d5b926d83fcef46432d7c753"
+        },
+        "extra_day": {
+          "total_return": -0.10106919548460758,
+          "cagr": -0.10113479608621655,
+          "maximum_drawdown": 0.2906315271628691,
+          "sharpe_zero_reference_365_days": -0.06425831608541306,
+          "result_sha256": "1dfc524b1d07f97fb4e5d2860fdf90831f971c693dcbdbb4ed24bcf1dbac5a32"
+        }
+      },
+      "control_sha256": "09e7894a22fc7555bed42b498c4d53dec704c3e117f2db277f2612263e955bb0"
+    },
+    {
+      "start": "2022-12-01",
+      "baseline_return": 0.3330575155501512,
+      "control_return": 0.5147009591466369,
+      "control_drawdown": 0.15074206727523565,
+      "target_weights_hindsight": {
+        "BTC": "0.3043016913669569611227010342",
+        "ETH": "0.2714359232493672600707775029"
+      },
+      "control_realized_mean_weights": {
+        "BTC": "0.3745366943885346813677936816",
+        "ETH": "0.2882282014007862068713912904"
+      },
+      "scenarios": {
+        "friction30": {
+          "total_return": 0.2970490126577954,
+          "cagr": 0.2972800960312723,
+          "maximum_drawdown": 0.23267595416062636,
+          "sharpe_zero_reference_365_days": 0.9682493546637481,
+          "result_sha256": "90c45d94f602f3dc457513d6cdc3f5b72d99c409e7f94a016b9a7e4965e4d6b5"
+        },
+        "friction50": {
+          "total_return": 0.2509732404669096,
+          "cagr": 0.2511651183525259,
+          "maximum_drawdown": 0.2531896908104986,
+          "sharpe_zero_reference_365_days": 0.8563657243080813,
+          "result_sha256": "9c64db67eeb91c6d4f6f400897d241b16ea6296d7b91b762a5e00a1e23a63bf1"
+        },
+        "extra_day": {
+          "total_return": 0.1959069610053732,
+          "cagr": 0.19605351352419598,
+          "maximum_drawdown": 0.25245234234867864,
+          "sharpe_zero_reference_365_days": 0.6992750343985212,
+          "result_sha256": "3be40b06f1a84c86e8a821ac351208a9a5c7abd660c89fc675ef2f8f2c51030a"
+        }
+      },
+      "control_sha256": "98888a30703ef4ae80495234578e4d4ece0f40a2d03c8b95043c0a24a217fed3"
+    },
+    {
+      "start": "2023-01-01",
+      "baseline_return": 0.43360271397947936,
+      "control_return": 0.7498777953525742,
+      "control_drawdown": 0.15763854694379553,
+      "target_weights_hindsight": {
+        "BTC": "0.3167910142344477087498623636",
+        "ETH": "0.2836598394828980668847475553"
+      },
+      "control_realized_mean_weights": {
+        "BTC": "0.3961152533775488798729228049",
+        "ETH": "0.3106529764800036152085221088"
+      },
+      "scenarios": {
+        "friction30": {
+          "total_return": 0.3933920870707044,
+          "cagr": 0.3937087295212743,
+          "maximum_drawdown": 0.2326599010301047,
+          "sharpe_zero_reference_365_days": 1.1789324077508914,
+          "result_sha256": "4462d4e73bdb459a6b2f7286c9f4743a2bae8bcf7eaa91347329a654d030fa8a"
+        },
+        "friction50": {
+          "total_return": 0.3418206301756359,
+          "cagr": 0.3420908847797967,
+          "maximum_drawdown": 0.25340370529960055,
+          "sharpe_zero_reference_365_days": 1.063723550042813,
+          "result_sha256": "11e8d2e58c13e328ca43d9f379335a8c0534e6f29190a52924f65f3c4321a080"
+        },
+        "extra_day": {
+          "total_return": 0.4665459024735452,
+          "cagr": 0.46693057959965945,
+          "maximum_drawdown": 0.2529480800615843,
+          "sharpe_zero_reference_365_days": 1.2845494536304027,
+          "result_sha256": "c119e352ab9640870d19d70cd60952f7e1c143d989a1eee8b64e4729fc5afe44"
+        }
+      },
+      "control_sha256": "04724d61a46a65428a5bd0b55a75455e98d97c7b81516529226a6fee41003d8c"
+    },
+    {
+      "start": "2023-02-01",
+      "baseline_return": 0.0665545081713792,
+      "control_return": 0.3894793182146028,
+      "control_drawdown": 0.138791222812102,
+      "target_weights_hindsight": {
+        "BTC": "0.2971830740212280605513022222",
+        "ETH": "0.2810504827701456070588709186"
+      },
+      "control_realized_mean_weights": {
+        "BTC": "0.3346917116932979199259057425",
+        "ETH": "0.2857165842045285506233817978"
+      },
+      "scenarios": {
+        "friction30": {
+          "total_return": 0.03196642817550632,
+          "cagr": 0.03198866950809691,
+          "maximum_drawdown": 0.23257569594534322,
+          "sharpe_zero_reference_365_days": 0.2577893323489568,
+          "result_sha256": "d44187c74aaf8f0617e36053e0ddc2bcc350dd0f44e393e0f6e417e9c5ec4f51"
+        },
+        "friction50": {
+          "total_return": -0.01209125431013458,
+          "cagr": -0.01209948568589687,
+          "maximum_drawdown": 0.25423612041544885,
+          "sharpe_zero_reference_365_days": 0.1221081716431897,
+          "result_sha256": "117da0e81d0e2f58bb308b286065f4f00d45aa562f558ff7d42780933c703e52"
+        },
+        "extra_day": {
+          "total_return": 0.08349808516901724,
+          "cagr": 0.08355760110824362,
+          "maximum_drawdown": 0.2521532263976525,
+          "sharpe_zero_reference_365_days": 0.40483368230936806,
+          "result_sha256": "e21da71c75ef626a3e21a0be5e5e88ac5ded9d47433dd65e7689bcbfbd5da55f"
+        }
+      },
+      "control_sha256": "d7e095116a1788e912729cc2a3dbe2bdcb3cf476bf6579444228e9fb7bd116fe"
+    },
+    {
+      "start": "2023-03-01",
+      "baseline_return": 0.6043151446938406,
+      "control_return": 0.8221694629377028,
+      "control_drawdown": 0.13950887583608884,
+      "target_weights_hindsight": {
+        "BTC": "0.3032799576903818577511976842",
+        "ETH": "0.2831851097703885017029387571"
+      },
+      "control_realized_mean_weights": {
+        "BTC": "0.3505942174237762398651176536",
+        "ETH": "0.2864921097793771197145931686"
+      },
+      "scenarios": {
+        "friction30": {
+          "total_return": 0.554447336086709,
+          "cagr": 0.5530428522742202,
+          "maximum_drawdown": 0.2324982224067289,
+          "sharpe_zero_reference_365_days": 1.4915121320261886,
+          "result_sha256": "cefc8f720e269808ebeb3cbb8f63d4e2e2823d9503e2ff5fc07f69f17d94b55b"
+        },
+        "friction50": {
+          "total_return": 0.4906141756590181,
+          "cagr": 0.48939533890956205,
+          "maximum_drawdown": 0.24869256244866433,
+          "sharpe_zero_reference_365_days": 1.365395481701301,
+          "result_sha256": "dffb20a016be897f1804c28335ba69d2431c9d56fd349cf7e03a9a4cb99312cb"
+        },
+        "extra_day": {
+          "total_return": 0.6200275970942446,
+          "cagr": 0.618426808028357,
+          "maximum_drawdown": 0.23831452879717996,
+          "sharpe_zero_reference_365_days": 1.549582613126071,
+          "result_sha256": "959fec124aa217cd0da5eb2ef5ad5431c53a432e7df0d2d750538d61e05fab00"
+        }
+      },
+      "control_sha256": "b8642239ce9f822cfc20d317e696d9e10110e40d388660d8080ef356fa5027c2"
+    },
+    {
+      "start": "2023-04-01",
+      "baseline_return": 0.6267761912865291,
+      "control_return": 0.7460847559650685,
+      "control_drawdown": 0.1391655350600165,
+      "target_weights_hindsight": {
+        "BTC": "0.3102456185161973276638748383",
+        "ETH": "0.2818448301499689490139980710"
+      },
+      "control_realized_mean_weights": {
+        "BTC": "0.3418166616550316840780652404",
+        "ETH": "0.2888109500519123875755192940"
+      },
+      "scenarios": {
+        "friction30": {
+          "total_return": 0.5749406179574135,
+          "cagr": 0.5734753866463795,
+          "maximum_drawdown": 0.23249821447942265,
+          "sharpe_zero_reference_365_days": 1.4263210806022928,
+          "result_sha256": "e9000a36c976c61f28b05b310a4f86c755f34ad0c8e58be4d04eed7023928cfb"
+        },
+        "friction50": {
+          "total_return": 0.5076631476348326,
+          "cagr": 0.5063952640652456,
+          "maximum_drawdown": 0.24875782549820713,
+          "sharpe_zero_reference_365_days": 1.3065653422278913,
+          "result_sha256": "7763b0b854629d73586f472dced773bf177ec030915fb2911db0b43e947f8f17"
+        },
+        "extra_day": {
+          "total_return": 0.8194853657052723,
+          "cagr": 0.8172550540831957,
+          "maximum_drawdown": 0.23835094878362695,
+          "sharpe_zero_reference_365_days": 1.7666149971793959,
+          "result_sha256": "4515aef632b92df917600147acf9201f134bdd1daf697bce3e325b4e41858c58"
+        }
+      },
+      "control_sha256": "efdc1c44a6d6120c50435889d3404787368adb3150188734721321a3355d2aed"
+    },
+    {
+      "start": "2023-05-01",
+      "baseline_return": 0.4923892094049125,
+      "control_return": 0.45900799722886676,
+      "control_drawdown": 0.14978844006647618,
+      "target_weights_hindsight": {
+        "BTC": "0.2926988732446736779801152617",
+        "ETH": "0.2488316361420120932348651308"
+      },
+      "control_realized_mean_weights": {
+        "BTC": "0.3339881524875321183604289336",
+        "ETH": "0.2575166459678269048671479066"
+      },
+      "scenarios": {
+        "friction30": {
+          "total_return": 0.44466034508138375,
+          "cagr": 0.44357171176317167,
+          "maximum_drawdown": 0.20692701629690247,
+          "sharpe_zero_reference_365_days": 1.1987404520925364,
+          "result_sha256": "8f6b87edc61318ee5cbaa7f1fa8f294fe1d30496ea9d43c0ff207ee315931ff6"
+        },
+        "friction50": {
+          "total_return": 0.3823265337737092,
+          "cagr": 0.38140972101327253,
+          "maximum_drawdown": 0.21367908341892627,
+          "sharpe_zero_reference_365_days": 1.0762524598857879,
+          "result_sha256": "a5423f96585068ec6b98139b737c0783732f376b8705049d003e2ca81c8c73bd"
+        },
+        "extra_day": {
+          "total_return": 0.6911188532837169,
+          "cagr": 0.6892991413648959,
+          "maximum_drawdown": 0.1823383112621697,
+          "sharpe_zero_reference_365_days": 1.5957949243041527,
+          "result_sha256": "3de29dff28e44229e40f299d006bf346624573469f162a8b2298cfd6cba9336f"
+        }
+      },
+      "control_sha256": "6cc594ade501c76c7e3926a84b6fcb688ba918afa97f7a9bf57688d750696eaf"
+    },
+    {
+      "start": "2023-06-01",
+      "baseline_return": 0.5843528578971113,
+      "control_return": 0.7221857620964309,
+      "control_drawdown": 0.17305071223134927,
+      "target_weights_hindsight": {
+        "BTC": "0.3117980760220402893924998016",
+        "ETH": "0.2625047631093469731413771376"
+      },
+      "control_realized_mean_weights": {
+        "BTC": "0.3805543764259169928215634664",
+        "ETH": "0.2634493591759898870670384285"
+      },
+      "scenarios": {
+        "friction30": {
+          "total_return": 0.5271482560323535,
+          "cagr": 0.5258238351840342,
+          "maximum_drawdown": 0.22126906962461101,
+          "sharpe_zero_reference_365_days": 1.3427076948991117,
+          "result_sha256": "a51ac1db954ffe07cbad2050ade3d1d73d4535343e1306260b12c4bb2860ffa6"
+        },
+        "friction50": {
+          "total_return": 0.45413156832818746,
+          "cagr": 0.4530163409844274,
+          "maximum_drawdown": 0.23048081598225623,
+          "sharpe_zero_reference_365_days": 1.2081055040957465,
+          "result_sha256": "1d93d0a1d232327e5d0c2bcdbf0d07984b4c97ae1c82fd1fd4da5ac36b7e95e8"
+        },
+        "extra_day": {
+          "total_return": 0.620666062256946,
+          "cagr": 0.6190633350134935,
+          "maximum_drawdown": 0.20900886512039074,
+          "sharpe_zero_reference_365_days": 1.4675534521216655,
+          "result_sha256": "2a5a6d299e0b0f706f49ea7d05806abd58efcfb1027bf5fe5868e318104fd002"
+        }
+      },
+      "control_sha256": "6e0d6b21d02f71debf7d59646e8e8fc574d14725f5645a84de38d107d9127665"
+    },
+    {
+      "start": "2023-07-01",
+      "baseline_return": 0.5601681644129992,
+      "control_return": 0.5183171729786828,
+      "control_drawdown": 0.16958416759744366,
+      "target_weights_hindsight": {
+        "BTC": "0.3077104772302899536141437803",
+        "ETH": "0.2583177107693528652131201679"
+      },
+      "control_realized_mean_weights": {
+        "BTC": "0.3656092279050172954286323642",
+        "ETH": "0.2697203439150153414155061654"
+      },
+      "scenarios": {
+        "friction30": {
+          "total_return": 0.5098808353320301,
+          "cagr": 0.5086065428256895,
+          "maximum_drawdown": 0.22126910116242915,
+          "sharpe_zero_reference_365_days": 1.3192827781135357,
+          "result_sha256": "5f3e8cf3479cd7c90b682beea3284ba8bdb0d7e28b2bea0d241883b5797dfa7a"
+        },
+        "friction50": {
+          "total_return": 0.44488426747434984,
+          "cagr": 0.44379500687089596,
+          "maximum_drawdown": 0.23273812661120674,
+          "sharpe_zero_reference_365_days": 1.1970570316140094,
+          "result_sha256": "b3a25df98d4508616ceacd64a102c48ab92622e9841cd637e6e57d74683af74c"
+        },
+        "extra_day": {
+          "total_return": 0.6307232470549531,
+          "cagr": 0.6290899217236838,
+          "maximum_drawdown": 0.2294336907771859,
+          "sharpe_zero_reference_365_days": 1.502824927723278,
+          "result_sha256": "5b8d1d2f25ab0f6507f45deaaea5ad778855cc1498f62d7291138138f7016123"
+        }
+      },
+      "control_sha256": "0efbec3235a128884aa76ed3c550528beb5de660ef716a9dc7b33b1d740e5ba4"
+    },
+    {
+      "start": "2023-08-01",
+      "baseline_return": 0.5710812767729356,
+      "control_return": 0.560367638487222,
+      "control_drawdown": 0.18679564781927827,
+      "target_weights_hindsight": {
+        "BTC": "0.3107782156594535381843408661",
+        "ETH": "0.2486568137397943056675920978"
+      },
+      "control_realized_mean_weights": {
+        "BTC": "0.3830383344473876904434412708",
+        "ETH": "0.2651048570681270172271194383"
+      },
+      "scenarios": {
+        "friction30": {
+          "total_return": 0.52194795874974,
+          "cagr": 0.5206386768581821,
+          "maximum_drawdown": 0.25621632595467103,
+          "sharpe_zero_reference_365_days": 1.3346082081807937,
+          "result_sha256": "470aa40f07c46ba7a90d6dd43993894fe8497913cde9a189bfcb3d90970c390d"
+        },
+        "friction50": {
+          "total_return": 0.4585835618769405,
+          "cagr": 0.4574557902816536,
+          "maximum_drawdown": 0.2702574118258436,
+          "sharpe_zero_reference_365_days": 1.2173762628663862,
+          "result_sha256": "236695a932b91acc3396843b7323bdb8c7b5cd52c99e10139a973297b6971815"
+        },
+        "extra_day": {
+          "total_return": 0.5697981010930568,
+          "cagr": 0.5683481650433002,
+          "maximum_drawdown": 0.24781419051194464,
+          "sharpe_zero_reference_365_days": 1.4000963348782354,
+          "result_sha256": "32bd71e5c15ebe5e85023400d329ef7986d44a2958150657dbc6c33185c37032"
+        }
+      },
+      "control_sha256": "b2e8919f2ba87a883c9aacb7eb96ebc73dd7303c2c88a06c03e360c6f5aa4906"
+    },
+    {
+      "start": "2023-09-01",
+      "baseline_return": 0.2933883456426536,
+      "control_return": 0.5356803197462954,
+      "control_drawdown": 0.24869407152726575,
+      "target_weights_hindsight": {
+        "BTC": "0.3203958954188186712773427410",
+        "ETH": "0.2567801317815252194620707334"
+      },
+      "control_realized_mean_weights": {
+        "BTC": "0.4213325178594458054327266478",
+        "ETH": "0.2839413727562367592563453913"
+      },
+      "scenarios": {
+        "friction30": {
+          "total_return": 0.2520784450541007,
+          "cagr": 0.2515017881274849,
+          "maximum_drawdown": 0.3933445620995214,
+          "sharpe_zero_reference_365_days": 0.7821457066005111,
+          "result_sha256": "ff4f13b0c5f144941be06601d4adb3ad6aa03534fb71ffe334121bee224f5571"
+        },
+        "friction50": {
+          "total_return": 0.19901792467842516,
+          "cagr": 0.19857205444186682,
+          "maximum_drawdown": 0.4058951809939624,
+          "sharpe_zero_reference_365_days": 0.6675400473556056,
+          "result_sha256": "cfa3fc0e3335d9ea39aa38b2086e4622d9232e4312dac7657c4414a49229d5b4"
+        },
+        "extra_day": {
+          "total_return": 0.28159447474542065,
+          "cagr": 0.2809430625257615,
+          "maximum_drawdown": 0.423053160572192,
+          "sharpe_zero_reference_365_days": 0.8322922267292883,
+          "result_sha256": "2df648f8f73a6303bc670e17da9b47a08772d03e1fe61e91a61b9383ca0f92ef"
+        }
+      },
+      "control_sha256": "6279378fbb801b01ebad049ff9f7cd67af32fa178b8bde95935e16734687303f"
+    },
+    {
+      "start": "2023-10-01",
+      "baseline_return": 0.286611806836095,
+      "control_return": 0.589538408697043,
+      "control_drawdown": 0.264129969998233,
+      "target_weights_hindsight": {
+        "BTC": "0.3176568853742888764960262574",
+        "ETH": "0.2662914342061337202577066913"
+      },
+      "control_realized_mean_weights": {
+        "BTC": "0.4157263104304686205909094601",
+        "ETH": "0.2907057447895180442401463508"
+      },
+      "scenarios": {
+        "friction30": {
+          "total_return": 0.24547933822446666,
+          "cagr": 0.2449192015033123,
+          "maximum_drawdown": 0.39334455286194336,
+          "sharpe_zero_reference_365_days": 0.7643457379930362,
+          "result_sha256": "a30cdba44dc925ae621969e377be687026739f30c7a2fd647dcb90b4daff8642"
+        },
+        "friction50": {
+          "total_return": 0.19304366384979965,
+          "cagr": 0.19261222252780535,
+          "maximum_drawdown": 0.4058951705619187,
+          "sharpe_zero_reference_365_days": 0.6515926931224612,
+          "result_sha256": "b4c06a9501fac8415349038f2381dc3789ed1300ee10135182370b06608b2f7d"
+        },
+        "extra_day": {
+          "total_return": 0.24506523077353082,
+          "cagr": 0.24450612834981694,
+          "maximum_drawdown": 0.42638964845011873,
+          "sharpe_zero_reference_365_days": 0.7540033546214907,
+          "result_sha256": "a5dec248769eba41d964cbdfeaed720d18fe5d8ce4a176c7dea30c7099179ae3"
+        }
+      },
+      "control_sha256": "ca4a40cc0c42f205e85a507f9e76a4daeee1614e8a48a30b3fb3fd5f685da6cc"
+    },
+    {
+      "start": "2023-11-01",
+      "baseline_return": 0.05428304942228812,
+      "control_return": 0.42662633359778335,
+      "control_drawdown": 0.26034893169948337,
+      "target_weights_hindsight": {
+        "BTC": "0.3105846322863568647167868877",
+        "ETH": "0.2691401197135197308923152515"
+      },
+      "control_realized_mean_weights": {
+        "BTC": "0.3728945085587177021182494689",
+        "ETH": "0.3090806774386643061176722617"
+      },
+      "scenarios": {
+        "friction30": {
+          "total_return": 0.020312004017572827,
+          "cagr": 0.020269962035256935,
+          "maximum_drawdown": 0.4608500566212106,
+          "sharpe_zero_reference_365_days": 0.2435867543970283,
+          "result_sha256": "54d47594fe388874fe804fe4d3042ffaf57e44a2e5e901c38800446482d96faf"
+        },
+        "friction50": {
+          "total_return": -0.02325775269701935,
+          "cagr": -0.02321065080384317,
+          "maximum_drawdown": 0.4760835887242495,
+          "sharpe_zero_reference_365_days": 0.13037003920416154,
+          "result_sha256": "48d874ec699f8501059ecdb04c0b352e3807e9973eacebaf5a31f09ccaa19f69"
+        },
+        "extra_day": {
+          "total_return": 0.08591852218882301,
+          "cagr": 0.08573511937944249,
+          "maximum_drawdown": 0.46732971171819115,
+          "sharpe_zero_reference_365_days": 0.40490685461631537,
+          "result_sha256": "e48c56894f8bd6d59d0bac7dcdeabf8041822b2460030de6aa251859969a7ce9"
+        }
+      },
+      "control_sha256": "c51c3faa940b6e748be880a18467617aec1c64bb62cdf6de1068c88d5511461f"
+    },
+    {
+      "start": "2023-12-01",
+      "baseline_return": 0.2419746871621402,
+      "control_return": 0.7006659514596532,
+      "control_drawdown": 0.2511999994528764,
+      "target_weights_hindsight": {
+        "BTC": "0.3107999884282574957408660675",
+        "ETH": "0.2661264298443247383938258313"
+      },
+      "control_realized_mean_weights": {
+        "BTC": "0.3806772777774374870407545956",
+        "ETH": "0.2900923298138643576998999347"
+      },
+      "scenarios": {
+        "friction30": {
+          "total_return": 0.1990411157029266,
+          "cagr": 0.19859518933710976,
+          "maximum_drawdown": 0.46089953364644365,
+          "sharpe_zero_reference_365_days": 0.656189683904406,
+          "result_sha256": "7e251721d53e179e356d84eb9ed7cb65cc624600500a488e3ae957d6781fbc19"
+        },
+        "friction50": {
+          "total_return": 0.14541213022368193,
+          "cagr": 0.14509351405828386,
+          "maximum_drawdown": 0.4765649484124873,
+          "sharpe_zero_reference_365_days": 0.5399996753816785,
+          "result_sha256": "8cdcdfbef1048b0dc3941630a66e0eece7254f21006ee09f2bd0c8a8780abfc6"
+        },
+        "extra_day": {
+          "total_return": 0.3023092302843342,
+          "cagr": 0.3016045220783935,
+          "maximum_drawdown": 0.4673727534272176,
+          "sharpe_zero_reference_365_days": 0.8536073195422827,
+          "result_sha256": "7dbb3b86fd3c95d9b3628b15364b0bb449347d0d54bc2e77e59218684b089803"
+        }
+      },
+      "control_sha256": "dc97f68e0d0293d57f0d281239143879215cdb3ef1d711214241dd5a1682947c"
+    },
+    {
+      "start": "2024-01-01",
+      "baseline_return": 0.15144708054045197,
+      "control_return": 0.49506782439882,
+      "control_drawdown": 0.2390298575336668,
+      "target_weights_hindsight": {
+        "BTC": "0.3052648330239272275709520156",
+        "ETH": "0.2594337336980222959561578655"
+      },
+      "control_realized_mean_weights": {
+        "BTC": "0.3712214994826511127883351940",
+        "ETH": "0.2745308631110285254281738183"
+      },
+      "scenarios": {
+        "friction30": {
+          "total_return": 0.1136170930944902,
+          "cagr": 0.11337154624108027,
+          "maximum_drawdown": 0.46084617488941326,
+          "sharpe_zero_reference_365_days": 0.4671310583778399,
+          "result_sha256": "e54aacb89b4ddee76862f0dcd1f21ce8d3eed1cebf4811eaf238e068095859c4"
+        },
+        "friction50": {
+          "total_return": 0.06604716934891441,
+          "cagr": 0.0659074617206211,
+          "maximum_drawdown": 0.47663736589171035,
+          "sharpe_zero_reference_365_days": 0.35830944884338484,
+          "result_sha256": "213308125370fada298dcbc6f8e758c54f405ec5a0752f053c45f37ac186a2ab"
+        },
+        "extra_day": {
+          "total_return": 0.1181224727467689,
+          "cagr": 0.11786668357239906,
+          "maximum_drawdown": 0.4672495450867997,
+          "sharpe_zero_reference_365_days": 0.4758081214496385,
+          "result_sha256": "ea399cf2305307bdeb4feeb34c53a55d23eab1de94b48d309010f5158f7f9145"
+        }
+      },
+      "control_sha256": "4aa05dde0236c346608f6d50629a170f429b5033da1ac8c696ff05e609c89963"
+    },
+    {
+      "start": "2024-02-01",
+      "baseline_return": 0.16206078047001493,
+      "control_return": 0.5401315770205122,
+      "control_drawdown": 0.22831492604503734,
+      "target_weights_hindsight": {
+        "BTC": "0.3094366887805668116497398828",
+        "ETH": "0.2306672330546562423663274310"
+      },
+      "control_realized_mean_weights": {
+        "BTC": "0.3926629610958858865700980566",
+        "ETH": "0.2460741724673756472598612148"
+      },
+      "scenarios": {
+        "friction30": {
+          "total_return": 0.12661492698565202,
+          "cagr": 0.12633973066008355,
+          "maximum_drawdown": 0.46089950371662725,
+          "sharpe_zero_reference_365_days": 0.5007531584008117,
+          "result_sha256": "aa101a323351df32331569165831adfb99001be88bd024d6ae75f4ccd2f39241"
+        },
+        "friction50": {
+          "total_return": 0.0812212075328993,
+          "cagr": 0.08104820127832355,
+          "maximum_drawdown": 0.4765649377529888,
+          "sharpe_zero_reference_365_days": 0.39369337688925077,
+          "result_sha256": "1693df296fa8caa89a6f02fae9d2a09da6b93661c1110418d1a341fb5c978f16"
+        },
+        "extra_day": {
+          "total_return": 0.11159502497991935,
+          "cagr": 0.11135406289508398,
+          "maximum_drawdown": 0.467161090362629,
+          "sharpe_zero_reference_365_days": 0.46483185031143504,
+          "result_sha256": "d887ecdfb427b5f2e3bd214bb6ff79382642d7f8ce247361ac2c07ae20979db4"
+        }
+      },
+      "control_sha256": "b9e888105dfa3df2fed72b54cca42022d7149f2feeb6cb4da60318fd65e24ae6"
+    },
+    {
+      "start": "2024-03-01",
+      "baseline_return": -0.20425329064036746,
+      "control_return": 0.05334439637250754,
+      "control_drawdown": 0.17741066781134285,
+      "target_weights_hindsight": {
+        "BTC": "0.2802779201885862807560844441",
+        "ETH": "0.2050090974172077237434680336"
+      },
+      "control_realized_mean_weights": {
+        "BTC": "0.3167052671387661210905677822",
+        "ETH": "0.1820368886061051699344915797"
+      },
+      "scenarios": {
+        "friction30": {
+          "total_return": -0.22652628516670148,
+          "cagr": -0.22666235349576738,
+          "maximum_drawdown": 0.4603446982471696,
+          "sharpe_zero_reference_365_days": -0.5142695774513165,
+          "result_sha256": "eab292a8ab5002c4d619bba455acbd0071abaec2c406ceeb65e82c9164b26e44"
+        },
+        "friction50": {
+          "total_return": -0.2567039916811503,
+          "cagr": -0.2568550084446046,
+          "maximum_drawdown": 0.4756903721000578,
+          "sharpe_zero_reference_365_days": -0.6219518767705717,
+          "result_sha256": "c93fecaead541be6e71c3bc6bf22caf97c85c04126fb7034499e29659e4b5622"
+        },
+        "extra_day": {
+          "total_return": -0.21196200836712986,
+          "cagr": -0.21209057166259487,
+          "maximum_drawdown": 0.46758099667591013,
+          "sharpe_zero_reference_365_days": -0.46050441556415656,
+          "result_sha256": "8177b273666badf115511077c3a657f2afa4538fa5e561c0eb081e801960b4ec"
+        }
+      },
+      "control_sha256": "bca354451b58230ec6dbc255a3e265866163ad6eeac248f57db6e906208c2fbe"
+    },
+    {
+      "start": "2024-04-01",
+      "baseline_return": -0.30041277514410647,
+      "control_return": -0.07589373071475491,
+      "control_drawdown": 0.17726811379468554,
+      "target_weights_hindsight": {
+        "BTC": "0.2458846385506489343262093753",
+        "ETH": "0.1748706726545741273531857741"
+      },
+      "control_realized_mean_weights": {
+        "BTC": "0.2701684084420014551234051444",
+        "ETH": "0.1513756690940747540603974470"
+      },
+      "scenarios": {
+        "friction30": {
+          "total_return": -0.31968031157304166,
+          "cagr": -0.31985977694930623,
+          "maximum_drawdown": 0.41872989172273334,
+          "sharpe_zero_reference_365_days": -1.101599664303803,
+          "result_sha256": "e31988ef8070c65b7be9aeecd399e2e15960a528bda23a31688b5f86f8d004e3"
+        },
+        "friction50": {
+          "total_return": -0.34349508322932276,
+          "cagr": -0.3436842845528247,
+          "maximum_drawdown": 0.432232509370457,
+          "sharpe_zero_reference_365_days": -1.2186181077953977,
+          "result_sha256": "cacf564d24bc82fbe52a9bf95fcdbfe8b6417f8813e2371dffadb587b9b18adf"
+        },
+        "extra_day": {
+          "total_return": -0.3618829154943307,
+          "cagr": -0.36207923019974364,
+          "maximum_drawdown": 0.47807301047868,
+          "sharpe_zero_reference_365_days": -1.2787789690220397,
+          "result_sha256": "eb63f7f5db181c915a6861302d86e2728ae13b43569a484c4ac31e9a9f1fd618"
+        }
+      },
+      "control_sha256": "5b64e69ef6748e4d0cafd8bc17767d849451fcc38f03acd2e1994d6653e2d1f4"
+    },
+    {
+      "start": "2024-05-01",
+      "baseline_return": -0.1306079609532942,
+      "control_return": 0.06624602186326656,
+      "control_drawdown": 0.2179009407171032,
+      "target_weights_hindsight": {
+        "BTC": "0.2540295301536037870860234098",
+        "ETH": "0.1750902660352587096255531897"
+      },
+      "control_realized_mean_weights": {
+        "BTC": "0.3034449261551014951352574115",
+        "ETH": "0.1584241854849605860491694289"
+      },
+      "scenarios": {
+        "friction30": {
+          "total_return": -0.15443358755261394,
+          "cagr": -0.15453073440502765,
+          "maximum_drawdown": 0.35562111483392356,
+          "sharpe_zero_reference_365_days": -0.4228835999421747,
+          "result_sha256": "6ae734e89e3e3a0a6f4a7c456eb56147ea3204ec0c20bf11a99243751bc9fbfd"
+        },
+        "friction50": {
+          "total_return": -0.18417872872130903,
+          "cagr": -0.18429246638144253,
+          "maximum_drawdown": 0.3644117652557718,
+          "sharpe_zero_reference_365_days": -0.5449565560107895,
+          "result_sha256": "0b0f09cfa841a7fb632bc9956a48b75f56393e45d4278559d82ca63caa946df1"
+        },
+        "extra_day": {
+          "total_return": -0.22279509051617608,
+          "cagr": -0.2229292539108629,
+          "maximum_drawdown": 0.38351850131381526,
+          "sharpe_zero_reference_365_days": -0.6950573622063242,
+          "result_sha256": "ececdfe827f6227e1b3409ef65c87e6cdf7e865f6fd50a24a8243c23b028e425"
+        }
+      },
+      "control_sha256": "11b5111018d6e35144041c41dade2e24b75e10baed045c11d5499a3f975f2b93"
+    },
+    {
+      "start": "2024-06-01",
+      "baseline_return": 0.09537213316289117,
+      "control_return": 0.09414413796013177,
+      "control_drawdown": 0.21467758468330633,
+      "target_weights_hindsight": {
+        "BTC": "0.2715556741514862922898266583",
+        "ETH": "0.1984889421910449562665516261"
+      },
+      "control_realized_mean_weights": {
+        "BTC": "0.3175327833135828595387190553",
+        "ETH": "0.1466963462758203898088800804"
+      },
+      "scenarios": {
+        "friction30": {
+          "total_return": 0.06984485074685098,
+          "cagr": 0.0698943238898078,
+          "maximum_drawdown": 0.3556398195951208,
+          "sharpe_zero_reference_365_days": 0.36528986120726853,
+          "result_sha256": "ae58d42f6a736dbd137668cc68ca8bc8dea05c8d5fd9ec6bab448992233cf2e7"
+        },
+        "friction50": {
+          "total_return": 0.039668962373743843,
+          "cagr": 0.039696665190225036,
+          "maximum_drawdown": 0.3642323995677962,
+          "sharpe_zero_reference_365_days": 0.2814755122301106,
+          "result_sha256": "6f9cb7140fe41eb3fc25c33f8abfa8c824b69dbd4da0215ccfe6974165696e40"
+        },
+        "extra_day": {
+          "total_return": 0.060765646928683026,
+          "cagr": 0.06080850778045939,
+          "maximum_drawdown": 0.3596543582441021,
+          "sharpe_zero_reference_365_days": 0.34038930675310913,
+          "result_sha256": "57470cbfec7295ef5591badb78ec17a0585176513069ad9daa89a6289b290739"
+        }
+      },
+      "control_sha256": "619d558bf44bbf739fe37c665f8df71f6cdf9d79487979cbd2d123c7b0f345e0"
+    },
+    {
+      "start": "2024-07-01",
+      "baseline_return": 0.08420367759149539,
+      "control_return": 0.14279195707878967,
+      "control_drawdown": 0.22790971665361826,
+      "target_weights_hindsight": {
+        "BTC": "0.2798451102551171736626615685",
+        "ETH": "0.1997887639358331541919106571"
+      },
+      "control_realized_mean_weights": {
+        "BTC": "0.3521268608776672802366761384",
+        "ETH": "0.1506495678473538958619348576"
+      },
+      "scenarios": {
+        "friction30": {
+          "total_return": 0.05361236384443413,
+          "cagr": 0.053650052525912005,
+          "maximum_drawdown": 0.324281907326763,
+          "sharpe_zero_reference_365_days": 0.3206063308515541,
+          "result_sha256": "3d488c8f64f98db5d6e41ccec2d33cb0444c8f04c9b9876235d6c809e3544842"
+        },
+        "friction50": {
+          "total_return": 0.013190165747603011,
+          "cagr": 0.013199259470614158,
+          "maximum_drawdown": 0.33077616950722477,
+          "sharpe_zero_reference_365_days": 0.20696654339750511,
+          "result_sha256": "d06f3a8fae3fd0f14a255189c4a95cbe17c6bd1063797d1f30f4f7c52bc10a56"
+        },
+        "extra_day": {
+          "total_return": 0.10275479217416783,
+          "cagr": 0.10282867272858656,
+          "maximum_drawdown": 0.34024519647388185,
+          "sharpe_zero_reference_365_days": 0.4516957556058037,
+          "result_sha256": "ab89e9ec092b62f783f0945ba7a500e92699929f065f30ec3c469fb1e04072ce"
+        }
+      },
+      "control_sha256": "e3d8dfb6c01142940ea22770503a835b3668f19b76ef7e087cc2bc2aaf48a6c3"
+    },
+    {
+      "start": "2024-08-01",
+      "baseline_return": 0.395636095098751,
+      "control_return": 0.25141952238766674,
+      "control_drawdown": 0.24640507635095166,
+      "target_weights_hindsight": {
+        "BTC": "0.2941888557569361982850421123",
+        "ETH": "0.2142381517209410319038084065"
+      },
+      "control_realized_mean_weights": {
+        "BTC": "0.3748980998441229358085145367",
+        "ETH": "0.1691380696625977056830515649"
+      },
+      "scenarios": {
+        "friction30": {
+          "total_return": 0.35475764230972007,
+          "cagr": 0.35503940791225597,
+          "maximum_drawdown": 0.28334571091066296,
+          "sharpe_zero_reference_365_days": 1.0331994491870704,
+          "result_sha256": "17a3ae639222f1e634789593e3f6e3dd4ba7d2e3a6a2440795f4cb0b4aa35a9d"
+        },
+        "friction50": {
+          "total_return": 0.3009208261327565,
+          "cagr": 0.3011552556689862,
+          "maximum_drawdown": 0.2911886427660675,
+          "sharpe_zero_reference_365_days": 0.9180694731972657,
+          "result_sha256": "a1949c2681eb6151d9c3bca53f2a56107265d5941f16c308ef2a58d26856019b"
+        },
+        "extra_day": {
+          "total_return": 0.3936202109017193,
+          "cagr": 0.39393706148997143,
+          "maximum_drawdown": 0.3032390429914146,
+          "sharpe_zero_reference_365_days": 1.105417427341758,
+          "result_sha256": "25748934c675585ba7dc697e970e8836c306879d9c7eca198da3038fca6c5e00"
+        }
+      },
+      "control_sha256": "5a1518239ee28dcac8a7672ad1409b7e68a97b4168ddbbe2a4bea7db32a73ae1"
+    },
+    {
+      "start": "2024-09-01",
+      "baseline_return": 0.703483148899861,
+      "control_return": 0.4108163059997798,
+      "control_drawdown": 0.29185521138723325,
+      "target_weights_hindsight": {
+        "BTC": "0.2925344918305320955630473597",
+        "ETH": "0.249008788241071447947686328"
+      },
+      "control_realized_mean_weights": {
+        "BTC": "0.3877459014918657510506866216",
+        "ETH": "0.2359747336825999735860736884"
+      },
+      "scenarios": {
+        "friction30": {
+          "total_return": 0.651399746492697,
+          "cagr": 0.6519672278943015,
+          "maximum_drawdown": 0.20454395758636923,
+          "sharpe_zero_reference_365_days": 1.539516335236389,
+          "result_sha256": "536a7cd81cca6ec9426518ca9ed45602fb402f8a6951ad743503165a5fd5361a"
+        },
+        "friction50": {
+          "total_return": 0.5832316588679709,
+          "cagr": 0.5837299869076021,
+          "maximum_drawdown": 0.21323464044647145,
+          "sharpe_zero_reference_365_days": 1.425970352694987,
+          "result_sha256": "29f98dcca6bd8dea7789a529c39e0a5bde705ed7fe01ae40cee8217b3fd7e764"
+        },
+        "extra_day": {
+          "total_return": 0.9874044800722346,
+          "cagr": 0.9883396370303761,
+          "maximum_drawdown": 0.18082053398912956,
+          "sharpe_zero_reference_365_days": 2.042867611655033,
+          "result_sha256": "5654a1e681fd7e56560a8a8a3254371e4b180691caa55038cd85babf23b65ea9"
+        }
+      },
+      "control_sha256": "6766acd4bf02e49cb8333a620ad5b3e409d008f3e00e432af753eea890ff6599"
+    },
+    {
+      "start": "2024-10-01",
+      "baseline_return": 0.638534186200119,
+      "control_return": 0.3477081848308632,
+      "control_drawdown": 0.291960414912141,
+      "target_weights_hindsight": {
+        "BTC": "0.2926159505735739387101452663",
+        "ETH": "0.2489975971868871196800792628"
+      },
+      "control_realized_mean_weights": {
+        "BTC": "0.3863802354661646574736474099",
+        "ETH": "0.2435777880809894886961496004"
+      },
+      "scenarios": {
+        "friction30": {
+          "total_return": 0.5841241070546159,
+          "cagr": 0.5846233276263264,
+          "maximum_drawdown": 0.2045439516261739,
+          "sharpe_zero_reference_365_days": 1.4259334889491273,
+          "result_sha256": "c196ea143f1cfe07c4ea5e34176c78b7d11d0b53dc0882917160bdc6e44285ca"
+        },
+        "friction50": {
+          "total_return": 0.51265762318137,
+          "cagr": 0.5130864790074887,
+          "maximum_drawdown": 0.2132346644551264,
+          "sharpe_zero_reference_365_days": 1.3013870211209069,
+          "result_sha256": "69c97b883e809a437296c3115e9667b30a80e665cc0c28dbe1ddd6422d7652a7"
+        },
+        "extra_day": {
+          "total_return": 0.8466305933620419,
+          "cagr": 0.8474065469504953,
+          "maximum_drawdown": 0.18082055515099527,
+          "sharpe_zero_reference_365_days": 1.850550478502148,
+          "result_sha256": "ed14dab6bb3b0c2a1eca0c3df1381b05323ebaebaca6f39723e6eba52c13f836"
+        }
+      },
+      "control_sha256": "8de62c90f75a2dfd7430467f5d99c6bd3b9a40dd04e49e5169d03a5ef45b3447"
+    },
+    {
+      "start": "2024-11-01",
+      "baseline_return": 0.7001593498505787,
+      "control_return": 0.2751290541381115,
+      "control_drawdown": 0.27018327871891523,
+      "target_weights_hindsight": {
+        "BTC": "0.2759000926485073211193211233",
+        "ETH": "0.2272249784873926207121688721"
+      },
+      "control_realized_mean_weights": {
+        "BTC": "0.3378378193361062104165452351",
+        "ETH": "0.2364627197078729694537913304"
+      },
+      "scenarios": {
+        "friction30": {
+          "total_return": 0.6412200113997149,
+          "cagr": 0.6417770414109321,
+          "maximum_drawdown": 0.20441109114248424,
+          "sharpe_zero_reference_365_days": 1.5553011712225928,
+          "result_sha256": "9686fc91396fe68185aeb553df83fdda544302c38f0b4e1c706d66319023c51a"
+        },
+        "friction50": {
+          "total_return": 0.5659084009193063,
+          "cagr": 0.5663894726354751,
+          "maximum_drawdown": 0.21323468594627426,
+          "sharpe_zero_reference_365_days": 1.4247703955638302,
+          "result_sha256": "4071c3d8035868699cbf41a10f55761c62e5c7795cba0db8a5615184d933261c"
+        },
+        "extra_day": {
+          "total_return": 0.8958920710046279,
+          "cagr": 0.8967229257537178,
+          "maximum_drawdown": 0.18082061217854495,
+          "sharpe_zero_reference_365_days": 1.9768495860399238,
+          "result_sha256": "f1ce6e5f794be311f8a37c2e07628127713e711931138065d19f29ecc4d94f3c"
+        }
+      },
+      "control_sha256": "948a7a8b2670429219451081f06c304ea2e7f12f5a50950c7721ce12f526b64e"
+    }
+  ],
+  "holdout_access": false,
+  "overlapping_windows_independent": false,
+  "validation": {
+    "ledger_hashes_equities_timing_checked": 188,
+    "no_holdout_access": true,
+    "control_fills_at_one_initial_rebalance_only": true,
+    "stress_settings_and_fees_checked": true
+  }
+}

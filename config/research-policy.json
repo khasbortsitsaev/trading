@@ -13,7 +13,7 @@
     "capital_settings": "config/runner.json: initial_eth"
   },
   "open_prerequisites": [
-    "Register a bounded attribution/cost-robustness protocol before new analysis; existing positive returns do not establish an edge. ETH outperformance is not required.",
+    "S1 cost-fragile; S2/S3 retain positive medians under costs but edge unproven. Register one ex-ante passive-control comparison for unchanged S3 before further runs; hindsight composition diagnostic is not causal evidence.",
     "Freeze collector dataset hashes and exact evaluated-code/configuration hashes before each run",
     "Validate holdout coverage only after a champion and access bundle are frozen; do not inspect its strategy results during development",
     "Confirm actual account/product fees and eligibility before funded use; use public conservative fee scenarios for research"
@@ -420,7 +420,7 @@
     ]
   },
   "attribution_analysis": {
-    "status": "registered_before_evaluation",
+    "status": "completed_no_promotion",
     "experiment_ids": [
       "S1-003",
       "S2-003",
@@ -439,6 +439,7 @@
       "commission_per_execution": "0.0005"
     },
     "count": "141 diagnostic controls + 423 stress scenarios = 564 new evaluations; reuse baseline141 ledgers. Three signal hypotheses unchanged.",
-    "protection": "No parameter tuning, winner promotion, holdout, confidence claims or multiple-testing independence assumed."
+    "protection": "No parameter tuning, winner promotion, holdout, confidence claims or multiple-testing independence assumed.",
+    "evaluations_completed": 564
   }
 }

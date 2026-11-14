@@ -4,7 +4,7 @@ Find a repeatable investment edge after costs. Phase 1 covers **S1 trend followi
 
 **Objective:** repeatable trading profits after costs with acceptable risk. Existing ETH is simply available capital. Beating ETH is not required; holding/cash comparisons help explain risk and where returns come from.
 
-**Current conclusion:** all three have positive historical median 12-month returns, but none has established a repeatable edge. S2 has the lowest observed drawdowns; S3 has the highest fraction of profitable windows. Significant losses remain possible. [Results and reassessment](docs/STRATEGIES.md#current-objective-reassessment).
+**Current conclusion:** no validated trading edge. S1 is fragile to modeled costs; S2/S3 retain positive median returns in higher-cost development scenarios. S3 has only a small advantage over a hindsight-informed composition control and weakens with an extra day of delay. That control is diagnostic, not deployable evidence of alpha. [Results and limitations](docs/STRATEGIES.md#composition-diagnostic-and-execution-stress).
 
 - Results: [S1-001](research/artifacts/S1/s1-001-summary.json) · [S2-001](research/artifacts/S2/s2-001-summary.json) · [S3-001](research/artifacts/S3/s3-001-summary.json)
 - [Current state and next step](docs/state.md)

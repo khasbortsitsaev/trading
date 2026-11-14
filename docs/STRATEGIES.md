@@ -115,6 +115,25 @@ S3's **median paired excess return is +0.50 percentage points**: compare each st
 
 Per-window evidence: [S1-002](../research/artifacts/S1/s1-002-rolling.json), [S2-002](../research/artifacts/S2/s2-002-rolling.json), [S3-002](../research/artifacts/S3/s3-002-rolling.json). All 141 ledgers audited; 57 software checks passed. No promotion or parameter change follows automatically.
 
+## Composition diagnostic and execution stress
+
+S1-003/S2-003/S3-003 reuse all 47 windows and unchanged signals. Control is a once-traded BTC/ETH/cash portfolio whose starting weights equal the strategy's realized mean weights over that window. **Those weights require hindsight** and subsequently drift: this is an approximate composition diagnostic, not a tradable or risk-matched alternative and not a causal alpha test. Initial rebalance has the same delay/fees/minimums; no further trades or forced liquidation.
+
+| Across 47 windows | S1 | S2 | S3 |
+|---|---:|---:|---:|
+| Baseline median net return (15bps friction) | +6.66% | +14.22% | +21.86% |
+| Median at 30bps friction | +3.20% | +12.05% | +19.90% |
+| Median at 50bps friction | -1.21% | +10.15% | +17.33% |
+| Median with one extra daily delay, baseline friction | +8.35% | +13.12% | +12.32% |
+| Beats hindsight composition control | 16/47 | 18/47 | 25/47 |
+| Median paired excess over that control | -14.22 points | -4.03 points | +0.57 points |
+
+Friction is total round-trip noncommission cost; 0.05% commission per execution stays unchanged. Stress assumptions are not calibrated actual costs. Medians across overlapping 12-month windows are not expected annual returns, and separate stress cases are not combined. All methods retain substantial downside; S3's worst stress-case drawdown reaches about 59%.
+
+**Conclusion:** S1 is cost-fragile; S2/S3 retain positive median profits under these cost stresses. S3's composition-adjusted advantage is small and its median return falls with an extra day delay. None demonstrates a reliable edge. Next: predeclare an ex-ante passive-control comparison for unchanged S3, with weights fixed without future information; no new signal parameter sweep or automatic paper/live promotion.
+
+[Full S1-003](../research/artifacts/S1/s1-003-attribution.json), [S2-003](../research/artifacts/S2/s2-003-attribution.json), [S3-003](../research/artifacts/S3/s3-003-attribution.json). 60 software checks passed; all 564 new ledgers audited. Holdout untouched, no new market data, three signal hypotheses retained.
+
 ## Later ideas
 
 Pairs/cointegration, copulas, event-driven or cost-aware ML, on-chain/cross-sectional factors, regime models and advanced allocation are outside this POC. Candidate sources remain in [PAPERS.md](PAPERS.md). Existing repositories may provide reusable components after license and suitability checks; no new external-code audit was performed for this feedback update. Lower-frequency equity investing is a possible future direction, not current implementation scope.
